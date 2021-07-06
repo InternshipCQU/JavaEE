@@ -6,8 +6,10 @@ import sun.jvm.hotspot.HelloWorld;
 
 @RestController
 public class controllerDemo {
+
     @RequestMapping("/Hello")
     public String HelloWorld(){
         return "Hello World";
     }
+
 }

@@ -7,7 +7,7 @@ public class gaussDemo {
         //驱动类。
         String driver = "org.postgresql.Driver";
         //数据库连接描述符。
-        String sourceURL = "jdbc:postgresql://120.46.151.189:8000/postgres";
+        String sourceURL = "jdbc:postgresql://120.46.151.189:8000/user";
         Connection conn = null;
 
         try

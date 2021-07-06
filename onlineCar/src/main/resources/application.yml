@@ -1,0 +1,18 @@
+server:
+  port: 8080
+spring:
+  #数据库连接配置
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://120.46.151.189:8000/user
+    username: root
+    password: Heyjude259?
+
+#mybatis的相关配置
+mybatis:
+  #mapper配置文件
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: com.example.demo.entity
+  #开启驼峰命名
+  configuration:
+    map-underscore-to-camel-case: true
