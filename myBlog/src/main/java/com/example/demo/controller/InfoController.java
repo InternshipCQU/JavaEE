@@ -8,11 +8,10 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.annotation.Resource;
-/* 7/7/2021 designed by ljs*/
 /* The module basicinfoController is designed for setting the basic
 *  attributes of users ,including alias , name, gender, profile,
 *  region and date of birth.
-*
+*  TODO
 *
 * */
 
@@ -29,9 +28,9 @@ public class InfoController {
         boolean setaliasstatus=setss.setalias(new_alias,username);
         if (setaliasstatus)
         {
-            return "Set alias succeed.";
+            return "Set alias succeed.";//TODO: 如果设置昵称成功，则前端弹出对话框显示Set alias succeed.
         }
-        else return "Set alias failed.";
+        else return "Set alias failed.";//TODO: 如果设置失败那么显示Set alias failed.
     }
 
     @GetMapping("/setrealname")
