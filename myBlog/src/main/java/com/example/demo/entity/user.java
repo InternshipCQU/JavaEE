@@ -6,7 +6,7 @@ public class user {
     public String gender;
     public String profile;
     public String region;
-    /*the value DATE OF BIRTH includes three parts named yy mm dd*/
+    /*the value DATE OF BIRTH includes three parts named yy mm dd respectively.*/
     public int yy;
     public int mm;
     public int dd;

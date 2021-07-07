@@ -38,10 +38,19 @@ public class InfoController {
         boolean setnamestatus=setss.setname(new_name,old_name);
         if (setnamestatus)
         {
-            return "Set name succeed.";
+            return "Set name succeed.";//TODO: 如果设置名称成功，则前端弹出对话框显示Set name succeed.
         }
-        else return "Set name failed.";
+        else return "Set name failed.";//TODO: 如果设置失败则显示Set name failed.
     }
 
+    @GetMapping("/setgender")
+    public String setgender(@RequestParam("newgender") String n_gender,@RequestParam("username") String username){
+        boolean setgender=setss.setgender(n_gender,username);
+        if(setgender)
+        {
+            return "Set gender succeed.";
+        }
+        else return "Set gender failed.";
+    }
 
 }
