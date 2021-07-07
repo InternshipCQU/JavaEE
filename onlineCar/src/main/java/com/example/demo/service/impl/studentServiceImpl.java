@@ -16,6 +16,7 @@ public class studentServiceImpl implements studentService {
 
     @Override
     public List<student> findAll() {
+
         return StudentMapper.findAll();
     }
 }
