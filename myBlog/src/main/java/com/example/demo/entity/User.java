@@ -1,17 +1,25 @@
 package com.example.demo.entity;
+
 public class User {
-    /*basic profile*/
+    public int userID;
+    public int fansNum;
+    public int likesNum;
+    public int blogsNum;
     public String username;
     public String password;
     public String gender;
-    public String profile;
-    public String region;
-    /*the value DATE OF BIRTH includes three parts named yy mm dd respectively.*/
-    public int yy;
-    public int mm;
-    public int dd;
+    public String email;
+    public String telephone;
+    public String firstname;
+    public String lastname;
+    public String avatar;
+    public String lastLogin;
+    public String userRegisterTime;
 
-    /*education*/
+
+
+
+
 
 
 
