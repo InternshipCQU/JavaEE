@@ -1,26 +1,18 @@
 package com.example.demo.service.impl;
 
-import com.example.demo.entity.user;
-import com.example.demo.mapper.setaliasMapper;
-import com.example.demo.mapper.getaliasMapper;
-import com.example.demo.mapper.setnameMapper;
-import com.example.demo.mapper.setgenderMapper;
+import com.example.demo.mapper.profileMapper;
 import com.example.demo.service.setService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.thymeleaf.util.StringUtils;
 
-import java.lang.reflect.Array;
 import java.util.Arrays;
 import java.util.List;
 
 @Service("setService")
 public class setServiceImpl implements setService {
     @Autowired
-    private setaliasMapper setaliasMapper;
-    private getaliasMapper getaliasMapper;
-    private setnameMapper setnameMapper;
-    private setgenderMapper setgenderMapper;
+    private profileMapper profileMapper;
     @Override
     public boolean setalias(String new_alias, String username){
         if (StringUtils.isEmpty(new_alias))
@@ -28,13 +20,13 @@ public class setServiceImpl implements setService {
             return false;
         }
         else{
-            setaliasMapper.setalias(username,new_alias);
+            profileMapper.setalias(username,new_alias);
             return true;
         }
     }
    @Override
     public String getalias(String username){
-        String alias=getaliasMapper.getalias(username);
+        String alias=profileMapper.getalias(username);
         return alias;
    }
 
@@ -43,7 +35,7 @@ public class setServiceImpl implements setService {
         if (StringUtils.isEmpty(newname))
             return false;
         else {
-            setnameMapper.setname(newname, oldname);
+            profileMapper.setname(newname, oldname);
             return true;
         }
    }
@@ -57,7 +49,7 @@ public class setServiceImpl implements setService {
             return false;
         }
         else {
-            setgenderMapper.setgender(gender,username);
+            profileMapper.setgender(gender,username);
             return true;
         }
    }
