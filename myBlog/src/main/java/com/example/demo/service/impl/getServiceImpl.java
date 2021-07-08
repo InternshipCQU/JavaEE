@@ -11,8 +11,13 @@ public class getServiceImpl implements getService {
     private com.example.demo.mapper.profileMapper profileMapper;
 
     @Override
-    public String getalias(String username){
-        String alias=profileMapper.getalias(username);
+    public String getalias(int userID){
+        String alias=profileMapper.getalias(userID);
         return alias;
+    }
+    @Override
+    public String getusername(int userID){
+        String username=profileMapper.getusername(userID);
+        return username;
     }
 }
