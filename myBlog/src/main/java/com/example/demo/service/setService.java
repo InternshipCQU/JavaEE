@@ -10,6 +10,6 @@ public interface setService {
     boolean setname(String new_name,String old_name,int userID);
     boolean setgender(String gender,int userID);
     boolean setprofile(String profiledata,int userID);
-    boolean setregion(String regioin,int userID);
-    boolean setdateofbirth(Date date, int userID);
+    void setregion(String regioin,int userID);
+    boolean setdateofbirth(String date, int userID);
 }

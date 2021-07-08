@@ -10,4 +10,6 @@ public interface profileMapper{
     void setname(String newname,String oldname,int userID);
     void setprofile(String profiledate,int userID);
     void setregion(String new_region,int userID);
+    void setdateofbirth(String date,int userID);
+
 }

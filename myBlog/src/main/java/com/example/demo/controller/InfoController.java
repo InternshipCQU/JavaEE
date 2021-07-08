@@ -8,12 +8,13 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.annotation.Resource;
+import java.util.Date;
 /* The module infoController is designed for setting the basic
 *  attributes of users ,including alias , name, gender, profile,
 *  region and date of birth.
 *
-*  Every contributor who are planning to use the data structure
-*  DATE must define or follow the format:yyyy-mm-dd ,with the
+*  Every contributor who are planning to use the DATE attribute
+*  must follow the format:yyyy-mm-dd ,with the
 *  linking token - between each part.
 *
 *  TODO: It's expected that user can set the region&location by clicking and selecting from the drop down menu.
@@ -21,7 +22,7 @@ import javax.annotation.Resource;
 *
 *
 *   TODO: After assigning user's specific profile the front-end webpage should display the message to users telling
-*    about whether the modification is successful.
+*    about whether the procedure of modification is successful.
 * */
 
 
@@ -72,13 +73,16 @@ public class InfoController {
 
     @GetMapping("/setregion")
     public String setregion(@RequestParam("newregion") String new_region,@RequestParam("userID") int userID){
-        boolean setregion=setss.setregion(new_region,userID);
-        if(setregion){
-            return "Set region succeed.";
-        }
-        else
-            return "Set region failed.";
+        setss.setregion(new_region,userID);
+        return "Set region succeed.";
     }
-    @GetMapping
+
+    @GetMapping("/setdateofbirth")
+    public String setdateofbirth(@RequestParam("newdate") String newdate,@RequestParam("userID") int userID){
+        boolean setdateofbirth=setss.setdateofbirth(newdate,userID);
+        if(setdateofbirth) return "Set date of birth succeed.";
+        else return "Set date of birth failed.";
+    }
+
 
 }

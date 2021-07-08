@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.thymeleaf.util.StringUtils;
 
 import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 
 
@@ -63,16 +64,51 @@ public class setServiceImpl implements setService {
 
    /*TODO:The contributor need to reconsider the format of the region.*/
    @Override
-    public boolean setregion(String region,int userID){
-       String[] regionarr=new String[]{"HK","CN","US","UK"};//FORMAT OF REGION HERE
-       List<String> regionlist= Arrays.asList(regionarr);
-       if(!regionlist.contains(region))
-       {
-           return false;
-       }
-       else{
-           profileMapper.setregion(region,userID);
-           return true;
-       }
+    public void setregion(String region,int userID){
+       profileMapper.setregion(region,userID);
+   }
+
+   @Override
+    public boolean setdateofbirth(String date, int userID){
+       //FORMAT OF DATE: YYYY-MM-DD(10 BYTES)
+       String[] date_split=date.split(" ");
+        if(Integer.parseInt(date_split[0]) % 4==0)
+        {
+            if(date_split[1]=="02")
+            {
+                if(date_split[2]=="30"||date_split[2]=="31")
+                {
+                    return false;
+                }
+                else{
+                    profileMapper.setdateofbirth(date,userID);
+                    return true;
+                }
+            }
+            else
+            {
+                profileMapper.setdateofbirth(date,userID);
+                return true;
+            }
+        }
+        else
+        {
+            if(date_split[1]=="02")
+            {
+                if(date_split[2]=="29"||date_split[2]=="30"||date_split[2]=="31")
+                {
+                    return false;
+                }
+                else{
+                    profileMapper.setdateofbirth(date,userID);
+                    return true;
+                }
+            }
+            else
+            {
+                profileMapper.setdateofbirth(date,userID);
+                return true;
+            }
+        }
    }
 }
