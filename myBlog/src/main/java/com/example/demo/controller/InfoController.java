@@ -27,8 +27,8 @@ public class InfoController {
     private setService setss;
 
     @GetMapping("/setalias")
-    public String setalias(@RequestParam("newalias") String new_alias,@RequestParam("username") String username){
-        boolean setaliasstatus=setss.setalias(new_alias,username);
+    public String setalias(@RequestParam("newalias") String new_alias,@RequestParam("userID") int userID){
+        boolean setaliasstatus=setss.setalias(new_alias,userID);
         if (setaliasstatus)
         {
             return "Set alias succeed.";
@@ -37,8 +37,9 @@ public class InfoController {
     }
 
     @GetMapping("/setrealname")
-    public String setrealname(@RequestParam("newname") String new_name,@RequestParam("oldname") String old_name){
-        boolean setnamestatus=setss.setname(new_name,old_name);
+    public String setrealname(@RequestParam("newname") String new_name,@RequestParam("oldname") String old_name,
+                              @RequestParam("userID") int userID){
+        boolean setnamestatus=setss.setname(new_name,old_name,userID);
         if (setnamestatus)
         {
             return "Set name succeed.";
@@ -47,8 +48,8 @@ public class InfoController {
     }
 
     @GetMapping("/setgender")
-    public String setgender(@RequestParam("newgender") String new_gender,@RequestParam("username") String username){
-        boolean setgender=setss.setgender(new_gender,username);
+    public String setgender(@RequestParam("newgender") String new_gender,@RequestParam("userID") int userID){
+        boolean setgender=setss.setgender(new_gender,userID);
         if(setgender)
         {
             return "Set gender succeed.";
@@ -57,8 +58,8 @@ public class InfoController {
     }
 
     @GetMapping("/setprofile")
-    public String setprofile(@RequestParam("newprofile") String new_profile,@RequestParam("username") String username){
-        boolean setprofile=setss.setprofile(new_profile,username);
+    public String setprofile(@RequestParam("newprofile") String new_profile,@RequestParam("userID") int userID){
+        boolean setprofile=setss.setprofile(new_profile,userID);
         if(setprofile){
             return "Set profile succeed.";
         }
