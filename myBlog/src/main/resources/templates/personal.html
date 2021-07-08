@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <p th:text="${user.username}"></p>
+    <p th:text="${user.password}"></p>
+
+    <html lang="en">
+    <head>
+        <meta charset="utf-8"/>
+        <title>文件上传表单</title>
+    </head>
+    <body>
+    <h3>文件上传：</h3>
+    选择一个文件上传: <br />
+    <form action="/fileTest" method="post" enctype="multipart/form-data">
+        <input type="file" name="image" size="50" />
+        <br />
+        <button type="submit">上传</button>
+    </form>
+
+
+    </body>
+    </html>
+
+</body>
+</html>
