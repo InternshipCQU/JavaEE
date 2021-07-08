@@ -24,11 +24,6 @@ public class setServiceImpl implements setService {
             return true;
         }
     }
-   @Override
-    public String getalias(String username){
-        String alias=profileMapper.getalias(username);
-        return alias;
-   }
 
    @Override
     public boolean setname(String newname,String oldname){
@@ -50,6 +45,17 @@ public class setServiceImpl implements setService {
         }
         else {
             profileMapper.setgender(gender,username);
+            return true;
+        }
+   }
+
+   @Override
+    public boolean setprofile(String profiledata,String username){
+        if(StringUtils.isEmpty(profiledata)){
+            return false;
+        }
+        else{
+            profileMapper.setprofile(profiledata,username);
             return true;
         }
    }

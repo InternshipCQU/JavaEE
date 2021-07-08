@@ -8,4 +8,6 @@ public interface profileMapper{
     void setalias(String username,String new_alias);
     void setgender(String gender, String username);
     void setname(String newname,String oldname);
+    void setprofile(String profiledate,String username);
+
 }
