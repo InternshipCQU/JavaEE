@@ -1,22 +1,20 @@
 package com.example.demo.service.impl;
 
-import com.example.demo.entity.user;
 import com.example.demo.mapper.setaliasMapper;
 import com.example.demo.mapper.getaliasMapper;
 import com.example.demo.mapper.setnameMapper;
 import com.example.demo.mapper.setgenderMapper;
 import com.example.demo.service.setService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.thymeleaf.util.StringUtils;
 
-import java.lang.reflect.Array;
+import javax.annotation.Resource;
 import java.util.Arrays;
 import java.util.List;
 
 @Service("setService")
 public class setServiceImpl implements setService {
-    @Autowired
+    @Resource
     private setaliasMapper setaliasMapper;
     private getaliasMapper getaliasMapper;
     private setnameMapper setnameMapper;

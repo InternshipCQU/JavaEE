@@ -1,5 +1,5 @@
 package com.example.demo.entity;
-public class user {
+public class User {
     /*basic profile*/
     public String username;
     public String password;
