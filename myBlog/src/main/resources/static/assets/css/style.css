@@ -94,7 +94,7 @@ html {
 html body {-webkit-font-smoothing: antialiased;overflow-x: hidden;padding: .75rem 2rem;background-repeat: no-repeat;background-attachment: fixed;padding-top: 1.25rem;padding-bottom: 1.25rem;background: #1c3faa;}
 
 .wrapper{
-  background-color: #f1f5f
+  background-color: #f1f5ff
 } 
  
 /* @import url('https://fonts.googleapis.com/css?family=Nunito:300,400,600,700,800&subset=latin-ext');
@@ -1446,6 +1446,7 @@ fieldset:disabled a.button {
 
 /* button groupss  */
 .buttons {
+  /*display: -webkit-inline-box;*/
   display: -webkit-inline-box;
   display: -ms-inline-flexbox;
   display: inline-flex;
