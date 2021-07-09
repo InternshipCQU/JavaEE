@@ -29,7 +29,7 @@ public class LoginController {
 
     @RequestMapping("/login")
     public String to(){
-        return "login";
+        return "form-login";
     }
 
     @GetMapping("/tologin")
@@ -43,7 +43,7 @@ public class LoginController {
         if(submitStatue){
             return "personal";//TODO:这里是需要转成个人博客界面（需要像数据库索取数据 用Model传值）
         }
-        return "login";//TODO:返回登录页面
+        return "form-login";//TODO:返回登录页面
     }
 
 }

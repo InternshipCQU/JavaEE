@@ -1446,6 +1446,7 @@ fieldset:disabled a.button {
 
 /* button groupss  */
 .buttons {
+  /*display: -webkit-inline-box;*/
   display: -webkit-inline-box;
   display: -ms-inline-flexbox;
   display: inline-flex;
