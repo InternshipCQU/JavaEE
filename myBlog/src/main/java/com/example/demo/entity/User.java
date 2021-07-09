@@ -19,7 +19,7 @@ public class User {
     public String profile;
     public String area;
 
-
+    public void setUserID(int userID) {this.userID=userID;}
     public void setPassword(String password) {
         this.password = password;
     }
@@ -59,5 +59,7 @@ public class User {
     public String getBirthdate(){return birthdate;}
     public String getprofile(){return profile;}
     public String getarea(){return area;}
+
+
 
 }
