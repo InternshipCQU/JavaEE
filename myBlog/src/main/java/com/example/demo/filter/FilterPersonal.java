@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 
-@WebFilter(filterName = "FilterPersonal", urlPatterns = "/logout")//TODO:这里的路径应该设置为访问个人主页
+@WebFilter(filterName = "FilterPersonal", urlPatterns = {"/logout","/personal"})//TODO:如果在这里没有登录的话 就会跳转到登录页面
 @Order(1)
 public class FilterPersonal implements Filter {
     @Override
