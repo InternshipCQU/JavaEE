@@ -14,7 +14,7 @@
     <!-- CSS 
     ================================================== -->
     <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="stylesheet" href="assets/css/night-mode.css">
+    <link rel="stylesheet" href="assets/css/uikit.css">
     <link rel="stylesheet" href="assets/css/uikit.css">
 
     <!-- icons
@@ -29,6 +29,7 @@
 </head>
 
 <body>
+ 
 
         <!-- Wrapper -->
     <div id="wrapper">
@@ -67,7 +68,7 @@
                                        </path>
                                    </svg> Albums </a>
                            </li>
-                           <li>
+                           <li class="active">
                                <a href="pokes.html">
                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
                                        <path fill="#009688"
@@ -175,7 +176,7 @@
                                        </path>
                                    </svg> Market </a>
                            </li>
-                           <li class="active">
+                           <li>
                                <a href="blog.html">
                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
                                        <path fill="#f35d4d"
@@ -650,186 +651,504 @@
 
             <div class="main_content_inner">
 
+                <div id="spinneroverlay"> </div>
 
-                <h2>  Most recent articles </h2>
 
-                    <!-- blog  -->
+                <div class="uk-grid-large" uk-grid>
 
-                    <div class="uk-child-width-1-4@m uk-child-width-1-2@s uk-grid-small" uk-grid>
-                        <div>
+                    <div class="uk-width-2-3@m fead-area">
 
-                            <div class="sl_blog_list">
-                                <div class="sl_blog_list_media">
-                                    <img src="assets/images/blog/img-4.jpg" alt="">
-                                </div>
-                        
-                                <div class="sl_blog_list_info">
-                                    <a class="postCategory" href="#" >Education</a>
-                                    <h2 class="art-title"><a href="#">10 Interesting JavaScript and CSS libraries for 2020</a></h2>
-                                    <a class="postMeta--author-text" href="#">
-                                        <img src="assets/images/avatars/avatar-1.jpg" alt="">
-                                        <div>
-                                            <span class="author-name"> Jonathan Madano </span>
-                                            <time>24 Aug 2020</time>
-                                        </div> 
+                        <h2> Pokes  </h3>
+
+                        <div class="sl_pokes_cont">
+                            <div class="sl_poke_users" id="1">
+                                <div class="sl_poke_info">
+                                    <a href="timeline.html">
+                                        <div class="avatar"> <img src="assets/images/avatars/avatar-1.jpg" alt="">
+                                            </div>
                                     </a>
+                                    <div class="sl_poke_info_innr">
+                                        <div class="sl_poke_info_innr_user">
+                                            <span>
+                                                <a href="timeline.html"> <span class="user-name"> Dennis Han </span>  </a>
+                                            </span>
+                                        </div>
+                                        <button type="button" class="button light small">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                viewBox="0 0 24 24">
+                                                <path fill="currentColor"
+                                                    d="M21,9A1,1 0 0,1 22,10A1,1 0 0,1 21,11H16.53L16.4,12.21L14.2,17.15C14,17.65 13.47,18 12.86,18H8.5C7.7,18 7,17.27 7,16.5V10C7,9.61 7.16,9.26 7.43,9L11.63,4.1L12.4,4.84C12.6,5.03 12.72,5.29 12.72,5.58L12.69,5.8L11,9H21M2,18V10H5V18H2Z">
+                                                </path>
+                                            </svg> <span class="button-text">Poke back</span>
+                                        </button>
+                                    </div>
                                 </div>
                             </div>
-
                         </div>
-                        <div>
 
-                            <div class="sl_blog_list">
-                                <div class="sl_blog_list_media">
-                                    <img src="assets/images/blog/img-3.jpg" alt="">
-                                </div>
-                        
-                                <div class="sl_blog_list_info">
-                                    <a class="postCategory" href="#" >Education</a>
-                                    <h2 class="art-title"><a href="#">10 Interesting JavaScript and CSS Libraries</a></h2>
-                                    <a class="postMeta--author-text" href="#">
-                                        <img src="assets/images/avatars/avatar-1.jpg" alt="">
-                                        <div>
-                                            <span class="author-name"> Jonathan Madano </span>
-                                            <time>24 Aug 2020</time>
-                                        </div> 
+                        <div class="sl_pokes_cont">
+                            <div class="sl_poke_users" id="1">
+                                <div class="sl_poke_info">
+                                    <a href="timeline.html">
+                                        <div class="avatar"> <img src="assets/images/avatars/avatar-6.jpg" alt="">
+                                            </div>
                                     </a>
+                                    <div class="sl_poke_info_innr">
+                                        <div class="sl_poke_info_innr_user">
+                                            <span>
+                                                <a href="timeline.html"> <span class="user-name"> Monera Khalifa </span>  </a>
+                                            </span>
+                                        </div>
+                                        <button type="button" class="button light small">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                viewBox="0 0 24 24">
+                                                <path fill="currentColor"
+                                                    d="M21,9A1,1 0 0,1 22,10A1,1 0 0,1 21,11H16.53L16.4,12.21L14.2,17.15C14,17.65 13.47,18 12.86,18H8.5C7.7,18 7,17.27 7,16.5V10C7,9.61 7.16,9.26 7.43,9L11.63,4.1L12.4,4.84C12.6,5.03 12.72,5.29 12.72,5.58L12.69,5.8L11,9H21M2,18V10H5V18H2Z">
+                                                </path>
+                                            </svg> <span class="button-text">Poke back</span>
+                                        </button>
+                                    </div>
                                 </div>
                             </div>
-
                         </div>
-                        <div>
 
-                            <div class="sl_blog_list">
-                                <div class="sl_blog_list_media">
-                                    <img src="assets/images/blog/img-2.jpg" alt="">
-                                </div>
-                        
-                                <div class="sl_blog_list_info">
-                                    <a class="postCategory" href="#" >Education</a>
-                                    <h2 class="art-title"><a href="#">10 Awesome Web Dev Tools and Resources For 2020</a></h2>
-                                    <a class="postMeta--author-text" href="#">
-                                        <img src="assets/images/avatars/avatar-1.jpg" alt="">
-                                        <div>
-                                            <span class="author-name"> Jonathan Madano </span>
-                                            <time>24 Aug 2020</time>
-                                        </div> 
+                        <div class="sl_pokes_cont">
+                            <div class="sl_poke_users" id="1">
+                                <div class="sl_poke_info">
+                                    <a href="timeline.html">
+                                        <div class="avatar"> <img src="assets/images/avatars/avatar-2.jpg" alt="">
+                                            </div>
                                     </a>
+                                    <div class="sl_poke_info_innr">
+                                        <div class="sl_poke_info_innr_user">
+                                            <span>
+                                                <a href="timeline.html"> <span class="user-name"> Adrian Mohani </span>  </a>
+                                            </span>
+                                        </div>
+                                        <button type="button" class="button light small">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                viewBox="0 0 24 24">
+                                                <path fill="currentColor"
+                                                    d="M21,9A1,1 0 0,1 22,10A1,1 0 0,1 21,11H16.53L16.4,12.21L14.2,17.15C14,17.65 13.47,18 12.86,18H8.5C7.7,18 7,17.27 7,16.5V10C7,9.61 7.16,9.26 7.43,9L11.63,4.1L12.4,4.84C12.6,5.03 12.72,5.29 12.72,5.58L12.69,5.8L11,9H21M2,18V10H5V18H2Z">
+                                                </path>
+                                            </svg> <span class="button-text">Poke back</span>
+                                        </button>
+                                    </div>
                                 </div>
                             </div>
-
                         </div>
-                        <div>
-
-                            <div class="sl_blog_list">
-                                <div class="sl_blog_list_media">
-                                    <img src="assets/images/blog/img-1.jpg" alt="">
-                                </div>
                         
-                                <div class="sl_blog_list_info">
-                                    <a class="postCategory" href="#" >Education</a>
-                                    <h2 class="art-title"><a href="#">10 amazing web demos and experiments</a></h2>
-                                    <a class="postMeta--author-text" href="#">
-                                        <img src="assets/images/avatars/avatar-1.jpg" alt="">
-                                        <div>
-                                            <span class="author-name"> Jonathan Madano </span>
-                                            <time>24 Aug 2020</time>
-                                        </div> 
+                        <div class="sl_pokes_cont">
+                            <div class="sl_poke_users" id="1">
+                                <div class="sl_poke_info">
+                                    <a href="timeline.html">
+                                        <div class="avatar"> <img src="assets/images/avatars/avatar-5.jpg" alt="">
+                                            </div>
                                     </a>
+                                    <div class="sl_poke_info_innr">
+                                        <div class="sl_poke_info_innr_user">
+                                            <span>
+                                                <a href="timeline.html"> <span class="user-name"> Stella Johnson </span>  </a>
+                                            </span>
+                                        </div>
+                                        <button type="button" class="button light small">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                viewBox="0 0 24 24">
+                                                <path fill="currentColor"
+                                                    d="M21,9A1,1 0 0,1 22,10A1,1 0 0,1 21,11H16.53L16.4,12.21L14.2,17.15C14,17.65 13.47,18 12.86,18H8.5C7.7,18 7,17.27 7,16.5V10C7,9.61 7.16,9.26 7.43,9L11.63,4.1L12.4,4.84C12.6,5.03 12.72,5.29 12.72,5.58L12.69,5.8L11,9H21M2,18V10H5V18H2Z">
+                                                </path>
+                                            </svg> <span class="button-text">Poke back</span>
+                                        </button>
+                                    </div>
                                 </div>
                             </div>
-
                         </div>
-                        <div>
-
-                            <div class="sl_blog_list">
-                                <div class="sl_blog_list_media">
-                                    <img src="assets/images/blog/img-2.jpg" alt="">
-                                </div>
                         
-                                <div class="sl_blog_list_info">
-                                    <a class="postCategory" href="#" >Education</a>
-                                    <h2 class="art-title"><a href="#">10 Awesome Web Dev Tools and Resources For 2020</a></h2>
-                                    <a class="postMeta--author-text" href="#">
-                                        <img src="assets/images/avatars/avatar-1.jpg" alt="">
-                                        <div>
-                                            <span class="author-name"> Jonathan Madano </span>
-                                            <time>24 Aug 2020</time>
-                                        </div> 
+                        <div class="sl_pokes_cont">
+                            <div class="sl_poke_users" id="1">
+                                <div class="sl_poke_info">
+                                    <a href="timeline.html">
+                                        <div class="avatar"> <img src="assets/images/avatars/avatar-3.jpg" alt="">
+                                            </div>
                                     </a>
+                                    <div class="sl_poke_info_innr">
+                                        <div class="sl_poke_info_innr_user">
+                                            <span>
+                                                <a href="timeline.html"> <span class="user-name"> Jonathan Madano </span>  </a>
+                                            </span>
+                                        </div>
+                                        <button type="button" class="button light small">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                viewBox="0 0 24 24">
+                                                <path fill="currentColor"
+                                                    d="M21,9A1,1 0 0,1 22,10A1,1 0 0,1 21,11H16.53L16.4,12.21L14.2,17.15C14,17.65 13.47,18 12.86,18H8.5C7.7,18 7,17.27 7,16.5V10C7,9.61 7.16,9.26 7.43,9L11.63,4.1L12.4,4.84C12.6,5.03 12.72,5.29 12.72,5.58L12.69,5.8L11,9H21M2,18V10H5V18H2Z">
+                                                </path>
+                                            </svg> <span class="button-text">Poke back</span>
+                                        </button>
+                                    </div>
                                 </div>
                             </div>
-
                         </div>
-                        <div>
 
-                            <div class="sl_blog_list">
-                                <div class="sl_blog_list_media">
-                                    <img src="assets/images/blog/img-1.jpg" alt="">
-                                </div>
-                        
-                                <div class="sl_blog_list_info">
-                                    <a class="postCategory" href="#" >Education</a>
-                                    <h2 class="art-title"><a href="#">10 amazing web demos and experiments</a></h2>
-                                    <a class="postMeta--author-text" href="#">
-                                        <img src="assets/images/avatars/avatar-1.jpg" alt="">
-                                        <div>
-                                            <span class="author-name"> Jonathan Madano </span>
-                                            <time>24 Aug 2020</time>
-                                        </div> 
-                                    </a>
-                                </div>
-                            </div>
-
+                        <div class="load-more">
+                            <button class="btn button">Load more Pokes</button>
                         </div>
-                        <div>
 
-                            <div class="sl_blog_list">
-                                <div class="sl_blog_list_media">
-                                    <img src="assets/images/blog/img-4.jpg" alt="">
-                                </div>
-                        
-                                <div class="sl_blog_list_info">
-                                    <a class="postCategory" href="#" >Education</a>
-                                    <h2 class="art-title"><a href="#">10 Interesting JavaScript and CSS libraries for 2020</a></h2>
-                                    <a class="postMeta--author-text" href="#">
-                                        <img src="assets/images/avatars/avatar-1.jpg" alt="">
-                                        <div>
-                                            <span class="author-name"> Jonathan Madano </span>
-                                            <time>24 Aug 2020</time>
-                                        </div> 
-                                    </a>
-                                </div>
-                            </div>
-
-                        </div>
-                        <div>
-
-                            <div class="sl_blog_list">
-                                <div class="sl_blog_list_media">
-                                    <img src="assets/images/blog/img-3.jpg" alt="">
-                                </div>
-                        
-                                <div class="sl_blog_list_info">
-                                    <a class="postCategory" href="#" >Education</a>
-                                    <h2 class="art-title"><a href="#">10 Interesting JavaScript and CSS Libraries</a></h2>
-                                    <a class="postMeta--author-text" href="#">
-                                        <img src="assets/images/avatars/avatar-1.jpg" alt="">
-                                        <div>
-                                            <span class="author-name"> Jonathan Madano </span>
-                                            <time>24 Aug 2020</time>
-                                        </div> 
-                                    </a>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div> 
-
-                    <div class="load-more">
-                        <button class="btn button">Load more articles</button>
                     </div>
+                    <div class="uk-width-expand">
+
+                        <div class="sl_sidebar_sugs_title border-0"> Trending !			
+                            <i class="icon-feather-rotate-cw"></i>
+                        </div>
+                        <div class="list-group-item sl_htag"> 
+                            <a href="#">
+                                <span class="htag_top"> #hello</span>
+                            </a>
+                        </div>
+                        <div class="list-group-item sl_htag"> 
+                            <a href="#">
+                                <span class="htag_top"> #test</span>
+                            </a>
+                        </div>
+                        <div class="list-group-item sl_htag"> 
+                            <a href="#">
+                                <span class="htag_top"> #template</span>
+                            </a>
+                        </div>
+                        <div class="list-group-item sl_htag"> 
+                            <a href="#">
+                                <span class="htag_top"> #social</span>
+                            </a>
+                        </div>
+                        <div class="list-group-item sl_htag"> 
+                            <a href="#">
+                                <span class="htag_top"> #simplest</span>
+                            </a>
+                        </div>
+                        <div class="list-group-item sl_htag"> 
+                            <a href="#">
+                                <span class="htag_top"> #new</span>
+                            </a>
+                        </div>
+
+                        <div class="sl_sidebar_sugs_title mt-4">Pro Members				
+                            <i class="icon-feather-rotate-cw"></i>
+                        </div>
+                        <div class="uk-position-relative" uk-slider="finite: true; autoplay:true">
+
+                            <div class="uk-slider-container pb-3">
+        
+                                <ul class="uk-slider-items uk-child-width-1-3@m uk-grid-small uk-grid sl_pro_users">
+                                    <li>
+                                        <a class="user" href="#">
+                                            <img src="assets/images/avatars/avatar-1.jpg" alt="">
+                                            <span>Stella Johnson 1</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="user" href="#">
+                                            <img src="assets/images/avatars/avatar-2.jpg" alt="">
+                                            <span>Stella Johnson 2</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="user" href="#">
+                                            <img src="assets/images/avatars/avatar-3.jpg" alt="">
+                                            <span>Stella Johnson 3</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="user" href="#">
+                                            <img src="assets/images/avatars/avatar-4.jpg" alt="">
+                                            <span>Stella Johnson 4</span>
+                                        </a>
+                                    </li>   
+                                    <li>
+                                        <a class="user" href="#">
+                                            <img src="assets/images/avatars/avatar-5.jpg" alt="">
+                                            <span>Stella Johnson 5</span>
+                                        </a>
+                                    </li>                                  
+                                </ul>
+        
+                                <a class="uk-position-center-left uk-hidden-hover slidenav-prev sl_pro_users_prev" href="#"
+                                    uk-slider-item="previous"></a>
+                                <a class="uk-position-center-right-out uk-position-small uk-hidden-hover slidenav-next sl_pro_users_next" href="#"
+                                    uk-slider-item="next"></a>
+        
+                            </div>
+                        </div>
+
+                        <div class="sl_sidebar_sugs_title">People you may know				
+                            <i class="icon-feather-rotate-cw"></i>
+                        </div>
+                        <div class="sl_sidebar_sugs">
+                            <div class="sl_sidebar_sugs_avatar">
+                                <img src="assets/images/avatars/avatar-1.jpg" alt="">
+                            </div>
+                            <div class="sl_sidebar_sugs_text">
+                                <a href="#" class="sl_user_link_name">  Jonathan Madano </a>
+                            </div>
+                            <div class="user-follow-button sl_sidebar_sugs_btns">
+                                <button type="button" class="button small">
+                                    <span> Follow</span>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="sl_sidebar_sugs">
+                            <div class="sl_sidebar_sugs_avatar">
+                                <img src="assets/images/avatars/avatar-6.jpg" alt="">
+                            </div>
+                            <div class="sl_sidebar_sugs_text">
+                                <a href="#" class="sl_user_link_name">  Monera Khalifa </a>
+                            </div>
+                            <div class="user-follow-button sl_sidebar_sugs_btns">
+                                <button type="button" class="button small">
+                                    <span> Accept</span>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="sl_sidebar_sugs">
+                            <div class="sl_sidebar_sugs_avatar">
+                                <img src="assets/images/avatars/avatar-3.jpg" alt="">
+                            </div>
+                            <div class="sl_sidebar_sugs_text">
+                                <a href="#" class="sl_user_link_name">  Adrian Mohani </a>
+                            </div>
+                            <div class="user-follow-button sl_sidebar_sugs_btns">
+                                <button type="button" class="button small">
+                                    <span> Follow</span>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="sl_sidebar_sugs">
+                            <div class="sl_sidebar_sugs_avatar">
+                                <img src="assets/images/avatars/avatar-2.jpg" alt="">
+                            </div>
+                            <div class="sl_sidebar_sugs_text">
+                                <a href="#" class="sl_user_link_name">  Stella Johnson </a>
+                            </div>
+                            <div class="user-follow-button sl_sidebar_sugs_btns">
+                                <button type="button" class="button small">
+                                    <span> Follow</span>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="sl_sidebar_sugs_title mt-4">Pages you may like
+                            <i class="icon-feather-rotate-cw"></i>
+                        </div>
+                        <div class="sl_sidebar_sugs">
+                            <div class="sl_sidebar_sugs_avatar">
+                                <img src="assets/images/brand/brand-avatar-3.png" alt="">
+                            </div>
+                            <div class="sl_sidebar_sugs_text">
+                                <a href="#" class="sl_user_link_name">  Suranna Brand </a>
+                                <span> Education</span>
+                            </div>
+                            <div class="user-follow-button sl_sidebar_sugs_btns">
+                                <button type="button" class="button small">
+                                    <span> Like </span>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="sl_sidebar_sugs">
+                            <div class="sl_sidebar_sugs_avatar">
+                                <img src="assets/images/brand/brand-avatar-4.png" alt="">
+                            </div>
+                            <div class="sl_sidebar_sugs_text">
+                                <a href="#" class="sl_user_link_name">  Uk Brands  </a>
+                                <span> Shopping</span>
+                            </div>
+                            <div class="user-follow-button sl_sidebar_sugs_btns">
+                                <button type="button" class="button small">
+                                    <span> Like </span>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="sl_sidebar_sugs_title mt-4">Suggested groups
+                            <i class="icon-feather-rotate-cw"></i>
+                        </div>
+                        <div class="sl_sidebar_sugs">
+                            <div class="sl_sidebar_sugs_avatar">
+                                <img src="assets/images/group/group-2.jpg" alt="">
+                            </div>
+                            <div class="sl_sidebar_sugs_text">
+                                <a href="#" class="sl_user_link_name">  Coffee Addicts </a>
+                                <span> 6 Members</span>
+                            </div>
+                            <div class="user-follow-button sl_sidebar_sugs_btns">
+                                <button type="button" class="button small">
+                                    <span> Join </span>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="sl_sidebar_sugs">
+                            <div class="sl_sidebar_sugs_avatar">
+                                <img src="assets/images/group/group-1.jpg" alt="">
+                            </div>
+                            <div class="sl_sidebar_sugs_text">
+                                <a href="#" class="sl_user_link_name">  Architecture  </a>
+                                <span> 12 Members</span>
+                            </div>
+                            <div class="user-follow-button sl_sidebar_sugs_btns">
+                                <button type="button" class="button small">
+                                    <span> Join </span>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="sl_sidebar_sugs">
+                            <div class="sl_sidebar_sugs_avatar">
+                                <img src="assets/images/group/group-3.jpg" alt="">
+                            </div>
+                            <div class="sl_sidebar_sugs_text">
+                                <a href="#" class="sl_user_link_name">   Mountain Riders   </a>
+                                <span> 32 Members</span>
+                            </div>
+                            <div class="user-follow-button sl_sidebar_sugs_btns">
+                                <button type="button" class="button small">
+                                    <span> Join </span>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="sl_sidebar_sugs">
+                            <div class="sl_sidebar_sugs_avatar">
+                                <img src="assets/images/group/group-4.jpg" alt="">
+                            </div>
+                            <div class="sl_sidebar_sugs_text">
+                                <a href="#" class="sl_user_link_name">   Graphic Design   </a>
+                                <span> 25 Members</span>
+                            </div>
+                            <div class="user-follow-button sl_sidebar_sugs_btns">
+                                <button type="button" class="button small">
+                                    <span> Join </span>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="sl_sidebar_sugs_title mt-4">Online Users 1
+                        </div>
+
+                        <div class="sl_sidebar_sugs_title mt-1"> Invite Your Friends
+                            <i class="icon-feather-rotate-cw"></i>
+                        </div>
+                        <form action="#" class="invite-user-form">
+                            <div class="sl_form_fields invite-user-combine">
+                                <input type="text" name="email" placeholder="E-mail" class="form-control">
+                                <button class="button small" title="Send Invitation"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M2,21L23,12L2,3V10L17,12L2,14V21Z"></path></svg></button>
+                            </div>
+                        </form>
+
+
+                        <div class="sl_sidebar_sugs_title mt-4">Promoted Pages
+                            <i class="icon-feather-rotate-cw"></i>
+                        </div>
+                        <div class="sl_sidebar_sugs">
+                            <div class="sl_sidebar_sugs_avatar">
+                                <img src="assets/images/brand/brand-avatar-3.png" alt="">
+                            </div>
+                            <div class="sl_sidebar_sugs_text">
+                                <a href="#" class="sl_user_link_name">  Suranna Brand </a>
+                                <span> Education</span>
+                            </div>
+                            <div class="user-follow-button sl_sidebar_sugs_btns">
+                                <button type="button" class="button small">
+                                    <span> Like </span>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="sl_sidebar_sugs">
+                            <div class="sl_sidebar_sugs_avatar">
+                                <img src="assets/images/brand/brand-avatar-4.png" alt="">
+                            </div>
+                            <div class="sl_sidebar_sugs_text">
+                                <a href="#" class="sl_user_link_name">  Uk Brands  </a>
+                                <span> Shopping</span>
+                            </div>
+                            <div class="user-follow-button sl_sidebar_sugs_btns">
+                                <button type="button" class="button small">
+                                    <span> Like </span>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="sl_sidebar_sugs">
+                            <div class="sl_sidebar_sugs_avatar">
+                                <img src="assets/images/brand/brand-avatar-1.png" alt="">
+                            </div>
+                            <div class="sl_sidebar_sugs_text">
+                                <a href="#" class="sl_user_link_name"> Reveal Store </a>
+                                <span> Shopping</span>
+                            </div>
+                            <div class="user-follow-button sl_sidebar_sugs_btns">
+                                <button type="button" class="button small">
+                                    <span> Like </span>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="sl_sidebar_sugs">
+                            <div class="sl_sidebar_sugs_avatar">
+                                <img src="assets/images/brand/brand-avatar-2.png" alt="">
+                            </div>
+                            <div class="sl_sidebar_sugs_text">
+                                <a href="#" class="sl_user_link_name">  Phase Designers  </a>
+                                <span> Design</span>
+                            </div>
+                            <div class="user-follow-button sl_sidebar_sugs_btns">
+                                <button type="button" class="button small">
+                                    <span> Like </span>
+                                </button>
+                            </div>
+                        </div>
+
+
+
+
+
+                        <!-- Footer menus-->
+                        <div class="footer-wrapper-sidebar mt-4">
+                            <div class="footer-powered">
+                                <p>  © 2020 Simplest.net</p>
+                            </div>
+                            
+                            <hr>
                     
+                            <ul class="list-inline">
+                                <li><a href="#">About</a></li>
+                                <li><a href="#">Blog</a></li> 
+                                <li><a href="#"> Privecy</a></li>
+                                <li><a href="#">Contact Us</a></li>
+                                <li><a href="#">Developers</a></li>
+                                <li>
+                                    <div class="dropdown dropup sun_foot_drop_menu">
+                                        <a href="#" class="dropdown-toggle">
+                                            More <span class="caret"></span>
+                                        </a>
+                                        <div uk-dropdown="pos: bottom-left ; mode:hover " class="uk-dropdown uk-dropdown-bottom-right" style="left: 745px; top: 87px;">
+                                            <ul class="uk-nav uk-dropdown-nav">
+                                                <li><a href="#"> View as guast </a></li>
+                                                <li><a href="#"> Bloc this person </a></li>
+                                                <li><a href="#"> Report abuse</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </li> 
+                            </ul>
+                            <div class="clear"></div>
+                        </div>
+
+
+
+
+                        
+
+                    </div>
+                </div>
+
+
+
+
+
             </div>
 
         </div>
@@ -975,6 +1294,5 @@
     
 
 </body>
-
 
 </html>
