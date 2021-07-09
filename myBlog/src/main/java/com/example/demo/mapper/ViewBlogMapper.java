@@ -1,6 +1,9 @@
 package com.example.demo.mapper;
 
+import org.apache.ibatis.annotations.Mapper;
+
 //对应ViewBlogService中的功能
+@Mapper
 public interface ViewBlogMapper {
     void like(Integer blogId, Integer currentLikes);          //点赞
     void cancelLike(Integer blogId, Integer currentLikes);    //取消点赞

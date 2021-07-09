@@ -5,9 +5,11 @@ import com.example.demo.service.getService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
+
 @Service("getService")
 public class getServiceImpl implements getService {
-    @Autowired
+    @Resource
     private com.example.demo.mapper.profileMapper profileMapper;
 
     @Override

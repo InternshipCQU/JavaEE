@@ -29,6 +29,15 @@ thymeleaf:
   content-type: text/html
   mode: LEGACYHTML5
 
+
+mvc:
+  view:
+    prefix: /WEB-INF/jsp
+    suffix: .jsp
+    view-names: '*'
+  static-patch-pattern: /**
+
+
 #redis
 #redis:
 #  host:8081 #默认为localhost
