@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 
-@WebFilter(filterName = "filter", urlPatterns = "/login")//TODO:这里的路径应该设置为访问登录页面的时候 检测是否已经登录
+@WebFilter(filterName = "filter", urlPatterns = {"/login","/register"})//TODO:这里的路径应该设置为访问登录页面的时候 检测是否已经登录
 @Order(1)
 public class FilterLogin implements Filter {
     @Override
