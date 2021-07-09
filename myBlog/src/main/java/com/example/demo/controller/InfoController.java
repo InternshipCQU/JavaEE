@@ -43,13 +43,13 @@ public class InfoController {
         newuser.setLastname(lastname);
         newuser.setAvatar(avatar);
         newuser.setLastLogin(lastlogin);
-        newuser.setfansnum(fansnum);
-        newuser.setlikesnum(likesnum);
-        newuser.setblogsnum(blogsnum);
-        newuser.setregtime(userregtime);
+        newuser.setFansNum(fansnum);
+        newuser.setLikesNum(likesnum);
+        newuser.setBlogsNum(blogsnum);
+        newuser.setUserRefisiterTime(userregtime);
         newuser.setBirthdate(birthdate);
-        newuser.setprofile(introduce);
-        newuser.setarea(area);
+        newuser.setProfile(introduce);
+        newuser.setArea(area);
 
         setss.setuser(newuser);
         model.addAttribute(newuser);
