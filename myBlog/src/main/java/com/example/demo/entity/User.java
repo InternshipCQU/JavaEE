@@ -16,7 +16,7 @@ public class User {
     public String blogsNum;   // 博客数
     public String userRefisiterTime;   // 用户注册时间
     public String birthdate;   // 用户出生日期
-    public String introduce;   // 用户个人简介
+    public String profile;   // 用户个人简介
     public String area;        // 用户所在地区
 
     public String getUserId() {
@@ -140,12 +140,12 @@ public class User {
         this.birthdate = birthdate;
     }
 
-    public String getIntroduce() {
-        return introduce;
+    public String getProfile() {
+        return profile;
     }
 
-    public void setIntroduce(String introduce) {
-        this.introduce = introduce;
+    public void setProfile(String profile) {
+        this.profile = profile;
     }
 
     public String getArea() {
@@ -154,5 +154,9 @@ public class User {
 
     public void setArea(String area) {
         this.area = area;
+    }
+
+    public void setUserID(String userID) {
+        this.userId = userID;
     }
 }
