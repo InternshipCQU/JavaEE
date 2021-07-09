@@ -23,13 +23,14 @@ public class User {
         return userId;
     }
 
+    public String getUsername() {
+        return username;
+    }
+
     public void setUserId(String userId) {
         this.userId = userId;
     }
 
-    public String getUsername() {
-        return username;
-    }
 
     public void setUsername(String username) {
         this.username = username;
@@ -155,4 +156,5 @@ public class User {
     public void setArea(String area) {
         this.area = area;
     }
+
 }
