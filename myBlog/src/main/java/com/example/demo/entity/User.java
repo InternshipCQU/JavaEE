@@ -47,6 +47,7 @@ public class User {
         return gender;
     }
 
+
     public void setGender(String gender) {
         this.gender = gender;
     }
