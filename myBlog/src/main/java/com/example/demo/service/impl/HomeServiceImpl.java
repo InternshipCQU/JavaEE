@@ -5,12 +5,15 @@ import com.example.demo.entity.blogInfo;
 import com.example.demo.mapper.HomeMapper;
 import com.example.demo.service.HomeService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
 import java.util.List;
 
+@Service("HomeService")
 public class HomeServiceImpl implements HomeService {
 
-    @Autowired
+    @Resource
     private HomeMapper homeMapper;
 
     @Override
