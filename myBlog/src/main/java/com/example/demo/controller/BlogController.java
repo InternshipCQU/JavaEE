@@ -1,6 +1,7 @@
 package com.example.demo.controller;
 
 import com.example.demo.entity.Blog;
+import com.example.demo.entity.blogInfo;
 import com.example.demo.service.BlogService;
 import com.example.demo.service.LoginService;
 import org.springframework.stereotype.Controller;
@@ -17,10 +18,11 @@ public class BlogController {
     @Resource
     private BlogService blogService;
 
-    @RequestMapping("blogs/{userID}/{blogID}")
-    public String blog(@PathVariable("userID") String userID, @PathVariable("blogID") String blogID, Model model){
-        Blog blog = blogService.findBlog(userID,blogID);
+    @RequestMapping("blogs/{userId}/{blogId}")
+    public String getBlog(@PathVariable("userId") String userId, @PathVariable("blogId") String blogId, Model model){
+        blogInfo blog = blogService.getBlog(userId, blogId);
         model.addAttribute("blog",blog);
         return "blog";
     }
+
 }
