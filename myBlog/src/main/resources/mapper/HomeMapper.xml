@@ -5,9 +5,14 @@
         select * from blogInfo
     </select>
     <select id="changeCategory" parameterType="Integer" resultType="com.example.demo.entity.Blog">
-        select * from blogInfo where typeId = #{typeId}
+        select blogTitle, blogContent, createTime, clickNum, likesNum, userId, tagId
+        from blogInfo, tagBlogInfo
+        where blogInfo.blogId = tagBlogInfo.blogId and typeId = #{typeId}
     </select>
     <select id="searchBlogs" parameterType="String" resultType="com.example.demo.entity.Blog">
-        select * from blogInfo where blogTitle = #{blogTitle}
+        select blogTitle, blogContent, createTime, clickNum, likesNum, userId, tagId
+        from blogInfo, tagBlogInfo, blogTag
+        where blogInfo.blogId = tagBlogInfo.blogId and tagBlogInfo.tagId = blogTag.tagId and
+              blogTitle = #{keyword} or tagName = #{keyword}
     </select>
 </mapper>

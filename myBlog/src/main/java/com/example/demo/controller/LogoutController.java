@@ -30,7 +30,7 @@ public class LogoutController {
     }
 
     @RequestMapping("/ajax")
-
+    @ResponseBody
     public String ajax(@RequestParam("aaa") String a, HttpServletResponse response){
         Cookie cookieLoginStatue = new Cookie("logout", a);
         response.addCookie(cookieLoginStatue);
