@@ -1,32 +1,37 @@
-<!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 
-<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
 </head>
-<body>
-    <p th:text="${user.username}"></p>
-    <p th:text="${user.password}"></p>
-
-    <html lang="en">
-    <head>
-        <meta charset="utf-8"/>
-        <title>文件上传表单</title>
-    </head>
-    <body>
-    <h3>文件上传：</h3>
-    选择一个文件上传: <br />
-    <form action="/fileTest" method="post" enctype="multipart/form-data">
-        <input type="file" name="image" size="50" />
-        <br />
-        <button type="submit">上传</button>
-    </form>
 
 
-    </body>
-    </html>
+<script type="text/javascript" th:inline="javascript">
+    /*<![CDATA[*/
 
-</body>
-</html>
+    var basePath = [[${#httpServletRequest.getScheme() + "://" + #httpServletRequest.getServerName() + ":" + #httpServletRequest.getServerPort() + #httpServletRequest.getContextPath()}]];
+
+    function loadXMLDoc()
+    {
+
+        $.ajax({
+
+            url: basePath + '/ajax',
+            type: 'get',
+            //contentType: 'application/json', //没规定就是默认的application/x-www-form-urlencoded; charset=UTF-8
+            //格式的问题真的是头大，如果大家出现前端明显送出了数据但是后端取出为null 的时候，
+            //肯定是格式问题了，建议都用默认格式好了
+
+            data: {"aaa":"aaa"},  //要发的数据，如果出现格式问题则 JSON.stringify(modeljson)
+            async: true,
+            success: function(data){
+
+            }
+        });
+
+    }
+
+    /*]]>*/
+</script>
+
+<div id="myDiv"><h2>使用 AJAX 修改该文本内容</h2></div>
+<button type="button" onclick="loadXMLDoc()">修改内容</button>
