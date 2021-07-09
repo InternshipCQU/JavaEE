@@ -6,6 +6,7 @@ import com.example.demo.service.BlogService;
 import com.example.demo.service.LoginService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -25,4 +26,22 @@ public class BlogController {
         return "blog";
     }
 
+    @GetMapping("/like")
+    public void like(@PathVariable("userId") String userId, @PathVariable("blogId") String blogId){
+        //TODO:这里向数据库写点赞信息 之后应该进行刷新操作
+
+
+    }
+
+    @GetMapping("/comment")
+    public void like(@PathVariable("userId") String userId, @PathVariable("blogId") String blogId,@PathVariable("comment") String comment){
+        //TODO:这里向数据库写评论信息 之后应该进行刷新操作
+
+    }
+
+    @GetMapping("/forward")
+    public void forward(@PathVariable("userId") String userId, @PathVariable("blogId") String blogId){
+        //TODO:这里向数据库写转发信息
+
+    }
 }

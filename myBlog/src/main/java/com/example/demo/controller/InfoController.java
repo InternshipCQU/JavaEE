@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.annotation.Resource;
@@ -18,14 +19,16 @@ public class InfoController {
     private setService setss;
     private getService getss;
 
+    @RequestMapping("/timeline")
+    public String to(){return "timeline";}
     @GetMapping("/infocenter")
     public String setuser(@RequestParam("username") String username, @RequestParam("gender") String gender,
-                          @RequestParam("password") String password, @RequestParam("userID") int userID,
+                          @RequestParam("password") String password, @RequestParam("userID") String userID,
                           @RequestParam("email") String email, @RequestParam("telephone") String telephone,
                           @RequestParam("firstname") String firstname, @RequestParam("lastname") String lastname,
                           @RequestParam("avatar") String avatar, @RequestParam("lastlogin")String lastlogin,
-                          @RequestParam("fansnum") int fansnum, @RequestParam("likesnum")int likesnum,
-                          @RequestParam("blogsnum") int blogsnum, @RequestParam("userregtime") String userregtime,
+                          @RequestParam("fansnum") String fansnum, @RequestParam("likesnum")String likesnum,
+                          @RequestParam("blogsnum") String blogsnum, @RequestParam("userregtime") String userregtime,
                           @RequestParam("birthdate") String birthdate, @RequestParam("introduce")String introduce,
                           @RequestParam("area") String area, Model model, HttpServletRequest request)
     {
@@ -40,13 +43,13 @@ public class InfoController {
         newuser.setLastname(lastname);
         newuser.setAvatar(avatar);
         newuser.setLastLogin(lastlogin);
-        newuser.setfansnum(fansnum);
-        newuser.setlikesnum(likesnum);
-        newuser.setblogsnum(blogsnum);
-        newuser.setregtime(userregtime);
+        newuser.setFansNum(fansnum);
+        newuser.setLikesNum(likesnum);
+        newuser.setBlogsNum(blogsnum);
+        newuser.setUserRefisiterTime(userregtime);
         newuser.setBirthdate(birthdate);
-        newuser.setprofile(introduce);
-        newuser.setarea(area);
+        newuser.setProfile(introduce);
+        newuser.setArea(area);
 
         setss.setuser(newuser);
         model.addAttribute(newuser);
