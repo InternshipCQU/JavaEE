@@ -23,12 +23,12 @@ public class InfoController {
     public String to(){return "timeline";}
     @GetMapping("/infocenter")
     public String setuser(@RequestParam("username") String username, @RequestParam("gender") String gender,
-                          @RequestParam("password") String password, @RequestParam("userID") int userID,
+                          @RequestParam("password") String password, @RequestParam("userID") String userID,
                           @RequestParam("email") String email, @RequestParam("telephone") String telephone,
                           @RequestParam("firstname") String firstname, @RequestParam("lastname") String lastname,
                           @RequestParam("avatar") String avatar, @RequestParam("lastlogin")String lastlogin,
-                          @RequestParam("fansnum") int fansnum, @RequestParam("likesnum")int likesnum,
-                          @RequestParam("blogsnum") int blogsnum, @RequestParam("userregtime") String userregtime,
+                          @RequestParam("fansnum") String fansnum, @RequestParam("likesnum")String likesnum,
+                          @RequestParam("blogsnum") String blogsnum, @RequestParam("userregtime") String userregtime,
                           @RequestParam("birthdate") String birthdate, @RequestParam("introduce")String introduce,
                           @RequestParam("area") String area, Model model, HttpServletRequest request)
     {
