@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 //package com.example.demo.controller;
 //
 //import org.springframework.stereotype.Controller;
@@ -11,7 +11,7 @@
 //    private
 //
 //}
-=======
+
 package com.example.demo.controller;
 
 import org.springframework.stereotype.Controller;
@@ -26,4 +26,4 @@ public class HomeController {
     }
 
 }
->>>>>>> c076d2d27a7369173f4b8d8e26adba4aac944611
+
