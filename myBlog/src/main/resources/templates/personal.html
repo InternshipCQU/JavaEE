@@ -1,32 +1,35 @@
-<!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-    <p th:text="${user.username}"></p>
-    <p th:text="${user.password}"></p>
+<head><script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script></head>
 
-    <html lang="en">
-    <head>
-        <meta charset="utf-8"/>
-        <title>文件上传表单</title>
-    </head>
-    <body>
-    <h3>文件上传：</h3>
-    选择一个文件上传: <br />
-    <form action="/fileTest" method="post" enctype="multipart/form-data">
-        <input type="file" name="image" size="50" />
-        <br />
-        <button type="submit">上传</button>
-    </form>
+<script type="text/javascript" th:inline="javascript">//thymeleaf里面对应的js格式
+    /*<![CDATA[*/
 
+    var basePath = [[${#httpServletRequest.getScheme() + "://" + #httpServletRequest.getServerName() + ":" + #httpServletRequest.getServerPort() + #httpServletRequest.getContextPath()}]];
 
-    </body>
-    </html>
+    function loadXMLDoc()
+    {
 
-</body>
-</html>
+        $.ajax({
+
+            url: basePath + '/ajax', //这里是返回路径 在controller里写好对应函数就行
+            type: 'get',
+            //contentType: 'application/json', //没规定就是默认的application/x-www-form-urlencoded; charset=UTF-8
+            //格式的问题真的是头大，如果大家出现前端明显送出了数据但是后端取出为null 的时候，
+            //肯定是格式问题了，建议都用默认格式好了
+
+            data: {"aaa":"aaa"}, //这里是向后端传输的json 应该是可以直接传对象 比如User这种entity
+            //例如点赞的话 我们传递blogID userID到后端 后端再进行操作
+            async: true,
+            success: function(data){
+                //这里是如果成功的将数据传递之后做的操作 可以写alert和跳转语句 根据情况进行书写就写
+            }
+        });
+
+    }
+
+    /*]]>*/
+</script>
+
+<div id="myDiv"><h2>使用 AJAX 修改该文本内容</h2></div>
+<button type="button" onclick="loadXMLDoc()">修改内容</button>
