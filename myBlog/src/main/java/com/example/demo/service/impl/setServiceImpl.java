@@ -1,6 +1,7 @@
 package com.example.demo.service.impl;
 
 
+import com.example.demo.entity.User;
 import com.example.demo.mapper.profileMapper;
 
 import com.example.demo.service.setService;
@@ -19,101 +20,60 @@ public class setServiceImpl implements setService {
 
     @Resource
     private profileMapper profileMapper;
-
-    @Override
-    public boolean setalias(String new_alias, int userID){
-        if (StringUtils.isEmpty(new_alias))
-        {
-            return false;
-        }
-        else{
-            profileMapper.setalias(userID,new_alias);
-            return true;
-        }
-    }
-
    @Override
-    public boolean setname(String newname,String oldname,int userID){
-        if (StringUtils.isEmpty(newname))
-            return false;
-        else {
-            profileMapper.setname(newname, oldname,userID);
-            return true;
-        }
+    public void setuser(User user)
+   {
+       profileMapper.setuser(user);
    }
-
    @Override
-    public boolean setgender(String gender,int userID){
-        String[] strArr=new String[]{"M","W"};//M->Men, W->Women
-       List<String> testgender= Arrays.asList(strArr);
-        if(!testgender.contains(gender))
-        {
-            return false;
-        }
-        else {
-            profileMapper.setgender(gender,userID);
-            return true;
-        }
-   }
+    public boolean checksetinfo(User user)
+   {
+       String username=user.username;
+       String password=user.password;
+       String gender=user.gender;
+       String email=user.email;
+       String telephone=user.telephone;
+       String firstname=user.firstname;
+       String lastname=user.lastname;
+       String birthdate=user.birthdate;
 
-   @Override
-    public boolean setprofile(String profiledata,int userID){
-        if(StringUtils.isEmpty(profiledata)){
-            return false;
-        }
-        else{
-            profileMapper.setprofile(profiledata,userID);
-            return true;
-        }
-   }
+       if(username.isEmpty()) return false;
+       else if(password.isEmpty()) return false;
+       else if(!gender.equals("M") && !gender.equals("W")) return false;
+       else if(email.isEmpty()) return false;
+       else if(telephone.length() != 11) return false;
+       else if(firstname.isEmpty()) return false;
+       else if (lastname.isEmpty()) return false;
 
-   /*TODO:The contributor need to reconsider the format of the region.*/
-   @Override
-    public void setregion(String region,int userID){
-       profileMapper.setregion(region,userID);
-   }
+       String[] datesplit=birthdate.split("-");
+       String[] tstarr={"01","03","05","07","08","10","12"};
 
-   @Override
-    public boolean setdateofbirth(String date, int userID){
-       //FORMAT OF DATE: YYYY-MM-DD(10 BYTES)
-       String[] date_split=date.split(" ");
-        if(Integer.parseInt(date_split[0]) % 4==0)
-        {
-            if(date_split[1]=="02")
-            {
-                if(date_split[2]=="30"||date_split[2]=="31")
-                {
-                    return false;
-                }
-                else{
-                    profileMapper.setdateofbirth(date,userID);
-                    return true;
-                }
-            }
-            else
-            {
-                profileMapper.setdateofbirth(date,userID);
-                return true;
-            }
-        }
-        else
-        {
-            if(date_split[1]=="02")
-            {
-                if(date_split[2]=="29"||date_split[2]=="30"||date_split[2]=="31")
-                {
-                    return false;
-                }
-                else{
-                    profileMapper.setdateofbirth(date,userID);
-                    return true;
-                }
-            }
-            else
-            {
-                profileMapper.setdateofbirth(date,userID);
-                return true;
-            }
-        }
+       if(datesplit[1]=="02"){
+           if(Integer.parseInt(datesplit[0]) %4==0)
+           {
+               if(datesplit[2]=="30"||datesplit[2]=="31"){
+                   return false;
+               }
+           }
+           else
+           {
+               if(datesplit[2]=="29"||datesplit[2]=="30"||datesplit[2]=="31")
+               {
+                   return false;
+               }
+           }
+       }
+
+       if(Arrays.asList(tstarr).contains(datesplit[1]))
+       {
+           return true;
+       }
+       else
+       {
+           if(datesplit[2]=="31") return false;
+           else return true;
+       }
+
+
    }
 }
