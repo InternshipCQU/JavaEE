@@ -296,7 +296,7 @@ function loadTheBlog()
             $("#forwardNumber").attr("id","pass");
             $("#saveNumber").html(blog.saveNumber);
             $("#saveNumber").attr("id","pass");
-            $("#link").html(blog.link);
+            $("#link").attr("href",blog.link);
             $("#link").attr("id","pass");
 
 

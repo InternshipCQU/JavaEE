@@ -30,7 +30,7 @@ public class IndexController {
     public String ajax(@RequestParam("class") String cla){//获取ajax发的信号
         //TODO:在这里向数据库寻找数据进行返回
 
-        return "{\"username\":\"cjy\",\"likeNumber\":\"10\",\"commentNumber\":\"5\",\"forwardNumber\":\"6\",\"saveNumber\":\"7\",\"commentUser\":\"TJN\",\"commentText\":\"for Messi\",\"commentTime\":\"1d\",,\"link\":\"/blogs/{userId}/{blogId}\"}";
+        return "{\"username\":\"cjy\",\"likeNumber\":\"10\",\"commentNumber\":\"5\",\"forwardNumber\":\"6\",\"saveNumber\":\"7\",\"commentUser\":\"TJN\",\"commentText\":\"for Messi\",\"commentTime\":\"1d\",\"link\":\"/blogs/{userId}/{blogId}\"}";
     }
 
 
