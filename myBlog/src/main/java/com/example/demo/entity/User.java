@@ -16,7 +16,7 @@ public class User {
     public String blogsNum;   // 博客数
     public String userRefisiterTime;   // 用户注册时间
     public String birthdate;   // 用户出生日期
-    public String introduce;   // 用户个人简介
+    public String profile;   // 用户个人简介
     public String area;        // 用户所在地区
 
     public String getUserId() {
@@ -101,11 +101,18 @@ public class User {
         return fansNum;
     }
 
+    public void setFansNum(String funsNum){
+        this.fansNum = funsNum;
+    }
+
 
     public String getLikesNum() {
         return likesNum;
     }
 
+    public void setLikesNum(String likesNum){
+        this.likesNum = likesNum;
+    }
 
     public String getBlogsNum() {
         return blogsNum;
@@ -131,12 +138,12 @@ public class User {
         this.birthdate = birthdate;
     }
 
-    public String getIntroduce() {
-        return introduce;
+    public String getProfile() {
+        return profile;
     }
 
-    public void setIntroduce(String introduce) {
-        this.introduce = introduce;
+    public void setProfile(String profile) {
+        this.profile = profile;
     }
 
     public String getArea() {
@@ -149,28 +156,6 @@ public class User {
 
 
     public void setUserID(String userID) {
-        this.userId = userId;
-    }
-
-    public void setfansnum(String fansnum) {
-        this.fansNum = fansNum;
-    }
-
-    public void setlikesnum(String likesnum) {
-        this.likesNum = likesNum;
-    }
-
-    public void setblogsnum(String blogsnum) {
-        this.blogsNum = blogsNum;
-    }
-
-    public void setregtime(String userregtime) {
-
-    }
-
-    public void setprofile(String introduce) {
-    }
-
-    public void setarea(String area) {
+        this.userId = userID;
     }
 }

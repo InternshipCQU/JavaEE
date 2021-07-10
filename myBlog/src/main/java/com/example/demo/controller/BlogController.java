@@ -1,6 +1,7 @@
 package com.example.demo.controller;
 
 import com.example.demo.entity.Blog;
+import com.example.demo.entity.blogInfo;
 import com.example.demo.service.BlogService;
 import com.example.demo.service.LoginService;
 import org.springframework.stereotype.Controller;
@@ -18,28 +19,28 @@ public class BlogController {
     @Resource
     private BlogService blogService;
 
-    @RequestMapping("/blogs/{userID}/{blogID}")
-    public String blog(@PathVariable("userID") String userID, @PathVariable("blogID") String blogID, Model model){
-        Blog blog = blogService.findBlog(userID,blogID);
+    @RequestMapping("blogs/{userId}/{blogId}")
+    public String getBlog(@PathVariable("userId") String userId, @PathVariable("blogId") String blogId, Model model){
+        blogInfo blog = blogService.getBlog(userId, blogId);
         model.addAttribute("blog",blog);
         return "blog";
     }
 
     @GetMapping("/like")
-    public void like(@PathVariable("userID") String userID, @PathVariable("blogID") String blogID){
+    public void like(@PathVariable("userId") String userId, @PathVariable("blogId") String blogId){
         //TODO:这里向数据库写点赞信息 之后应该进行刷新操作
 
 
     }
 
     @GetMapping("/comment")
-    public void like(@PathVariable("userID") String userID, @PathVariable("blogID") String blogID,@PathVariable("comment") String comment){
+    public void like(@PathVariable("userId") String userId, @PathVariable("blogId") String blogId,@PathVariable("comment") String comment){
         //TODO:这里向数据库写评论信息 之后应该进行刷新操作
 
     }
 
     @GetMapping("/forward")
-    public void forward(@PathVariable("userID") String userID, @PathVariable("blogID") String blogID){
+    public void forward(@PathVariable("userId") String userId, @PathVariable("blogId") String blogId){
         //TODO:这里向数据库写转发信息
 
     }

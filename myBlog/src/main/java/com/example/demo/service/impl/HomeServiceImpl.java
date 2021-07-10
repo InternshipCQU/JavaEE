@@ -1,6 +1,7 @@
 package com.example.demo.service.impl;
 
 import com.example.demo.entity.Blog;
+import com.example.demo.entity.User;
 import com.example.demo.entity.blogInfo;
 import com.example.demo.mapper.HomeMapper;
 import com.example.demo.service.HomeService;
@@ -29,5 +30,10 @@ public class HomeServiceImpl implements HomeService {
     @Override
     public List<blogInfo> searchBlogs(String keyword) {
         return homeMapper.searchBlogs(keyword);
+    }
+
+    @Override
+    public List<User> recommendUsers(String username){
+        return homeMapper.recommendUsers(username);
     }
 }
