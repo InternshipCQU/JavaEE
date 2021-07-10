@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.example.demo.mapper.HomeMapper">
+<<<<<<< HEAD
     <select id="getBlogs" resultType="com.example.demo.entity.blogInfo">
         select * from blogInfo
     </select>
@@ -14,5 +15,46 @@
         from blogInfo, tagBlogInfo, blogTag
         where blogInfo.blogId = tagBlogInfo.blogId and tagBlogInfo.tagId = blogTag.tagId and
               blogTitle = #{keyword} or tagName = #{keyword}
+=======
+    <select id="tagToBlogs" resultType="com.example.demo.entity.blogInfo">
+        SELECT blogInfo.blogTitle, blogInfo.blogContent, blogInfo.createTime,
+            blogInfo.clickNum, blogInfo.likesNum, blogInfo.userId, blogInfo.tagId
+        FROM blogInfo, blogTag, tagBlogInfo
+        WHERE blogTag.tagName = #{tagName}
+            AND blogTag.tagId = tagBlogInfo.tagId
+            AND tagBlogInfo.blogId = blogInfo.blogId;
+    </select>
+
+    <select id="searchBlogs" resultType="com.example.demo.entity.blogInfo">
+        SELECT blogInfo.blogTitle, blogInfo.blogContent, blogInfo.createTime,
+            blogInfo.clickNum, blogInfo.likesNum, blogInfo.userId, blogInfo.tagId
+        FROM blogInfo, blogTag, tagBlogInfo
+        WHERE blogInfo.blogTitle = #{keyword}
+            OR (blogTag.tagName = #{tagName}
+                AND blogTag.tagId = tagBlogInfo.tagId
+                AND tagBlogInfo.blogId = blogInfo.blogId);
+    </select>
+
+
+    <select id="showHotBlogger" resultType="com.example.demo.entity.User">
+        SELECT `User`.username, `User`.avatar
+        FROM `User` ORDER BY `User`.likesNum DESC limit 6;
+    </select>
+
+
+    <select id="showRecommendBlogger" resultType="com.example.demo.entity.User">
+        SELECT `User`.username, `User`.avatar
+        FROM `User`, userLike
+        WHERE userLike.fansId = #{userId}
+            AND userLike.userId = `User`.userId
+        ORDER BY `User`.likesNum DESC limit 6;
+    </select>
+
+    <select id="getBlogs" resultType="com.example.demo.entity.blogInfo">
+        SELECT blogInfo.blogTitle, blogInfo.blogContent, blogInfo.createTime,
+            blogInfo.clickNum, blogInfo.likesNum, blogInfo.userId, blogInfo.tagId
+        FROM blogInfo
+        ORDER BY `BlogInfo`.clickNum DESC limit 10;
+>>>>>>> e1f6bcbeddd284d38cac77bc9fa01e1ac1ca6fec
     </select>
 </mapper>

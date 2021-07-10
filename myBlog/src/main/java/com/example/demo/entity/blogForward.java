@@ -2,16 +2,16 @@ package com.example.demo.entity;
 
 // 博客转发表
 public class blogForward {
-    public String forwardBlogId;     // 博客转发ID
+    public int forwardBlogId;     // 博客转发ID
     public String createTime;        // 转发创建时间
-    public String blogId;            // 被转发博客ID
-    public String userId;            // 转发用户ID
+    public int blogId;            // 被转发博客ID
+    public int userId;            // 转发用户ID
 
-    public String getForwardBlogId() {
+    public int getForwardBlogId() {
         return forwardBlogId;
     }
 
-    public void setForwardBlogId(String forwardBlogId) {
+    public void setForwardBlogId(int forwardBlogId) {
         this.forwardBlogId = forwardBlogId;
     }
 
@@ -23,19 +23,19 @@ public class blogForward {
         this.createTime = createTime;
     }
 
-    public String getBlogId() {
+    public int getBlogId() {
         return blogId;
     }
 
-    public void setBlogId(String blogId) {
+    public void setBlogId(int blogId) {
         this.blogId = blogId;
     }
 
-    public String getUserId() {
+    public int getUserId() {
         return userId;
     }
 
-    public void setUserId(String userId) {
+    public void setUserId(int userId) {
         this.userId = userId;
     }
 }

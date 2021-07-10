@@ -31,15 +31,14 @@ public class HomeController {
     @Resource
     private HomeService homeService;
 
-    @RequestMapping("/home")    //加载主页显示的博客
     public String getBlogs(Model model){
         model.addAttribute("blogList", homeService.getBlogs());
         return "home-test";
     }
 
-    @RequestMapping(value = "/home/{tagId}")     //点击标签后查询对应标签的博客
-    public String changeCategory(@PathVariable("tagId") Integer tagId, Model model){
-        model.addAttribute("blogListFilteredByTag", homeService.changeCategory(tagId));
+    @RequestMapping(value = "/{tagId}")     //点击标签后查询对应标签的博客
+    public String tagToBlogs(@PathVariable("tagId") String tagId, Model model){
+        model.addAttribute("blogListFilteredByTag", homeService.tagToBlogs(tagId));
         return "tag";
     }
 
