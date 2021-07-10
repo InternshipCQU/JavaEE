@@ -148,6 +148,8 @@ function loadTheBlog()
         success: function(data){
             var blog = JSON.parse(data);
             $("#final").attr("id","null")
+            $("#comments").attr("id","commentsNull")
+
             if(data != null){
 
                 $("#null").after("<div class=\"post\" id =\"final\" >\n" +
@@ -177,6 +179,7 @@ function loadTheBlog()
                     "        </div>\n" +
                     "    </div>\n" +
                     "\n" +
+                    " <a id = \"link\">\n" +
                     "    <div class=\"post-description\">\n" +
                     "        <div class=\"fullsizeimg\">\n" +
                     "            <img src=\"assets/images/post/img-1.jpg\" alt=\"\">\n" +
@@ -190,6 +193,7 @@ function loadTheBlog()
                     "            <p> 24 Comments</p>\n" +
                     "        </div>\n" +
                     "    </div>\n" +
+                    " </a>\n"+
                     "    <div class=\"post-state\">\n" +
                     "        <div class=\"post-state-btns\" id = \"likeNumber\"> <i class=\"uil-thumbs-up\"></i> 126<span> Liked </span>\n" +
                     "        </div>\n" +
@@ -201,9 +205,10 @@ function loadTheBlog()
                     "        <div class=\"post-state-btns\" id = \"saveNumber\"> <i class=\"uil-bookmark\"></i> 13 <span> Saved </span>\n" +
                     "        </div>\n" +
                     "    </div>\n" +
+
                     "    <!-- post comments -->\n" +
                     "    <div class=\"post-comments\">\n" +
-                    "        <a href=\"#\" class=\"view-more-comment\"> Veiw 8 more Comments</a>\n" +
+                    "        <a href=\"#\" class=\"view-more-comment\"   id = \"commentsNull\"> Veiw 8 more Comments</a>\n" +
                     "        <div class=\"post-comments-single\">\n" +
                     "            <div class=\"post-comment-avatar\">\n" +
                     "                <img src=\"assets/images/avatars/avatar-5.jpg\" alt=\"\">\n" +
@@ -262,6 +267,7 @@ function loadTheBlog()
                     "            </div>\n" +
                     "            <a href=\"#\" class=\"post-comment-opt\"></a>\n" +
                     "        </div>\n" +
+
                     "        <a href=\"#\" class=\"view-more-comment\"> Veiw 8 more Comments</a>\n" +
                     "        <div class=\"post-add-comment\">\n" +
                     "            <div class=\"post-add-comment-avature\">\n" +
@@ -290,6 +296,39 @@ function loadTheBlog()
             $("#forwardNumber").attr("id","pass");
             $("#saveNumber").html(blog.saveNumber);
             $("#saveNumber").attr("id","pass");
+            $("#link").html(blog.link);
+            $("#link").attr("id","pass");
+
+
+            $("#commentsNull").after("<div class=\"post-comments-single\">\n" +
+                "                                    <div class=\"post-comment-avatar\">\n" +
+                "                                        <img src=\"assets/images/avatars/avatar-5.jpg\" alt=\"\">\n" +
+                "                                    </div>\n" +
+                "                                    <div class=\"post-comment-text\">\n" +
+                "                                        <div class=\"post-comment-text-inner\">\n" +
+                "                                            <h6 id = \"commentUser\"> Alex Dolgove</h6>\n" +
+                "                                            <p id = \"commentText\"> Ut wisi enim ad minim laoreet dolore magna aliquam erat </p>\n" +
+                "                                        </div>\n" +
+                "                                        <div class=\"uk-text-small\">\n" +
+                "                                            <a href=\"#\" class=\"text-danger mr-1\"> <i class=\"uil-heart\"></i> Love\n" +
+                "                                            </a>\n" +
+                "                                            <a href=\"#\" class=\" mr-1\"> Replay </a>\n" +
+                "                                            <span id = \"commentTime\"> 1d</span>\n" +
+                "                                        </div>\n" +
+                "                                    </div>\n" +
+                "                                    <a href=\"#\" class=\"post-comment-opt\"></a>\n" +
+                "                                </div>"
+            )
+
+            $("#commentsNull").attr("id","ull");
+            $("#commentUser").html(blog.commentUser);
+            $("#commentUser").attr("id","pass");
+            $("#commentText").html(blog.commentText);
+            $("#commentText").attr("id","pass");
+            $("#commentTime").html(blog.commentTime);
+            $("#commentTime").attr("id","pass");
+
+
             //window.location.href = 'http://localhost:8080/mainpage';
             //这里是如果成功的将数据传递之后做的操作 可以写alert和跳转语句 根据情况进行书写就写
         }
