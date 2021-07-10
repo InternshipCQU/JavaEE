@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.example.demo.mapper.HomeMapper">
-    <select id="getBlogs" resultType="com.example.demo.entity.Blog">
+    <select id="getBlogs" resultType="com.example.demo.entity.blogInfo">
         select * from blogInfo
     </select>
-    <select id="changeCategory" parameterType="Integer" resultType="com.example.demo.entity.Blog">
+    <select id="changeCategory" parameterType="Integer" resultType="com.example.demo.entity.blogInfo">
         select blogTitle, blogContent, createTime, clickNum, likesNum, userId, tagId
         from blogInfo, tagBlogInfo
         where blogInfo.blogId = tagBlogInfo.blogId and typeId = #{typeId}
     </select>
-    <select id="searchBlogs" parameterType="String" resultType="com.example.demo.entity.Blog">
+    <select id="searchBlogs" parameterType="String" resultType="com.example.demo.entity.blogInfo">
         select blogTitle, blogContent, createTime, clickNum, likesNum, userId, tagId
         from blogInfo, tagBlogInfo, blogTag
         where blogInfo.blogId = tagBlogInfo.blogId and tagBlogInfo.tagId = blogTag.tagId and

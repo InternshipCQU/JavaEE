@@ -18,8 +18,8 @@ public class HomeServiceImpl implements HomeService {
     private HomeMapper homeMapper;
 
     @Override
-    public List<blogInfo> getBlogs(String username) {
-        return homeMapper.getBlogs(username);
+    public List<blogInfo> getBlogs() {
+        return homeMapper.getBlogs();
     }
 
     @Override

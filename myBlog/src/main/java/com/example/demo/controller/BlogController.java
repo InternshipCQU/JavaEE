@@ -23,13 +23,13 @@ public class BlogController {
     public String getBlog(@PathVariable("userId") String userId, @PathVariable("blogId") String blogId, Model model){
         blogInfo blog = blogService.getBlog(userId, blogId);
         model.addAttribute("blog",blog);
-        return "blog";
+        return "blog-test";
     }
 
     @GetMapping("/like")
     public void like(@PathVariable("userId") String userId, @PathVariable("blogId") String blogId){
         //TODO:这里向数据库写点赞信息 之后应该进行刷新操作
-
+        blogService.like(blogId, currentLikes);
 
     }
 
