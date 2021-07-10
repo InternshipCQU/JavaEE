@@ -2,20 +2,20 @@ package com.example.demo.entity;
 
 // 博客信息表
 public class blogInfo {
-    public String blogId;       // 博客ID
+    public int blogId;       // 博客ID
     public String blogTitle;    // 博客标题
     public String blogContent;  // 博客内容
     public String createTime;   // 博客创建时间
-    public String clickNum;     // 点击量，默认为0
-    public String likesNum;     // 点赞数，默认为0
-    public String userId;       // 用户ID
-    public String tagId;       // 博客标签ID
+    public int clickNum;     // 点击量，默认为0
+    public int likesNum;     // 点赞数，默认为0
+    public int userId;       // 用户ID
+    public int tagId;       // 博客标签ID
 
-    public String getBlogId() {
+    public int getBlogId() {
         return blogId;
     }
 
-    public void setBlogId(String blogId) {
+    public void setBlogId(int blogId) {
         this.blogId = blogId;
     }
 
@@ -43,35 +43,35 @@ public class blogInfo {
         this.createTime = createTime;
     }
 
-    public String getClickNum() {
+    public int getClickNum() {
         return clickNum;
     }
 
-    public void setClickNum(String clickNum) {
+    public void setClickNum(int clickNum) {
         this.clickNum = clickNum;
     }
 
-    public String getLikesNum() {
+    public int getLikesNum() {
         return likesNum;
     }
 
-    public void setLikesNum(String likesNum) {
+    public void setLikesNum(int likesNum) {
         this.likesNum = likesNum;
     }
 
-    public String getUserId() {
+    public int getUserId() {
         return userId;
     }
 
-    public void setUserId(String userId) {
+    public void setUserId(int userId) {
         this.userId = userId;
     }
 
-    public String getTagId() {
+    public int getTagId() {
         return tagId;
     }
 
-    public void setTagId(String tagId) {
+    public void setTagId(int tagId) {
         this.tagId = tagId;
     }
 }

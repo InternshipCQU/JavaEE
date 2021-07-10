@@ -1,7 +1,7 @@
 package com.example.demo.entity;
 
 public class User {
-    public String userId;     // 用户ID
+    public int userId;     // 用户ID
     public String username;   // 用户名称
     public String password;   // 密码
     public String gender;     // 性别，M代表男性，F代表女性
@@ -11,20 +11,16 @@ public class User {
     public String lastname;   // 名
     public String avatar;     // 头像base64码
     public String lastLogin;  // 上一次登陆时间
-    public String fansNum;    // 粉丝数
-    public String likesNum;   // 点赞数
-    public String blogsNum;   // 博客数
+    public int fansNum;    // 粉丝数
+    public int likesNum;   // 点赞数
+    public int blogsNum;   // 博客数
     public String userRefisiterTime;   // 用户注册时间
     public String birthdate;   // 用户出生日期
     public String profile;   // 用户个人简介
     public String area;        // 用户所在地区
 
-    public String getUserId() {
+    public int getUserId() {
         return userId;
-    }
-
-    public void setUserId(String userId) {
-        this.userId = userId;
     }
 
     public String getUsername() {
@@ -100,27 +96,27 @@ public class User {
         this.lastLogin = lastLogin;
     }
 
-    public String getFansNum() {
+    public int getFansNum() {
         return fansNum;
     }
 
-    public void setFansNum(String fansNum) {
+    public void setFansNum(int fansNum) {
         this.fansNum = fansNum;
     }
 
-    public String getLikesNum() {
+    public int getLikesNum() {
         return likesNum;
     }
 
-    public void setLikesNum(String likesNum) {
+    public void setLikesNum(int likesNum) {
         this.likesNum = likesNum;
     }
 
-    public String getBlogsNum() {
+    public int getBlogsNum() {
         return blogsNum;
     }
 
-    public void setBlogsNum(String blogsNum) {
+    public void setBlogsNum(int blogsNum) {
         this.blogsNum = blogsNum;
     }
 
@@ -156,7 +152,7 @@ public class User {
         this.area = area;
     }
 
-    public void setUserID(String userID) {
+    public void setUserID(int userID) {
         this.userId = userID;
     }
 }

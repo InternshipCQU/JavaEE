@@ -5,10 +5,10 @@ import com.example.demo.entity.blogInfo;
 
 
 public interface BlogService {
-    blogInfo getBlog(String userId, String blogId);
-    String like(String blogId, String currentLikes);          //点赞
-    void cancelLike(String blogId, String currentLikes);    //取消点赞
-    String comment(String blogId, String userId, String comment);     //评论
-    String forward(String blogId, String userId);       //转发
-    String collect(String blogId, String userId);      //收藏
+    blogInfo getBlog(int blogId);
+    String like(int blogId, int currentLikes);          //点赞
+    void cancelLike(int blogId, int currentLikes);    //取消点赞
+    String comment(int blogId, int userId, String comment);     //评论
+    String forward(int blogId, int userId);       //转发
+    String collect(int blogId, int userId);      //收藏
 }
