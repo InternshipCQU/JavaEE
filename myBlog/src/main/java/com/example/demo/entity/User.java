@@ -23,9 +23,6 @@ public class User {
         return userId;
     }
 
-    public void setUserId(String userId) {
-        this.userId = userId;
-    }
 
     public String getUsername() {
         return username;
@@ -104,17 +101,11 @@ public class User {
         return fansNum;
     }
 
-    public void setFansNum(String fansNum) {
-        this.fansNum = fansNum;
-    }
 
     public String getLikesNum() {
         return likesNum;
     }
 
-    public void setLikesNum(String likesNum) {
-        this.likesNum = likesNum;
-    }
 
     public String getBlogsNum() {
         return blogsNum;
@@ -154,5 +145,32 @@ public class User {
 
     public void setArea(String area) {
         this.area = area;
+    }
+
+
+    public void setUserID(String userID) {
+        this.userId = userId;
+    }
+
+    public void setfansnum(String fansnum) {
+        this.fansNum = fansNum;
+    }
+
+    public void setlikesnum(String likesnum) {
+        this.likesNum = likesNum;
+    }
+
+    public void setblogsnum(String blogsnum) {
+        this.blogsNum = blogsNum;
+    }
+
+    public void setregtime(String userregtime) {
+
+    }
+
+    public void setprofile(String introduce) {
+    }
+
+    public void setarea(String area) {
     }
 }

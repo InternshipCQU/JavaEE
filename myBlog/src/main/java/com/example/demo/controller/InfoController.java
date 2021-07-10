@@ -33,6 +33,7 @@ public class InfoController {
                           @RequestParam("area") String area, Model model, HttpServletRequest request)
     {
         User newuser=new User();
+
         newuser.setUserID(userID);
         newuser.setUsername(username);
         newuser.setPassword(password);
