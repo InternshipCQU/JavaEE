@@ -46,6 +46,7 @@ public class LoginServiceImpl implements LoginService {
         Cookie cookieLoginStatue = new Cookie("loginStatue", "Yes");
         response.addCookie(cookieLoginStatue);
 
+        //这个name应该是用户名
         Cookie cookieName = new Cookie("ID", name);
         response.addCookie(cookieName);
 

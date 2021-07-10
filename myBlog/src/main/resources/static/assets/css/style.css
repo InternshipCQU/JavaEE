@@ -314,6 +314,54 @@ html body {-webkit-font-smoothing: antialiased;overflow-x: hidden;padding: .75re
 /* ---------------------------------- */
 /* section header
 ------------------------------------- */
+body{
+  background: #FFBD1E;
+}
+select{
+  font-family: "微软雅黑";
+  /*margin:100px;*/
+  background: rgba(0,0,0,0);
+  width: 150px;
+  height: 30px;
+  font-size: 9px;
+  text-align: center;
+  border: 1px #1a1a1a solid;
+  border-radius: 5px;
+}
+option{
+  color: black;
+  line-height: 20px;
+}
+select:focus{
+  border: 2px #ddd solid;
+  box-shadow: 0 0 15px 1px #DDDDDD;
+}
+option:hover{
+  background: #EBCCD1;
+}
+
+input{
+  border: 1px solid #ccc;
+  padding: 7px 0px;
+  border-radius: 3px;
+  padding-left:5px;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+  box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+  -webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
+  -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+  transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s
+}
+input:focus{
+  border-color: #66afe9;
+  outline: 0;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(102,175,233,.6);
+  box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(102,175,233,.6)
+}
+
+
+
+
+
 .section-header {
   position: relative;
   display: flex;

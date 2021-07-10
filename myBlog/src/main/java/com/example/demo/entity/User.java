@@ -23,6 +23,7 @@ public class User {
         return userId;
     }
 
+
     public String getUsername() {
         return username;
     }
@@ -154,4 +155,7 @@ public class User {
     }
 
 
+    public void setUserID(String userID) {
+        this.userId=userId;
+    }
 }
