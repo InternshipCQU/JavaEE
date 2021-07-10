@@ -23,10 +23,6 @@ public class User {
         return userId;
     }
 
-    public void setUserId(int userId) {
-        this.userId = userId;
-    }
-
     public String getUsername() {
         return username;
     }
