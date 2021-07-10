@@ -6,6 +6,6 @@ import com.example.demo.entity.User;
 import java.util.List;
 
 public interface PersonalSpaceService {
-    List<Blog> blogs(String userID);
-    List<User> users(String userID);
+    List<Blog> blogs(int userID);
+    List<User> users(int userID);
 }

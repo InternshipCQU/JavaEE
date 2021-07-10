@@ -17,14 +17,8 @@ public class HomeServiceImpl implements HomeService {
     @Resource
     private HomeMapper homeMapper;
 
-    @Override
-    public List<blogInfo> getBlogs(String username) {
-        return homeMapper.getBlogs(username);
-    }
-
-    @Override
-    public List<blogInfo> changeCategory(Integer category) {
-        return homeMapper.changeCategory(category);
+    public List<blogInfo> tagToBlogs(int tagId) {
+        return homeMapper.tagToBlogs(tagId);
     }
 
     @Override
@@ -33,7 +27,18 @@ public class HomeServiceImpl implements HomeService {
     }
 
     @Override
-    public List<User> recommendUsers(String username){
-        return homeMapper.recommendUsers(username);
+    public List<User> showHotBlogger() {
+        return homeMapper.showHotBlogger();
+    }
+
+    @Override
+    // 【登陆后】根据关注的人，推荐关注列表热门博主
+    public List<User> showRecommendBlogger(int userId) {
+        return homeMapper.showRecommendBlogger(userId);
+    }
+
+    @Override
+    public List<blogInfo> getBlogs() {
+        return homeMapper.getBlogs();
     }
 }

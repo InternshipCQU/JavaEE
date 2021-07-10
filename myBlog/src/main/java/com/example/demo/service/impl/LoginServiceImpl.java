@@ -22,7 +22,7 @@ public class LoginServiceImpl implements LoginService {
     }
 
     @Override
-    public boolean checkTheCookie(String userID,String cookie,HttpServletRequest request){
+    public boolean checkTheCookie(int userID,String cookie,HttpServletRequest request){
         User user;
         //TODO:检测是否有session
         if(request.getSession().getAttribute("verifyToken")==null){
@@ -46,6 +46,7 @@ public class LoginServiceImpl implements LoginService {
         Cookie cookieLoginStatue = new Cookie("loginStatue", "Yes");
         response.addCookie(cookieLoginStatue);
 
+        //这个name应该是用户名
         Cookie cookieName = new Cookie("ID", name);
         response.addCookie(cookieName);
 

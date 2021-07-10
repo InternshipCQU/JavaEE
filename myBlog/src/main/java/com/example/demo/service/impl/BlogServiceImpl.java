@@ -21,39 +21,39 @@ public class BlogServiceImpl implements BlogService {
     private BlogMapper blogMapper;
 
     @Override
-    public blogInfo getBlog(String userId, String blogId) {
-        return blogMapper.getBlog(userId, blogId);
+    public blogInfo getBlog(int blogId) {
+        return blogMapper.getBlog(blogId);
     }
 
     @Override
-    public String like(String blogId, String currentLikes) {
-        int i = Integer.getInteger(currentLikes) + 1;
-        blogMapper.like(blogId, Integer.toString(i));
+    public String like(int blogId, int currentLikes) {
+        int i = currentLikes + 1;
+        blogMapper.like(blogId, i);
         return "点赞成功";
     }
 
     @Override
-    public void cancelLike(String blogId, String currentLikes) {
-        int i = Integer.getInteger(currentLikes) -1;
-        blogMapper.cancelLike(blogId, Integer.toString(i));
+    public void cancelLike(int blogId, int currentLikes) {
+        int i = currentLikes -1;
+        blogMapper.cancelLike(blogId, i);
     }
 
     @Override
-    public String comment(String blogId, String userId, String comment) {
+    public String comment(int blogId, int userId, String comment) {
         GetTime getTime = new GetTime();
         blogMapper.comment(blogId, userId, getTime.getCurrentTime(), comment);
         return "评论成功";
     }
 
     @Override
-    public String forward(String blogId, String userId) {
+    public String forward(int blogId, int userId) {
         GetTime getTime = new GetTime();
         blogMapper.forward(blogId, userId, getTime.getCurrentTime());
         return "转发成功";
     }
 
     @Override
-    public String collect(String blogId, String userId) {
+    public String collect(int blogId, int userId) {
         GetTime getTime = new GetTime();
         blogMapper.collect(blogId, userId, getTime.getCurrentTime());
         return "收藏成功";
