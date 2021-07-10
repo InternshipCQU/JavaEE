@@ -1,26 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.example.demo.mapper.HomeMapper">
-<<<<<<< HEAD
-    <select id="getBlogs" resultType="com.example.demo.entity.blogInfo">
-        select * from blogInfo
-    </select>
-    <select id="changeCategory" parameterType="Integer" resultType="com.example.demo.entity.blogInfo">
-        select blogTitle, blogContent, createTime, clickNum, likesNum, userId, tagId
-        from blogInfo, tagBlogInfo
-        where blogInfo.blogId = tagBlogInfo.blogId and typeId = #{typeId}
-    </select>
-    <select id="searchBlogs" parameterType="String" resultType="com.example.demo.entity.blogInfo">
-        select blogTitle, blogContent, createTime, clickNum, likesNum, userId, tagId
-        from blogInfo, tagBlogInfo, blogTag
-        where blogInfo.blogId = tagBlogInfo.blogId and tagBlogInfo.tagId = blogTag.tagId and
-              blogTitle = #{keyword} or tagName = #{keyword}
-=======
     <select id="tagToBlogs" resultType="com.example.demo.entity.blogInfo">
         SELECT blogInfo.blogTitle, blogInfo.blogContent, blogInfo.createTime,
             blogInfo.clickNum, blogInfo.likesNum, blogInfo.userId, blogInfo.tagId
         FROM blogInfo, blogTag, tagBlogInfo
-        WHERE blogTag.tagName = #{tagName}
+        WHERE blogTag.tagId = #{tagId}
             AND blogTag.tagId = tagBlogInfo.tagId
             AND tagBlogInfo.blogId = blogInfo.blogId;
     </select>
@@ -54,7 +39,6 @@
         SELECT blogInfo.blogTitle, blogInfo.blogContent, blogInfo.createTime,
             blogInfo.clickNum, blogInfo.likesNum, blogInfo.userId, blogInfo.tagId
         FROM blogInfo
-        ORDER BY `BlogInfo`.clickNum DESC limit 10;
->>>>>>> e1f6bcbeddd284d38cac77bc9fa01e1ac1ca6fec
+        ORDER BY `blogInfo`.clickNum DESC limit 10;
     </select>
 </mapper>

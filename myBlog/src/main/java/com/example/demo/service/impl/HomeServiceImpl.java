@@ -17,8 +17,8 @@ public class HomeServiceImpl implements HomeService {
     @Resource
     private HomeMapper homeMapper;
 
-    public List<blogInfo> tagToBlogs(String tagName) {
-        return homeMapper.tagToBlogs(tagName);
+    public List<blogInfo> tagToBlogs(int tagId) {
+        return homeMapper.tagToBlogs(tagId);
     }
 
     @Override

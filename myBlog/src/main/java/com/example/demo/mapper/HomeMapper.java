@@ -11,7 +11,7 @@ import java.util.List;
 @Mapper
 public interface HomeMapper {
     // 根据标签查询对应博客
-    List<blogInfo> tagToBlogs(String tagName);
+    List<blogInfo> tagToBlogs(int tagId);
 
     // 根据标签或博客标题搜索对应博客
     List<blogInfo> searchBlogs(String keyword);

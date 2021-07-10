@@ -21,8 +21,8 @@ public class BlogServiceImpl implements BlogService {
     private BlogMapper blogMapper;
 
     @Override
-    public blogInfo getBlog(int userId, int blogId) {
-        return blogMapper.getBlog(userId, blogId);
+    public blogInfo getBlog(int blogId) {
+        return blogMapper.getBlog(blogId);
     }
 
     @Override
