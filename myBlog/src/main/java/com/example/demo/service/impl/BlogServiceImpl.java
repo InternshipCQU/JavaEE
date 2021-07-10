@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 @Service("BlogService")
 public class BlogServiceImpl implements BlogService {
     @Override
-    public Blog findBlog(String userID, String BlogID){
+    public Blog findBlog(int userID, int BlogID){
         //TODO:这里需要去向后端找博客的信息返回前端
         //BlogMapper here
         Blog blog = new Blog();
@@ -17,17 +17,17 @@ public class BlogServiceImpl implements BlogService {
     }
 
     @Override
-    public void like(String userID,String blogID){
+    public void like(int userID,int blogID){
         //TODO:找mapper去写信息
     }
 
     @Override
-    public void comment(String userID,String blogID,String comment){
+    public void comment(int userID,int blogID,String comment){
         //TODO:找mapper去写信息
     }
 
     @Override
-    public void forward(String userID,String blogID){
+    public void forward(int userID,int blogID){
         //TODO:找mapper去写信息
     }
 }

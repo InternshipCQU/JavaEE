@@ -19,27 +19,27 @@ public class BlogController {
     private BlogService blogService;
 
     @RequestMapping("/blogs/{userID}/{blogID}")
-    public String blog(@PathVariable("userID") String userID, @PathVariable("blogID") String blogID, Model model){
+    public String blog(@PathVariable("userID") int userID, @PathVariable("blogID") int blogID, Model model){
         Blog blog = blogService.findBlog(userID,blogID);
         model.addAttribute("blog",blog);
         return "blog";
     }
 
     @GetMapping("/like")
-    public void like(@PathVariable("userID") String userID, @PathVariable("blogID") String blogID){
+    public void like(@PathVariable("userID") int userID, @PathVariable("blogID") int blogID){
         //TODO:这里向数据库写点赞信息 之后应该进行刷新操作
 
 
     }
 
     @GetMapping("/comment")
-    public void like(@PathVariable("userID") String userID, @PathVariable("blogID") String blogID,@PathVariable("comment") String comment){
+    public void like(@PathVariable("userID") int userID, @PathVariable("blogID") int blogID,@PathVariable("comment") String comment){
         //TODO:这里向数据库写评论信息 之后应该进行刷新操作
 
     }
 
     @GetMapping("/forward")
-    public void forward(@PathVariable("userID") String userID, @PathVariable("blogID") String blogID){
+    public void forward(@PathVariable("userID") int userID, @PathVariable("blogID") int blogID){
         //TODO:这里向数据库写转发信息
 
     }

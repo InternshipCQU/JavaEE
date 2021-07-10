@@ -1,6 +1,7 @@
 package com.example.demo.service.impl;
 
 import com.example.demo.entity.Blog;
+import com.example.demo.entity.User;
 import com.example.demo.entity.blogInfo;
 import com.example.demo.mapper.HomeMapper;
 import com.example.demo.service.HomeService;
@@ -17,17 +18,27 @@ public class HomeServiceImpl implements HomeService {
     private HomeMapper homeMapper;
 
     @Override
-    public List<blogInfo> getBlogs(String username) {
-        return homeMapper.getBlogs(username);
-    }
-
-    @Override
-    public List<blogInfo> changeCategory(Integer category) {
-        return homeMapper.changeCategory(category);
+    public List<blogInfo> tagToBlogs(String tagName) {
+        return homeMapper.tagToBlogs(tagName);
     }
 
     @Override
     public List<blogInfo> searchBlogs(String keyword) {
         return homeMapper.searchBlogs(keyword);
+    }
+
+    @Override
+    public List<User> showHotBlogger() {
+        return homeMapper.showHotBlogger();
+    }
+
+    @Override
+    public List<User> showRecommendBlogger(int userId) {
+        return homeMapper.showRecommendBlogger(userId);
+    }
+
+    @Override
+    public List<blogInfo> getBlogs() {
+        return homeMapper.getBlogs();
     }
 }

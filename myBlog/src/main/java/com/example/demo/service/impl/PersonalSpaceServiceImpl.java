@@ -11,14 +11,14 @@ import java.util.List;
 @Service("PersonalSpaceService")
 public class PersonalSpaceServiceImpl implements PersonalSpaceService{
     @Override
-    public List<Blog> blogs(String userID){
+    public List<Blog> blogs(int userID){
         //TODO:这里需要用到mapper 在数据库里面查找他的博客
         List<Blog> blogs = new ArrayList<>();
         return blogs;
     }
 
     @Override
-    public List<User> users(String userID){
+    public List<User> users(int userID){
         List<User> users = new ArrayList<>();
         return users;
     }

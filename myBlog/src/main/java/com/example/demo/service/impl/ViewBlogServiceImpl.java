@@ -13,18 +13,18 @@ public class ViewBlogServiceImpl implements ViewBlogService {
     private ViewBlogMapper viewBlogMapper;
 
     @Override
-    public String like(Integer blogId, Integer currentLikes) {
+    public String like(int blogId, int currentLikes) {
         viewBlogMapper.like(blogId, currentLikes + 1);
         return "点赞成功";
     }
 
     @Override
-    public void cancelLike(Integer blogId, Integer currentLikes) {
+    public void cancelLike(int blogId, int currentLikes) {
         viewBlogMapper.cancelLike(blogId, currentLikes - 1);
     }
 
     @Override
-    public String comment(Integer blogId, Integer userId, String comment) {
+    public String comment(int blogId, int userId, String comment) {
         Date dNow = new Date( );
         SimpleDateFormat ft = new SimpleDateFormat("yyyy-MM-dd");
         viewBlogMapper.comment(blogId, userId, ft.format(dNow), comment);
@@ -32,14 +32,14 @@ public class ViewBlogServiceImpl implements ViewBlogService {
     }
 
     @Override
-    public void forward(Integer blogId, Integer userId) {
+    public void forward(int blogId, int userId) {
         Date dNow = new Date( );
         SimpleDateFormat ft = new SimpleDateFormat("yyyy-MM-dd");
         viewBlogMapper.forward(blogId, userId, ft.format(dNow));
     }
 
     @Override
-    public void collect(Integer blogId, Integer userId) {
+    public void collect(int blogId, int userId) {
         Date dNow = new Date( );
         SimpleDateFormat ft = new SimpleDateFormat("yyyy-MM-dd");
         viewBlogMapper.collect(blogId, userId, ft.format(dNow));
