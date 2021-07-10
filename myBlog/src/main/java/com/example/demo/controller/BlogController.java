@@ -19,9 +19,10 @@ public class BlogController {
     @Resource
     private BlogService blogService;
 
-    @RequestMapping("/blogs/{userID}/{blogID}")
-    public String blog(@PathVariable("userID") int userID, @PathVariable("blogID") int blogID, Model model){
-        blogInfo blog = blogService.getBlog(userID,blogID);
+    @RequestMapping("/blogs/{blogId}")
+    // 根据blogId跳转到对应博客内容
+    public String blog(@PathVariable("blogId") int blogID, Model model){
+        blogInfo blog = blogService.getBlog(blogID);
 
         model.addAttribute("blog",blog);
         return "blog";

@@ -37,7 +37,7 @@ public class HomeController {
 //        return "home";
 //    }
     @RequestMapping("/home")    //加载主页显示的博客
-    public String getBlogs(@RequestBody Model model){
+    public String getBlogs(Model model){
         model.addAttribute("blogList", homeService.getBlogs());
         return "home";
     }
