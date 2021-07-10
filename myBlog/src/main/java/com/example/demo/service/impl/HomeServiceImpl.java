@@ -33,6 +33,7 @@ public class HomeServiceImpl implements HomeService {
     }
 
     @Override
+    // 【登陆后】根据关注的人，推荐关注列表热门博主
     public List<User> showRecommendBlogger(int userId) {
         return homeMapper.showRecommendBlogger(userId);
     }

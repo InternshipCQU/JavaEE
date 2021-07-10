@@ -1,6 +1,7 @@
 package com.example.demo.controller;
 
 import com.example.demo.entity.Blog;
+import com.example.demo.entity.blogInfo;
 import com.example.demo.service.BlogService;
 import com.example.demo.service.LoginService;
 import org.springframework.stereotype.Controller;
@@ -20,13 +21,15 @@ public class BlogController {
 
     @RequestMapping("/blogs/{userID}/{blogID}")
     public String blog(@PathVariable("userID") int userID, @PathVariable("blogID") int blogID, Model model){
-        Blog blog = blogService.findBlog(userID,blogID);
+        blogInfo blog = blogService.getBlog(userID,blogID);
+
         model.addAttribute("blog",blog);
         return "blog";
     }
 
     @GetMapping("/like")
     public void like(@PathVariable("userID") int userID, @PathVariable("blogID") int blogID){
+
         //TODO:这里向数据库写点赞信息 之后应该进行刷新操作
 
 
@@ -34,6 +37,7 @@ public class BlogController {
 
     @GetMapping("/comment")
     public void like(@PathVariable("userID") int userID, @PathVariable("blogID") int blogID,@PathVariable("comment") String comment){
+
         //TODO:这里向数据库写评论信息 之后应该进行刷新操作
 
     }

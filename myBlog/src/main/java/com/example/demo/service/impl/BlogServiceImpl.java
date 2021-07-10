@@ -1,33 +1,61 @@
 package com.example.demo.service.impl;
 
 import com.example.demo.entity.Blog;
+import com.example.demo.entity.blogInfo;
+import com.example.demo.mapper.BlogMapper;
 import com.example.demo.service.BlogService;
+import com.example.demo.utils.GetTime;
+import org.springframework.data.relational.core.sql.In;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
+
+import javax.annotation.Resource;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 @Component
 @Service("BlogService")
 public class BlogServiceImpl implements BlogService {
+
+    @Resource
+    private BlogMapper blogMapper;
+
     @Override
-    public Blog findBlog(int userID, int BlogID){
-        //TODO:这里需要去向后端找博客的信息返回前端
-        //BlogMapper here
-        Blog blog = new Blog();
-        return blog;
+    public blogInfo getBlog(int userId, int blogId) {
+        return blogMapper.getBlog(userId, blogId);
     }
 
     @Override
-    public void like(int userID,int blogID){
-        //TODO:找mapper去写信息
+    public String like(int blogId, int currentLikes) {
+        int i = currentLikes + 1;
+        blogMapper.like(blogId, i);
+        return "点赞成功";
     }
 
     @Override
-    public void comment(int userID,int blogID,String comment){
-        //TODO:找mapper去写信息
+    public void cancelLike(int blogId, int currentLikes) {
+        int i = currentLikes -1;
+        blogMapper.cancelLike(blogId, i);
     }
 
     @Override
-    public void forward(int userID,int blogID){
-        //TODO:找mapper去写信息
+    public String comment(int blogId, int userId, String comment) {
+        GetTime getTime = new GetTime();
+        blogMapper.comment(blogId, userId, getTime.getCurrentTime(), comment);
+        return "评论成功";
+    }
+
+    @Override
+    public String forward(int blogId, int userId) {
+        GetTime getTime = new GetTime();
+        blogMapper.forward(blogId, userId, getTime.getCurrentTime());
+        return "转发成功";
+    }
+
+    @Override
+    public String collect(int blogId, int userId) {
+        GetTime getTime = new GetTime();
+        blogMapper.collect(blogId, userId, getTime.getCurrentTime());
+        return "收藏成功";
     }
 }
