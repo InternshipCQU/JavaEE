@@ -157,13 +157,9 @@ public class User {
         this.area = area;
     }
 
-<<<<<<< HEAD
 
-    public void setUserID(String userID) {
-        this.userId=userId;
-=======
+
     public void setUserID(int userID) {
-        this.userId = userID;
->>>>>>> 3e1ee7d61a39eaba251f8d2e7de44ef2f410cef5
+        this.userId = userId;
     }
 }
