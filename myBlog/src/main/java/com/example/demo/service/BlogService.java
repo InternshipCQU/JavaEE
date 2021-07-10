@@ -1,11 +1,14 @@
 package com.example.demo.service;
 
 import com.example.demo.entity.Blog;
+import com.example.demo.entity.blogInfo;
 
 
 public interface BlogService {
-    Blog findBlog(String userID,String BlogID);
-    void like(String userID,String blogID);
-    void comment(String userID,String blogID,String comment);
-    void forward(String userID,String blogID);
+    blogInfo getBlog(int blogId);
+    String like(int blogId, int currentLikes);          //点赞
+    void cancelLike(int blogId, int currentLikes);    //取消点赞
+    String comment(int blogId, int userId, String comment);     //评论
+    String forward(int blogId, int userId);       //转发
+    String collect(int blogId, int userId);      //收藏
 }

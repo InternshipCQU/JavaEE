@@ -1,5 +1,7 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head><script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script></head>
 
 <head>
 
@@ -611,11 +613,11 @@
                            </a>
 
                            <ul class="dropdown-user-menu">
-                               <li><a href="#"> <i class="fas fa-rocket"></i> Boost Posts </a> </li>
-                               <li><a href="#"> <i class="fas fa-rocket"></i> Boost Pages </a> </li>
-                               <li><a href="#"> <i class="fas fa-bullhorn"></i> Advertising </a></li>
-                               <li><a href="#"> <i class="fas fa-user-edit"></i> General Settings</a></li>
-                               <li><a href="#"> <i class="fas fa-user-cog"></i> Admi Area</a></li>
+                               <li><a href="#"> <i class="fas fa-rocket"></i> 创作博客 </a> </li>
+                               <!-- <li><a href="#"> <i class="fas fa-rocket"></i> Boost Pages </a> </li> -->
+                               <li><a href="#"> <i class="fas fa-bullhorn"></i> 个人空间 </a></li>
+                               <!-- <li><a href="#"> <i class="fas fa-user-edit"></i> General Settings</a></li> -->
+                               <li><a href="#"> <i class="fas fa-user-cog"></i> 个人资料</a></li>
                                <li>
                                    <a href="#" id="night-mode" class="btn-night-mode">
                                        <i class="fas fa-moon"></i> Night mode
@@ -625,14 +627,15 @@
                                    </a>
                                </li>
                                </li>
-                               <li><a href="form-login.html"> <i class="fas fa-sign-out-alt"></i>Log Out</a>
+                               <!-- <li><a href="form-login.html"> <i class="fas fa-sign-out-alt"></i>Log Out</a> -->
                                </li>
                            </ul>
 
                            <hr class="m-0">
                            <ul class="dropdown-user-menu">
                                <li><a href="page-setting.html" class="bg-secondery"> <i class="uil-bolt"></i>
-                                       <div> Upgrade To Premium <span> Pro features give you complete control </span>
+                                       <div> 退出登录 
+                                           <!-- <span> Pro features give you complete control </span> -->
                                        </div>
                                    </a>
                                </li>
@@ -663,36 +666,36 @@
                                 <ul
                                     class="uk-slider-items uk-child-width-1-5@m uk-child-width-1-3@s uk-child-width-1-3 story-slider uk-grid">
                                     <li>
-                                        <a href="#" uk-toggle="target: body ; cls: is-open">
+                                        <a href="" onclick="loadCSS()">
                                             <div class="story-card" data-src="assets/images/avatars/avatar-lg-1.jpg"
                                                 uk-img>
                                                 <i class="uil-plus"></i>
                                                 <div class="story-card-content">
-                                                    <h4> Dennis </h4>
+                                                    <h4> CSS </h4>
                                                 </div>
                                             </div>
                                         </a>
 
                                     </li>
                                     <li>
-                                        <a href="#" uk-toggle="target: body ; cls: is-open">
+                                        <a href="" onclick="loadCPP()">
                                             <div class="story-card" data-src="assets/images/events/listing-5.jpg"
                                                 uk-img>
                                                 <img src="assets/images/avatars/avatar-5.jpg" alt="">
                                                 <div class="story-card-content">
-                                                    <h4> Jonathan </h4>
+                                                    <h4> C++ </h4>
                                                 </div>
                                             </div>
                                         </a>
 
                                     </li>
                                     <li>
-                                        <a href="#" uk-toggle="target: body ; cls: is-open">
+                                        <a href="" onclick="loadJAVA()">
                                             <div class="story-card" data-src="assets/images/avatars/avatar-lg-3.jpg"
                                                 uk-img>
                                                 <img src="assets/images/avatars/avatar-6.jpg" alt="">
                                                 <div class="story-card-content">
-                                                    <h4> Stella </h4>
+                                                    <h4> JAVA </h4>
                                                 </div>
                                             </div>
                                         </a>
@@ -700,12 +703,12 @@
                                     </li>
                                     <li>
 
-                                        <a href="#" uk-toggle="target: body ; cls: is-open">
+                                        <a href="" onclick="loadPYTHON()">
                                             <div class="story-card" data-src="assets/images/avatars/avatar-lg-4.jpg"
                                                 uk-img>
                                                 <img src="assets/images/avatars/avatar-4.jpg" alt="">
                                                 <div class="story-card-content">
-                                                    <h4> Alex </h4>
+                                                    <h4> PYTHON </h4>
                                                 </div>
                                             </div>
                                         </a>
@@ -713,12 +716,12 @@
                                     </li>
                                     <li>
 
-                                        <a href="#" uk-toggle="target: body ; cls: is-open">
+                                        <a href="" onclick="loadC()">
                                             <div class="story-card" data-src="assets/images/avatars/avatar-lg-2.jpg"
                                                 uk-img>
                                                 <img src="assets/images/avatars/avatar-2.jpg" alt="">
                                                 <div class="story-card-content">
-                                                    <h4> Adrian </h4>
+                                                    <h4> C </h4>
                                                 </div>
                                             </div>
                                         </a>
@@ -726,12 +729,12 @@
                                     </li>
                                     <li>
 
-                                        <a href="#" uk-toggle="target: body ; cls: is-open">
+                                        <a href="" onclick="loadOTHER()">
                                             <div class="story-card" data-src="assets/images/avatars/avatar-lg-5.jpg"
                                                 uk-img>
                                                 <img src="assets/images/avatars/avatar-5.jpg" alt="">
                                                 <div class="story-card-content">
-                                                    <h4> Dennis </h4>
+                                                    <h4> OTHER </h4>
                                                 </div>
                                             </div>
                                         </a>
@@ -933,10 +936,12 @@
                                 <div class="post-avature">
                                     <img src="assets/images/avatars/avatar-6.jpg" alt="">
                                 </div>
+
                                 <div class="post-title">
                                     <h4> Mariah Ali </h4>
                                     <p> 5 <span> hrs</span> <i class="uil-users-alt"></i> </p>
                                 </div>
+
                                 <div class="post-btn-action">
                                     <span class="icon-more uil-ellipsis-h"></span>
                                     <div class="mt-0 p-2" uk-dropdown="pos: top-right;mode:hover ">
@@ -952,6 +957,7 @@
                                         </ul>
                                     </div>
                                 </div>
+
                             </div>
                             <div class="post-description">
                                 <div class="fullsizeimg">
@@ -2441,7 +2447,12 @@
     <!-- javaScripts 
     ================================================== -->
     <script src="assets/js/uikit.js"></script>
+<<<<<<< HEAD
     <script src="assets/js/simplebar.js"></script>
+    <script src="assets/js/myJs.js"></script>
+=======
+<!--    <script src="assets/js/simplebar.js"></script>-->
+>>>>>>> 69f66d720a4e69685481b9b9a4c33a627b522498
     
 
 </body>

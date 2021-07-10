@@ -10172,3 +10172,37 @@ ul.story-side-list li a .story-user-innr p span.story-time-ago{
   background:transparent
 }
 }
+
+/*writing blog page */
+
+#layout{
+  margin-left:40px;
+}
+
+#title-field{
+  margin-top:10px;
+  margin-bottom:10px;
+  margin-right:10px;
+  margin-left:10px;
+}
+
+#articleTitle{
+  height:30px;
+  width: 40%;
+  margin-top:15px;
+}
+#articleCategory{
+  height:35px;
+  margin-top:15px;
+  width:20%;
+}
+#btnList {
+  height:auto;
+  width:auto;
+  position:relative;
+  float:right;
+  margin-top:15px;
+  margin-bottom:15px;
+  padding-right:70px;
+}
+
