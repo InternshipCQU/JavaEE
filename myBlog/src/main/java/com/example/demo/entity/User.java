@@ -27,6 +27,7 @@ public class User {
         return username;
     }
 
+
     public void setUsername(String username) {
         this.username = username;
     }
@@ -152,7 +153,9 @@ public class User {
         this.area = area;
     }
 
+
+
     public void setUserID(int userID) {
-        this.userId = userID;
+        this.userId = userId;
     }
 }
