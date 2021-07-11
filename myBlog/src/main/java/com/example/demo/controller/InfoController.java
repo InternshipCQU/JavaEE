@@ -4,6 +4,8 @@ import com.example.demo.service.*;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -47,6 +49,7 @@ public class InfoController {
         object.put("likesNum","803");
         object.put("blogsNum","27");
         object.put("fansNum","102");
+        object.put("birthdate","2008-03-05");
         response.getWriter().write(object.toString());
     }//根据session中的userId去数据库查询对应的username，返回username显示在页面前端
     //JSON仅供测试，记得删除
@@ -56,6 +59,17 @@ public class InfoController {
         JSONObject object=new JSONObject();
         object.put("flag","true");
         response.getWriter().write(object.toString());
+    }
+
+    @RequestMapping(value="/submitinfo",method=RequestMethod.POST)
+    public ResponseEntity submitdata(@RequestBody User user,HttpServletRequest request,HttpServletResponse response,HttpSession session) throws IOException,JSONException{
+        //获得的数据都存在user这个实体中的(除了password,这个需要访问数据库，前端得不到）
+        //将密码更新到user里面
+//        String ps=getss.getuserprofile(user.userId).password;
+//        user.setPassword(ps);
+//        setss.setuser(user);//通过setuser，将新数据存到数据库
+
+        return new ResponseEntity("Register OK", HttpStatus.OK);
     }
 
 

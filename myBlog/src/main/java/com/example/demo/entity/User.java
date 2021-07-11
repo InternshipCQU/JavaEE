@@ -23,10 +23,6 @@ public class User {
         return userId;
     }
 
-<<<<<<< HEAD
-
-=======
->>>>>>> 3e1ee7d61a39eaba251f8d2e7de44ef2f410cef5
     public String getUsername() {
         return username;
     }

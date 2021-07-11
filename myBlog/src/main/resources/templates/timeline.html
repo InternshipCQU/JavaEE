@@ -36,7 +36,7 @@
             type:"GET",
             data:{"userId":"a","username":"a","userprofile":"b","email":"a","radioval":"a","lastname":"a",
                 "lastlogin":"a","userRefisiterTime":"a",
-                "likesNum":"a","blogsNum":"a","fansNum":"a","firstname":"a","area":"a","telephone":"a"},
+                "likesNum":"a","blogsNum":"a","fansNum":"a","firstname":"a","area":"a","telephone":"a","birthdate":"a"},
             dataType:"json",
             success:function(data){
                 document.getElementById("userId").innerHTML=data.userId;
@@ -46,11 +46,11 @@
                 document.getElementById("email").innerHTML=data.email;
                 if(data.radiovl=="0")
                 {
-                    document.getElementById("radioval").innerHTML="男";
+                    document.getElementById("radioval").innerHTML="Men";
                 }
                 else
                 {
-                    document.getElementById("radioval").innerHTML="女";
+                    document.getElementById("radioval").innerHTML="Women";
                 }
                 document.getElementById("userlastname").innerHTML=data.lastname;
                 document.getElementById("userfirstname").innerHTML=data.firstname;
@@ -62,7 +62,7 @@
                 document.getElementById("blogsNum").innerHTML=data.blogsNum;
                 document.getElementById("fansNum").innerHTML=data.fansNum;
                 document.getElementById("likesNum").innerHTML=data.likesNum;
-
+                document.getElementById("birthdate").innerHTML=data.birthdate;
             }
         })
 
@@ -77,48 +77,52 @@
                 dataType:"json",
                 success:function(data){
 
-                    // var o1=document.getElementById("userId");
-                    // var c1=o1.innerHTML;
-                    // o1.innerHTML="<input type='text' name='userId' size='12' maxlength='8' readonly='true' placeholder="+c1+">"
+                    var o1=document.getElementById("userprofileopt");
+                    var c1=o1.innerHTML;
+                    o1.innerHTML="<input type='text' id='userprofileopt2' name='useralias' size='30' maxlength='130' >";
                     var o2=document.getElementById("useralias");
                     var c2=o2.innerHTML;
-                    o2.innerHTML="<input type='text' name='useralias' size='12' maxlength='32'  placeholder="+c2+">"
+                    o2.innerHTML="<input type='text' id='useralias2' name='useralias' size='12' maxlength='80' >";
                     var o3=document.getElementById("email");
                     var c3=o3.innerHTML;
-                    o3.innerHTML="<input type='text' name='email' size='16' maxlength='60' placeholder="+c3+">"
+                    o3.innerHTML="<input type='text' id='email2' name='email' size='16' maxlength='60' value="+c3+">";
                     var o4=document.getElementById("radioval");
                     var c4=o4.innerHTML;
-                    if (c4=="男"){
-                    o4.innerHTML="<input type= 'radio' name= 'radioval' value= '0' onclick='check_sex(this)' checked='checked'/> 男<input type= 'radio' name= 'radioval' value= '1' onclick='check_sex(this)'/> 女";}
+                    if (c4==="男"){
+                    o4.innerHTML="<input type= 'radio' id='radioval2' name= 'radioval2' value= '0'  checked='checked'/> Men<input type= 'radio' id='radioval2' name= 'radioval2' value= '1'/> Women"}
                     else
                     {
-                        o4.innerHTML="<input type= 'radio' name= 'radioval' value= '0' onclick='check_sex(this)'/> 男<input type= 'radio' name= 'radioval' value= '1' onclick='check_sex(this)' checked='checked'/> 女";
+                        o4.innerHTML="<input type= 'radio' id='radioval2' name= 'radioval2' value= '0' /> Men<input type= 'radio' id='radioval2' name= 'radioval2' value= '1'  checked/> Women"
                     }
                     var o5=document.getElementById("userlastname");
                     var c5=o5.innerHTML;
-                    o5.innerHTML="<input type='text' name='userlastname' size='12' maxlength='2' placeholder="+c5+">";
+                    o5.innerHTML="<input type='text' id='userlastname2' name='userlastname' size='12' maxlength='15' value="+c5+">";
                     var o6=document.getElementById("userfirstname");
                     var c6=o6.innerHTML;
-                    o6.innerHTML="<input type='text' name='userfirstname' size='12' maxlength='2' placeholder="+c6+">";
+                    o6.innerHTML="<input type='text' id='userfirstname2' name='userfirstname' size='12' maxlength='15' value="+c6+">";
                     var o7=document.getElementById("area");
                     var c7=o7.innerHTML;
-                    o7.innerHTML="<select >\n <option value='CN'>Mainland China</option>\n<option value='HK'>Hong Kong</option>\n" +
-                    "                                                <option value='MO'>Macao</option>\n<option value='TW'>Taiwan</option>\n <option value='CA'>Canada</option>\n<option value='US'>United States</option>\n" +
-                    "                                                <option value='UK'>United Kingdom</option>\n<option value='SG'>Singapore</option>\n<option value='JP'>Japan</option>\n" +
-                    "                                                <option value='KR'>Korea</option>\n<option value='AU'>Australia</option>\n<option value='DE'>Germany</option>\n" +
+                    o7.innerHTML="<select id='selectlist'>\n <option value='Mainland China'>Mainland China</option>\n<option value='Hong Kong'>Hong Kong</option>\n" +
+                    "                                                <option value='Macao'>Macao</option>\n<option value='Taiwan'>Taiwan</option>\n <option value='Canada'>Canada</option>\n<option value='United States'>United States</option>\n" +
+                    "                                                <option value='United Kingdom'>United Kingdom</option>\n<option value='Singapore'>Singapore</option>\n<option value='Japan'>Japan</option>\n" +
+                    "                                                <option value='Korea'>Korea</option>\n<option value='Australia'>Australia</option>\n<option value='Germany'>Germany</option>\n" +
                     "                                            </select>\n</div>";
                     var o8=document.getElementById("telephone");
                     var c8=o8.innerHTML;
-                    o8.innerHTML="<input type='text' name='telephone' size='12' maxlength='11' placeholder="+c8+">";
+                    o8.innerHTML="<input type='text' id='telephone2' name='telephone' size='12' maxlength='11' value="+c8+">";
                     var o9=document.getElementById("lookp");
-                    var c9=o9.innerHTML;
-                    o9.innerHTML=" <a href='JavaScript:void(0);' onClick='check()'> 保存资料</a>"
-
-
+                    // var c9=o9.innerHTML;
+                    o9.innerHTML=" <a href='JavaScript:void(0);' onClick='check()'> 保存资料</a>";
+                    var o10=document.getElementById("birthdate");
+                    var c10=o10.innerHTML;
+                    o10.innerHTML="<input id=\"birthdate2\" type=\"date\" value="+c10+"\"/>";
             }})
 
         }
 
+    </script>
+
+    <script type="text/javascript">
         function check(){
             $.ajax({
                 url:"http://"+window.location.host+"/changecontent",
@@ -127,13 +131,129 @@
                 dataType:"json",
                 success:function(data){
 
-                    var vo1=document.getElementById("telephone");
-                    var co1=vo1.innerHTML;
-                    vo1.innerHTML=$('input:text[name="radioval"]::placeholder').val();
+                    // var o1=document.getElementById("userId");
+                    // var c1=o1.innerHTML;
+                    // o1.innerHTML="<input type='text' name='userId' size='12' maxlength='8' readonly='true' placeholder="+c1+">"
+                    var o1=document.getElementById("useralias2").value;
+                    var c1=document.getElementById("useralias");
+                    var c2=document.getElementById("usernameopt");
+                    if(o1==="") {
+                        alert("Username cannot be null!")
+                        location.reload()
+                    }
+                    else {
+                        c1.innerHTML = o1
+                        c2.innerHTML = o1
+                    }
+                    var o2=document.getElementById("email2").value;
+                    var c2=document.getElementById("email");
+                    if(o2==="") {
+                        alert("Email cannot be null!")
+                        location.reload()
+                    }
+                    else {
+                        c2.innerHTML=o2
+                    }
+                    var o3=document.getElementById("userlastname2").value;
+                    var c3=document.getElementById("userlastname");
+                    if(o3===""){
+                        alert("Last name cannot be null!")
+                        location.reload()
+                    }
+                    else{
+                        c3.innerHTML=o3
+                    }
+                    var o4=document.getElementById("userfirstname2").value;
+                    var c4=document.getElementById("userfirstname");
+                    if(o4===""){
+                        alert("First name cannot be null!")
+                        location.reload()
+                    }
+                    else{
+                        c4.innerHTML=o4
+                    }
+                    var o5=document.getElementById("telephone2").value;
+                    var c5=document.getElementById("telephone");
+                    if(o5===""){
+                        alert("Telephone cannot be null!")
+                        location.reload()
+                    }
+                    else if (o5.length!==11){
+                        alert("The length of telephone number must be 11!")
+                        location.reload()
+                    }
+                    else{
+                        c5.innerHTML=o5
 
+                    }
+                    var o6=document.getElementById("radioval2");
+                    var c6=$("input:radio[name='radioval2']:checked").val();
+                    if(c6==="1")
+                    {
+                        var o7=document.getElementById("radioval")
+                        o7.innerHTML="Women"
+                    }
+                    else {
+                        var o7=document.getElementById("radioval")
+                        o7.innerHTML="Men"
+                    }
+                    var o8=document.getElementById("selectlist");
+                    var c8=document.getElementById("area");
+                    c8.innerHTML=o8.value;
+                    var o9=document.getElementById("userprofileopt2");
+                    var c9=document.getElementById("userprofileopt");
+                    c9.innerHTML=o9.value;
+                    var o10=document.getElementById("lookp");
+                    // var c10=o10.innerHTML;
+                    o10.innerHTML="<a href=\"JavaScript:void(0);\" onClick=\"changestatus()\"> 编辑资料</a>";
+                    var o11=document.getElementById("birthdate2").value;
+                    var c11=document.getElementById("birthdate");
+                    c11.innerHTML=o11;
+                    // alert(document.getElementById("telephone").value);
+                    var formData={
+                        userId:parseInt(document.getElementById("userId").innerHTML),
+                        username:o1,
+                        password:"NOT APPLICABLE",
+                        gender:o7.innerHTML,
+                        email:o2,
+                        telephone:o5,
+                        firstname:o4,
+                        lastname:o3,
+                        avatar:"None",
+                        lastLogin:document.getElementById("lastlogin").innerHTML,
+                        fansNum:parseInt(document.getElementById("fansNum").innerHTML),
+                        likesNum:parseInt(document.getElementById("likesNum").innerHTML),
+                        blogsNum:parseInt(document.getElementById("blogsNum").innerHTML),
+                        userRefisiterTime:document.getElementById("userRefisiterTime").innerHTML,
+                        birthdate:o11,
+                        profile:document.getElementById("userprofileopt").innerHTML,
+                        area:o8.value
+                    };
+                    submit(formData);
+                }})
+
+        }
+        function submit(formData){
+
+            // alert(document.getElementById("telephone").value);
+            $.ajax({
+                url:"http://"+window.location.host+"/submitinfo",
+                type:"POST",
+                data:JSON.stringify(formData),
+                contentType:'application/json',
+                dataType:"text",
+                success:function(data){
+
+                },
+                error:function(xhr,textStatus,errorThrown){
+                    alert(xhr.status);
+                    alert("Something wrong.");
                 }
-            })        }
+            })
+        }
+
     </script>
+
         <!-- Wrapper -->
     <div id="wrapper">
 
@@ -896,10 +1016,11 @@
     
                                 <div class="post-state">
                                     <div class="post-state">
-                                        <div class="post-state-btns">用户信息</div>
+                                        <div class="post-state-btns"><span>ID&nbsp;</span> <p id="userId"> </p> </div>
                                     </div>
                                     <div class="post-state">
-                                        <div class="post-state-btns"> <span> 用户ID:&nbsp;</span> <p id="userId"> </p>
+
+                                        <div class="post-state-btns"> <span> 出生日期:&nbsp;</span> <p id="birthdate"></p>
                                         </div>
                                         <div class="post-state-btns"> <span> 用户昵称:&nbsp;</span><p id="useralias"></p>
                                         </div>
@@ -1143,136 +1264,6 @@
 
             </div>
 
-        </div>
-
-        <!-- Chat sidebar -->
-        <a class="chat-plus-btn" href="#sidebar-chat" uk-toggle>
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-                <path fill="currentColor" d="M19,13H13V19H11V13H5V11H11V5H13V11H19V13Z"></path>
-            </svg>
-            <!--  Chat -->
-        </a>
-        <div id="sidebar-chat" class="sidebar-chat px-3" uk-offcanvas="flip: true; overlay: true">
-            <div class="uk-offcanvas-bar">
-
-                <div class="sidebar-chat-head mb-2">
-
-                    <div class="btn-actions">
-                        <a href="#" uk-tooltip="title: Search ;offset:7"
-                            uk-toggle="target: .sidebar-chat-search; animation: uk-animation-slide-top-small"> <i
-                                class="icon-feather-search"></i> </a>
-                        <a href="#" uk-tooltip="title: settings ;offset:7"> <i class="icon-feather-settings"></i> </a>
-                        <a href="#"> <i class="uil-ellipsis-v"></i> </a>
-                        <a href="#" class="uk-hidden@s"> <button class="uk-offcanvas-close uk-close" type="button"
-                                uk-close> </button> </a>
-                    </div>
-
-                    <h2> Chats </h2>
-                </div>
-
-                <div class="sidebar-chat-search" hidden>
-                    <input type="text" class="uk-input" placeholder="Search in Messages">
-                    <span class="btn-close"
-                        uk-toggle="target: .sidebar-chat-search; animation: uk-animation-slide-top-small"> <i
-                            class="icon-feather-x"></i> </span>
-                </div>
-
-                <ul class="uk-child-width-expand sidebar-chat-tabs" uk-tab>
-                    <li class="uk-active"><a href="#">Users</a></li>
-                    <li><a href="#">Groups</a></li>
-                </ul>
-
-                <a href="#">
-                    <div class="contact-list">
-                        <div class="contact-list-media"> <img src="assets/images/avatars/avatar-2.jpg" alt="">
-                            <span class="online-dot"></span> </div>
-                        <h5> Dennis Han</h5>
-                    </div>
-                </a>
-
-                <a href="#">
-                    <div class="contact-list">
-                        <div class="contact-list-media"> <img src="assets/images/avatars/avatar-1.jpg" alt="">
-                            <span class="online-dot"></span> </div>
-                        <h5> Erica Jones </h5>
-                    </div>
-                </a>
-
-                <a href="#">
-                    <div class="contact-list">
-                        <div class="contact-list-media"> <img src="assets/images/avatars/avatar-7.jpg" alt="">
-                            <span class="offline-dot"></span> </div>
-                        <h5> Stella Johnson </h5>
-                    </div>
-                </a>
-
-                <a href="#">
-                    <div class="contact-list">
-                        <div class="contact-list-media"> <img src="assets/images/avatars/avatar-5.jpg" alt="">
-                            <span class="offline-dot"></span> </div>
-                        <h5> Alex Dolgove </h5>
-                    </div>
-                </a>
-                <a href="#">
-                    <div class="contact-list">
-                        <div class="contact-list-media"> <img src="assets/images/avatars/avatar-2.jpg" alt="">
-                            <span class="online-dot"></span> </div>
-                        <h5> Dennis Han</h5>
-                    </div>
-                </a>
-                <a href="#">
-                    <div class="contact-list">
-                        <div class="contact-list-media"> <img src="assets/images/avatars/avatar-4.jpg" alt="">
-                            <span class="online-dot"></span> </div>
-                        <h5> Erica Jones </h5>
-                    </div>
-                </a>
-                <a href="#">
-                    <div class="contact-list">
-                        <div class="contact-list-media"> <img src="assets/images/avatars/avatar-3.jpg" alt="">
-                            <span class="offline-dot"></span> </div>
-                        <h5> Stella Johnson </h5>
-                    </div>
-                </a>
-                <a href="#">
-                    <div class="contact-list">
-                        <div class="contact-list-media"> <img src="assets/images/avatars/avatar-5.jpg" alt="">
-                            <span class="offline-dot"></span> </div>
-                        <h5> Alex Dolgove </h5>
-                    </div>
-                </a>
-                <a href="#">
-                    <div class="contact-list">
-                        <div class="contact-list-media"> <img src="assets/images/avatars/avatar-2.jpg" alt="">
-                            <span class="online-dot"></span> </div>
-                        <h5> Dennis Han</h5>
-                    </div>
-                </a>
-                <a href="#">
-                    <div class="contact-list">
-                        <div class="contact-list-media"> <img src="assets/images/avatars/avatar-4.jpg" alt="">
-                            <span class="online-dot"></span> </div>
-                        <h5> Erica Jones </h5>
-                    </div>
-                </a>
-                <a href="#">
-                    <div class="contact-list">
-                        <div class="contact-list-media"> <img src="assets/images/avatars/avatar-3.jpg" alt="">
-                            <span class="offline-dot"></span> </div>
-                        <h5> Stella Johnson </h5>
-                    </div>
-                </a>
-                <a href="#">
-                    <div class="contact-list">
-                        <div class="contact-list-media"> <img src="assets/images/avatars/avatar-5.jpg" alt="">
-                            <span class="offline-dot"></span> </div>
-                        <h5> Alex Dolgove </h5>
-                    </div>
-                </a>
-
-
-
-            </div>
         </div>
 
     </div>
