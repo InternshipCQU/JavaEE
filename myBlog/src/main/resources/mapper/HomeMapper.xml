@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.example.demo.mapper.HomeMapper">
-    <select id="tagToBlogs" resultType="com.example.demo.entity.blogInfo">
+    <select id="tagToBlogs" resultType="com.example.demo.entity.BlogInfo">
         SELECT blogInfo.blogTitle, blogInfo.blogContent, blogInfo.createTime,
             blogInfo.clickNum, blogInfo.likesNum, blogInfo.userId, blogInfo.tagId
         FROM blogInfo, blogTag, tagBlogInfo
@@ -10,7 +10,7 @@
             AND tagBlogInfo.blogId = blogInfo.blogId;
     </select>
 
-    <select id="searchBlogs" resultType="com.example.demo.entity.blogInfo">
+    <select id="searchBlogs" resultType="com.example.demo.entity.BlogInfo">
         SELECT blogInfo.blogTitle, blogInfo.blogContent, blogInfo.createTime,
             blogInfo.clickNum, blogInfo.likesNum, blogInfo.userId, blogInfo.tagId
         FROM blogInfo, blogTag, tagBlogInfo
@@ -35,7 +35,7 @@
         ORDER BY `User`.likesNum DESC limit 6;
     </select>
 
-    <select id="getBlogs" resultType="com.example.demo.entity.blogInfo">
+    <select id="getBlogs" resultType="com.example.demo.entity.BlogInfo">
         SELECT blogInfo.blogTitle, blogInfo.blogContent, blogInfo.createTime,
             blogInfo.clickNum, blogInfo.likesNum, blogInfo.userId, blogInfo.tagId
         FROM blogInfo

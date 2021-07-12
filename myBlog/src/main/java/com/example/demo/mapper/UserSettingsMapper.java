@@ -1,11 +1,11 @@
 package com.example.demo.mapper;
 
 import com.example.demo.entity.User;
-import com.example.demo.entity.blogInfo;
+import com.example.demo.entity.BlogInfo;
 
 import java.util.List;
 
-public interface UserSettings {
+public interface UserSettingsMapper {
     // 展示个人头像，名称，粉丝数，点赞数，博客数，用户注册时间
     List<User> showUser(int userId);
 
@@ -50,5 +50,5 @@ public interface UserSettings {
     List<User> showLikeBlogger(int userId);
 
     // 展示用户收藏
-    List<blogInfo> showCollectBlog(int userId);
+    List<BlogInfo> showCollectBlog(int userId);
 }

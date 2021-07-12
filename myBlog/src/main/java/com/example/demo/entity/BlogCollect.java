@@ -1,17 +1,17 @@
 package com.example.demo.entity;
 
 // 博客收藏表
-public class blogCollect {
-    public int collectBlogId;   // 博客收藏ID
+public class BlogCollect {
+    public Integer collectBlogId;   // 博客收藏ID
     public String createTime;      // 收藏创建时间
-    public int blogId;         // 被收藏博客ID
-    public int userId;         // 收藏用户ID
+    public Integer blogId;         // 被收藏博客ID
+    public Integer userId;         // 收藏用户ID
 
-    public int getCollectBlogId() {
+    public Integer getCollectBlogId() {
         return collectBlogId;
     }
 
-    public void setCollectBlogId(int collectBlogId) {
+    public void setCollectBlogId(Integer collectBlogId) {
         this.collectBlogId = collectBlogId;
     }
 
@@ -23,19 +23,19 @@ public class blogCollect {
         this.createTime = createTime;
     }
 
-    public int getBlogId() {
+    public Integer getBlogId() {
         return blogId;
     }
 
-    public void setBlogId(int blogId) {
+    public void setBlogId(Integer blogId) {
         this.blogId = blogId;
     }
 
-    public int getUserId() {
+    public Integer getUserId() {
         return userId;
     }
 
-    public void setUserId(int userId) {
+    public void setUserId(Integer userId) {
         this.userId = userId;
     }
 }

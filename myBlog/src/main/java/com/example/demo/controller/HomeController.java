@@ -14,7 +14,6 @@
 
 package com.example.demo.controller;
 
-import com.example.demo.entity.blogInfo;
 import com.example.demo.service.HomeService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -23,14 +22,12 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.annotation.Resource;
-import java.util.List;
 
 @Controller
 public class HomeController {
 
     @Resource
     private HomeService homeService;
-
     @RequestMapping(value = "/home")
     public String getBlogs(Model model){
         model.addAttribute("blogList", homeService.getBlogs());
@@ -43,7 +40,7 @@ public class HomeController {
         return "home-test";
     }
 
-    @RequestMapping("/search")
+    @RequestMapping(value = "/search")
     public String searchBlogs(@RequestBody String keyword, Model model) {
         model.addAttribute("blogListFilteredByKeyword", homeService.searchBlogs(keyword));
         return "search";

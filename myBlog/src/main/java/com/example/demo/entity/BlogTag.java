@@ -1,15 +1,15 @@
 package com.example.demo.entity;
 
 // 博客标签表
-public class blogTag {
-    public int tagId;    // 博客标签ID
+public class BlogTag {
+    public Integer tagId;    // 博客标签ID
     public String tagName;  // 博客标签名称
 
-    public int getTagId() {
+    public Integer getTagId() {
         return tagId;
     }
 
-    public void setTagId(int tagId) {
+    public void setTagId(Integer tagId) {
         this.tagId = tagId;
     }
 

@@ -19,4 +19,11 @@
         insert into blogCollect(createTime, blogId, userId)
         values(#{createDate}, #{blogId}, #{userId})
     </insert>
+    <select id="getBlog" resultType="com.example.demo.entity.BlogInfo">
+        SELECT blogInfo.blogTitle, blogInfo.blogContent, blogInfo.createTime,
+            blogInfo.clickNum, blogInfo.likesNum, blogInfo.commentNum,
+            blogInfo.forwardNum, blogInfo.collectNum, blogInfo.userId, blogInfo.tagId
+        FROM blogInfo
+        WHERE blogInfo.blogId = #{blogId};
+    </select>
 </mapper>
