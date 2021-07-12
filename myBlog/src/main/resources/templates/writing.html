@@ -5,7 +5,7 @@
 
     <!-- Basic Page Needs
     ================================================== -->
-    <title>Simplest Social Network HTML Template</title>
+    <title> 发布博客 </title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Simplest is - Professional A unique and beautiful collection of UI elements">
@@ -652,15 +652,15 @@
             <div class="main_content_inner">
 
 
-                <h1 class="mb-1">   pages  </h1>
+                <h1 class="mb-1">   发布博客  </h1>
                 <div class="uk-flex uk-flex-between uk-flex-middle mb-4">
                     <ul class="uk-width-expand" uk-tab>
                         <li class="uk-active"><a href="#">   Suggestions   </a></li>
                         <li><a href="#">  Newest </a></li>
                         <li class="uk-visible@s"><a href="#"> My pages </a></li>
                     </ul>
-                    <a href="#" class="button primary small circle uk-visible@s"> <i class="uil-plus"> </i>
-                        Create New pages </a>
+<!--                    <a href="#" class="button primary small circle uk-visible@s"> <i class="uil-plus"> </i>-->
+<!--                        Create New pages </a>-->
 
                 </div>
 
@@ -940,24 +940,189 @@
                         </div>
                     </div>
 
-                   
-                    
+                    <!-- 键入标题和类别-->
+
+                    <div id="layout">
+                        <header id="title-field">
+                            文章标题：<input type="text" id="articleTitle" placeholder="输入文章标题">
+                            类别：
+                            <select id="articleCategory" >
+                                <option disabled selected value>- 请选择文章标签</option>
+                                <option value="C++">C++</option>
+                                <option value="Java">Java</option>
+                                <option value="Python">Python</option>
+                                <option value="Go">Go</option>
+                            </select>
+                            <span id="btnList">
+                                <!--存为草稿按钮-->
+                                <!--<button type="button" id="saveAsDraft" onclick="writeArticle.doSubmit();" class="btn btn-info">保存草稿</button>-->
+                                <a href="#" class="button primary small circle uk-visible@s" id="saveAsDraft">
+                                    <i class="uil-plus"> </i>存为草稿
+                                </a>
+                                <!--发布文章按钮-->
+                                <!-- <button type="button" id="publishArticle" onclick="writeArticle.doSubmit();" class="btn btn-info">发布文章</button>-->
+                                <a href="#" class="button primary small circle uk-visible@s" id="publishArticle" onclick="writeArticle.doSubmit();">
+                                    <i class="uil-plus"> </i>发布博客
+                                </a>
+                            </span>
+                        </header>
+
+
+
+                    </div>
+
+                    <br>
+
                     <!-- 富文本编辑器 -->
                     <link rel="stylesheet" href="assets/css/editormd.min.css" />
                     <script src="https://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+                    <script src="assets/lib/marked.min.js"></script>
+                    <script src="assets/lib/prettify.min.js"></script>
+                    <script src="assets/lib/raphael.min.js"></script>
+                    <script src="assets/lib/underscore.min.js"></script>
+                    <script src="assets/lib/sequence-diagram.min.js"></script>
+                    <script src="assets/lib/flowchart.min.js"></script>
+                    <script src="assets/lib/jquery.flowchart.min.js"></script>
                     <script src="assets/js/editormd.min.js"></script>
                     <div id="test-editor">
-                        <textarea style="display:none;"></textarea>
+                        <textarea id="articleContent" style="display: none;"></textarea>
                     </div>
+
+                    <!--为了保存html形式的文本而设置的textarea-->
+<!--                    <div id="doc-content">-->
+<!--                        &lt;!&ndash;                            <textarea style="display:none;">${message.detail }</textarea>&ndash;&gt;-->
+<!--                        <textarea id="html-content" style="display:none;"></textarea>-->
+<!--                    </div>-->
+
                     <script type="text/javascript">
+                        var editor;
                         $(function() {
-                            var editor = editormd("test-editor", {
-                                width  : 1100,
+                             editor = editormd("test-editor", {
+                                width  : 1050,
                                 height : 1500,
+                                emoji: true,
+                                saveHTMLToTextarea : true,
+                                imageUpload : true,
+                                imageFormats : ["jpg", "jpeg", "gif", "png", "bmp", "webp"],
+                                // imageUploadURL : "editormdPic/",
+                                imageUploadURL : "oss/upload",
+
                                 path   : "assets/lib/"
                             });
+
+                            // categorySelect.init();
                         });
+
+
+
+                        // var testEditor;
+                        // $(function () {
+                        //     testEditor = editormd.markdownToHTML("doc-content", {//注意：这里是上面DIV的id
+                        //             htmlDecode: "style,script,iframe",
+                        //             emoji: true,
+                        //             taskList: true,
+                        //             tex: true, // 默认不解析
+                        //             flowChart: true, // 默认不解析
+                        //             sequenceDiagram: true, // 默认不解析
+                        //             codeFold: true,
+                        //         }
+                        //     );
+                        // });
+
+                        /* 发布文章*/
+                        var writeArticle = {
+                            doSubmit: function () {//提交
+
+
+                                if (writeArticle.doCheck()) {
+                                    //debugger;
+                                    var title = $("#articleTitle").val();
+                                    var content = $("#articleContent").val();
+                                    var typeId = $("#articleCategory").val();
+                                    var htmlcontent = $("#html-content").val();//测试了一下，未定义
+                                    var doccontent = $("#doc-content").val();//测试了一下为空
+                                    // alert(title+ typeof title);
+                                    // alert(content+ typeof content);
+                                    // alert(typeId+ typeof typeId);
+                                    // alert(doccontent);
+                                    // alert(typeof doccontent);
+                                    // alert(htmlcontent);
+                                    // alert(typeof htmlcontent);
+
+                                    var testhtmlcontent = editor.getHTML();
+                                    console.log(testhtmlcontent);
+                                    alert(typeof testhtmlcontent);
+
+                                    $.ajax({
+                                        type: "POST",
+                                        url: '<%=basePath %>article/saveOrUpdateArticle.do',
+                                        data: {'title':title,'content':content,'typeId':typeId},
+                                        dataType:'json',
+                                        //contentType:"application/json",
+                                        cache: false,
+                                        success: function(data){
+                                            //debugger;
+                                            if ("success"== data.result) {
+                                                alert("保存成功!");
+                                                setTimeout(function(){
+                                                    window.close();
+                                                },3000);
+                                            }
+                                        }
+                                    });
+                                }
+                            },
+                            doCheck: function() {//校验
+                                //debugger;
+                                var title = $("#articleTitle").val();
+                                var content = $("#articleContent").val();
+                                if (typeof(title) == undefined || title == null || title == "" ) {
+                                    alert("请填写文章标题!");
+                                    return false;
+                                }
+
+                                if(typeof (content) == undefined || content == null || content == "") {
+                                    alert("请填写文章内容!");
+                                    return false;
+                                }
+
+                                return true;
+                            }
+                        }
+
+
+
+                        //  动态的文章类别下拉框，本次项目中标签为固定的，不需要动态加载
+                        // var categorySelect = {
+                        //     init: function () {//初始化数据
+                        //         $.ajax({
+                        //             type: "GET",
+                        //             url: 'articleSort/listArticleCategory.do',
+                        //             dataType:'json',
+                        //             contentType:"application/json",
+                        //             cache: false,
+                        //             success: function(data){
+                        //                 //debugger;
+                        //                 data = eval(data) ;
+                        //                 categorySelect.buildOption(data);
+                        //             }
+                        //         });
+                        //     },
+                            // buildOption: function (data) {//构建下拉框数据
+                            //     //debugger;
+                            //     var optionStr ="";
+                            //     for(var i=0 ; i < data.length; i ++) {
+                            //         optionStr += "<option value="+data[i].typeId+">";
+                            //         optionStr += data[i].name;
+                            //         optionStr +="</option>";
+                            //     }
+                            //     $("#articleCategory").append(optionStr);
+                            // }
+                        // }
+
                     </script>
+
+                    
 
                      <!-- 下面就是页面最下方放按钮的地方 -->
                     <div class="load-more">
