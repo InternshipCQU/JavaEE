@@ -13,10 +13,11 @@
 
     <!-- CSS 
     ================================================== -->
+    <link rel="stylesheet" href="assets/css/style.css" th:href="@{/assets/css/style.css}">
+    <link rel="stylesheet" href="assets/css/uikit.css" th:href="@{/assets/css/uikit.css}">
+    <link rel="stylesheet" href="assets/css/uikit.css" th:href="@{/assets/css/uikit.css}">
+    <link rel="stylesheet" href="assets/css/drag.css">
 
-    <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="stylesheet" href="assets/css/uikit.css">
-    <link rel="stylesheet" href="assets/css/uikit.css">
 
 
     <!-- icons
@@ -29,6 +30,24 @@
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
     <script src="assets/js/uikit.js"></script>
     <script src="assets/js/simplebar.js"></script>
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="/assets/js/drag.js" th:href="@{/assets/js/drag.js}"></script>
+    <script src="//unpkg.com/vue/dist/vue.js"></script>
+    <script src="//unpkg.com/element-ui@2.15.3/lib/index.js"></script>
+
+
+    <style type="text/css">
+        .slidetounlock{
+            font-size: 12px;
+            background:-webkit-gradient(linear,left top,right top,color-stop(0,#4d4d4d),color-stop(.4,#4d4d4d),color-stop(.5,#fff),color-stop(.6,#4d4d4d),color-stop(1,#4d4d4d));
+            -webkit-background-clip:text;
+            -webkit-text-fill-color:transparent;
+            -webkit-animation:slidetounlock 3s infinite;
+            -webkit-text-size-adjust:none
+        }
+        @-webkit-keyframes slidetounlock{0%{background-position:-200px 0} 100%{background-position:200px 0}}
+    </style>
+
 
 </head>
 
@@ -52,57 +71,96 @@
                 <!-- column two -->
                 <div class="uk-card-default px-5 py-8">
                     <div class="mb-4 uk-text-center">
-                        <h2 class="mb-0"> Welcome back</h2>
-                        <p class="my-2">Login to manage your account.</p>
+                        <h2 class="mb-0"> 欢迎回来</h2>
+                        <p class="my-2">登录账号</p>
                     </div>
-                    <form>
-
+                    <form name="form1" action="/index" method="post" onsubmit="return check();">
                         <div class="uk-form-group">
-                            <label class="uk-form-label"> Email</label>
+                            <label class="uk-form-label"> 账号</label>
 
                             <div class="uk-position-relative w-100">
                                 <span class="uk-form-icon">
                                     <i class="icon-feather-mail"></i>
                                 </span>
-                                <input class="uk-input" type="email" placeholder="name@example.com">
+<!--                                <label>-->
+                                    <input id="username" name="username" class="uk-input" type="text" placeholder="用户名">
+<!--                                </label>-->
                             </div>
 
                         </div>
 
                         <div class="uk-form-group">
-                            <label class="uk-form-label"> Password</label>
+                            <label class="uk-form-label"> 密码</label>
 
                             <div class="uk-position-relative w-100">
                                 <span class="uk-form-icon">
                                     <i class="icon-feather-lock"></i>
                                 </span>
-                                <input class="uk-input" type="password" placeholder="********">
+<!--                                <label>-->
+                                    <input id="password" name="password" class="uk-input" type="password" placeholder="********">
+<!--                                </label>-->
                             </div>
 
                         </div>
 
+<!--                        <div class="uk-form-group">-->
+<!--                            <label class="uk-form-label"> 验证码</label>-->
+
+<!--                            <div class="uk-position-relative w-100">-->
+<!--&lt;!&ndash;                                <span class="uk-form-icon">&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;                                    <i class="icon-feather-lock"></i>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;                                </span>&ndash;&gt;-->
+<!--                                <input class="uk-input" type="text" placeholder="">-->
+
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </form>-->
+<!--                    <div id="wrapper" >-->
+<!--                        <div id="drag">-->
+<!--                            <div class="drag_bg"></div>-->
+<!--                            <div class="drag_text slidetounlock" onselectstart="return false;" unselectable="on">-->
+<!--                                请按住滑块，拖动到最右边-->
+<!--                            </div>-->
+<!--                            <div class="handler handler_bg"></div>-->
+<!--                        </div>-->
+<!--&lt;!&ndash;                    </div>&ndash;&gt;-->
+
+<!--                    &lt;!&ndash;<a href="#" class="img"><img src="img/Lighthouse.jpg"/></a>&ndash;&gt;-->
+<!--                    <script>-->
+<!--                        $('#drag');-->
+<!--                    </script>-->
+<!--                    </div>-->
                         <div class="uk-form-group">
-                            <label class="uk-form-label"> Confirm password</label>
+                            <label class="uk-form-label"> 验证码</label>
 
-                            <div class="uk-position-relative w-100">
-                                <span class="uk-form-icon">
-                                    <i class="icon-feather-lock"></i>
-                                </span>
-                                <input class="uk-input" type="password" placeholder="********">
-                            </div>
-
+                            <input type="text" placeholder="不区分大小写"
+                                   style="height:43px;font-size:10px;" id ="code" name="code">
+                            <canvas id="canvas" width="100" height="43" onclick="dj()"
+                                    style="border: 1px solid #ccc;
+            border-radius: 5px;"></canvas>
+<!--                            <button class="btn" onclick="CheckCode()">提交</button>-->
                         </div>
-
+<!--                    <form>-->
                         <div class="mt-4 uk-flex-middle uk-grid-small" uk-grid>
                             <div class="uk-width-expand@s">
-                                <p> Don't have account <a href="form-singup.html">Sign up</a></p>
+                                <p> 没有账号？  <a href="/register">注册</a></p>
                             </div>
-                            <div class="uk-width-auto@s">
-                                <button type="submit" class="button primary">Get Started</button>
-                            </div>
-                        </div>
+<!--                            <div class="uk-width-auto@s">-->
+<!--                                <button type="submit" class="button primary">登录</button>-->
+<!--                            </div>-->
+<!--                            <label>-->
+<!--                                <input type="button" class="button" value="登录" disabled="disabled"/>-->
+<!--                            </label>-->
+<!--                            <el-button disabled>默认按钮</el-button>-->
 
+                            <button id="login" class="el-button el-button--default" type="submit">
+<!--                                <a id="login-jump"></a>-->
+                                <span>登录</span>
+                            </button>
+
+                        </div>
                     </form>
+
                 </div><!--  End column two -->
 
             </div>

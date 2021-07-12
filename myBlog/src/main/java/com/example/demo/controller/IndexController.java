@@ -15,7 +15,7 @@ public class IndexController {
 
     @RequestMapping("/index")
     public String index(){
-        return "index";
+        return "personalspace";
     }
     @RequestMapping("/index/{cla}")
     public String index1(@PathVariable("cla") String cla){

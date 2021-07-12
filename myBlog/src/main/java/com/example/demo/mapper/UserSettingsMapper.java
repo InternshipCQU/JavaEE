@@ -10,41 +10,41 @@ public interface UserSettingsMapper {
     List<User> showUser(int userId);
 
     // 展示个人资料
-    List<User> showUserInfo(int userId);
+    User showUserInfo(int userId);
 
     // 【修改个人资料】
     // 修改用户名称
-    List<User> changeUsername(int userId, String username);
+    void changeUsername(int userId, String username);
 
     // 修改用户密码
-    List<User> changePassword(int userId, String password);
+    void changePassword(int userId, String password);
 
     // 修改用户性别
-    List<User> changeGender(int userId, String gender);
+    void changeGender(int userId, String gender);
 
     // 修改邮箱
-    List<User> changeEmail(int userId, String email);
+    void changeEmail(int userId, String email);
 
     // 修改手机号码
-    List<User> changeTel(int userId, String tel);
+    void changeTel(int userId, String tel);
 
     // 修改姓
-    List<User> changeFirstname(int userId, String firstname);
+    void changeFirstname(int userId, String firstname);
 
     // 修改名
-    List<User> changeLastname(int userId, String lastname);
+    void changeLastname(int userId, String lastname);
 
     // 修改头像
-    List<User> changeAvatar(int userId, String avatar);
+    void changeAvatar(int userId, String avatar);
 
     // 修改出生日期
-    List<User> changeBirthdate(int userId, String birthdate);
+    void changeBirthdate(int userId, String birthdate);
 
     // 修改个人简介
-    List<User> changeProfile(int userId, String profile);
+    void changeProfile(int userId, String profile);
 
     // 修改用户所在地区
-    List<User> changeArea(int userId, String area);
+    void changeArea(int userId, String area);
 
     // 展示用户关注博主（top6）
     List<User> showLikeBlogger(int userId);
