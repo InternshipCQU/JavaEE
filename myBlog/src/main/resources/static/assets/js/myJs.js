@@ -214,14 +214,14 @@ function loadTheBlog()
                     "    </div>\n" +
                     " </a>\n"+
                     "    <div class=\"post-state\">\n" +
-                    "        <div class=\"post-state-btns\" id = \"likeNumber\"> <i class=\"uil-thumbs-up\"></i> 126<span> Liked </span>\n" +
+                    "        <div class=\"post-state-btns\"> <i class=\"uil-thumbs-up\"></i><text id = \"likeNumber\">126</text><span> Liked </span>\n" +
                     "        </div>\n" +
-                    "        <div class=\"post-state-btns\" id = \"commentNumber\"> <i class=\"uil-heart\"></i> 18 <span> Coments</span>\n" +
+                    "        <div class=\"post-state-btns\"> <i class=\"uil-heart\"></i> <text  id = \"commentNumber\">126</text> <span> Coments</span>\n" +
                     "        </div>\n" +
-                    "        <div class=\"post-state-btns\" id = \"forwardNumber\"> <i class=\"uil-share-alt\"></i> 193 <span> Shared\n" +
+                    "        <div class=\"post-state-btns\" > <i class=\"uil-share-alt\"></i> <text  id = \"forwardNumber\">126</text> <span> Shared\n" +
                     "            </span>\n" +
                     "        </div>\n" +
-                    "        <div class=\"post-state-btns\" id = \"saveNumber\"> <i class=\"uil-bookmark\"></i> 13 <span> Saved </span>\n" +
+                    "        <div class=\"post-state-btns\" > <i class=\"uil-bookmark\"></i> <text  id = \"saveNumber\">126</text> <span> Saved </span>\n" +
                     "        </div>\n" +
                     "    </div>\n" +
 
