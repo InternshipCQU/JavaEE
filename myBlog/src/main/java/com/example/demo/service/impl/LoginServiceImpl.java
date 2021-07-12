@@ -24,8 +24,11 @@ public class LoginServiceImpl implements LoginService {
     public boolean checkTheInfo(String username,String password){
         //TODO:这里需要增加学生端接口
         if(password.equals(checkLoginMapper.checkPassword(username)))return true;
+
         return false;
     }
+
+
 
     @Override
     public boolean checkTheCookie(int userID,String cookie,HttpServletRequest request){
@@ -50,6 +53,10 @@ public class LoginServiceImpl implements LoginService {
         token.setAttribute("token","yes");
         token.setAttribute("username", name);
 
+
+        token.setAttribute("username", name);
+        token.setAttribute("password", password);
+
         Cookie cookieLoginStatue = new Cookie("loginStatue", "Yes");
         response.addCookie(cookieLoginStatue);
 
@@ -57,8 +64,7 @@ public class LoginServiceImpl implements LoginService {
         Cookie cookieName = new Cookie("ID", name);
         response.addCookie(cookieName);
 
+
+
     }
-
-
-
 }
