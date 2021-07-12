@@ -15,7 +15,7 @@
             blogInfo.clickNum, blogInfo.likesNum, blogInfo.userId, blogInfo.tagId
         FROM blogInfo, blogTag, tagBlogInfo
         WHERE blogInfo.blogTitle = #{keyword}
-            OR (blogTag.tagName = #{tagName}
+            OR (blogTag.tagName = #{keyword}
                 AND blogTag.tagId = tagBlogInfo.tagId
                 AND tagBlogInfo.blogId = blogInfo.blogId);
     </select>
@@ -40,5 +40,20 @@
             blogInfo.clickNum, blogInfo.likesNum, blogInfo.userId, blogInfo.tagId
         FROM blogInfo
         ORDER BY `blogInfo`.clickNum DESC limit 10;
+    </select>
+
+
+
+    <select id="getCommentViews" resultType="com.example.demo.entity.view.CommentView">
+        SELECT username, commentContent FROM blogComment, User
+        WHERE blogId = #{blogId} And blogComment.userId = User.userId
+        ORDER BY commentId DESC limit 3;
+    </select>
+
+    <select id="getBlogViews" resultType="com.example.demo.entity.view.HomeBlogView">
+        SELECT blogId, username, blogTitle, blogContent, createTime, clickNum, blogInfo.likesNum, commentNum, forwardNum, collectNum
+        FROM blogInfo, User
+        WHERE blogInfo.userId = User.userId
+        ORDER BY likesNum DESC limit 10;
     </select>
 </mapper>

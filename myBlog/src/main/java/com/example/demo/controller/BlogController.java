@@ -1,9 +1,7 @@
 package com.example.demo.controller;
 
-import com.example.demo.entity.Blog;
 import com.example.demo.entity.blogInfo;
 import com.example.demo.service.BlogService;
-import com.example.demo.service.LoginService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -25,7 +23,7 @@ public class BlogController {
         blogInfo blog = blogService.getBlog(blogId);
 
         model.addAttribute("blog",blog);
-        return "blog-test";
+        return "test-blog";
     }
 
     @GetMapping("/like")

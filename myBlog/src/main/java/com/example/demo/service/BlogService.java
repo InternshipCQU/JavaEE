@@ -1,6 +1,5 @@
 package com.example.demo.service;
 
-import com.example.demo.entity.Blog;
 import com.example.demo.entity.blogInfo;
 
 

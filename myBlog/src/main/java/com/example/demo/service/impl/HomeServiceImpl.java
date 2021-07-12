@@ -1,15 +1,18 @@
 package com.example.demo.service.impl;
 
-import com.example.demo.entity.Blog;
 import com.example.demo.entity.User;
 import com.example.demo.entity.blogInfo;
+import com.example.demo.entity.view.CommentView;
+import com.example.demo.entity.view.HomeBlogView;
 import com.example.demo.mapper.HomeMapper;
 import com.example.demo.service.HomeService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.Collection;
+import java.util.Iterator;
 import java.util.List;
+import java.util.ListIterator;
 
 @Service("HomeService")
 public class HomeServiceImpl implements HomeService {
@@ -40,5 +43,18 @@ public class HomeServiceImpl implements HomeService {
     @Override
     public List<blogInfo> getBlogs() {
         return homeMapper.getBlogs();
+    }
+
+
+    //test
+    @Override
+    public List<HomeBlogView> getBlogViews(){
+        List<HomeBlogView> blogList = homeMapper.getBlogViews();
+        for(int i = 0; i < blogList.size(); i++){
+            int blogId = blogList.get(i).getBlogId();
+            List<CommentView> commentList = homeMapper.getCommentViews(blogId);
+            blogList.get(i).setCommentList(commentList);
+        }
+        return blogList;
     }
 }
