@@ -1,11 +1,9 @@
 package com.example.demo.service.impl;
 
-import com.example.demo.entity.Blog;
 import com.example.demo.entity.User;
-import com.example.demo.entity.blogInfo;
+import com.example.demo.entity.BlogInfo;
 import com.example.demo.mapper.HomeMapper;
 import com.example.demo.service.HomeService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -18,12 +16,12 @@ public class HomeServiceImpl implements HomeService {
     private HomeMapper homeMapper;
 
     @Override
-    public List<blogInfo> tagToBlogs(String tagName) {
-        return homeMapper.tagToBlogs(tagName);
+    public List<BlogInfo> tagToBlogs(int tagId) {
+        return homeMapper.tagToBlogs(tagId);
     }
 
     @Override
-    public List<blogInfo> searchBlogs(String keyword) {
+    public List<BlogInfo> searchBlogs(String keyword) {
         return homeMapper.searchBlogs(keyword);
     }
 
@@ -39,7 +37,7 @@ public class HomeServiceImpl implements HomeService {
     }
 
     @Override
-    public List<blogInfo> getBlogs() {
+    public List<BlogInfo> getBlogs() {
         return homeMapper.getBlogs();
     }
 }

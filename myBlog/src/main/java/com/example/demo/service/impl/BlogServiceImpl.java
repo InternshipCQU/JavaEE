@@ -1,17 +1,13 @@
 package com.example.demo.service.impl;
 
-import com.example.demo.entity.Blog;
-import com.example.demo.entity.blogInfo;
+import com.example.demo.entity.BlogInfo;
 import com.example.demo.mapper.BlogMapper;
 import com.example.demo.service.BlogService;
 import com.example.demo.utils.GetTime;
-import org.springframework.data.relational.core.sql.In;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 @Component
 @Service("BlogService")
@@ -21,7 +17,7 @@ public class BlogServiceImpl implements BlogService {
     private BlogMapper blogMapper;
 
     @Override
-    public blogInfo getBlog(int blogId) {
+    public BlogInfo getBlog(int blogId) {
         return blogMapper.getBlog(blogId);
     }
 

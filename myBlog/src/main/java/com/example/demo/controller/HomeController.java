@@ -14,7 +14,6 @@
 
 package com.example.demo.controller;
 
-import com.example.demo.entity.blogInfo;
 import com.example.demo.service.HomeService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -23,32 +22,25 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.annotation.Resource;
-import java.util.List;
 
 @Controller
 public class HomeController {
 
     @Resource
     private HomeService homeService;
-
-//    @RequestMapping("/home")    //加载主页显示的博客
-//    public String getBlogs(@RequestBody String username, Model model){
-//        model.addAttribute("blogList", homeService.getBlogs(username));
-//        return "home";
-//    }
-    @RequestMapping("/home")    //加载主页显示的博客
+    @RequestMapping(value = "/home")
     public String getBlogs(Model model){
         model.addAttribute("blogList", homeService.getBlogs());
-        return "home";
+        return "home-test";
     }
 
-    @RequestMapping(value = "/{tagId}")     //点击标签后查询对应标签的博客
-    public String tagToBlogs(@PathVariable("tagId") String tagId, Model model){
+    @RequestMapping(value = "/home/{tagId}")     //点击标签后查询对应标签的博客
+    public String tagToBlogs(@PathVariable("tagId") int tagId, Model model){
         model.addAttribute("blogListFilteredByTag", homeService.tagToBlogs(tagId));
-        return "tag";
+        return "home-test";
     }
 
-    @RequestMapping("/search")
+    @RequestMapping(value = "/search")
     public String searchBlogs(@RequestBody String keyword, Model model) {
         model.addAttribute("blogListFilteredByKeyword", homeService.searchBlogs(keyword));
         return "search";

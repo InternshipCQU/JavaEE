@@ -1,7 +1,7 @@
 package com.example.demo.entity;
 
 public class User {
-    public int userId;     // 用户ID
+    public Integer userId;     // 用户ID
     public String username;   // 用户名称
     public String password;   // 密码
     public String gender;     // 性别，M代表男性，F代表女性
@@ -11,15 +11,15 @@ public class User {
     public String lastname;   // 名
     public String avatar;     // 头像base64码
     public String lastLogin;  // 上一次登陆时间
-    public int fansNum;    // 粉丝数
-    public int likesNum;   // 点赞数
-    public int blogsNum;   // 博客数
+    public Integer fansNum;    // 粉丝数
+    public Integer likesNum;   // 点赞数
+    public Integer blogsNum;   // 博客数
     public String userRefisiterTime;   // 用户注册时间
     public String birthdate;   // 用户出生日期
     public String profile;   // 用户个人简介
     public String area;        // 用户所在地区
 
-    public int getUserId() {
+    public Integer getUserId() {
         return userId;
     }
 
@@ -96,27 +96,27 @@ public class User {
         this.lastLogin = lastLogin;
     }
 
-    public int getFansNum() {
+    public Integer getFansNum() {
         return fansNum;
     }
 
-    public void setFansNum(int fansNum) {
+    public void setFansNum(Integer fansNum) {
         this.fansNum = fansNum;
     }
 
-    public int getLikesNum() {
+    public Integer getLikesNum() {
         return likesNum;
     }
 
-    public void setLikesNum(int likesNum) {
+    public void setLikesNum(Integer likesNum) {
         this.likesNum = likesNum;
     }
 
-    public int getBlogsNum() {
+    public Integer getBlogsNum() {
         return blogsNum;
     }
 
-    public void setBlogsNum(int blogsNum) {
+    public void setBlogsNum(Integer blogsNum) {
         this.blogsNum = blogsNum;
     }
 
@@ -152,7 +152,7 @@ public class User {
         this.area = area;
     }
 
-    public void setUserID(int userID) {
+    public void setUserID(Integer userID) {
         this.userId = userID;
     }
 }
