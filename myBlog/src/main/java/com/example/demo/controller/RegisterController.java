@@ -20,7 +20,6 @@ public class RegisterController {
     @RequestMapping("/toRegist")//这里连接前端的注册按钮
     @ResponseBody
     public String ajax(@RequestParam("username") String a){//TODO:这里的参数是注册信息 有多个 暂时先写一个 记得在前端进行success之后的页面跳转
-
         return "login";
     }
 }

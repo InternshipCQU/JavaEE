@@ -31,10 +31,12 @@ public class LogoutController {
 
     @RequestMapping("/ajax")
     @ResponseBody
-    public String ajax(@RequestParam("aaa") String a, HttpServletResponse response){
-        Cookie cookieLoginStatue = new Cookie("logout", a);
+    public String ajax(@RequestParam("class") String cla, HttpServletResponse response,Model model){
+        model.addAttribute("test","www.baidu.com");
+
+        Cookie cookieLoginStatue = new Cookie("logout", cla);
         response.addCookie(cookieLoginStatue);
-        return "login";
+        return "{\"test\" : cla}";
     }//做ajax测试用 记得删除 这个可以用作点赞等功能的实现
 
 }

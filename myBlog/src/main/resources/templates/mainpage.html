@@ -1,11 +1,20 @@
 <!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
 <html lang="en">
 <head>
+    <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
 <body>
-<a th:href="${href}">Visit W3School</a>
+
+<div id="myDiv"><h2>使用 AJAX 修改该文本内容</h2></div>
+<button type="button" onclick="loadJAVA()">修改内容</button>
+
+<a id = "test" href="/login">Visit W3School</a>
+
+
+<script src="assets/js/myJs.js"></script>
 </body>
 </html>

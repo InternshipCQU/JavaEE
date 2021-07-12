@@ -93,7 +93,6 @@ function check()
     val = val.toLowerCase();
     var num = show_num.join("");
     num = num.toLowerCase();
-    console.log(val.value);
     if(("" === username.value))
     {
         alert("请输入用户名")
@@ -130,6 +129,7 @@ function CheckSignup()
     var sign_username = document.getElementById("sign-username");
     var sign_email = document.getElementById("sign-email");
     console.log(sign_password.value)
+
     if (sign_username.value ==="")
     {
         alert("请输入用户名");

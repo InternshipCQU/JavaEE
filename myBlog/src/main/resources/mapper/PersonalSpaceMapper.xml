@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.demo.mapper.PersonalSpaceMapper">
+    <select id="showFans" resultType="com.example.demo.entity.User">
+        SELECT `User`.username, `User`.avatar
+        FROM `User`, userLike
+        WHERE userLike.userId = #{userId}
+            AND userLike.fansId = `User`.userId;
+    </select>
+
+    <select id="showUsersBlog" resultType="com.example.demo.entity.BlogInfo">
+        SELECT blogInfo.blogTitle, blogInfo.blogContent, blogInfo.createTime,
+            blogInfo.clickNum, blogInfo.likesNum, blogInfo.userId, blogInfo.tagId
+        FROM blogInfo
+        WHERE blogInfo.userId = #{userId};
+    </select>
+
+    <select id="showCalendarFigure" resultType="com.example.demo.entity.BlogInfo">
+        SELECT `blogInfo`.createTime, `blogInfo`.clickNum
+        FROM blogInfo
+        WHERE blogInfo.userId = #{userId};
+    </select>
+
+    <select id="showTag1Blogs" resultType="com.example.demo.entity.BlogInfo">
+        Select COUNT (`blogInfo`.tagId)
+        FROM blogInfo
+        WHERE `blogInfo`.tagId = 'tag1';
+    </select>
+
+    <select id="showTag2Blogs" resultType="com.example.demo.entity.BlogInfo">
+        Select COUNT (`blogInfo`.tagId)
+        FROM blogInfo
+        WHERE `blogInfo`.tagId = 'tag2';
+    </select>
+
+    <select id="showTag3Blogs" resultType="com.example.demo.entity.BlogInfo">
+        Select COUNT (`blogInfo`.tagId)
+        FROM blogInfo
+        WHERE `blogInfo`.tagId = 'tag3';
+    </select>
+
+    <select id="showTag4Blogs" resultType="com.example.demo.entity.BlogInfo">
+        Select COUNT (`blogInfo`.tagId)
+        FROM blogInfo
+        WHERE `blogInfo`.tagId = 'tag4';
+    </select>
+
+    <select id="showTag5Blogs" resultType="com.example.demo.entity.BlogInfo">
+        Select COUNT (`blogInfo`.tagId)
+        FROM blogInfo
+        WHERE `blogInfo`.tagId = 'tag5';
+    </select>
+</mapper>

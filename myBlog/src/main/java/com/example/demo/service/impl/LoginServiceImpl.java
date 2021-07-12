@@ -17,6 +17,9 @@ public class LoginServiceImpl implements LoginService {
     @Override
     public boolean checkTheInfo(String username,String passowrd){
         //TODO:这里需要增加学生端接口
+
+
+
         if(username.equals(passowrd))return true;
         return false;
     }
@@ -24,7 +27,7 @@ public class LoginServiceImpl implements LoginService {
 
 
     @Override
-    public boolean checkTheCookie(String userID,String cookie,HttpServletRequest request){
+    public boolean checkTheCookie(int userID,String cookie,HttpServletRequest request){
         User user;
         //TODO:检测是否有session
         if(request.getSession().getAttribute("verifyToken")==null){
@@ -45,14 +48,18 @@ public class LoginServiceImpl implements LoginService {
         HttpSession token = request.getSession();
         token.setAttribute("token","yes");
 
+
+        token.setAttribute("username", name);
+        token.setAttribute("password", password);
+
         Cookie cookieLoginStatue = new Cookie("loginStatue", "Yes");
         response.addCookie(cookieLoginStatue);
 
+        //这个name应该是用户名
         Cookie cookieName = new Cookie("ID", name);
         response.addCookie(cookieName);
 
+
+
     }
-
-
-
 }

@@ -93,7 +93,7 @@ html {
 html body {-webkit-font-smoothing: antialiased;overflow-x: hidden;padding: .75rem 2rem;background-repeat: no-repeat;background-attachment: fixed;padding-top: 1.25rem;padding-bottom: 1.25rem;background: #1c3faa;}
 
 .wrapper{
-  background-color: #f1f5f
+  background-color: #f1f5ff
 } 
  
 /* @import url('https://fonts.googleapis.com/css?family=Nunito:300,400,600,700,800&subset=latin-ext');
@@ -313,6 +313,54 @@ html body {-webkit-font-smoothing: antialiased;overflow-x: hidden;padding: .75re
 /* ---------------------------------- */
 /* section header
 ------------------------------------- */
+body{
+  background: #FFBD1E;
+}
+select{
+  font-family: "微软雅黑";
+  /*margin:100px;*/
+  background: rgba(0,0,0,0);
+  width: 150px;
+  height: 30px;
+  font-size: 9px;
+  text-align: center;
+  border: 1px #1a1a1a solid;
+  border-radius: 5px;
+}
+option{
+  color: black;
+  line-height: 20px;
+}
+select:focus{
+  border: 2px #ddd solid;
+  box-shadow: 0 0 15px 1px #DDDDDD;
+}
+option:hover{
+  background: #EBCCD1;
+}
+
+input{
+  border: 1px solid #ccc;
+  padding: 7px 0px;
+  border-radius: 3px;
+  padding-left:5px;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+  box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+  -webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
+  -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+  transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s
+}
+input:focus{
+  border-color: #66afe9;
+  outline: 0;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(102,175,233,.6);
+  box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(102,175,233,.6)
+}
+
+
+
+
+
 .section-header {
   position: relative;
   display: flex;
@@ -10123,3 +10171,49 @@ ul.story-side-list li a .story-user-innr p span.story-time-ago{
   background:transparent
 }
 }
+
+/*blog page*/
+#blogContent {
+  margin-left: 30px;
+  margin-right: 30px;
+}
+
+.section-header-left {
+  margin-left: 30px;
+  margin-right: 30px;
+}
+
+/*writing blog page */
+
+#layout{
+  margin-left:40px;
+}
+
+#title-field{
+  margin-top:10px;
+  margin-bottom:10px;
+  margin-right:10px;
+  margin-left:10px;
+}
+
+#articleTitle{
+  height:30px;
+  width: 40%;
+  margin-top:15px;
+}
+#articleCategory{
+  height:35px;
+  margin-top:15px;
+  width:20%;
+}
+#btnList {
+  height:auto;
+  width:auto;
+  position:relative;
+  float:right;
+  margin-top:15px;
+  margin-bottom:15px;
+  padding-right:70px;
+}
+
+
