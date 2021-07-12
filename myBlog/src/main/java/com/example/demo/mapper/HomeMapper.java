@@ -1,6 +1,10 @@
 package com.example.demo.mapper;
 
 import com.example.demo.entity.User;
+
+import com.example.demo.entity.view.CommentView;
+import com.example.demo.entity.view.HomeBlogView;
+
 import com.example.demo.entity.BlogInfo;
 import org.apache.ibatis.annotations.Mapper;
 
@@ -25,6 +29,8 @@ public interface HomeMapper {
     // 展示热门博客(top10)
     List<BlogInfo> getBlogs();
 
-//    List<blogInfo> getBlogs(String username);  //在主页根据用户推送博客
-//    List<blogInfo> changeCategory(Integer category);  //改变分类
+
+    //展示热门博客，根据前端页面的格式查询
+    List<CommentView> getCommentViews(int blogId);
+    List<HomeBlogView> getBlogViews();
 }

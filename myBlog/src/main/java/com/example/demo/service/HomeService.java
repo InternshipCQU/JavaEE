@@ -1,6 +1,7 @@
 package com.example.demo.service;
 
 import com.example.demo.entity.User;
+import com.example.demo.entity.view.HomeBlogView;
 import com.example.demo.entity.BlogInfo;
 
 import java.util.List;
@@ -13,5 +14,7 @@ public interface HomeService {
     List<User> showHotBlogger();
     // 用户登录后，推送其关注的博主【关注博主中点赞数top6】
     List<User> showRecommendBlogger(int userId);
+
+    List<HomeBlogView> getBlogViews();
     List<BlogInfo> getBlogs();    // 主页展示全站点击数top10博客
 }

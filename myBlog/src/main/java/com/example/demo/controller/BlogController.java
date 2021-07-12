@@ -22,7 +22,7 @@ public class BlogController {
     public String blog(@PathVariable("blogId") int blogId, Model model){
         BlogInfo blog = blogService.getBlog(blogId);
         model.addAttribute("blog",blog);
-        return "blog-test";
+        return "test-blog";
     }
 
     @GetMapping("/like")

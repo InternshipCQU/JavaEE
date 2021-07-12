@@ -2,7 +2,6 @@ package com.example.demo.service;
 
 import com.example.demo.entity.BlogInfo;
 
-
 public interface BlogService {
     BlogInfo getBlog(int blogId);
     String like(int blogId, int currentLikes);          //点赞
