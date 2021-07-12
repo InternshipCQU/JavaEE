@@ -1,6 +1,6 @@
 package com.example.demo.service.impl;
 
-import com.example.demo.entity.blogInfo;
+import com.example.demo.entity.BlogInfo;
 import com.example.demo.mapper.BlogMapper;
 import com.example.demo.service.BlogService;
 import com.example.demo.utils.GetTime;
@@ -17,7 +17,7 @@ public class BlogServiceImpl implements BlogService {
     private BlogMapper blogMapper;
 
     @Override
-    public blogInfo getBlog(int blogId) {
+    public BlogInfo getBlog(int blogId) {
         return blogMapper.getBlog(blogId);
     }
 

@@ -1,6 +1,6 @@
 package com.example.demo.controller;
 
-import com.example.demo.entity.blogInfo;
+import com.example.demo.entity.BlogInfo;
 import com.example.demo.service.BlogService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,8 +20,7 @@ public class BlogController {
 
     @RequestMapping("/blogs/{blogId}")
     public String blog(@PathVariable("blogId") int blogId, Model model){
-        blogInfo blog = blogService.getBlog(blogId);
-
+        BlogInfo blog = blogService.getBlog(blogId);
         model.addAttribute("blog",blog);
         return "test-blog";
     }

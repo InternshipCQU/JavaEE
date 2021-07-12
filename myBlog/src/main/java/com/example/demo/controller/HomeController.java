@@ -14,7 +14,7 @@
 
 package com.example.demo.controller;
 
-import com.example.demo.entity.blogInfo;
+
 import com.example.demo.entity.view.HomeBlogView;
 import com.example.demo.service.HomeService;
 import org.springframework.stereotype.Controller;
@@ -35,6 +35,7 @@ public class HomeController {
 //        model.addAttribute("blogList", homeService.getBlogs());
 //        return "test-home1";
 //    }
+
 
     @RequestMapping("/home/{tagId}")     //点击标签后查询对应标签的博客
     public String tagToBlogs(@PathVariable("tagId") int tagId, Model model){
