@@ -10173,6 +10173,17 @@ ul.story-side-list li a .story-user-innr p span.story-time-ago{
 }
 }
 
+/*blog page*/
+#blogContent {
+  margin-left: 30px;
+  margin-right: 30px;
+}
+
+.section-header-left {
+  margin-left: 30px;
+  margin-right: 30px;
+}
+
 /*writing blog page */
 
 #layout{
@@ -10205,4 +10216,5 @@ ul.story-side-list li a .story-user-innr p span.story-time-ago{
   margin-bottom:15px;
   padding-right:70px;
 }
+
 
