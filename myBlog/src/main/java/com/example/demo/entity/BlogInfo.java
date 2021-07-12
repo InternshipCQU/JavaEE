@@ -13,6 +13,8 @@ public class BlogInfo {
     public Integer collectNum;    // 收藏数，默认为0
     public Integer userId;       // 用户ID
     public Integer tagId;       // 博客标签ID
+    public String tagName;      // 博客标签名
+
 
     public Integer getBlogId() {
         return blogId;
@@ -101,4 +103,13 @@ public class BlogInfo {
     public void setTagId(Integer tagId) {
         this.tagId = tagId;
     }
+
+    public String getTagName() {
+        return tagName;
+    }
+
+    public void setTagName(String tagName) {
+        this.tagName = tagName;
+    }
+
 }

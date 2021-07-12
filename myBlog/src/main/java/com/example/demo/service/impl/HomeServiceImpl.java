@@ -1,6 +1,7 @@
 package com.example.demo.service.impl;
 
 import com.example.demo.entity.BlogInfo;
+import com.example.demo.entity.TagMark;
 import com.example.demo.entity.User;
 import com.example.demo.entity.view.CommentView;
 import com.example.demo.entity.view.HomeBlogView;
@@ -28,6 +29,11 @@ public class HomeServiceImpl implements HomeService {
     }
 
     @Override
+    public List<BlogInfo> getBlogs() {
+        return homeMapper.getBlogs();
+    }
+
+    @Override
     public List<User> showHotBlogger() {
         return homeMapper.showHotBlogger();
     }
@@ -37,12 +43,6 @@ public class HomeServiceImpl implements HomeService {
     public List<User> showRecommendBlogger(int userId) {
         return homeMapper.showRecommendBlogger(userId);
     }
-
-    @Override
-    public List<BlogInfo> getBlogs() {
-        return homeMapper.getBlogs();
-    }
-
 
     //test
     @Override
@@ -54,5 +54,21 @@ public class HomeServiceImpl implements HomeService {
             blogList.get(i).setCommentList(commentList);
         }
         return blogList;
+    }
+
+    @Override
+    public List<HomeBlogView> getRecommendBlogViews(int tagId) {
+        List<HomeBlogView> blogList = homeMapper.getRecommendBlogViews(tagId);
+        for(int i = 0; i < blogList.size(); i++){
+            int blogId = blogList.get(i).getBlogId();
+            List<CommentView> commentList = homeMapper.getCommentViews(blogId);
+            blogList.get(i).setCommentList(commentList);
+        }
+        return blogList;
+    }
+
+    @Override
+    public TagMark getTagMark(int userId) {
+        return homeMapper.getTagMark(userId);
     }
 }
