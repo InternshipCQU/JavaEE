@@ -8,6 +8,8 @@ import com.example.demo.entity.view.HomeBlogView;
 import com.example.demo.entity.BlogInfo;
 
 
+import javax.servlet.http.HttpServletRequest;
+import java.util.ArrayList;
 import java.util.List;
 
 //博客主页相关功能
@@ -20,7 +22,10 @@ public interface HomeService {
     List<User> showRecommendBlogger(int userId);
 
     String getTheClass(String s);
-    List<HomeBlogView> getBlogViews();
+    ArrayList<HomeBlogView> getBlogViews();
     List<BlogInfo> getBlogs();    // 主页展示全站点击数top10博客
+
+    String giveTheBlogToIndex(String cla,HttpServletRequest request);
+    void Init(String cla,HttpServletRequest request);
 
 }

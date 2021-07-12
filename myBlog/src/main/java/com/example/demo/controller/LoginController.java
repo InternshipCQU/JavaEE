@@ -33,6 +33,7 @@ public class LoginController {
     }
 
 
+    //TODO:记得改成转发形式 不要停留在这个路径
     @GetMapping("/tologin")
     public String login(@RequestParam("username") String username, @RequestParam("password") String password,  Model model, HttpServletResponse response, HttpServletRequest request){
         User user = new User();
