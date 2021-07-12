@@ -3,9 +3,9 @@
 <mapper namespace="com.example.demo.mapper.HomeMapper">
     <select id="tagToBlogs" resultType="com.example.demo.entity.BlogInfo">
         SELECT blogInfo.blogTitle, blogInfo.blogContent, blogInfo.createTime,
-            blogInfo.clickNum, blogInfo.likesNum, blogInfo.userId, blogInfo.tagId
+            blogInfo.clickNum, blogInfo.likesNum, blogInfo.userId
         FROM blogInfo, blogTag, tagBlogInfo
-        WHERE blogTag.tagId = #{tagId}
+        WHERE blogTag.tagName = #{tagName}
             AND blogTag.tagId = tagBlogInfo.tagId
             AND tagBlogInfo.blogId = blogInfo.blogId;
     </select>
