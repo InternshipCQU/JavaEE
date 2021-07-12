@@ -5,11 +5,14 @@ import com.example.demo.entity.User;
 import com.example.demo.entity.blogInfo;
 import com.example.demo.mapper.HomeMapper;
 import com.example.demo.service.HomeService;
+import com.example.demo.utils.SplitString;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.util.List;
+
+import static com.example.demo.utils.SplitString.splitId;
 
 @Service("HomeService")
 public class HomeServiceImpl implements HomeService {
@@ -40,5 +43,11 @@ public class HomeServiceImpl implements HomeService {
     @Override
     public List<blogInfo> getBlogs() {
         return homeMapper.getBlogs();
+    }
+
+    @Override
+    public String getTheClass(String s){
+        String[] strs =  SplitString.splitId(s);
+        return strs[strs.length-1];
     }
 }
