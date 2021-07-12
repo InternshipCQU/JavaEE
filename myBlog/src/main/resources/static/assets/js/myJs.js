@@ -147,16 +147,19 @@ function loadC()
 //====
 
 
+//==== Dynamic show ====
+
 function loadTheBlog()
 {
     //alert("load the blog")
-    url = window.location.pathname;
-
+    urls = window.location.pathname;
+    str = urls.split("/")
+    //alert(str[2])
     $.ajax({
 
         url: 'http://localhost:8080/getTheBlogs', //这里是返回路径 在controller里写好对应函数就行 TODO:记得修改路径后面的 这是测试
         type: 'get',
-        data: {"url":url}, //这里是向后端传输的json 应该是可以直接传对象 比如User这种entity
+        data: {"class":str[2]}, //这里是向后端传输的json 应该是可以直接传对象 比如User这种entity
         //例如点赞的话 我们传递blogID userID到后端 后端再进行操作
         async: true,
 
@@ -165,12 +168,13 @@ function loadTheBlog()
             $("#final").attr("id","null")
             $("#comments").attr("id","commentsNull")
 
+
             if(data != null){
 
                 $("#null").after("<div class=\"post\" id =\"final\" >\n" +
                     "    <div class=\"post-heading\">\n" +
                     "        <div class=\"post-avature\">\n" +
-                    "            <img src=\"assets/images/avatars/avatar-6.jpg\" alt=\"\">\n" +
+                    "            <img src=\"http://localhost:8080/assets/images/avatars/avatar-6.jpg\" alt=\"\">\n" +
                     "        </div>\n" +
                     "        <div class=\"post-title\">\n" +
                     "            <h4 id = \"username\">  </h4>\n" +
@@ -197,12 +201,12 @@ function loadTheBlog()
                     " <a id = \"link\">\n" +
                     "    <div class=\"post-description\">\n" +
                     "        <div class=\"fullsizeimg\">\n" +
-                    "            <img src=\"assets/images/post/img-1.jpg\" alt=\"\">\n" +
+                    "            <img src=\"http://localhost:8080/assets/images/post/img-1.jpg\" alt=\"\">\n" +
                     "        </div>\n" +
                     "        <div class=\"post-state-details\">\n" +
                     "            <div>\n" +
-                    "                <img src=\"assets/images/icons/reactions_like.png\" alt=\"\">\n" +
-                    "                <img src=\"assets/images/icons/reactions_love.png\" alt=\"\">\n" +
+                    "                <img src=\"http://localhost:8080/assets/images/icons/reactions_like.png\" alt=\"\">\n" +
+                    "                <img src=\"http://localhost:8080/assets/images/icons/reactions_love.png\" alt=\"\">\n" +
                     "                <p> 13 </p>\n" +
                     "            </div>\n" +
                     "            <p> 24 Comments</p>\n" +
@@ -226,7 +230,7 @@ function loadTheBlog()
                     "        <a href=\"#\" class=\"view-more-comment\"   id = \"commentsNull\"> Veiw 8 more Comments</a>\n" +
                     "        <div class=\"post-comments-single\">\n" +
                     "            <div class=\"post-comment-avatar\">\n" +
-                    "                <img src=\"assets/images/avatars/avatar-5.jpg\" alt=\"\">\n" +
+                    "                <img src=\"http://localhost:8080/assets/images/avatars/avatar-5.jpg\" alt=\"\">\n" +
                     "            </div>\n" +
                     "            <div class=\"post-comment-text\">\n" +
                     "                <div class=\"post-comment-text-inner\">\n" +
@@ -244,7 +248,7 @@ function loadTheBlog()
                     "        </div>\n" +
                     "        <div class=\"post-comments-single\">\n" +
                     "            <div class=\"post-comment-avatar\">\n" +
-                    "                <img src=\"assets/images/avatars/avatar-2.jpg\" alt=\"\">\n" +
+                    "                <img src=\"http://localhost:8080/assets/images/avatars/avatar-2.jpg\" alt=\"\">\n" +
                     "            </div>\n" +
                     "            <div class=\"post-comment-text\">\n" +
                     "                <div class=\"post-comment-text-inner\">\n" +
@@ -263,7 +267,7 @@ function loadTheBlog()
                     "        </div>\n" +
                     "        <div class=\"post-comments-single\">\n" +
                     "            <div class=\"post-comment-avatar\">\n" +
-                    "                <img src=\"assets/images/avatars/avatar-3.jpg\" alt=\"\">\n" +
+                    "                <img src=\"http://localhost:8080/assets/images/avatars/avatar-3.jpg\" alt=\"\">\n" +
                     "            </div>\n" +
                     "            <div class=\"post-comment-text\">\n" +
                     "                <div class=\"post-comment-text-inner\">\n" +
@@ -286,7 +290,7 @@ function loadTheBlog()
                     "        <a href=\"#\" class=\"view-more-comment\"> Veiw 8 more Comments</a>\n" +
                     "        <div class=\"post-add-comment\">\n" +
                     "            <div class=\"post-add-comment-avature\">\n" +
-                    "                <img src=\"assets/images/avatars/avatar-2.jpg\" alt=\"\">\n" +
+                    "                <img src=\"http://localhost:8080/assets/images/avatars/avatar-2.jpg\" alt=\"\">\n" +
                     "            </div>\n" +
                     "            <div class=\"post-add-comment-text-area\">\n" +
                     "                <input type=\"text\" placeholder=\"Write your comment...\">\n" +
@@ -317,7 +321,7 @@ function loadTheBlog()
 
             $("#commentsNull").after("<div class=\"post-comments-single\">\n" +
                 "                                    <div class=\"post-comment-avatar\">\n" +
-                "                                        <img src=\"assets/images/avatars/avatar-5.jpg\" alt=\"\">\n" +
+                "                                        <img src=\"http://localhost:8080/assets/images/avatars/avatar-5.jpg\" alt=\"\">\n" +
                 "                                    </div>\n" +
                 "                                    <div class=\"post-comment-text\">\n" +
                 "                                        <div class=\"post-comment-text-inner\">\n" +

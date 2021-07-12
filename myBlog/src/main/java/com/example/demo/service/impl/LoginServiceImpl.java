@@ -43,6 +43,8 @@ public class LoginServiceImpl implements LoginService {
         HttpSession token = request.getSession();
         token.setAttribute("token","yes");
 
+
+
         Cookie cookieLoginStatue = new Cookie("loginStatue", "Yes");
         response.addCookie(cookieLoginStatue);
 
