@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="en">
-
+<meta charset="UTF-8">
 <head>
 
     <!-- Basic Page Needs
@@ -1013,8 +1013,7 @@
                             // categorySelect.init();
                         });
 
-
-
+                        //下面这部分不需要
                         // var testEditor;
                         // $(function () {
                         //     testEditor = editormd.markdownToHTML("doc-content", {//注意：这里是上面DIV的id
@@ -1039,19 +1038,17 @@
                                     var title = $("#articleTitle").val();
                                     var content = $("#articleContent").val();
                                     var typeId = $("#articleCategory").val();
-                                    var htmlcontent = $("#html-content").val();//测试了一下，未定义
                                     var doccontent = $("#doc-content").val();//测试了一下为空
                                     // alert(title+ typeof title);
                                     // alert(content+ typeof content);
                                     // alert(typeId+ typeof typeId);
                                     // alert(doccontent);
                                     // alert(typeof doccontent);
-                                    // alert(htmlcontent);
-                                    // alert(typeof htmlcontent);
 
-                                    var testhtmlcontent = editor.getHTML();
-                                    console.log(testhtmlcontent);
-                                    alert(typeof testhtmlcontent);
+                                    var htmlcontent = editor.getHTML();
+                                    alert(htmlcontent);
+                                    console.log(htmlcontent);
+                                    alert(typeof htmlcontent);
 
                                     $.ajax({
                                         type: "POST",
