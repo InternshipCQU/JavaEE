@@ -14,7 +14,7 @@ public class RegisterController {
 
     @GetMapping("/register")
     public String register(){//注册界面
-        return "register";
+        return "form-singup";
     }
 
     @RequestMapping("/toRegist")//这里连接前端的注册按钮

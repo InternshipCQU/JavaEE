@@ -34,7 +34,7 @@ public class HomeController {
     @RequestMapping("/home")    //加载主页显示的博客
     public String getBlogs(@RequestBody String username, Model model){
         model.addAttribute("blogList", homeService.getBlogs(username));
-        return "home";
+        return "index";
     }
 
     @RequestMapping(value = "/{tagId}")     //点击标签后查询对应标签的博客
@@ -46,6 +46,6 @@ public class HomeController {
     @RequestMapping("/search")
     public String searchBlogs(@RequestBody String keyword, Model model) {
         model.addAttribute("blogListFilteredByKeyword", homeService.searchBlogs(keyword));
-        return "search";
+        return "feeds";
     }
 }
