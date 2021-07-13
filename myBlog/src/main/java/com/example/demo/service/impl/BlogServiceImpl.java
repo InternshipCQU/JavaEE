@@ -4,10 +4,13 @@ import com.example.demo.entity.BlogInfo;
 import com.example.demo.mapper.BlogMapper;
 import com.example.demo.service.BlogService;
 import com.example.demo.utils.GetTime;
+import com.example.demo.utils.TagMap;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.HashMap;
+import java.util.Map;
 
 @Component
 @Service("BlogService")
@@ -53,5 +56,35 @@ public class BlogServiceImpl implements BlogService {
         GetTime getTime = new GetTime();
         blogMapper.collect(blogId, userId, getTime.getCurrentTime());
         return "收藏成功";
+    }
+
+    @Override
+    public void updateMarkWhenLike(int tagId, int userId) {
+        TagMap map = new TagMap();
+        blogMapper.updateMarkWhenLike(map.getTagName(tagId), userId);
+    }
+
+    @Override
+    public void updateMarkWhenCancelLike(int tagId, int userId) {
+        TagMap map = new TagMap();
+        blogMapper.updateMarkWhenCancelLike(map.getTagName(tagId), userId);
+    }
+
+    @Override
+    public void updateMarkWhenComment(int tagId, int userId) {
+        TagMap map = new TagMap();
+        blogMapper.updateMarkWhenComment(map.getTagName(tagId), userId);
+    }
+
+    @Override
+    public void updateMarkWhenForward(int tagId, int userId) {
+        TagMap map = new TagMap();
+        blogMapper.updateMarkWhenForward(map.getTagName(tagId), userId);
+    }
+
+    @Override
+    public void updateMarkWhenCollect(int tagId, int userId) {
+        TagMap map = new TagMap();
+        blogMapper.updateMarkWhenCollect(map.getTagName(tagId), userId);
     }
 }

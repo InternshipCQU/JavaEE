@@ -656,7 +656,7 @@
 
             <div class="main_content_inner">
 
-                <h1 class="uk-flex uk-flex-between"> 博文标题 </h1>
+                <h1 class="uk-flex uk-flex-between" th:text = "${title}">  </h1>
                 <br>
                 <div class="uk-flex uk-flex-between">
 
@@ -676,7 +676,7 @@
                     <nav class="responsive-tab style-1 mb-3">
                         <ul>
                             <li class="uk-active"><a href="#"> 博文作者 </a></li>
-                            <li><a href="#"> 博文分类：C++ </a></li>
+                            <li><a href="#" th:text = "${category}">  </a></li>
 <!--                            <li><a href="#" > 点赞</a></li>-->
                             <li><a href="#" id="repost"> 转发</a></li>
                             <li><a href="#" id="postDate" th:text =  "${postDate}"> </a></li>
@@ -800,12 +800,12 @@
                             <a href="#" class="see-all"> See all</a>
                         </div>
                     </div>
-
-                    <!--博客正文-->
+                                        
+                        <!--博客正文-->
                     <div id="blogContent" th:utext="${test}" >
 
                     </div>
-                    <!--博客正文-->
+
                 </div>
                 <br>
 

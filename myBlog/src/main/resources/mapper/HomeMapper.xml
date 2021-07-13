@@ -3,9 +3,9 @@
 <mapper namespace="com.example.demo.mapper.HomeMapper">
     <select id="tagToBlogs" resultType="com.example.demo.entity.BlogInfo">
         SELECT blogInfo.blogTitle, blogInfo.blogContent, blogInfo.createTime,
-            blogInfo.clickNum, blogInfo.likesNum, blogInfo.userId, blogInfo.tagId
+            blogInfo.clickNum, blogInfo.likesNum, blogInfo.userId
         FROM blogInfo, blogTag, tagBlogInfo
-        WHERE blogTag.tagId = #{tagId}
+        WHERE blogTag.tagName = #{tagName}
             AND blogTag.tagId = tagBlogInfo.tagId
             AND tagBlogInfo.blogId = blogInfo.blogId;
     </select>
@@ -55,5 +55,18 @@
         FROM blogInfo, User
         WHERE blogInfo.userId = User.userId
         ORDER BY likesNum DESC limit 10;
+    </select>
+
+    <select id="getRecommendBlogViews" resultType="com.example.demo.entity.view.HomeBlogView">
+        SELECT blogId, username, blogTitle, blogContent, createTime, clickNum, blogInfo.likesNum, commentNum, forwardNum, collectNum
+        FROM blogInfo, User, tagBlogInfo
+        WHERE blogInfo.userId = User.userId AND tagBlogInfo.tagId = #{tagId} AND blogInfo.blogId = tagBlogInfo.blogId
+        ORDER BY likesNum DESC limit 5;
+    </select>
+
+    <select id="getTagMark" resultType="com.example.demo.entity.TagMark">
+        SELECT tagId1, tagId2, tagId3, tagId4, tagId5
+        FROM TagMark
+        WHERE userId = #{userId}
     </select>
 </mapper>

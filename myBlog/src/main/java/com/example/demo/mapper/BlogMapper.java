@@ -12,4 +12,10 @@ public interface BlogMapper {
     void comment(int blogId, int userId, String createTime, String comment);  //评论
     void forward(int blogId, int userId, String createTime);       //转发
     void collect(int blogId, int userId, String createTime);      //收藏
+
+    void updateMarkWhenLike(String tagName, int userId);
+    void updateMarkWhenCancelLike(String tagName, int userId);
+    void updateMarkWhenComment(String tagName, int userId);
+    void updateMarkWhenForward(String tagName, int userId);
+    void updateMarkWhenCollect(String tagName, int userId);
 }

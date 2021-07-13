@@ -26,16 +26,17 @@ public class BlogController {
     }
 
     @GetMapping("/like")
-    public void like(@PathVariable("blogId") int blogId, @PathVariable("currentLikes") int currentLikes){
+    public int like(@PathVariable("blogId") int blogId, @PathVariable("currentLikes") int currentLikes){
         //TODO:这里向数据库写点赞信息 之后应该进行刷新操作
         blogService.like(blogId, currentLikes + 1);
-
+        return currentLikes + 1;
     }
 
     @GetMapping("/cancelLike")
-    public  void cancelLike(@PathVariable("blogId") int blogId, @PathVariable("currentLikes") int currentLikes){
+    public int cancelLike(@PathVariable("blogId") int blogId, @PathVariable("currentLikes") int currentLikes){
         //TODO:这里向数据库写取消点赞信息 之后应该进行刷新操作
         blogService.cancelLike(blogId, currentLikes - 1);
+        return currentLikes - 1;
     }
 
     @GetMapping("/comment")
