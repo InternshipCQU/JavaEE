@@ -10,6 +10,7 @@ import com.example.demo.service.HomeService;
 import com.example.demo.utils.SplitString;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.ui.Model;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -156,4 +157,12 @@ public class HomeServiceImpl implements HomeService {
         return homeMapper.getTagMark(userId);
 
     }
+
+    @Override
+    public void getTrendings(HttpServletRequest request, Model model){
+        //TODO:找到搜索或者点击量最大的几个标签或者搜索词
+        model.addAttribute("trendingOne","TrendingOne");
+        model.addAttribute("trendingTwo","TrendingOne");
+        model.addAttribute("trendingThree","TrendingOne");
+    }//得到向前端发送的trendings
 }

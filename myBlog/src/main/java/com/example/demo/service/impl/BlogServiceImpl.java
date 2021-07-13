@@ -9,8 +9,6 @@ import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
-import java.util.HashMap;
-import java.util.Map;
 
 @Component
 @Service("BlogService")
@@ -25,21 +23,20 @@ public class BlogServiceImpl implements BlogService {
     }
 
     @Override
-    public String like(int blogId, int currentLikes) {
-        int i = currentLikes + 1;
-        blogMapper.like(blogId, i);
+    public String like(int blogId) {
+        blogMapper.like(blogId);
         return "点赞成功";
     }
 
     @Override
-    public void cancelLike(int blogId, int currentLikes) {
-        int i = currentLikes -1;
-        blogMapper.cancelLike(blogId, i);
+    public void cancelLike(int blogId) {
+        blogMapper.cancelLike(blogId);
     }
 
     @Override
     public String comment(int blogId, int userId, String comment) {
         GetTime getTime = new GetTime();
+        System.out.println(getTime.getCurrentTime());
         blogMapper.comment(blogId, userId, getTime.getCurrentTime(), comment);
         return "评论成功";
     }
