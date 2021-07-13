@@ -14,7 +14,7 @@ public class User {
     public Integer fansNum;    // 粉丝数
     public Integer likesNum;   // 点赞数
     public Integer blogsNum;   // 博客数
-    public String userRefisiterTime;   // 用户注册时间
+    public String userRegisterTime;   // 用户注册时间
     public String birthdate;   // 用户出生日期
     public String profile;   // 用户个人简介
     public String area;        // 用户所在地区
@@ -122,11 +122,11 @@ public class User {
     }
 
     public String getUserRefisiterTime() {
-        return userRefisiterTime;
+        return userRegisterTime;
     }
 
     public void setUserRefisiterTime(String userRefisiterTime) {
-        this.userRefisiterTime = userRefisiterTime;
+        this.userRegisterTime = userRefisiterTime;
     }
 
     public String getBirthdate() {

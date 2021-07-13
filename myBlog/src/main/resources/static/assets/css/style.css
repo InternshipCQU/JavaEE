@@ -107,7 +107,34 @@ html body {-webkit-font-smoothing: antialiased;overflow-x: hidden;padding: .75re
  *    unaffected by the padding on different breakpoints. It's important for the size modifiers.
  */
 
-
+input[type="checkbox"]{
+  -webkit-appearance: none;
+  vertical-align:middle;
+  margin-top:0;
+  background:#fff;
+  border:#999 solid 1px;
+  border-radius: 3px;
+  min-height: 12px;
+  min-width: 12px;
+}
+input[type="checkbox"]:checked {
+  background: #3190e8;
+}
+input[type=checkbox]:checked::after{
+  content: '';
+  top: 3px;
+  left: 3px;
+  position: absolute;
+  background: transparent;
+  border: #fff solid 2px;
+  border-top: none;
+  border-right: none;
+  height: 6px;
+  width: 10px;
+  -moz-transform: rotate(-45deg);
+  -ms-transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
+  transform: rotate(-45deg);}
 
 
 .container {
