@@ -2,26 +2,26 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.example.demo.mapper.BlogMapper">
     <update id="like">
-        update blogInfo set likesNum = #{currentLikes} where blogId = #{blogId}
+        update blogInfo set likesNum = likesNum + 1 where blogId = #{blogId}
     </update>
 
     <update id="cancelLike">
-        update blogInfo set likesNum = #{currentLikes} where blogId = #{blogId}
+        update blogInfo set likesNum = likesNum - 1 where blogId = #{blogId}
     </update>
 
     <insert id="comment">
         insert into blogComment(commentContent, createTime, blogId, userId)
-        values(#{comment}, #{createDate}, #{blogId}, #{userId})
+        values(#{comment}, #{createTime}, #{blogId}, #{userId})
     </insert>
 
     <insert id="forward">
         insert into blogForward(createTime, blogId, userId)
-        values(#{createDate}, #{blogId}, #{userId})
+        values(#{createTime}, #{blogId}, #{userId})
     </insert>
 
     <insert id="collect">
         insert into blogCollect(createTime, blogId, userId)
-        values(#{createDate}, #{blogId}, #{userId})
+        values(#{createTime}, #{blogId}, #{userId})
     </insert>
 
     <select id="getBlog" resultType="com.example.demo.entity.BlogInfo">
@@ -33,22 +33,22 @@
     </select>
 
     <update id="updateMarkWhenLike">
-        UPDATE TagMark SET #{tagName} = #{tagName} + 1 WHERE userId = #{userId}
+        UPDATE TagMark SET ${tagName} = ${tagName} + 1 WHERE userId = #{userId}
     </update>
 
     <update id="updateMarkWhenCancelLike">
-        UPDATE TagMark SET #{tagName} = #{tagName} - 1 WHERE userId = #{userId}
+        UPDATE TagMark SET ${tagName} = ${tagName} - 1 WHERE userId = #{userId}
     </update>
 
     <update id="updateMarkWhenComment">
-        UPDATE TagMark SET #{tagName} = #{tagName} + 2 WHERE userId = #{userId}
+        UPDATE TagMark SET ${tagName} = ${tagName} + 2 WHERE userId = #{userId}
     </update>
 
     <update id="updateMarkWhenForward">
-        UPDATE TagMark SET #{tagName} = #{tagName} + 3 WHERE userId = #{userId}
+        UPDATE TagMark SET ${tagName} = ${tagName} + 3 WHERE userId = #{userId}
     </update>
 
     <update id="updateMarkWhenCollect">
-        UPDATE TagMark SET #{tagName} = #{tagName} + 3 WHERE userId = #{userId}
+        UPDATE TagMark SET ${tagName} = ${tagName} + 3 WHERE userId = #{userId}
     </update>
 </mapper>
