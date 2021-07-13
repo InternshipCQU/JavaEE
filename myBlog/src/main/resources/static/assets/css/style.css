@@ -1,4 +1,5 @@
 @charset "UTF-8";
+
 /*
  * Author: Hamse Mohamoud
  * URL: http://Holathemes.net
@@ -106,6 +107,10 @@ html body {-webkit-font-smoothing: antialiased;overflow-x: hidden;padding: .75re
  * 1. Box sizing has to be `content-box` so the max-width is always the same and
  *    unaffected by the padding on different breakpoints. It's important for the size modifiers.
  */
+
+
+
+
 .container {
   /* 1 */
   box-sizing: content-box;
@@ -317,7 +322,7 @@ body{
   background: #FFBD1E;
 }
 select{
-  font-family: "å¾®è½¯é›…é»‘";
+  font-family: "Î¢ÈíÑÅºÚ";
   /*margin:100px;*/
   background: rgba(0,0,0,0);
   width: 150px;
@@ -356,11 +361,6 @@ input:focus{
   -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(102,175,233,.6);
   box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(102,175,233,.6)
 }
-
-
-
-
-
 .section-header {
   position: relative;
   display: flex;
@@ -10182,11 +10182,11 @@ ul.story-side-list li a .story-user-innr p span.story-time-ago{
   margin-right: 30px;
 }
 
-/*æ­£æ–‡åŒºå’Œè¯„è®ºåŒºçš„åˆ†éš”æ¡*/
+/*ÕıÎÄÇøºÍÆÀÂÛÇøµÄ·Ö¸ôÌõ*/
 .nav-single-group uk-sticky {
   width: 80%;
 }
-/*æ­£æ–‡åŒºå’Œè¯„è®ºåŒºçš„åˆ†éš”æ¡*/
+/*ÕıÎÄÇøºÍÆÀÂÛÇøµÄ·Ö¸ôÌõ*/
 
 /*author-bar*/
 #author-bar {
@@ -10196,7 +10196,7 @@ ul.story-side-list li a .story-user-innr p span.story-time-ago{
 
 
 
-/*çŒ«çˆªç‚¹èµæŒ‰é’®*/
+/*Ã¨×¦µãÔŞ°´Å¥*/
 .paw-button {
   --background: #fff;
   --background-active: #FEE8F4;
@@ -10539,7 +10539,7 @@ html {
 /*  align-items: center;*/
 /*  background: #2c2c2c;*/
 /*}*/
-/*çŒ«çˆªç‚¹èµæŒ‰é’®*/
+/*Ã¨×¦µãÔŞ°´Å¥*/
 
 
 /*writing blog page */
@@ -10575,7 +10575,7 @@ html {
   padding-right:70px;
 }
 
-/*å¦ä¸€ä¸ªæœç´¢æ¡†*/
+/*ÁíÒ»¸öËÑË÷¿ò*/
 body {
   margin: 0;
   padding: 0;
@@ -10638,7 +10638,7 @@ body {
   width: 0;
 }
 
-/*å¦ä¸€ä¸ªæœç´¢æ¡†*/
+/*ÁíÒ»¸öËÑË÷¿ò*/
 
 
-/*åšå®¢é¡µé¢çš„å¯¼èˆªæ¡*/
+/*²©¿ÍÒ³ÃæµÄµ¼º½Ìõ*/

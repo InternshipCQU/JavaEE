@@ -1,29 +1,29 @@
 package com.example.demo.controller;
+import com.aliyun.oss.OSSClient;
 import com.example.demo.entity.User;
+import com.example.demo.entity.UserLike;
+
 import com.example.demo.service.*;
 import com.example.demo.utils.UploadAvatarUtil;
-import net.sf.json.JSON;
 import org.apache.commons.io.FileUtils;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.relational.core.sql.In;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
-import com.aliyun.oss.OSSClient;
-import com.aliyun.oss.model.CannedAccessControlList;
-import com.aliyun.oss.model.CreateBucketRequest;
-import com.aliyun.oss.model.PutObjectRequest;
-import com.aliyun.oss.model.PutObjectResult;
-import javax.annotation.Resource;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.xml.soap.SOAPPart;
 import java.io.*;
-import java.util.Date;
+import java.util.ArrayList;
+import java.util.List;
 
 
 @Controller
@@ -31,6 +31,11 @@ public class InfoController {
     @Autowired
     private setService setss;
     private getService getss;
+
+    public InfoController(getService getss,setService setss) {
+        this.getss = getss;
+        this.setss= setss;
+    }
 
     @RequestMapping("/timeline")
     public String to(){return "timeline";}
@@ -68,31 +73,54 @@ public class InfoController {
     public String to_2(){
         return "timeline";
     }
+
     @RequestMapping(value="/getusersess",method= RequestMethod.GET)
-    public void setusersession(HttpServletRequest request, HttpServletResponse response,HttpSession session) throws IOException, JSONException {
-//        String userId=String.valueOf(session.getAttribute("userId"));
-//        User userobj=getss.getuserprofile(Integer.parseInt(userId));
-//        String username=userobj.getUsername();
-//        String userprofile=userobj.getProfile();
+    public void setusersession( HttpServletRequest request, HttpServletResponse response,HttpSession session) throws IOException, JSONException {
+        OSSClient ossClient = new OSSClient("oss-cn-beijing.aliyuncs.com","LTAI5t8boD5MgHBWXNNMJGmm","8f7SV8lmL4B9hdQbbMqzXCWUxf9BXR");
+        Integer userId=1;
+
+        User userobj=getss.getuserprofile(userId);
+
+        String username=userobj.getUsername();
+        String userprofile=userobj.getProfile();
+        String email=userobj.getEmail();
+        String gender;
+        if(userobj.getGender()=="M")
+        {
+            gender="1";
+        }
+        else{
+            gender="0";
+        }
+        String lastname=userobj.getLastname();
+        String firstname=userobj.getFirstname();
+        String area=userobj.getArea();
+        String telephone=userobj.getTelephone();
+        String lastLogin=userobj.getLastLogin();
+        String userrefisitertime=userobj.getUserRefisiterTime();
+        Integer likesnum=userobj.getLikesNum();
+        Integer blogsnum=userobj.getBlogsNum();
+        Integer fansnum=userobj.getFansNum();
+        String birthdate=userobj.getBirthdate();
+
         JSONObject object=new JSONObject();
-        object.put("userId","1890053");
-        object.put("username","John Hanson");
-        object.put("userprofile","Nothing is impossible.");
-        object.put("email","example@net.com");
-        object.put("radioval","1");
-        object.put("lastname","Nathaniel");
-        object.put("firstname","Joseph");
-        object.put("area","United States");
-        object.put("telephone","13012345678");
-        object.put("lastlogin","2021-07-10");
-        object.put("userRefisiterTime","2021-03-05");
-        object.put("likesNum","803");
-        object.put("blogsNum","27");
-        object.put("fansNum","102");
-        object.put("birthdate","2008-03-05");
+        object.put("userId",userId);
+        object.put("username",username);
+        object.put("userprofile",userprofile);
+        object.put("email",email);
+        object.put("radioval",gender);
+        object.put("lastname",lastname);
+        object.put("firstname",firstname);
+        object.put("area",area);
+        object.put("telephone",telephone);
+        object.put("lastlogin",lastLogin);
+        object.put("userRefisiterTime",userrefisitertime);
+        object.put("likesNum",Integer.toString(likesnum));
+        object.put("blogsNum",Integer.toString(blogsnum));
+        object.put("fansNum",Integer.toString(fansnum));
+        object.put("birthdate",birthdate);
         response.getWriter().write(object.toString());
-    }//根据session中的userId去数据库查询对应的属性值，生成json格式
-    //JSON仅供测试，记得删除
+    }
 
     @RequestMapping(value="/changecontent" ,method=RequestMethod.GET)
     public void changestat(HttpServletRequest request,HttpServletResponse response,HttpSession session) throws IOException, JSONException {
@@ -103,29 +131,45 @@ public class InfoController {
 
     @RequestMapping(value="/submitinfo",method=RequestMethod.POST)
     public ResponseEntity submitdata(@RequestBody User user,HttpServletRequest request,HttpServletResponse response,HttpSession session) throws IOException,JSONException{
-        //获得的数据都存在user这个实体中的(除了password,这个需要访问数据库，前端得不到）
-        //将密码更新到user里面
-//        String ps=getss.getuserprofile(user.userId).password;
-//        user.setPassword(ps);
-//        setss.setuser(user);//通过setuser，将新数据存到数据库
+        System.out.println("USERID:"+user.userId);
+        String ps=getss.getuserprofile(user.userId).getPassword();
+        System.out.println("PASSWORD:"+ps);
+        user.setPassword(ps);
+        setss.setuser(user);//通过setuser，将新数据存到数据库
 
         return new ResponseEntity("Register OK", HttpStatus.OK);
     }
 
     @RequestMapping(value="/getfollow",method=RequestMethod.POST)
     public void getfollowusrlist(@RequestBody String userId, HttpServletRequest request,HttpServletResponse response,HttpSession session) throws IOException, JSONException{
-
         JSONObject object=new JSONObject();
+        List<UserLike> listuserlike=getss.getfollowing(Integer.valueOf(userId));
         //TODO:查询关注列表
         object.put("NUM",2);
-        for(int i=1;i<=3;i++)
+        object.put("FOLLOW1","ABC");
+        int size=listuserlike.size();
+        List<String> list=new ArrayList<String>();
+        for(UserLike s: listuserlike)
         {
-//            System.out.println(i);
-            object.put("FOLLOW"+Integer.toString(i),"USER "+Integer.toString(i));
-            object.put("LINK"+Integer.toString(i),"#");
+            list.add(Integer.toString(s.getUserId()));
         }
-        object.put("FOLLOW4","");
-        object.put("LINK4","");
+        System.out.println(list);
+        List<String> usernamelist=new ArrayList<String>();
+        for(String s:list)
+        {
+            usernamelist.add(getss.getusername(Integer.valueOf(s)));
+        }
+        System.out.println(usernamelist);
+        for(int i=1;i<=usernamelist.size();i++)
+        {
+            object.put("FOLLOW"+i,usernamelist.get(i-1));
+            object.put("LINK"+i,"#");
+        }
+//        object.put("FOLLOW1", usernamelist.get(0));
+//        object.put("FOLLOW2",usernamelist.get(1));
+//        object.put("LINK1","#");
+//        object.put("LINK2","#");
+        //TODO
         response.getWriter().write(object.toString());
     }
 
@@ -183,11 +227,11 @@ public class InfoController {
         else return "Set user profile failed.";
     }
 
-    public User getuser(@RequestParam("userID") int userID)
-    {
-        User getuser=getss.getuserprofile(userID);
-        return getuser;
-    }
+//    public User getuser(@RequestParam("userID") String userID)
+//    {
+//        User getuser=getss.getuserprofile(userID);
+//        return getuser;
+//    }
 
 //    @RequestMapping("/uploadavatar")
 //    public String uploadavatar(@RequestParam("file")MultipartFile file,Model model){
