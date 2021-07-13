@@ -33,7 +33,7 @@ public class LoginController {
     }
 
 
-    @GetMapping("/tologin")
+    @PostMapping("/tologin")
     public String login(@RequestParam("username") String username, @RequestParam("password") String password,  Model model, HttpServletResponse response, HttpServletRequest request){
         User user = new User();
         user.setUsername(username);

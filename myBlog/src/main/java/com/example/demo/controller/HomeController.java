@@ -48,7 +48,8 @@ public class HomeController {
 //>>>>>>> 72381607e5eb73cdd5ddfb2836690cb0caa011d3
 
     @RequestMapping("/home/{tagId}")     //点击标签后查询对应标签的博客
-    public String tagToBlogs(@PathVariable("tagId") int tagId, Model model){
+    public String tagToBlogs(@PathVariable("tagId") int tagId, Model model)
+    {
         model.addAttribute("blogListFilteredByTag", homeService.tagToBlogs(tagId));
         return "test-home2";
     }

@@ -1,0 +1,224 @@
+<!--&lt;!&ndash;<!DOCTYPE html>&ndash;&gt;-->
+<!--&lt;!&ndash;<html lang="en">&ndash;&gt;-->
+<!--&lt;!&ndash;<head>&ndash;&gt;-->
+<!--&lt;!&ndash;    <meta charset="UTF-8">&ndash;&gt;-->
+<!--&lt;!&ndash;    <script src="assets/js/calendar.js"></script>&ndash;&gt;-->
+<!--&lt;!&ndash;    <link rel="stylesheet" href="assets/css/calendar.css">&ndash;&gt;-->
+<!--&lt;!&ndash;</head>&ndash;&gt;-->
+<!--&lt;!&ndash;<body>&ndash;&gt;-->
+<!--&lt;!&ndash;  <div class="calendar" id="calendar"></div>&ndash;&gt;-->
+<!--&lt;!&ndash;</body>&ndash;&gt;-->
+<!--&lt;!&ndash;</html>&ndash;&gt;-->
+<!--<!DOCTYPE html>-->
+<!--<html lang="zh-CN">-->
+<!--<head>-->
+<!--    <meta charset="utf-8">-->
+<!--    <meta http-equiv="X-UA-Compatible" content="IE=edge">-->
+<!--    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">-->
+<!--    <title>test</title>-->
+<!--&lt;!&ndash;    <style>&ndash;&gt;-->
+<!--&lt;!&ndash;        table {&ndash;&gt;-->
+<!--&lt;!&ndash;            width: 500px;&ndash;&gt;-->
+<!--&lt;!&ndash;            margin: auto;&ndash;&gt;-->
+<!--&lt;!&ndash;            text-align: center;&ndash;&gt;-->
+<!--&lt;!&ndash;            border: 2px solid pink;&ndash;&gt;-->
+<!--&lt;!&ndash;        }&ndash;&gt;-->
+<!--&lt;!&ndash;        th,&ndash;&gt;-->
+<!--&lt;!&ndash;        td {&ndash;&gt;-->
+<!--&lt;!&ndash;            border: 2px solid pink;&ndash;&gt;-->
+<!--&lt;!&ndash;            padding:5px&ndash;&gt;-->
+<!--&lt;!&ndash;        }&ndash;&gt;-->
+<!--&lt;!&ndash;        .today {&ndash;&gt;-->
+<!--&lt;!&ndash;            color: red;&ndash;&gt;-->
+<!--&lt;!&ndash;        }&ndash;&gt;-->
+<!--&lt;!&ndash;    </style>&ndash;&gt;-->
+
+<!--    <script src="assets/js/calendar.js"></script>-->
+<!--    <script src="assets/js/echarts.min.js"></script>-->
+<!--</head>-->
+<!--<body>-->
+<!--<div id="main" style="width: 600px;height:400px;"></div>-->
+<!--</body>-->
+<!--</html>-->
+
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <title>Done</title>-->
+<!--</head>-->
+<!--<body>-->
+<!--<div id="main" style="width: 600px;height:400px;"></div>-->
+<!--</body>-->
+<!--<script src="assets/js/echarts.min.js"></script>-->
+<!--<script>-->
+<!--    var myChart = echarts.init(document.getElementById('main'));-->
+
+<!--    function getVirtulData() {-->
+
+<!--        // 虚拟数据-->
+<!--        var data = [-->
+<!--            ['2021-12-06', 1],-->
+<!--            ['2021-12-07', 2],-->
+<!--            ['2021-12-08', 3],-->
+<!--            ['2021-12-09', 4],-->
+<!--            ['2021-12-10', 1],-->
+<!--            ['2021-12-11', 2],-->
+<!--            ['2021-12-12', 3],-->
+<!--            ['2021-12-13', 4],-->
+<!--        ];-->
+
+<!--        return data;-->
+<!--    }-->
+
+<!--    option = {-->
+<!--        title: {-->
+<!--            top: 30,-->
+<!--            left: 'center',-->
+<!--            text: 'Done '-->
+<!--        },-->
+<!--        tooltip : {},-->
+<!--        // 瓦片配置，颜色-->
+<!--        visualMap: {-->
+<!--            min: 0,-->
+<!--            max: 24,-->
+<!--            type: 'piecewise',  // 分段型-->
+
+<!--            // type: 'continuous',// 连续型-->
+<!--            orient: 'horizontal',-->
+<!--            left: 'center',-->
+<!--            top: 65,-->
+<!--            color: ['#196127','#239a3b','#7bc96f','#c6e48b'], // 瓦片颜色-->
+<!--            textStyle: {-->
+<!--                color: '#000'-->
+<!--            },-->
+<!--            pieces: [ // 设置分段范围-->
+<!--                {gt: 3},-->
+<!--                {gt: 2, lte: 3},-->
+<!--                {gt: 1, lte: 2},-->
+<!--                {gt: 0, lte: 1}-->
+<!--            ]-->
+<!--        },-->
+<!--        // 承载瓦片的日历-->
+<!--        calendar: {-->
+<!--            top: 120,-->
+<!--            left: 30,-->
+<!--            right: 30,-->
+<!--            cellSize: ['auto', 13],-->
+<!--            range: '2021',-->
+<!--            itemStyle: {-->
+<!--                normal: {borderWidth: 0.5}-->
+<!--            },-->
+<!--            yearLabel: {show: false}-->
+<!--        },-->
+<!--        series: {-->
+<!--            type: 'heatmap',-->
+<!--            coordinateSystem: 'calendar',-->
+<!--            data: getVirtulData()-->
+<!--        }-->
+<!--    };-->
+
+<!--    // 使用刚指定的配置项和数据显示图表。-->
+<!--    myChart.setOption(option);-->
+
+<!--</script>-->
+<!--&lt;!&ndash;<script src="assets/js/calendar.js"></script>&ndash;&gt;-->
+<!--</html>-->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>第一个 ECharts 实例</title>
+    <!-- 引入 echarts.js -->
+    <script src="https://cdn.staticfile.org/echarts/4.3.0/echarts.min.js"></script>
+</head>
+<body>
+<!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+<div id="main" style="width: 600px;height:400px;"></div>
+
+<script type="text/javascript">
+    var myChart = echarts.init(document.getElementById('main'));
+
+    function getVirtulData()
+    {
+
+        // 虚拟数据
+        var data = [
+            ['2021-12-06', 1],
+            ['2021-12-07', 2],
+            ['2021-12-08', 3],
+            ['2021-12-09', 4],
+            ['2021-12-10', 1],
+            ['2021-12-11', 2],
+            ['2021-12-12', 3],
+            ['2021-12-13', 4],
+        ];
+
+        return data;
+    }
+
+    option = {
+        title: {
+            top: 30,
+            left: 'center',
+            text: 'Done '
+        },
+        tooltip : {
+            padding: 10,
+            backgroundColor: '#555',
+            borderColor: '#777',
+            borderWidth: 1,
+            formatter: function (obj) {
+                var value = obj.value;
+                return '<div style="font-size: 14px;">' + value[0] + '：' + value[1] + '</div>';
+            }
+        },
+        // 瓦片配置，颜色
+        visualMap: {
+            min: 0,
+            max: 24,
+            type: 'piecewise',  // 分段型
+
+            // type: 'continuous',// 连续型
+            orient: 'horizontal',
+            left: 'center',
+            top: 65,
+            color: ['#196127','#239a3b','#7bc96f','#c6e48b'], // 瓦片颜色
+            textStyle: {
+                color: '#000'
+            },
+            pieces: [ // 设置分段范围
+                {gt: 3},
+                {gt: 2, lte: 3},
+                {gt: 1, lte: 2},
+                {gt: 0, lte: 1}
+            ]
+        },
+        // 承载瓦片的日历
+        calendar: {
+            top: 120,
+            left: 30,
+            right: 30,
+            cellSize: ['auto', 13],
+            range: '2021',
+            itemStyle: {
+                normal: {borderWidth: 0.5}
+            },
+            yearLabel: {show: false}
+        },
+        series: {
+            type: 'heatmap',
+            coordinateSystem: 'calendar',
+            data: getVirtulData()
+        }
+    };
+
+    // 使用刚指定的配置项和数据显示图表。
+    myChart.setOption(option);
+
+
+
+</script>
+</body>
+</html>
