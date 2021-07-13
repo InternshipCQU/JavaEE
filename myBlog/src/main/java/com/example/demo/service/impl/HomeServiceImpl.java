@@ -6,6 +6,7 @@ import com.example.demo.entity.User;
 import com.example.demo.entity.view.CommentView;
 import com.example.demo.entity.view.HomeBlogView;
 import com.example.demo.mapper.HomeMapper;
+import com.example.demo.mapper.profileMapper;
 import com.example.demo.service.HomeService;
 import com.example.demo.utils.SplitString;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +26,9 @@ public class HomeServiceImpl implements HomeService {
 
     @Resource
     private HomeMapper homeMapper;
+
+    @Resource
+    private profileMapper profileMapper;
 
     @Override
     public List<BlogInfo> tagToBlogs(String tagName) {
@@ -60,11 +64,24 @@ public class HomeServiceImpl implements HomeService {
 
     @Override
     public void setRecommendBlogger(HttpServletRequest request,Model model){
-        if(request.getAttribute("token").equals("yes")){
+        if(request.getAttribute("token")!=null){
             model.addAttribute("recommendBlogger",showRecommendBlogger(((Integer)request.getAttribute("userID"))));
         }else{
             model.addAttribute("recommendBlogger",showHotBlogger());
         }
+    }
+
+    @Override
+    public void setBlogger(HttpServletRequest request, Model model) { //在前端页面上设置右上角头像和链接
+        if(request.getAttribute("userID")!=null){
+            User user = profileMapper.getUser((Integer)request.getAttribute("userID"));
+            model.addAttribute("bloggerAvatar",user.getAvatar());
+            model.addAttribute("bloggerPath","/blogger/" + user.getUsername() + "/" + user.getUserId());
+        }else{
+            model.addAttribute("bloggerAvatar","");
+            model.addAttribute("bloggerPath","/login");
+        }
+
     }
 
     //test
@@ -83,7 +100,7 @@ public class HomeServiceImpl implements HomeService {
     @Override
     public void Init(String cla, HttpServletRequest request) {
         HttpSession session = request.getSession();
-        if(session.getAttribute("Token").equals("yes")){
+        if(session.getAttribute("Token") != null){
             session.setAttribute("blogs", getRecommendBlogViews((Integer) session.getAttribute("userID")));
         }else{
             session.setAttribute("blogs", getBlogViews());

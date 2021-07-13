@@ -38,5 +38,5 @@ public interface HomeService {
 
     void setRecommendBlogger(HttpServletRequest request,Model model);
 
-
+    void setBlogger(HttpServletRequest request,Model model);
 }
