@@ -1,6 +1,7 @@
 package com.example.demo.service.impl;
 
 import com.example.demo.entity.BlogInfo;
+import com.example.demo.entity.TagMark;
 import com.example.demo.entity.User;
 import com.example.demo.entity.view.CommentView;
 import com.example.demo.entity.view.HomeBlogView;
@@ -25,13 +26,18 @@ public class HomeServiceImpl implements HomeService {
     private HomeMapper homeMapper;
 
     @Override
-    public List<BlogInfo> tagToBlogs(int tagId) {
-        return homeMapper.tagToBlogs(tagId);
+    public List<BlogInfo> tagToBlogs(String tagName) {
+        return homeMapper.tagToBlogs(tagName);
     }
 
     @Override
     public List<BlogInfo> searchBlogs(String keyword) {
         return homeMapper.searchBlogs(keyword);
+    }
+
+    @Override
+    public List<BlogInfo> getBlogs() {
+        return homeMapper.getBlogs();
     }
 
     @Override
@@ -46,20 +52,16 @@ public class HomeServiceImpl implements HomeService {
     }
 
     @Override
-    public List<BlogInfo> getBlogs() {
-        return homeMapper.getBlogs();
+    public String getTheClass(String s) {
+        return null;
     }
 
-    @Override
-    public String getTheClass(String s) {
-        String[] strs = SplitString.splitId(s);
-        return strs[strs.length - 1];
-    }
+
     //test
     @Override
-    public ArrayList<HomeBlogView> getBlogViews(){
+    public ArrayList<HomeBlogView> getBlogViews() {
         ArrayList<HomeBlogView> blogList = homeMapper.getBlogViews();
-        for(int i = 0; i < blogList.size(); i++){
+        for (int i = 0; i < blogList.size(); i++) {
             int blogId = blogList.get(i).getBlogId();
             List<CommentView> commentList = homeMapper.getCommentViews(blogId);
             blogList.get(i).setCommentList(commentList);
@@ -69,20 +71,20 @@ public class HomeServiceImpl implements HomeService {
 
 
     @Override
-    public void Init(String cla,HttpServletRequest request){
+    public void Init(String cla, HttpServletRequest request) {
         HttpSession session = request.getSession();
-        session.setAttribute("blogs",getBlogViews());
-        ArrayList<HomeBlogView> s1 = (ArrayList<HomeBlogView>)session.getAttribute("blogs");
-        session.setAttribute("count",0);
-        session.setAttribute("size",s1.size());
+        session.setAttribute("blogs", getBlogViews());
+        ArrayList<HomeBlogView> s1 = (ArrayList<HomeBlogView>) session.getAttribute("blogs");
+        session.setAttribute("count", 0);
+        session.setAttribute("size", s1.size());
     }
 
     @Override
-    public String giveTheBlogToIndex(String cla, HttpServletRequest request){
+    public String giveTheBlogToIndex(String cla, HttpServletRequest request) {
         HttpSession session = request.getSession();
-        int count = (Integer)session.getAttribute("count");
-        int size = (Integer)session.getAttribute("size");
-        ArrayList<HomeBlogView> blogs = (ArrayList<HomeBlogView>)session.getAttribute("blogs");
+        int count = (Integer) session.getAttribute("count");
+        int size = (Integer) session.getAttribute("size");
+        ArrayList<HomeBlogView> blogs = (ArrayList<HomeBlogView>) session.getAttribute("blogs");
 
 
         int blogId = blogs.get(count).getBlogId();
@@ -106,33 +108,51 @@ public class HomeServiceImpl implements HomeService {
         int commentCount = 0;
 
 
-        for(CommentView cv:commentList){
+        for (CommentView cv : commentList) {
 
-            if(commentCount == 3){
+            if (commentCount == 3) {
                 break;
             }
-            comment = "\"username\":" + "\""+cv.getUsername()+ "\"" + "," + "\"commentContent\":" + "\""+cv.getCommentContent()+ "\"";
+            comment = "\"username\":" + "\"" + cv.getUsername() + "\"" + "," + "\"commentContent\":" + "\"" + cv.getCommentContent() + "\"";
             comment = "{" + comment + "}";
-            if(commentCount==0){
+            if (commentCount == 0) {
                 comments = comments + comment;
-            }else{
-                comments = comments + "," +comment;
+            } else {
+                comments = comments + "," + comment;
             }
             commentCount++;
         }
         //====
-        comments = "[" + comments +"]";
+        comments = "[" + comments + "]";
         System.out.println(comments);
 
-        String link = "/blogs/"+ username + "/" + blogId;
+        String link = "/blogs/" + username + "/" + blogId;
 
-        if(count == size-1) {
+        if (count == size - 1) {
             return "{\"noMore\":\"true\"}";
-        }else{
+        } else {
             System.out.println("Hello");
-            session.setAttribute("count",count+1);
-            return "{\"blogContent\":\"" + blogContent + "\",\"blogTitle\":\""+blogTitle+"\",\"username\":\""+ username +"\",\"likeNumber\":\"" + likeNumber+ "\",\"commentNumber\":\""+ commentNumber+"\",\"forwardNumber\":\""+forwardNumber+"\",\"saveNumber\":\"" + saveNumber+ "\",\"comments\":" + comments+ ",\"link\":\""+link+"\"}";
+            session.setAttribute("count", count + 1);
+            return "{\"blogContent\":\"" + blogContent + "\",\"blogTitle\":\"" + blogTitle + "\",\"username\":\"" + username + "\",\"likeNumber\":\"" + likeNumber + "\",\"commentNumber\":\"" + commentNumber + "\",\"forwardNumber\":\"" + forwardNumber + "\",\"saveNumber\":\"" + saveNumber + "\",\"comments\":" + comments + ",\"link\":\"" + link + "\"}";
         }
+
+
+    }
+
+    @Override
+    public List<HomeBlogView> getRecommendBlogViews(int tagId) {
+        List<HomeBlogView> blogList = homeMapper.getRecommendBlogViews(tagId);
+        for (int i = 0; i < blogList.size(); i++) {
+            int blogId = blogList.get(i).getBlogId();
+            List<CommentView> commentList = homeMapper.getCommentViews(blogId);
+            blogList.get(i).setCommentList(commentList);
+        }
+        return blogList;
+    }
+
+    @Override
+    public TagMark getTagMark(int userId) {
+        return homeMapper.getTagMark(userId);
+
     }
 }
-

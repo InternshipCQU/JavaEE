@@ -20,5 +20,6 @@ public class AliyunOssConfigConstant {
     public static final String AccessKey_Secret = "8f7SV8lmL4B9hdQbbMqzXCWUxf9BXR";
     //仓库中的某个文件夹
     public static final String FILE_HOST = "blogimg";
+
 }
 

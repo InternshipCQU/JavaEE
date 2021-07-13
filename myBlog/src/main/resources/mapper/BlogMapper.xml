@@ -4,26 +4,51 @@
     <update id="like">
         update blogInfo set likesNum = #{currentLikes} where blogId = #{blogId}
     </update>
+
     <update id="cancelLike">
         update blogInfo set likesNum = #{currentLikes} where blogId = #{blogId}
     </update>
+
     <insert id="comment">
         insert into blogComment(commentContent, createTime, blogId, userId)
         values(#{comment}, #{createDate}, #{blogId}, #{userId})
     </insert>
+
     <insert id="forward">
         insert into blogForward(createTime, blogId, userId)
         values(#{createDate}, #{blogId}, #{userId})
     </insert>
+
     <insert id="collect">
         insert into blogCollect(createTime, blogId, userId)
         values(#{createDate}, #{blogId}, #{userId})
     </insert>
+
     <select id="getBlog" resultType="com.example.demo.entity.BlogInfo">
         SELECT blogInfo.blogTitle, blogInfo.blogContent, blogInfo.createTime,
             blogInfo.clickNum, blogInfo.likesNum, blogInfo.commentNum,
-            blogInfo.forwardNum, blogInfo.collectNum, blogInfo.userId, blogInfo.tagId
-        FROM blogInfo
-        WHERE blogInfo.blogId = #{blogId};
+            blogInfo.forwardNum, blogInfo.collectNum, blogInfo.userId, blogInfo.tagId, blogTag.tagName
+        FROM blogInfo, blogTag
+        WHERE blogInfo.blogId = #{blogId} AND blogInfo.tagId = blogTag.tagId;
     </select>
+
+    <update id="updateMarkWhenLike">
+        UPDATE TagMark SET #{tagName} = #{tagName} + 1 WHERE userId = #{userId}
+    </update>
+
+    <update id="updateMarkWhenCancelLike">
+        UPDATE TagMark SET #{tagName} = #{tagName} - 1 WHERE userId = #{userId}
+    </update>
+
+    <update id="updateMarkWhenComment">
+        UPDATE TagMark SET #{tagName} = #{tagName} + 2 WHERE userId = #{userId}
+    </update>
+
+    <update id="updateMarkWhenForward">
+        UPDATE TagMark SET #{tagName} = #{tagName} + 3 WHERE userId = #{userId}
+    </update>
+
+    <update id="updateMarkWhenCollect">
+        UPDATE TagMark SET #{tagName} = #{tagName} + 3 WHERE userId = #{userId}
+    </update>
 </mapper>
