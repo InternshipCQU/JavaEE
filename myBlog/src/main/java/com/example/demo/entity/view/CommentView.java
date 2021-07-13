@@ -4,6 +4,8 @@ public class CommentView {
 
     private String username;
     private String commentContent;
+    private String useravater;
+    private String commentTime;
 
     public String getUsername() {
         return username;
@@ -19,5 +21,19 @@ public class CommentView {
 
     public void setCommentContent(String commentContent) {
         this.commentContent = commentContent;
+    }
+
+    public String getUseravater(){return useravater;}
+
+    public void setUseravater(String useravater) {
+        this.useravater = useravater;
+    }
+
+    public String getCommentTime() {
+        return commentTime;
+    }
+
+    public void setCommentTime(String commentTime) {
+        this.commentTime = commentTime;
     }
 }
