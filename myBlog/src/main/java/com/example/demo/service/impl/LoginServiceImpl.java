@@ -57,6 +57,8 @@ public class LoginServiceImpl implements LoginService {
         token.setAttribute("username", name);
         token.setAttribute("password", password);
 
+
+
         Cookie cookieLoginStatue = new Cookie("loginStatue", "Yes");
         response.addCookie(cookieLoginStatue);
 
