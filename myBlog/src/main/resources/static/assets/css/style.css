@@ -1,4 +1,5 @@
 @charset "UTF-8";
+
 /*
  * Author: Hamse Mohamoud
  * URL: http://Holathemes.net
@@ -317,7 +318,7 @@ body{
   background: #FFBD1E;
 }
 select{
-  font-family: "寰蒋闆呴粦";
+  font-family: "微软雅黑";
   /*margin:100px;*/
   background: rgba(0,0,0,0);
   width: 150px;
@@ -356,11 +357,6 @@ input:focus{
   -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(102,175,233,.6);
   box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(102,175,233,.6)
 }
-
-
-
-
-
 .section-header {
   position: relative;
   display: flex;
@@ -1493,7 +1489,6 @@ fieldset:disabled a.button {
 
 /* button groupss  */
 .buttons {
-  /*display: -webkit-inline-box;*/
   display: -webkit-inline-box;
   display: -ms-inline-flexbox;
   display: inline-flex;
@@ -7251,7 +7246,7 @@ header .opts_icon_link:hover {
   }
 
   .fead-area {
-    width: 62% !important;
+    width: 100% !important;
   }
 }
 
@@ -7825,7 +7820,6 @@ header .opts_icon_link:hover {
   box-shadow: 0px 1px 9px -2px #d2d2d2;
   border-radius: 6px;
 }
-
 
 .post .post-heading {
   padding: 20px 15px;
@@ -10184,41 +10178,21 @@ ul.story-side-list li a .story-user-innr p span.story-time-ago{
   margin-right: 30px;
 }
 
-/*twitter鐐硅禐鎸夐挳鐨刢ss*/
-/*.heart {*/
-/*  width: 100px;*/
-/*  height: 100px;*/
-/*  background: url("https://cssanimation.rocks/images/posts/steps/heart.png") no-repeat;*/
-/*  background-position: 0 0;*/
-/*  cursor: pointer;*/
-/*  -webkit-transition: background-position 1s steps(28);*/
-/*  transition: background-position 1s steps(28);*/
-/*  -webkit-transition-duration: 0s;*/
-/*  transition-duration: 0s;*/
-/*}*/
-/*.heart.is-active {*/
-/*  -webkit-transition-duration: 1s;*/
-/*  transition-duration: 1s;*/
-/*  background-position: -2800px 0;*/
-/*}*/
+/*正文区和评论区的分隔条*/
+.nav-single-group uk-sticky {
+  width: 80%;
+}
+/*正文区和评论区的分隔条*/
 
-/*body {*/
-/*  background: -webkit-linear-gradient(315deg, #121721 0%, #000000 100%) fixed;*/
-/*  background: linear-gradient(135deg, #121721 0%, #000000 100%) fixed;*/
-/*  color: #FFF;*/
-/*  font: 300 16px/1.5 "Open Sans", sans-serif;*/
-/*}*/
+/*author-bar*/
+#author-bar {
+  width: 80%;
+}
+/*author-bar*/
 
 
-/*.stage {*/
-/*  position: absolute;*/
-/*  top: 19%;*/
-/*  left: 35%;*/
-/*  -webkit-transform: translate(-50%, -50%);*/
-/*  transform: translate(-50%, -50%);*/
-/*}*/
 
-/*鐚埅鐐硅禐鎸夐挳*/
+/*猫爪点赞按钮*/
 .paw-button {
   --background: #fff;
   --background-active: #FEE8F4;
@@ -10561,7 +10535,7 @@ html {
 /*  align-items: center;*/
 /*  background: #2c2c2c;*/
 /*}*/
-/*鐚埅鐐硅禐鎸夐挳*/
+/*猫爪点赞按钮*/
 
 
 /*writing blog page */
@@ -10597,150 +10571,7 @@ html {
   padding-right:70px;
 }
 
-/*searchpage鐨勬悳绱㈡*/
-html,
-body {
-  padding: 0<div class="container">
-  <form autocomplete="off">
-  <div class="finder">
-  <div class="finder__outer">
-  <div class="finder__inner">
-  <div class="finder__icon" ref="icon"></div>
-  <input class="finder__input" type="text" name="q" />
-  </div>
-  </div>
-  </div>
-  </form>
-  </div>;
-  margin: 0;
-  color: #292929;
-  background-color: #eaeaea;
-}
-
-.container {
-  position: absolute;
-  top: 0%;
-  text-align: center;
-  color: #2c3e50;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-}
-
-form {
-  transition: all 0.5s;
-  position: absolute;
-  top: 10%;
-  transform: translateY(-50%);
-}
-
-.finder {
-  border: 1px solid #fff;
-  background-color: #f6f5f0;
-  border-radius: 15px;
-  padding: 8px;
-  box-shadow: 9px 9px 16px rgba(189, 189, 189, 0.6), -9px -9px 16px rgba(255, 255, 255, 0.5);
-}
-
-.finder__outer {
-  display: flex;
-  width: 600px;
-  padding: 1.5rem 2rem;
-  border-radius: 10px;
-  box-shadow: inset 10px 10px 15px -10px #c3c3c3, inset -10px -10px 15px -10px #ffffff;
-}
-
-.finder__inner {
-  display: flex;
-  align-items: center;
-  position: relative;
-  flex: 1;
-}
-
-.finder__form {
-  flex: 1;
-  height: calc(100% + 3rem);
-}
-
-.finder__input {
-  height: calc(100% + 3rem);
-  width: 100%;
-  border: none;
-  background-color: transparent;
-  outline: none;
-  font-size: 1.5rem;
-  letter-spacing: 0.75px;
-}
-
-.finder__icon {
-  width: 40px;
-  height: 40px;
-  margin-right: 1rem;
-  transition: all 0.2s;
-  box-shadow: inset 0 0 0 20px #292929;
-  border-radius: 50%;
-  position: relative;
-}
-.finder__icon:after, .finder__icon:before {
-  display: block;
-  content: "";
-  position: absolute;
-  transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-}
-.finder__icon:after {
-  width: 10px;
-  height: 10px;
-  background-color: #292929;
-  border: 3px solid #f6f5f0;
-  top: 50%;
-  position: absolute;
-  transform: translateY(-50%);
-  left: 0px;
-  right: 0;
-  margin: auto;
-  border-radius: 50%;
-}
-.active .finder__icon:after {
-  border-width: 10px;
-  background-color: #f6f5f0;
-}
-.finder__icon:before {
-  width: 4px;
-  height: 13px;
-  background-color: #f6f5f0;
-  top: 50%;
-  left: 20px;
-  transform: rotateZ(45deg) translate(-50%, 0);
-  transform-origin: 0 0;
-  border-radius: 4px;
-}
-.active .finder__icon:before {
-  background-color: #292929;
-  width: 6px;
-  transform: rotateZ(45deg) translate(-50%, 25px);
-}
-.processing .finder__icon {
-  transform-origin: 50%;
-  animation: spinner 0.3s linear infinite;
-  animation-delay: 0.5s;
-}
-.active .finder__icon {
-  transform: translateY(-5px);
-}
-
-@keyframes spinner {
-  0% {
-    transform: rotateZ(45deg);
-  }
-  100% {
-    transform: rotateZ(405deg);
-  }
-}
-
-/*鍙︿竴涓悳绱㈡*/
+/*另一个搜索框*/
 body {
   margin: 0;
   padding: 0;
@@ -10803,4 +10634,7 @@ body {
   width: 0;
 }
 
-/*鍙︿竴涓悳绱㈡*/
+/*另一个搜索框*/
+
+
+/*博客页面的导航条*/
