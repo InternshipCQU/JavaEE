@@ -1,6 +1,5 @@
 package com.example.demo.controller;
 import com.example.demo.entity.User;
-import com.example.demo.entity.BlogInfo;
 import com.example.demo.service.*;
 import com.example.demo.utils.UploadAvatarUtil;
 import net.sf.json.JSON;

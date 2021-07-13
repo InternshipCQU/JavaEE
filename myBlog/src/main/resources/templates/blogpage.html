@@ -792,18 +792,23 @@
                 <br>
 
                 <div >
-                    <div class="section-header pb-0" style="margin-top: -15px;">
-                        <div class="section-header-left">
-                            <h3> Categories </h3>
-                            <p> Find a group <span class="uk-visible@s"> by browsing top Categories </span></p>
-                        </div>
-                        <div class="section-header-right">
-                            <a href="#" class="see-all"> See all</a>
-                        </div>
-                    </div>
 
-                        <!--博客正文-->
+<!--                    <div class="section-header pb-0" style="margin-top: -15px;">-->
+<!--                        <div class="section-header-left">-->
+<!--                            <h3> Categories </h3>-->
+<!--                            <p> Find a group <span class="uk-visible@s"> by browsing top Categories </span></p>-->
+<!--                        </div>-->
+<!--                        <div class="section-header-right">-->
+<!--                            <a href="#" class="see-all"> See all</a>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <hr class="header-separater" style="color:#F00;border: 100px"/>-->
+<!--                    <HR style="FILTER: alpha(opacity=100,finishopacity=0,style=2)" width="100%" color=#987cb9 SIZE=10>-->
+                    <div class="alert alert-info" role="alert"></div>
+                    <ul class="nav nav-list"><li class="divider"></li></ul>
+                    <!--博客正文-->
                     <div id="blogContent" th:utext="${blog.blogContent}" >
+
 
                     </div>
 
@@ -811,27 +816,10 @@
                 <br>
 
 
-                <div>
-                    <div class="uk-flex uk-flex-between uk-flex-middle mb-4" >
-                        <ul class="uk-width-expand" uk-tab>
-                            <li class="uk-active"><a href="#">评论该博文</a></li>
-
-
-                        </ul>
-                        <a href="#" class="button primary small circle uk-visible@s"> <i class="uil-plus"> </i>
-                            Create New Album </a>
-
-                    </div>
-<!--                        <h1 id="commentTitle" style="margin-left: 50px">评论该博文</h1>-->
-                    <textarea id="blogComment"  style="height: 200px;width: 1100px;text-align:left; ">
-
-                    </textarea>
-
-                </div>
-
                 <div class="load-more">
                     <button class="btn button">Load more groups</button>
                 </div>
+
 
 <!--                <div class="post-comments">-->
 <!--                    <a href="#" class="view-more-comment"> Veiw 8 more Comments</a>-->
@@ -968,21 +956,31 @@
                 </div>
                 <br>
                 <br>
-                <div class="nav-single-group uk-sticky" uk-sticky="media : @s">
-                    <nav class="responsive-tab">
-                        <ul>
-                            <li class="uk-active"><a class="active" href="#">评论区</a></li>
+                <div class="uk-flex uk-flex-between uk-flex-middle mb-4" >
+                    <ul class="uk-width-expand" uk-tab>
+                        <li class="uk-active"><a href="#">评论区</a></li>
 
-                        </ul>
-                    </nav>
+
+                    </ul>
+                    <!--                        <a href="#" class="button primary small circle uk-visible@s"> <i class="uil-plus"> </i>-->
+                    <!--                            Create New Album </a>-->
+
                 </div>
+<!--                <div class="nav-single-group uk-sticky" uk-sticky="media : @s" style="width: 100%;">-->
+<!--                    <nav class="responsive-tab">-->
+<!--                        <ul>-->
+<!--                            <li class="uk-active"><a class="active" href="#">评论区</a></li>-->
 
-                <div uk-grid="" class="uk-grid">
+<!--                        </ul>-->
+<!--                    </nav>-->
+<!--                </div>-->
 
-                    <div class="uk-width-2-3@m fead-area uk-first-column" >
+                <div uk-grid="" class="uk-grid" style="width: 100%;">
+
+                    <div class="uk-width-2-3@m fead-area uk-first-column" id="author-bar">
 
 
-                        <div class="post" style="width: 1100px;">
+                        <div class="post" style="width: 100%;">
 
                             <!-- post comments -->
                             <div class="post-comments">
