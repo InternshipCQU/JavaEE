@@ -104,6 +104,8 @@ public class HomeServiceImpl implements HomeService {
         String comments = "";
         String comment = "";
         int commentCount = 0;
+
+
         for(CommentView cv:commentList){
 
             if(commentCount == 3){
@@ -112,27 +114,24 @@ public class HomeServiceImpl implements HomeService {
             comment = "\"username\":" + "\""+cv.getUsername()+ "\"" + "," + "\"commentContent\":" + "\""+cv.getCommentContent()+ "\"";
             comment = "{" + comment + "}";
             if(commentCount==0){
-                comments = comments + "\"" +"comment" + commentCount + "\""+ ":" + "\"" + comment + "\"";
+                comments = comments + comment;
             }else{
-                comments = comments + "," + "\"" +"comment" + commentCount + "\""+ ":" + "\"" + comment + "\"";
+                comments = comments + "," +comment;
             }
             commentCount++;
         }
         //====
-        comments = "{" + comments +"}";
+        comments = "[" + comments +"]";
         System.out.println(comments);
 
         String link = "/blogs/"+ username + "/" + blogId;
-        System.out.println("count: " + count);
-        System.out.println("size: " + size);
-
 
         if(count == size-1) {
             return "{\"noMore\":\"true\"}";
         }else{
             System.out.println("Hello");
             session.setAttribute("count",count+1);
-            return "{\"username\":\""+ username +"\",\"likeNumber\":\"" + likeNumber+ "\",\"commentNumber\":\""+ commentNumber+"\",\"forwardNumber\":\""+forwardNumber+"\",\"saveNumber\":\"" + saveNumber+ "\",\"commentUser\":\"TJN\",\"commentText\":\"for Messi\",\"commentTime\":\"1d\",\"link\":\""+link+"\"}";
+            return "{\"blogContent\":\"" + blogContent + "\",\"blogTitle\":\""+blogTitle+"\",\"username\":\""+ username +"\",\"likeNumber\":\"" + likeNumber+ "\",\"commentNumber\":\""+ commentNumber+"\",\"forwardNumber\":\""+forwardNumber+"\",\"saveNumber\":\"" + saveNumber+ "\",\"comments\":" + comments+ ",\"link\":\""+link+"\"}";
         }
     }
 }

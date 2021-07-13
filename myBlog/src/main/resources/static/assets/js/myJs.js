@@ -163,13 +163,20 @@ function loadTheBlog()
         //例如点赞的话 我们传递blogID userID到后端 后端再进行操作
         async: false,
 
+        beforeSend: function () {
+            $("loading").show();
+        },
+
         success: function(data) {
+            //console.log(data)
             var blog = JSON.parse(data);
+
             $("#final").attr("id", "null")
-            $("#comments").attr("id", "commentsNull")
+
 
             if (blog.noMore === "true") {
-                alert(blog.noMore)
+                $("#bottom").before("<hr data-text='no more'>")
+                $("#bottom").attr("id","bottomAfter")
             } else {
 
                 if (data != null) {
@@ -210,9 +217,9 @@ function loadTheBlog()
                         "            <div>\n" +
                         "                <img src=\"http://localhost:8080/assets/images/icons/reactions_like.png\" alt=\"\">\n" +
                         "                <img src=\"http://localhost:8080/assets/images/icons/reactions_love.png\" alt=\"\">\n" +
-                        "                <p> 13 </p>\n" +
+                        "                <p id = \"likeNum\"> 13 </p>\n" +
                         "            </div>\n" +
-                        "            <p> 24 Comments</p>\n" +
+                        "            <p id = \"commentNumber2\"> 24 Comments</p>\n" +
                         "        </div>\n" +
                         "    </div>\n" +
                         " </a>\n" +
@@ -229,68 +236,9 @@ function loadTheBlog()
                         "    </div>\n" +
 
                         "    <!-- post comments -->\n" +
-                        "    <div class=\"post-comments\">\n" +
-                        "        <a href=\"#\" class=\"view-more-comment\"   id = \"commentsNull\"> Veiw 8 more Comments</a>\n" +
-                        "        <div class=\"post-comments-single\">\n" +
-                        "            <div class=\"post-comment-avatar\">\n" +
-                        "                <img src=\"http://localhost:8080/assets/images/avatars/avatar-5.jpg\" alt=\"\">\n" +
-                        "            </div>\n" +
-                        "            <div class=\"post-comment-text\">\n" +
-                        "                <div class=\"post-comment-text-inner\">\n" +
-                        "                    <h6> Alex Dolgove</h6>\n" +
-                        "                    <p> Ut wisi enim ad minim laoreet dolore magna aliquam erat </p>\n" +
-                        "                </div>\n" +
-                        "                <div class=\"uk-text-small\">\n" +
-                        "                    <a href=\"#\" class=\"text-danger mr-1\"> <i class=\"uil-heart\"></i> Love\n" +
-                        "                    </a>\n" +
-                        "                    <a href=\"#\" class=\" mr-1\"> Replay </a>\n" +
-                        "                    <span> 1d</span>\n" +
-                        "                </div>\n" +
-                        "            </div>\n" +
-                        "            <a href=\"#\" class=\"post-comment-opt\"></a>\n" +
-                        "        </div>\n" +
-                        "        <div class=\"post-comments-single\">\n" +
-                        "            <div class=\"post-comment-avatar\">\n" +
-                        "                <img src=\"http://localhost:8080/assets/images/avatars/avatar-2.jpg\" alt=\"\">\n" +
-                        "            </div>\n" +
-                        "            <div class=\"post-comment-text\">\n" +
-                        "                <div class=\"post-comment-text-inner\">\n" +
-                        "                    <h6>Stella Johnson</h6>\n" +
-                        "                    <p> Ut wisi enim ad minim laoreet dolore <strong> David !</strong> </p>\n" +
-                        "                </div>\n" +
-                        "                <div class=\"uk-text-small\">\n" +
-                        "                    <a href=\"#\" class=\"text-primary mr-1\"> <i class=\"uil-thumbs-up\"></i>\n" +
-                        "                        Like\n" +
-                        "                    </a>\n" +
-                        "                    <a href=\"#\" class=\" mr-1\"> Replay </a>\n" +
-                        "                    <span> 2d</span>\n" +
-                        "                </div>\n" +
-                        "            </div>\n" +
-                        "            <a href=\"#\" class=\"post-comment-opt\"></a>\n" +
-                        "        </div>\n" +
-                        "        <div class=\"post-comments-single\">\n" +
-                        "            <div class=\"post-comment-avatar\">\n" +
-                        "                <img src=\"http://localhost:8080/assets/images/avatars/avatar-3.jpg\" alt=\"\">\n" +
-                        "            </div>\n" +
-                        "            <div class=\"post-comment-text\">\n" +
-                        "                <div class=\"post-comment-text-inner\">\n" +
-                        "                    <h6> Jonathan Madano </h6>\n" +
-                        "                    <p> sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna\n" +
-                        "                        aliquam\n" +
-                        "                        erat\n" +
-                        "                        volutpat.<strong> David !</strong> </p>\n" +
-                        "                </div>\n" +
-                        "                <div class=\"uk-text-small\">\n" +
-                        "                    <a href=\"#\" class=\"text-danger mr-1\"> <i class=\"uil-heart\"></i> Love\n" +
-                        "                    </a>\n" +
-                        "                    <a href=\"#\" class=\" mr-1\"> Replay </a>\n" +
-                        "                    <span> 3d</span>\n" +
-                        "                </div>\n" +
-                        "            </div>\n" +
-                        "            <a href=\"#\" class=\"post-comment-opt\"></a>\n" +
-                        "        </div>\n" +
-
-                        "        <a href=\"#\" class=\"view-more-comment\"> Veiw 8 more Comments</a>\n" +
+                        "    <div class=\"post-comments\" >\n" +
+                        "        <a id = \"commentsNull\">   </a>\n"+
+                        "        <a href=\"#\" class=\"view-more-comment\"   id = \"commentLink\"> Veiw 8 more Comments</a>\n" +
                         "        <div class=\"post-add-comment\">\n" +
                         "            <div class=\"post-add-comment-avature\">\n" +
                         "                <img src=\"http://localhost:8080/assets/images/avatars/avatar-2.jpg\" alt=\"\">\n" +
@@ -308,12 +256,19 @@ function loadTheBlog()
                         "</div>");
                 }
                 $("#null").attr("id", "null2");
+                $("#commentLink").attr("href",blog.link)
+                $("#commentLink").html("View " + blog.commentNumber + " more Comments")
+                $("#commentLink").attr("id","pass")
                 $("#username").html(blog.username);
                 $("#username").attr("id", "pass");
                 $("#likeNumber").html(blog.likeNumber);
                 $("#likeNumber").attr("id", "pass");
+                $("#likeNum").html(blog.likeNumber);
+                $("#likeNum").attr("id", "pass");
                 $("#commentNumber").html(blog.commentNumber);
                 $("#commentNumber").attr("id", "pass");
+                $("#commentNumber2").html(blog.commentNumber + "comments");
+                $("#commentNumber2").attr("id", "pass");
                 $("#forwardNumber").html(blog.forwardNumber);
                 $("#forwardNumber").attr("id", "pass");
                 $("#saveNumber").html(blog.saveNumber);
@@ -321,40 +276,53 @@ function loadTheBlog()
                 $("#link").attr("href", blog.link);
                 $("#link").attr("id", "pass");
 
+                $("#comments").attr("id", "commentsNull")
 
-                $("#commentsNull").after("<div class=\"post-comments-single\">\n" +
-                    "                                    <div class=\"post-comment-avatar\">\n" +
-                    "                                        <img src=\"http://localhost:8080/assets/images/avatars/avatar-5.jpg\" alt=\"\">\n" +
-                    "                                    </div>\n" +
-                    "                                    <div class=\"post-comment-text\">\n" +
-                    "                                        <div class=\"post-comment-text-inner\">\n" +
-                    "                                            <h6 id = \"commentUser\"> Alex Dolgove</h6>\n" +
-                    "                                            <p id = \"commentText\"> Ut wisi enim ad minim laoreet dolore magna aliquam erat </p>\n" +
-                    "                                        </div>\n" +
-                    "                                        <div class=\"uk-text-small\">\n" +
-                    "                                            <a href=\"#\" class=\"text-danger mr-1\"> <i class=\"uil-heart\"></i> Love\n" +
-                    "                                            </a>\n" +
-                    "                                            <a href=\"#\" class=\" mr-1\"> Replay </a>\n" +
-                    "                                            <span id = \"commentTime\"> 1d</span>\n" +
-                    "                                        </div>\n" +
-                    "                                    </div>\n" +
-                    "                                    <a href=\"#\" class=\"post-comment-opt\"></a>\n" +
-                    "                                </div>"
-                )
+                var comments = blog.comments
+                if(comments !== "{}") {
+                    $.each(comments, function (index, comment) {
+                        console.log(comment)
+                        //var comment = JSON.parse(comment);
+                        $("#commentsNull").after("<div class=\"post-comments-single\">\n" +
+                            "                                    <div class=\"post-comment-avatar\">\n" +
+                            "                                        <img src=\"http://localhost:8080/assets/images/avatars/avatar-5.jpg\" alt=\"\">\n" +
+                            "                                    </div>\n" +
+                            "                                    <div class=\"post-comment-text\">\n" +
+                            "                                        <div class=\"post-comment-text-inner\">\n" +
+                            "                                            <h6 id = \"commentUser\"> Alex Dolgove</h6>\n" +
+                            "                                            <p id = \"commentText\"> Ut wisi enim ad minim laoreet dolore magna aliquam erat </p>\n" +
+                            "                                        </div>\n" +
+                            "                                        <div class=\"uk-text-small\">\n" +
+                            "                                            <a href=\"#\" class=\"text-danger mr-1\"> <i class=\"uil-heart\"></i> Love\n" +
+                            "                                            </a>\n" +
+                            "                                            <a href=\"#\" class=\" mr-1\"> Replay </a>\n" +
+                            "                                            <span id = \"commentTime\"> 1d</span>\n" +
+                            "                                        </div>\n" +
+                            "                                    </div>\n" +
+                            "                                    <a href=\"#\" class=\"post-comment-opt\"></a>\n" +
+                            "                                </div>"
+                        )
 
-                $("#commentsNull").attr("id", "ull");
-                $("#commentUser").html(blog.commentUser);
-                $("#commentUser").attr("id", "pass");
-                $("#commentText").html(blog.commentText);
-                $("#commentText").attr("id", "pass");
-                $("#commentTime").html(blog.commentTime);
-                $("#commentTime").attr("id", "pass");
+
+                        $("#commentUser").html(comment.username);
+                        $("#commentUser").attr("id", "pass");
+                        $("#commentText").html(comment.commentContent);
+                        $("#commentText").attr("id", "pass");
+                        $("#commentTime").html("comment.commentTime");
+                        $("#commentTime").attr("id", "pass");
+                    });
+
+                }
+                $("#commentsNull").attr("id","pass")
 
 
                 //window.location.href = 'http://localhost:8080/mainpage';
                 //这里是如果成功的将数据传递之后做的操作 可以写alert和跳转语句 根据情况进行书写就写
             }
-        }
+        },
+        complete: function () {
+            $("loading").hide();
+        },
     });
 }
 
