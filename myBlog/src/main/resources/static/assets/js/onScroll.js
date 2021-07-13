@@ -5,6 +5,10 @@ function ajax_function() {
 }
 
 
+// $(document).ready(function(){
+//     alert("页面加载完成！");
+// });
+
 
 var timeoutInt; // 要保证最后要运行一次
 

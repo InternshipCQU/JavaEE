@@ -1,9 +1,12 @@
 package com.example.demo.service.impl;
 
 import com.example.demo.entity.User;
+import com.example.demo.mapper.CheckLoginMapper;
+import com.example.demo.mapper.HomeMapper;
 import com.example.demo.service.LoginService;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -14,14 +17,20 @@ import java.security.NoSuchAlgorithmException;
 @Service("loginService")
 public class LoginServiceImpl implements LoginService {
 
+    @Resource
+    private CheckLoginMapper checkLoginMapper;
+
     @Override
-    public boolean checkTheInfo(String username,String passowrd){
+    public boolean checkTheInfo(String username,String password){
         //TODO:这里需要增加学生端接口
+        if(password.equals(checkLoginMapper.checkPassword(username)))return true;
+        else return false;
+    }
 
-
-
-        if(username.equals(passowrd))return true;
-        return false;
+    @Override
+    public boolean checkUser(String username) {
+        if(checkLoginMapper.userExist(username) == null) return false;
+        else return true;
     }
 
 
@@ -47,10 +56,13 @@ public class LoginServiceImpl implements LoginService {
     public void setToken(String name, String password, HttpServletResponse response, HttpServletRequest request){
         HttpSession token = request.getSession();
         token.setAttribute("token","yes");
+        token.setAttribute("username", name);
 
 
         token.setAttribute("username", name);
         token.setAttribute("password", password);
+
+
 
         Cookie cookieLoginStatue = new Cookie("loginStatue", "Yes");
         response.addCookie(cookieLoginStatue);

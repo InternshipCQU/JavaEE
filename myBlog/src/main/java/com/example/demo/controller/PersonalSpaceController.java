@@ -10,6 +10,8 @@ import com.example.demo.entity.BlogInfo;
 
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 @Controller
@@ -17,17 +19,19 @@ public class PersonalSpaceController {
     @Resource
     private PersonalSpaceService personalSpaceService;
 
-    @RequestMapping("/space/{username}")
-    public List<BlogInfo> showCalendarFigure(@PathVariable("username") String username)
+    @RequestMapping("/space")
+    public List<BlogInfo> showCalendarFigure(Model model, HttpServletRequest request)
     {
+        HttpSession CalendarInfo = request.getSession();
+        String username = (String) CalendarInfo.getAttribute("username");
         return personalSpaceService.showCalendarFigure(username);
     }
 
 
-    @RequestMapping("/space/{userID}")
-    public String space(@PathVariable("userID") int userID, Model model)
-    {
-
-        return "personalspace";//html文件
-    }
+//    @RequestMapping("/space/{userID}")
+//    public String space(@PathVariable("userID") int userID, Model model)
+//    {
+//
+//        return "personalspace";//html文件
+//    }
 }

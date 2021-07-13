@@ -106,6 +106,10 @@ html body {-webkit-font-smoothing: antialiased;overflow-x: hidden;padding: .75re
  * 1. Box sizing has to be `content-box` so the max-width is always the same and
  *    unaffected by the padding on different breakpoints. It's important for the size modifiers.
  */
+
+
+
+
 .container {
   /* 1 */
   box-sizing: content-box;
@@ -7826,6 +7830,7 @@ header .opts_icon_link:hover {
   border-radius: 6px;
 }
 
+
 .post .post-heading {
   padding: 20px 15px;
   display: flex;
@@ -10173,15 +10178,395 @@ ul.story-side-list li a .story-user-innr p span.story-time-ago{
 }
 
 /*blog page*/
-#blogContent {
+.main_content_inner {
   margin-left: 30px;
   margin-right: 30px;
 }
 
-.section-header-left {
+.section-header-left ,.uk-flex uk-flex-between{
   margin-left: 30px;
   margin-right: 30px;
 }
+
+/*twitter点赞按钮的css*/
+/*.heart {*/
+/*  width: 100px;*/
+/*  height: 100px;*/
+/*  background: url("https://cssanimation.rocks/images/posts/steps/heart.png") no-repeat;*/
+/*  background-position: 0 0;*/
+/*  cursor: pointer;*/
+/*  -webkit-transition: background-position 1s steps(28);*/
+/*  transition: background-position 1s steps(28);*/
+/*  -webkit-transition-duration: 0s;*/
+/*  transition-duration: 0s;*/
+/*}*/
+/*.heart.is-active {*/
+/*  -webkit-transition-duration: 1s;*/
+/*  transition-duration: 1s;*/
+/*  background-position: -2800px 0;*/
+/*}*/
+
+/*body {*/
+/*  background: -webkit-linear-gradient(315deg, #121721 0%, #000000 100%) fixed;*/
+/*  background: linear-gradient(135deg, #121721 0%, #000000 100%) fixed;*/
+/*  color: #FFF;*/
+/*  font: 300 16px/1.5 "Open Sans", sans-serif;*/
+/*}*/
+
+
+/*.stage {*/
+/*  position: absolute;*/
+/*  top: 19%;*/
+/*  left: 35%;*/
+/*  -webkit-transform: translate(-50%, -50%);*/
+/*  transform: translate(-50%, -50%);*/
+/*}*/
+
+/*猫爪点赞按钮*/
+.paw-button {
+  --background: #fff;
+  --background-active: #FEE8F4;
+  --border: #F1ECEB;
+  --border-active: #EEC2DB;
+  --text: #000;
+  --number: #9C9496;
+  --number-active: #000;
+  --heart-background: #fff;
+  --heart-background-active: #FEA5D7;
+  --heart-border: #C3C2C0;
+  --heart-border-active: #2B2926;
+  --heart-shadow-light: #FEE0F2;
+  --heart-shadow-dark: #EA5DAF;
+  --paw-background: #fff;
+  --paw-border: #201E1B;
+  --paw-shadow: #EEEDED;
+  --paw-inner: var(--heart-background-active);
+  --paw-shadow-light: var(--heart-shadow-light);
+  --paw-shadow-dark: var(--heart-shadow-dark);
+  --paw-clap-background: #FEF0A5;
+  --paw-clap-border: var(--paw-border);
+  --paw-clap-shadow: #FED75C;
+  --circle: #df3dce;
+  --circle-line: #000;
+  display: inline-flex;
+  text-decoration: none;
+  font-weight: bold;
+  position: relative;
+  line-height: 19px;
+  padding: 12px 16px;
+}
+.paw-button:before {
+  content: '';
+  position: absolute;
+  display: block;
+  left: -2px;
+  top: -2px;
+  bottom: -2px;
+  right: -2px;
+  z-index: 1;
+  border-radius: 5px;
+  transition: background .45s, border-color .45s;
+  background: var(--background);
+  border: 2px solid var(--border);
+}
+.paw-button svg {
+  display: block;
+}
+.paw-button .text {
+  position: relative;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  z-index: 3;
+  margin-right: 8px;
+  transition: width .25s;
+  width: var(--w, 60px);
+}
+.paw-button .text span,
+.paw-button .text svg {
+  transition: opacity .2s, -webkit-transform .15s ease-out;
+  transition: transform .15s ease-out, opacity .2s;
+  transition: transform .15s ease-out, opacity .2s, -webkit-transform .15s ease-out;
+  opacity: var(--o, 1);
+}
+.paw-button .text span {
+  display: block;
+  position: absolute;
+  left: 30px;
+  top: 0;
+  -webkit-transform: translateY(var(--y, 0));
+  transform: translateY(var(--y, 0));
+  color: var(--text);
+}
+.paw-button .text svg {
+  --background: var(--heart-background);
+  --border: var(--heart-border);
+  --shadow-light: transparent;
+  --shadow-dark: transparent;
+  width: 21px;
+  height: 19px;
+  -webkit-transform: translateX(var(--x));
+  transform: translateX(var(--x));
+}
+.paw-button > span {
+  display: block;
+  position: relative;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  z-index: 2;
+  color: var(--number);
+}
+.paw-button .paws {
+  overflow: hidden;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 60px;
+  z-index: 2;
+}
+.paw-button .paws svg {
+  position: absolute;
+  bottom: 0;
+  transition: opacity .2s, -webkit-transform .3s ease-out;
+  transition: transform .3s ease-out, opacity .2s;
+  transition: transform .3s ease-out, opacity .2s, -webkit-transform .3s ease-out;
+  opacity: var(--o, 0);
+  -webkit-transform: translate(var(--x, 0), var(--y, 0));
+  transform: translate(var(--x, 0), var(--y, 0));
+}
+.paw-button .paws svg.paw {
+  --x: -24px;
+  width: 30px;
+  height: 37px;
+  left: 32px;
+}
+.paw-button .paws svg.paw-clap {
+  --x: 16px;
+  --y: 34px;
+  --o: 1;
+  width: 29px;
+  height: 34px;
+  left: 34px;
+}
+.paw-button .paws .paw-effect {
+  left: 26px;
+  top: 12px;
+  width: 44px;
+  height: 44px;
+  position: absolute;
+}
+.paw-button .paws .paw-effect:before {
+  content: '';
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: var(--circle);
+  -webkit-transform: scale(var(--s, 0));
+  transform: scale(var(--s, 0));
+  opacity: var(--o, 1);
+  transition: opacity .2s linear .25s, -webkit-transform .15s ease .16s;
+  transition: transform .15s ease .16s, opacity .2s linear .25s;
+  transition: transform .15s ease .16s, opacity .2s linear .25s, -webkit-transform .15s ease .16s;
+}
+.paw-button .paws .paw-effect div {
+  width: 2px;
+  height: 6px;
+  border-radius: 1px;
+  left: 50%;
+  bottom: 50%;
+  margin-left: -1px;
+  position: absolute;
+  background: var(--circle-line);
+  -webkit-transform: translateY(-24px) scaleX(0.7) scaleY(var(--s, 0));
+  transform: translateY(-24px) scaleX(0.7) scaleY(var(--s, 0));
+}
+.paw-button .paws .paw-effect div:before, .paw-button .paws .paw-effect div:after {
+  content: '';
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: inherit;
+  border-radius: inherit;
+  -webkit-transform: translate(var(--x, -22px), var(--y, 4px)) rotate(var(--r, -45deg)) scaleX(0.8) scaleY(var(--s, 0));
+  transform: translate(var(--x, -22px), var(--y, 4px)) rotate(var(--r, -45deg)) scaleX(0.8) scaleY(var(--s, 0));
+}
+.paw-button .paws .paw-effect div:after {
+  --x: 22px;
+  --r: 45deg;
+}
+.paw-button .paws .paw-effect div,
+.paw-button .paws .paw-effect div:before,
+.paw-button .paws .paw-effect div:after {
+  opacity: var(--o, 1);
+  -webkit-transform-origin: 50% 100%;
+  transform-origin: 50% 100%;
+  transition: opacity .18s linear .21s, -webkit-transform .12s ease .17s;
+  transition: transform .12s ease .17s, opacity .18s linear .21s;
+  transition: transform .12s ease .17s, opacity .18s linear .21s, -webkit-transform .12s ease .17s;
+}
+.paw-button i {
+  position: absolute;
+  display: block;
+  width: 4px;
+  height: 4px;
+  top: 50%;
+  left: 50%;
+  margin: -2px 0 0 -2px;
+  opacity: var(--o, 0);
+  background: var(--b);
+  -webkit-transform: translate(var(--x), var(--y)) scale(var(--s, 1));
+  transform: translate(var(--x), var(--y)) scale(var(--s, 1));
+}
+.paw-button:not(.confetti):hover .text {
+  --o: 0;
+  --x: 12px;
+  --y: 8px;
+}
+.paw-button:not(.confetti):hover .paws svg.paw {
+  --o: 1;
+  --x: 0;
+}
+.paw-button.animation .text {
+  --o: 0;
+}
+.paw-button.animation .text svg {
+  --background: var(--heart-background-active);
+  --border: var(--heart-border-active);
+  --shadow-light: var(--heart-shadow-light);
+  --shadow-dark: var(--heart-shadow-dark);
+}
+.paw-button.animation .paws svg.paw {
+  --x: 0;
+  --o: 1;
+  transition-delay: 0s;
+  -webkit-animation: paw .45s ease forwards;
+  animation: paw .45s ease forwards;
+}
+.paw-button.animation .paws svg.paw-clap {
+  -webkit-animation: paw-clap .5s ease-in forwards;
+  animation: paw-clap .5s ease-in forwards;
+}
+.paw-button.animation .paws .paw-effect {
+  --s: 1;
+  --o: 0;
+}
+.paw-button.confetti i {
+  -webkit-animation: confetti .6s ease-out forwards;
+  animation: confetti .6s ease-out forwards;
+}
+.paw-button.confetti .paws svg.paw {
+  --o: 0;
+  transition: opacity .15s linear .2s;
+}
+.paw-button.liked {
+  --background: var(--background-active);
+  --border: var(--border-active);
+}
+.paw-button.liked .text {
+  --w: 21px;
+}
+.paw-button.liked .text svg {
+  --o: 1;
+}
+.paw-button.liked > span {
+  --number: var(--number-active);
+}
+
+@-webkit-keyframes confetti {
+  from {
+    -webkit-transform: translate(0, 0);
+    transform: translate(0, 0);
+    opacity: 1;
+  }
+}
+
+@keyframes confetti {
+  from {
+    -webkit-transform: translate(0, 0);
+    transform: translate(0, 0);
+    opacity: 1;
+  }
+}
+@-webkit-keyframes paw {
+  0% {
+    -webkit-transform: translateX(var(--x));
+    transform: translateX(var(--x));
+  }
+  35% {
+    -webkit-transform: translateX(-16px);
+    transform: translateX(-16px);
+  }
+  55%,
+  70% {
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
+  }
+  100% {
+    -webkit-transform: translateX(-12px);
+    transform: translateX(-12px);
+  }
+}
+@keyframes paw {
+  0% {
+    -webkit-transform: translateX(var(--x));
+    transform: translateX(var(--x));
+  }
+  35% {
+    -webkit-transform: translateX(-16px);
+    transform: translateX(-16px);
+  }
+  55%,
+  70% {
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
+  }
+  100% {
+    -webkit-transform: translateX(-12px);
+    transform: translateX(-12px);
+  }
+}
+@-webkit-keyframes paw-clap {
+  50%,
+  70% {
+    -webkit-transform: translate(0, 0);
+    transform: translate(0, 0);
+  }
+}
+@keyframes paw-clap {
+  50%,
+  70% {
+    -webkit-transform: translate(0, 0);
+    transform: translate(0, 0);
+  }
+}
+html {
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+}
+
+* {
+  box-sizing: inherit;
+}
+*:before, *:after {
+  box-sizing: inherit;
+}
+
+/*body {*/
+/*  min-height: 100vh;*/
+/*  display: flex;*/
+/*  font-family: 'Roboto', Arial;*/
+/*  justify-content: center;*/
+/*  align-items: center;*/
+/*  background: #2c2c2c;*/
+/*}*/
+/*猫爪点赞按钮*/
+
 
 /*writing blog page */
 
@@ -10216,4 +10601,210 @@ ul.story-side-list li a .story-user-innr p span.story-time-ago{
   padding-right:70px;
 }
 
+/*searchpage的搜索框*/
+html,
+body {
+  padding: 0<div class="container">
+  <form autocomplete="off">
+  <div class="finder">
+  <div class="finder__outer">
+  <div class="finder__inner">
+  <div class="finder__icon" ref="icon"></div>
+  <input class="finder__input" type="text" name="q" />
+  </div>
+  </div>
+  </div>
+  </form>
+  </div>;
+  margin: 0;
+  color: #292929;
+  background-color: #eaeaea;
+}
 
+.container {
+  position: absolute;
+  top: 0%;
+  text-align: center;
+  color: #2c3e50;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+form {
+  transition: all 0.5s;
+  position: absolute;
+  top: 10%;
+  transform: translateY(-50%);
+}
+
+.finder {
+  border: 1px solid #fff;
+  background-color: #f6f5f0;
+  border-radius: 15px;
+  padding: 8px;
+  box-shadow: 9px 9px 16px rgba(189, 189, 189, 0.6), -9px -9px 16px rgba(255, 255, 255, 0.5);
+}
+
+.finder__outer {
+  display: flex;
+  width: 600px;
+  padding: 1.5rem 2rem;
+  border-radius: 10px;
+  box-shadow: inset 10px 10px 15px -10px #c3c3c3, inset -10px -10px 15px -10px #ffffff;
+}
+
+.finder__inner {
+  display: flex;
+  align-items: center;
+  position: relative;
+  flex: 1;
+}
+
+.finder__form {
+  flex: 1;
+  height: calc(100% + 3rem);
+}
+
+.finder__input {
+  height: calc(100% + 3rem);
+  width: 100%;
+  border: none;
+  background-color: transparent;
+  outline: none;
+  font-size: 1.5rem;
+  letter-spacing: 0.75px;
+}
+
+.finder__icon {
+  width: 40px;
+  height: 40px;
+  margin-right: 1rem;
+  transition: all 0.2s;
+  box-shadow: inset 0 0 0 20px #292929;
+  border-radius: 50%;
+  position: relative;
+}
+.finder__icon:after, .finder__icon:before {
+  display: block;
+  content: "";
+  position: absolute;
+  transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+.finder__icon:after {
+  width: 10px;
+  height: 10px;
+  background-color: #292929;
+  border: 3px solid #f6f5f0;
+  top: 50%;
+  position: absolute;
+  transform: translateY(-50%);
+  left: 0px;
+  right: 0;
+  margin: auto;
+  border-radius: 50%;
+}
+.active .finder__icon:after {
+  border-width: 10px;
+  background-color: #f6f5f0;
+}
+.finder__icon:before {
+  width: 4px;
+  height: 13px;
+  background-color: #f6f5f0;
+  top: 50%;
+  left: 20px;
+  transform: rotateZ(45deg) translate(-50%, 0);
+  transform-origin: 0 0;
+  border-radius: 4px;
+}
+.active .finder__icon:before {
+  background-color: #292929;
+  width: 6px;
+  transform: rotateZ(45deg) translate(-50%, 25px);
+}
+.processing .finder__icon {
+  transform-origin: 50%;
+  animation: spinner 0.3s linear infinite;
+  animation-delay: 0.5s;
+}
+.active .finder__icon {
+  transform: translateY(-5px);
+}
+
+@keyframes spinner {
+  0% {
+    transform: rotateZ(45deg);
+  }
+  100% {
+    transform: rotateZ(405deg);
+  }
+}
+
+/*另一个搜索框*/
+body {
+  margin: 0;
+  padding: 0;
+  background: #ff5252;
+}
+
+.search__box {
+  position: absolute;
+  top: 10%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #2f3640;
+  height: 60px;
+  /*width: 70%;*/
+  border-radius: 40px;
+  padding: 10px 15px 10px 15px;
+}
+
+.search__box:hover > .search__txt {
+  width: 240px;
+  padding: 0 6px;
+}
+
+.search__box:hover > .search__btn {
+  background: #fff;
+}
+.search__box:hover > .search__btn i {
+  color: #34ace0;
+  transition: 0.9s;
+}
+
+.search__btn {
+  color: #e84118;
+  float: right;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #34ace0;
+  display: flex;
+  justify-content: center;
+  align-item: center;
+  text-decoration: none;
+}
+.search__btn i {
+  line-height: 40px;
+  color: #fff;
+  transition: 0.9s;
+}
+
+.search__txt {
+  border: none;
+  background: none;
+  outline: none;
+  float: left;
+  padding: 0;
+  color: #fff;
+  font-size: 16px;
+  transition: 0.2s;
+  line-height: 40px;
+  width: 0;
+}
+
+/*另一个搜索框*/
