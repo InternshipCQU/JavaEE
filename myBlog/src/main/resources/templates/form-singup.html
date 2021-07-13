@@ -21,6 +21,8 @@
     ================================================== -->
     <link rel="stylesheet" href="assets/css/icons.css">
     <script src="https://kit.fontawesome.com/815e388c50.js" crossorigin="anonymous"></script>
+    <script src="/assets/js/drag.js" th:href="@{/assets/js/drag.js}"></script>
+
 
     <!-- Google font
     ================================================== -->
@@ -48,34 +50,35 @@
                 <!-- column two -->
                     <div class="uk-card-default px-5 py-8">
                         <div class="mb-4 uk-text-center">
-                            <h2 class="mb-0"> Create new Account</h3>
-                            <p class="my-2">Login to manage your account.</p>
+                            <h2 class="mb-0"> 创建新账号</h2>
+<!--                            <p class="my-2">Login to manage your account.</p>-->
                         </div>
 
-                    <form class="uk-child-width-1-1 uk-grid-small" uk-grid>
+                    <form class="uk-child-width-1-1 uk-grid-small" uk-grid action="/login" onsubmit="return CheckSignup();" name="form2"
+                    method="get">
 
                         <div>
                             <div class="uk-form-group">
-                                <label class="uk-form-label"> Name</label>
+                                <label class="uk-form-label"> 账号</label>
 
                                 <div class="uk-position-relative w-100">
                                     <span class="uk-form-icon">
                                         <i class="icon-feather-user"></i>
                                     </span>
-                                    <input class="uk-input" type="text" placeholder="Full name">
+                                    <input class="uk-input" type="text" placeholder="用户名" id="sign-username" name="sign-username">
                                 </div>
 
                             </div>
                         </div>
                         <div>
                             <div class="uk-form-group">
-                                <label class="uk-form-label"> Email</label>
+                                <label class="uk-form-label"> 邮箱</label>
 
                                 <div class="uk-position-relative w-100">
                                     <span class="uk-form-icon">
                                         <i class="icon-feather-mail"></i>
                                     </span>
-                                    <input class="uk-input" type="email" placeholder="name@example.com">
+                                    <input class="uk-input" type="email" placeholder="name@example.com" id="sign-email" name="sign-email">
                                 </div>
 
                             </div>
@@ -83,26 +86,26 @@
 
                         <div class="uk-width-1-2@s">
                             <div class="uk-form-group">
-                                <label class="uk-form-label"> Password</label>
+                                <label class="uk-form-label"> 密码</label>
 
                                 <div class="uk-position-relative w-100">
                                     <span class="uk-form-icon">
                                         <i class="icon-feather-lock"></i>
                                     </span>
-                                    <input class="uk-input" type="password" placeholder="********">
+                                    <input class="uk-input" type="password" placeholder="********" id="sign-password" name="sign-password">
                                 </div>
 
                             </div>
                         </div>
                         <div class="uk-width-1-2@s">
                             <div class="uk-form-group">
-                                <label class="uk-form-label"> Confirm password</label>
+                                <label class="uk-form-label"> 确认密码</label>
 
                                 <div class="uk-position-relative w-100">
                                     <span class="uk-form-icon">
                                         <i class="icon-feather-lock"></i>
                                     </span>
-                                    <input class="uk-input" type="password" placeholder="********">
+                                    <input class="uk-input" type="password" placeholder="********" id="confirm-password" name="confirm-password">
                                 </div>
 
                             </div>
@@ -111,11 +114,16 @@
                         <div>
                             <div class="mt-4 uk-flex-middle uk-grid-small" uk-grid>
                                 <div class="uk-width-expand@s">
-                                    <p> Do you have account <a href="form-login.html">Sign in</a></p>
+                                    <p> 已有账号 <a href="/login">登录</a></p>
                                 </div>
                                 <div class="uk-width-auto@s">
-                                    <input type="submit" class="button primary" value="Get Started"></input>
+                                    <button type="submit" class="button primary" id="sign-up">
+                                        <span>注册</span>
+                                    </button>
                                 </div>
+<!--                                <button id="login" class="el-button el-button&#45;&#45;default" type="submit">-->
+<!--                                    <span>登录1</span>-->
+<!--                                </button>-->
                             </div>
                         </div>
 

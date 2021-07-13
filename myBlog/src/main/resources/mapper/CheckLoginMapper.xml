@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.demo.mapper.CheckLoginMapper">
+    <select id="checkPassword" resultType="String">
+        SELECT `User`.password
+        FROM `User`
+        WHERE `User`.username = #{username};
+    </select>
+
+    <select id="userExist" resultType="String">
+        SELECT `User`.username
+        FROM `User`
+        WHERE `User`.username = #{username};
+    </select>
+</mapper>

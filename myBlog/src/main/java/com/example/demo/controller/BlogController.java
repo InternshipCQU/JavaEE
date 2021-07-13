@@ -1,15 +1,10 @@
 package com.example.demo.controller;
 
-import com.example.demo.entity.Blog;
-import com.example.demo.entity.blogInfo;
+import com.example.demo.entity.BlogInfo;
 import com.example.demo.service.BlogService;
-import com.example.demo.service.LoginService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 
@@ -22,34 +17,41 @@ public class BlogController {
 
     @RequestMapping("/blogs/{blogId}")
     public String blog(@PathVariable("blogId") int blogId, Model model){
-        blogInfo blog = blogService.getBlog(blogId);
-
+        BlogInfo blog = blogService.getBlog(blogId);
         model.addAttribute("blog",blog);
-        return "blog-test";
+        return "test-blog";
     }
 
-    @GetMapping("/like")
-    public void like(@PathVariable("blogId") int blogId, @PathVariable("currentLikes") int currentLikes){
-        //TODO:这里向数据库写点赞信息 之后应该进行刷新操作
-        blogService.like(blogId, currentLikes + 1);
-
+    @RequestMapping("/like")
+    public void like(@RequestParam("blogId") int blogId, @RequestParam("userId") int userId, @RequestParam("tagId") int tagId){
+        blogService.like(blogId);
+        blogService.updateMarkWhenLike(tagId, userId);
     }
 
-    @GetMapping("/cancelLike")
-    public  void cancelLike(@PathVariable("blogId") int blogId, @PathVariable("currentLikes") int currentLikes){
-        //TODO:这里向数据库写取消点赞信息 之后应该进行刷新操作
-        blogService.cancelLike(blogId, currentLikes - 1);
+    @RequestMapping("/cancelLike")
+    public void cancelLike(@RequestParam("blogId") int blogId, @RequestParam("userId") int userId, @RequestParam("tagId") int tagId){
+        blogService.cancelLike(blogId);
+        blogService.updateMarkWhenCancelLike(tagId, userId);
     }
 
-    @GetMapping("/comment")
-    public void comment(@PathVariable("blogId") int blogId, @PathVariable("userId") int userId, @RequestBody String comment){
-        //TODO:这里向数据库写评论信息 之后应该进行刷新操作
+    @RequestMapping("/comment")
+    public void comment(@RequestParam("blogId") int blogId, @RequestParam("userId") int userId,
+                        @RequestParam("tagId") int tagId,@RequestParam("comment") String comment){
         blogService.comment(blogId, userId, comment);
+        blogService.updateMarkWhenComment(tagId, userId);
     }
 
-    @GetMapping("/forward")
-    public void forward(@PathVariable("blogId") int blogId, @PathVariable("userId") int userId){
-        //TODO:这里向数据库写转发信息
+    @RequestMapping("/forward")
+    public void forward(@RequestParam("blogId") int blogId, @RequestParam("userId") int userId,
+                        @RequestParam("tagId") int tagId){
         blogService.forward(blogId, userId);
+        blogService.updateMarkWhenForward(tagId, userId);
+    }
+
+    @RequestMapping("/collect")
+    public void collect(@RequestParam("blogId") int blogId, @RequestParam("userId") int userId,
+                        @RequestParam("tagId") int tagId){
+        blogService.collect(blogId, userId);
+        blogService.updateMarkWhenCollect(tagId, userId);
     }
 }

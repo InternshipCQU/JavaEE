@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.demo.mapper.BlogDetailsMapper">
+    <select id="showBlogPart" resultType="com.example.demo.entity.BlogInfoVo">
+        SELECT `blogInfo`.blogContent blogContent, `blogInfo`.createTime createTime, `blogInfo`.collectNum collectNum, `blogInfo`.likesNum likesNum,
+            `blogInfo`.commentNum commentNum, `blogInfo`.forwardNum forwardNum, `User`.username username,  `User`.avatar avatar
+        FROM blogInfo, `User`
+        WHERE `blogInfo`.blogId = #{blogId} AND
+            `blogInfo`.userId = `User`.userId;
+    </select>
+
+    <select id="showBlogComment" resultType="com.example.demo.entity.BlogCommentVo">
+        SELECT `User`.username, `User`.avatar, `blogComment`.createTime, `blogComment`.commentContent
+        FROM `User`, `blogComment`
+        WHERE `blogComment`.blogId = #{blogId} AND
+            `blogComment`.userId = `User`.userId;
+    </select>
+</mapper>
