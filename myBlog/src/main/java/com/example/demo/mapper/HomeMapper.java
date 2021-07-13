@@ -10,6 +10,7 @@ import com.example.demo.entity.BlogInfo;
 import org.apache.ibatis.annotations.Mapper;
 
 
+import java.util.ArrayList;
 import java.util.List;
 
 //对应HomeService中的功能
@@ -32,8 +33,11 @@ public interface HomeMapper {
 
     //展示热门博客，根据前端页面的格式查询
     List<CommentView> getCommentViews(int blogId);
-    List<HomeBlogView> getBlogViews();
+
+    ArrayList<HomeBlogView> getBlogViews();
+
     List<HomeBlogView> getRecommendBlogViews(int tagId);
 
     TagMark getTagMark(int userId);
+
 }

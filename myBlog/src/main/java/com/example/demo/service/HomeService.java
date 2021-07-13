@@ -2,10 +2,15 @@ package com.example.demo.service;
 
 import com.example.demo.entity.TagMark;
 import com.example.demo.entity.User;
+import com.example.demo.utils.SplitString;
+import org.springframework.data.relational.core.sql.In;
+
 import com.example.demo.entity.view.HomeBlogView;
 import com.example.demo.entity.BlogInfo;
 
-import javax.swing.text.TabableView;
+import javax.servlet.http.HttpServletRequest;
+import java.util.ArrayList;
+
 import java.util.List;
 
 //博客主页相关功能
@@ -17,8 +22,16 @@ public interface HomeService {
     List<User> showRecommendBlogger(int userId);            // 用户登录后，推送其关注的博主【关注博主中点赞数top6】
 
 
-    List<HomeBlogView> getBlogViews();                      // 按照首页格式查询出对应的博客
+    String getTheClass(String s);
+
+    String giveTheBlogToIndex(String cla,HttpServletRequest request);
+    void Init(String cla,HttpServletRequest request);
+
+
+
+    ArrayList<HomeBlogView> getBlogViews();                      // 按照首页格式查询出对应的博客
     List<HomeBlogView> getRecommendBlogViews(int tagId);    // 按照首页格式，以及推荐算法查询出对应的博客
 
     TagMark getTagMark(int userId);                         //根据userId获取该用户的标签评分
+
 }
