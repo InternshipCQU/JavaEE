@@ -184,11 +184,11 @@ function loadTheBlog()
                     $("#null").after("<div class=\"post\" id =\"final\" >\n" +
                         "    <div class=\"post-heading\">\n" +
                         "        <div class=\"post-avature\">\n" +
-                        "            <img src=\"http://localhost:8080/assets/images/avatars/avatar-6.jpg\" alt=\"\">\n" +
+                        "            <img id = \"userAvater\" src=\"http://localhost:8080/assets/images/avatars/avatar-6.jpg\" alt=\"\">\n" +
                         "        </div>\n" +
                         "        <div class=\"post-title\">\n" +
                         "            <h4 id = \"username\">  </h4>\n" +
-                        "            <p> 5 <span> hrs</span> <i class=\"uil-users-alt\"></i> </p>\n" +
+                        "            <p id = \"time\"> 5 <span> hrs</span>  </p>\n" +
                         "        </div>\n" +
                         "\n" +
                         "        <div class=\"post-btn-action\">\n" +
@@ -210,7 +210,10 @@ function loadTheBlog()
                         "\n" +
                         " <a id = \"link\">\n" +
                         "    <div class=\"post-description\">\n" +
+                        "            <h3 id = \"title\">    </h3>\n" +
+                        "            <p id = \"content\"> </p>              \n" +
                         "        <div class=\"fullsizeimg\">\n" +
+
                         "            <img src=\"http://localhost:8080/assets/images/post/img-1.jpg\" alt=\"\">\n" +
                         "        </div>\n" +
                         "        <div class=\"post-state-details\">\n" +
@@ -219,7 +222,7 @@ function loadTheBlog()
                         "                <img src=\"http://localhost:8080/assets/images/icons/reactions_love.png\" alt=\"\">\n" +
                         "                <p id = \"likeNum\"> 13 </p>\n" +
                         "            </div>\n" +
-                        "            <p id = \"commentNumber2\"> 24 Comments</p>\n" +
+                        "            <p id = \"clickNumber\"> 24 Comments</p>\n" +
                         "        </div>\n" +
                         "    </div>\n" +
                         " </a>\n" +
@@ -257,24 +260,34 @@ function loadTheBlog()
                 }
                 $("#null").attr("id", "null2");
                 $("#commentLink").attr("href",blog.link)
-                $("#commentLink").html("View " + blog.commentNumber + " more Comments")
+                $("#commentLink").html("View " + blog.commentNumber + " more Comments") //设置博客链接
                 $("#commentLink").attr("id","pass")
-                $("#username").html(blog.username);
+                $("#username").html(blog.username);//设置博主名字
                 $("#username").attr("id", "pass");
-                $("#likeNumber").html(blog.likeNumber);
+                $("#likeNumber").html(blog.likeNumber);//设置点赞数量
                 $("#likeNumber").attr("id", "pass");
                 $("#likeNum").html(blog.likeNumber);
-                $("#likeNum").attr("id", "pass");
+                $("#likeNum").attr("id", "pass");//设置点赞数量
                 $("#commentNumber").html(blog.commentNumber);
-                $("#commentNumber").attr("id", "pass");
-                $("#commentNumber2").html(blog.commentNumber + "comments");
-                $("#commentNumber2").attr("id", "pass");
+                $("#commentNumber").attr("id", "pass");//设置评论数量
+                $("#clickNumber").html(blog.clickNumber + " views");
+                $("#clickNumber").attr("id", "pass");//设置浏览量
                 $("#forwardNumber").html(blog.forwardNumber);
-                $("#forwardNumber").attr("id", "pass");
+                $("#forwardNumber").attr("id", "pass");//设置转发数
                 $("#saveNumber").html(blog.saveNumber);
-                $("#saveNumber").attr("id", "pass");
+                $("#saveNumber").attr("id", "pass");//设置收藏数
                 $("#link").attr("href", blog.link);
-                $("#link").attr("id", "pass");
+                $("#link").attr("id", "pass");//设置博客链接
+
+                $("#title").html("《" + blog.blogTitle+"》");
+                $("#title").attr("id", "pass");//设置博客标题
+                $("#content").html(blog.blogContent);
+                $("#content").attr("id", "pass");//设置博客内容
+                $("#time").html(blog.createTime);
+                $("#time").attr("id", "pass");//设置时间
+
+                // $("#userAvater").attr("src", blog.userAvater);
+                // $("#userAvater").attr("id", "pass");//设置博主头像
 
                 $("#comments").attr("id", "commentsNull")
 
@@ -285,7 +298,7 @@ function loadTheBlog()
                         //var comment = JSON.parse(comment);
                         $("#commentsNull").after("<div class=\"post-comments-single\">\n" +
                             "                                    <div class=\"post-comment-avatar\">\n" +
-                            "                                        <img src=\"http://localhost:8080/assets/images/avatars/avatar-5.jpg\" alt=\"\">\n" +
+                            "                                        <img id = \"commentAvater\" src=\"http://localhost:8080/assets/images/avatars/avatar-5.jpg\" alt=\"\">\n" +
                             "                                    </div>\n" +
                             "                                    <div class=\"post-comment-text\">\n" +
                             "                                        <div class=\"post-comment-text-inner\">\n" +
@@ -305,11 +318,14 @@ function loadTheBlog()
 
 
                         $("#commentUser").html(comment.username);
-                        $("#commentUser").attr("id", "pass");
+                        $("#commentUser").attr("id", "pass");//设置评论者名字
                         $("#commentText").html(comment.commentContent);
-                        $("#commentText").attr("id", "pass");
-                        $("#commentTime").html("comment.commentTime");
-                        $("#commentTime").attr("id", "pass");
+                        $("#commentText").attr("id", "pass");//设置评论内容
+                        // $("#commentTime").html(comment.commentTime);
+                        // $("#commentTime").attr("id", "pass");//设置时间
+                        //
+                        // $("#commentAvater").attr("src", comment.userAvater);
+                        // $("#commentAvater").attr("id", "pass");//设置用户头像
                     });
 
                 }
@@ -326,3 +342,108 @@ function loadTheBlog()
     });
 }
 
+
+//====
+
+//====blogPage====
+
+function follow()
+{
+    urls = window.location.pathname;
+    str = urls.split("/")
+    $.ajax({
+
+        url: 'http://localhost:8080/blogs/like', //这里是返回路径 在controller里写好对应函数就行 TODO:记得修改路径后面的 这是测试
+        type: 'get',
+        data: {"blogID":str[str.length-1]}, //这里是向后端传输的json 应该是可以直接传对象 比如User这种entity
+        //例如点赞的话 我们传递blogID userID到后端 后端再进行操作
+        async: true,
+        success: function(data){
+            if(data != null){
+
+            }
+        }
+    });
+}
+
+function like()
+{
+    urls = window.location.pathname;
+    str = urls.split("/")
+    $.ajax({
+
+        url: 'http://localhost:8080/blogs/like', //这里是返回路径 在controller里写好对应函数就行 TODO:记得修改路径后面的 这是测试
+        type: 'get',
+        data: {"blogID":str[str.length-1]}, //这里是向后端传输的json 应该是可以直接传对象 比如User这种entity
+        //例如点赞的话 我们传递blogID userID到后端 后端再进行操作
+        async: true,
+        success: function(data){
+            if(data != null){
+
+            }
+        }
+    });
+}
+
+function comment()
+{
+    urls = window.location.pathname;
+    str = urls.split("/")
+    $.ajax({
+
+        url: 'http://localhost:8080/blogs/comment', //这里是返回路径 在controller里写好对应函数就行 TODO:记得修改路径后面的 这是测试
+        type: 'get',
+        data: {"blogID":str[str.length-1]}, //这里是向后端传输的json 应该是可以直接传对象 比如User这种entity
+        //例如点赞的话 我们传递blogID userID到后端 后端再进行操作
+        async: true,
+        success: function(data){
+            if(data != null){
+            }
+
+        }
+    });
+}
+
+
+function forward()
+{
+    urls = window.location.pathname;
+    str = urls.split("/")
+    $.ajax({
+
+        url: 'http://localhost:8080/blogs/forward', //这里是返回路径 在controller里写好对应函数就行 TODO:记得修改路径后面的 这是测试
+        type: 'get',
+        data: {"blogID":str[str.length-1]}, //这里是向后端传输的json 应该是可以直接传对象 比如User这种entity
+        //例如点赞的话 我们传递blogID userID到后端 后端再进行操作
+        async: true,
+        success: function(data){
+            if(data != null){
+
+            }
+        }
+    });
+}
+
+function collect()
+{
+    urls = window.location.pathname;
+    str = urls.split("/")
+    $.ajax({
+
+        url: 'http://localhost:8080/blogs/collect', //这里是返回路径 在controller里写好对应函数就行 TODO:记得修改路径后面的 这是测试
+        type: 'get',
+        data: {"blogID":str[str.length-1]},//这里是向后端传输的json 应该是可以直接传对象 比如User这种entity
+        //例如点赞的话 我们传递blogID userID到后端 后端再进行操作
+        async: true,
+        success: function(data){
+            if(data != null){
+
+            }
+
+        }
+    });
+}
+
+
+
+//====
