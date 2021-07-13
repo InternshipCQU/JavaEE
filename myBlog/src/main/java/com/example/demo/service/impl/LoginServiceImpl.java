@@ -24,8 +24,13 @@ public class LoginServiceImpl implements LoginService {
     public boolean checkTheInfo(String username,String password){
         //TODO:这里需要增加学生端接口
         if(password.equals(checkLoginMapper.checkPassword(username)))return true;
+        else return false;
+    }
 
-        return false;
+    @Override
+    public boolean checkUser(String username) {
+        if(checkLoginMapper.userExist(username) == null) return false;
+        else return true;
     }
 
 
