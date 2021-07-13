@@ -398,48 +398,48 @@
                                                <img src="http://localhost:8080/assets/images/avatars/avatar-3.jpg" alt="">
                                            </span>
                                            <div class="notification-text notification-msg-text">
-                                               <strong th:text = "${recommendBlogger.get(0).getUsername()}">Stella Johnson</strong>
+                                               <strong>Stella Johnson</strong>
                                                <p> Alex will explain you how ... <span class="time-ago"> 3 h </span>
                                                </p>
                                            </div>
                                        </a>
                                    </li>
                                    <li>
-                                       <a th:href="@{'/blogger/' + ${recommendBlogger.get(0).getusername}}">
+                                       <a >
                                            <span class="notification-avatar status-online">
                                                <img src="http://localhost:8080/assets/images/avatars/avatar-1.jpg" alt="">
                                            </span>
                                            <div class="notification-text notification-msg-text">
-                                               <strong th:text = "${recommendBlogger.get(1).getUsername()}">Alex Dolgove</strong>
+                                               <strong >Alex Dolgove</strong>
                                                <p> Alia just joined Messenger! <span class="time-ago"> 3 h </span> </p>
                                            </div>
                                        </a>
                                    </li>
                                    <li>
-                                       <a th:href="@{'/blogger/' + ${recommendBlogger.get(0).getusername}}">
+                                       <a >
                                            <span class="notification-avatar status-online">
                                                <img src="http://localhost:8080/assets/images/avatars/avatar-4.jpg" alt="">
                                            </span>
                                            <div class="notification-text notification-msg-text">
-                                               <strong th:text = "${recommendBlogger.get(2).getUsername()}">Adrian Mohani</strong>
+                                               <strong >Adrian Mohani</strong>
                                                <p>Thanks for The Answer ... <span class="time-ago"> 2 h </span> </p>
                                            </div>
                                        </a>
                                    </li>
                                    <li>
-                                       <a th:href="@{'/blogger/' + ${recommendBlogger.get(0).getusername}}">
+                                       <a >
                                            <span class="notification-avatar">
                                                <img src="http://localhost:8080/assets/images/avatars/avatar-2.jpg" alt="">
                                            </span>
                                            <div class="notification-text notification-msg-text">
-                                               <strong th:text = "${recommendBlogger.get(3).getUsername()}">Jonathan Madano</strong>
+                                               <strong >Jonathan Madano</strong>
                                                <p>Thanks for The Answer ... <span class="time-ago"> 2 h </span> </p>
 
                                            </div>
                                        </a>
                                    </li>
                                    <li>
-                                       <a th:href="@{'/blogger/' + ${recommendBlogger.get(0).getusername}}">
+                                       <a >
                                            <span class="notification-avatar">
                                                <img src="http://localhost:8080/assets/images/avatars/avatar-3.jpg" alt="">
                                            </span>
@@ -995,33 +995,33 @@
 
                                 <ul class="uk-slider-items uk-child-width-1-3@m uk-grid-small uk-grid sl_pro_users">
                                     <li>
-                                        <a class="user" href="#">
-                                            <img src="http://localhost:8080/assets/images/avatars/avatar-1.jpg" alt="">
-                                            <span>Stella Johnson 1</span>
+                                        <a class="user" th:href="@{'/blogger/' + ${recommendBlogger.get(0).getusername}}">
+                                            <img th:src="${recommendBlogger.get(0).getAvatar()}" alt="">
+                                            <span th:text = "${recommendBlogger.get(0).getUsername()}">Stella Johnson 1</span>
                                         </a>
                                     </li>
                                     <li>
-                                        <a class="user" href="#">
-                                            <img src="http://localhost:8080/assets/images/avatars/avatar-2.jpg" alt="">
-                                            <span>Stella Johnson 2</span>
+                                        <a class="user" th:href="@{'/blogger/' + ${recommendBlogger.get(1).getusername}}">
+                                            <img th:src= "${recommendBlogger.get(1).getAvatar()}" alt="">
+                                            <span th:text = "${recommendBlogger.get(1).getUsername()}">Stella Johnson 2</span>
                                         </a>
                                     </li>
                                     <li>
-                                        <a class="user" href="#">
-                                            <img src="http://localhost:8080/assets/images/avatars/avatar-3.jpg" alt="">
-                                            <span>Stella Johnson 3</span>
+                                        <a class="user" th:href="@{'/blogger/' + ${recommendBlogger.get(2).getusername}}">
+                                            <img th:src="${recommendBlogger.get(2).getAvatar()}" alt="">
+                                            <span th:text = "${recommendBlogger.get(2).getUsername()}">Stella Johnson 3</span>
                                         </a>
                                     </li>
                                     <li>
-                                        <a class="user" href="#">
-                                            <img src="http://localhost:8080/assets/images/avatars/avatar-4.jpg" alt="">
-                                            <span>Stella Johnson 4</span>
+                                        <a class="user" th:href="@{'/blogger/' + ${recommendBlogger.get(3).getusername}}">
+                                            <img th:src="${recommendBlogger.get(3).getAvatar()}" alt="">
+                                            <span th:text = "${recommendBlogger.get(3).getUsername()}">Stella Johnson 4</span>
                                         </a>
                                     </li>
                                     <li>
-                                        <a class="user" href="#">
-                                            <img src="http://localhost:8080/assets/images/avatars/avatar-5.jpg" alt="">
-                                            <span>Stella Johnson 5</span>
+                                        <a class="user" th:href="@{'/blogger/' + ${recommendBlogger.get(4).getusername}}">
+                                            <img th:src="${recommendBlogger.get(4).getAvatar()}" alt="">
+                                            <span th:text = "${recommendBlogger.get(4).getUsername()}">Stella Johnson 5</span>
                                         </a>
                                     </li>
                                 </ul>
