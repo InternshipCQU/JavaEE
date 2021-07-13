@@ -34,6 +34,7 @@ public class IndexController {
     @RequestMapping("/index/{cla}")
     public String index1(@PathVariable("cla") String cla,HttpServletRequest request,Model model){
         homeService.Init(cla,request);
+        homeService.setRecommendBlogger(request,model);
         homeService.getTrendings(request,model);
 
         return "index";

@@ -347,7 +347,7 @@ function loadTheBlog()
 
 //====blogPage====
 
-function follow()
+function follow(userID)
 {
     urls = window.location.pathname;
     str = urls.split("/")

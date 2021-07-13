@@ -29,14 +29,14 @@ public interface HomeMapper {
     List<User> showHotBlogger();
 
     // 【登录】展示推荐博主(top6)
-    List<User> showRecommendBlogger(int userId);
+    ArrayList<User> showRecommendBlogger(int userId);
 
     //展示热门博客，根据前端页面的格式查询
     List<CommentView> getCommentViews(int blogId);
 
     ArrayList<HomeBlogView> getBlogViews();
 
-    List<HomeBlogView> getRecommendBlogViews(int tagId);
+    ArrayList<HomeBlogView> getRecommendBlogViews(int tagId);
 
     TagMark getTagMark(int userId);
 

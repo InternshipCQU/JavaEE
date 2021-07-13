@@ -393,53 +393,53 @@
                                        </a>
                                    </li>
                                    <li>
-                                       <a href="#">
+                                       <a >
                                            <span class="notification-avatar">
                                                <img src="http://localhost:8080/assets/images/avatars/avatar-3.jpg" alt="">
                                            </span>
                                            <div class="notification-text notification-msg-text">
-                                               <strong>Stella Johnson</strong>
+                                               <strong th:text = "${recommendBlogger.get(0).getUsername()}">Stella Johnson</strong>
                                                <p> Alex will explain you how ... <span class="time-ago"> 3 h </span>
                                                </p>
                                            </div>
                                        </a>
                                    </li>
                                    <li>
-                                       <a href="#">
+                                       <a th:href="@{'/blogger/' + ${recommendBlogger.get(0).getusername}}">
                                            <span class="notification-avatar status-online">
                                                <img src="http://localhost:8080/assets/images/avatars/avatar-1.jpg" alt="">
                                            </span>
                                            <div class="notification-text notification-msg-text">
-                                               <strong>Alex Dolgove</strong>
+                                               <strong th:text = "${recommendBlogger.get(1).getUsername()}">Alex Dolgove</strong>
                                                <p> Alia just joined Messenger! <span class="time-ago"> 3 h </span> </p>
                                            </div>
                                        </a>
                                    </li>
                                    <li>
-                                       <a href="#">
+                                       <a th:href="@{'/blogger/' + ${recommendBlogger.get(0).getusername}}">
                                            <span class="notification-avatar status-online">
                                                <img src="http://localhost:8080/assets/images/avatars/avatar-4.jpg" alt="">
                                            </span>
                                            <div class="notification-text notification-msg-text">
-                                               <strong>Adrian Mohani</strong>
+                                               <strong th:text = "${recommendBlogger.get(2).getUsername()}">Adrian Mohani</strong>
                                                <p>Thanks for The Answer ... <span class="time-ago"> 2 h </span> </p>
                                            </div>
                                        </a>
                                    </li>
                                    <li>
-                                       <a href="#">
+                                       <a th:href="@{'/blogger/' + ${recommendBlogger.get(0).getusername}}">
                                            <span class="notification-avatar">
                                                <img src="http://localhost:8080/assets/images/avatars/avatar-2.jpg" alt="">
                                            </span>
                                            <div class="notification-text notification-msg-text">
-                                               <strong>Jonathan Madano</strong>
+                                               <strong th:text = "${recommendBlogger.get(3).getUsername()}">Jonathan Madano</strong>
                                                <p>Thanks for The Answer ... <span class="time-ago"> 2 h </span> </p>
 
                                            </div>
                                        </a>
                                    </li>
                                    <li>
-                                       <a href="#">
+                                       <a th:href="@{'/blogger/' + ${recommendBlogger.get(0).getusername}}">
                                            <span class="notification-avatar">
                                                <img src="http://localhost:8080/assets/images/avatars/avatar-3.jpg" alt="">
                                            </span>

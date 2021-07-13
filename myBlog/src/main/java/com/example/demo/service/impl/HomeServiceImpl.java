@@ -48,7 +48,7 @@ public class HomeServiceImpl implements HomeService {
 
     @Override
     // 【登陆后】根据关注的人，推荐关注列表热门博主
-    public List<User> showRecommendBlogger(int userId) {
+    public ArrayList<User> showRecommendBlogger(int userId) {
         return homeMapper.showRecommendBlogger(userId);
     }
 
@@ -57,6 +57,15 @@ public class HomeServiceImpl implements HomeService {
         return null;
     }
 
+
+    @Override
+    public void setRecommendBlogger(HttpServletRequest request,Model model){
+        if(request.getAttribute("token").equals("yes")){
+            model.addAttribute("recommendBlogger",showRecommendBlogger(((Integer)request.getAttribute("userID"))));
+        }else{
+            model.addAttribute("recommendBlogger",showHotBlogger());
+        }
+    }
 
     //test
     @Override
@@ -74,7 +83,12 @@ public class HomeServiceImpl implements HomeService {
     @Override
     public void Init(String cla, HttpServletRequest request) {
         HttpSession session = request.getSession();
-        session.setAttribute("blogs", getBlogViews());
+        if(session.getAttribute("Token").equals("yes")){
+            session.setAttribute("blogs", getRecommendBlogViews((Integer) session.getAttribute("userID")));
+        }else{
+            session.setAttribute("blogs", getBlogViews());
+        }
+
         ArrayList<HomeBlogView> s1 = (ArrayList<HomeBlogView>) session.getAttribute("blogs");
         session.setAttribute("count", 0);
         session.setAttribute("size", s1.size());
@@ -142,8 +156,8 @@ public class HomeServiceImpl implements HomeService {
     }
 
     @Override
-    public List<HomeBlogView> getRecommendBlogViews(int tagId) {
-        List<HomeBlogView> blogList = homeMapper.getRecommendBlogViews(tagId);
+    public ArrayList<HomeBlogView> getRecommendBlogViews(int tagId) {
+        ArrayList<HomeBlogView> blogList = homeMapper.getRecommendBlogViews(tagId);
         for (int i = 0; i < blogList.size(); i++) {
             int blogId = blogList.get(i).getBlogId();
             List<CommentView> commentList = homeMapper.getCommentViews(blogId);
