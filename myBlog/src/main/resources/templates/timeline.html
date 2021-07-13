@@ -6,6 +6,9 @@
     <!-- Basic Page Needs
     ================================================== -->
     <title>Simplest Social Network HTML Template</title>
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="Cache-Control" content="no-cache, must-revalidate">
+    <meta http-equiv="expires" content="0">
     <meta charset="gbk">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Simplest is - Professional A unique and beautiful collection of UI elements">
@@ -29,230 +32,8 @@
 </head>
 
 <body onload="getuser();">
-    <script type="text/javascript">
-    function getuser(){
-        $.ajax({
-            url:"http://"+window.location.host+"/getusersess",
-            type:"GET",
-            data:{"userId":"a","username":"a","userprofile":"b","email":"a","radioval":"a","lastname":"a",
-                "lastlogin":"a","userRefisiterTime":"a",
-                "likesNum":"a","blogsNum":"a","fansNum":"a","firstname":"a","area":"a","telephone":"a","birthdate":"a"},
-            dataType:"json",
-            success:function(data){
-                document.getElementById("userId").innerHTML=data.userId;
-                document.getElementById("useralias").innerHTML=data.username;
-                document.getElementById("usernameopt").innerHTML=data.username;
-                document.getElementById("userprofileopt").innerHTML=data.userprofile;
-                document.getElementById("email").innerHTML=data.email;
-                if(data.radiovl=="0")
-                {
-                    document.getElementById("radioval").innerHTML="Men";
-                }
-                else
-                {
-                    document.getElementById("radioval").innerHTML="Women";
-                }
-                document.getElementById("userlastname").innerHTML=data.lastname;
-                document.getElementById("userfirstname").innerHTML=data.firstname;
-                document.getElementById("area").innerHTML=data.area;
-                document.getElementById("telephone").innerHTML=data.telephone;
 
-                document.getElementById("lastlogin").innerHTML=data.lastlogin;
-                document.getElementById("userRefisiterTime").innerHTML=data.userRefisiterTime;
-                document.getElementById("blogsNum").innerHTML=data.blogsNum;
-                document.getElementById("fansNum").innerHTML=data.fansNum;
-                document.getElementById("likesNum").innerHTML=data.likesNum;
-                document.getElementById("birthdate").innerHTML=data.birthdate;
-            }
-        })
-
-    }
-    </script>
-    <script type="text/javascript">
-        function changestatus(){
-            $.ajax({
-                url:"http://"+window.location.host+"/changecontent",
-                type:"GET",
-                data:{"flag":"a"},
-                dataType:"json",
-                success:function(data){
-
-                    var o1=document.getElementById("userprofileopt");
-                    var c1=o1.innerHTML;
-                    o1.innerHTML="<input type='text' id='userprofileopt2' name='useralias' size='30' maxlength='130' >";
-                    var o2=document.getElementById("useralias");
-                    var c2=o2.innerHTML;
-                    o2.innerHTML="<input type='text' id='useralias2' name='useralias' size='12' maxlength='80' >";
-                    var o3=document.getElementById("email");
-                    var c3=o3.innerHTML;
-                    o3.innerHTML="<input type='text' id='email2' name='email' size='16' maxlength='60' value="+c3+">";
-                    var o4=document.getElementById("radioval");
-                    var c4=o4.innerHTML;
-                    if (c4==="男"){
-                    o4.innerHTML="<input type= 'radio' id='radioval2' name= 'radioval2' value= '0'  checked='checked'/> Men<input type= 'radio' id='radioval2' name= 'radioval2' value= '1'/> Women"}
-                    else
-                    {
-                        o4.innerHTML="<input type= 'radio' id='radioval2' name= 'radioval2' value= '0' /> Men<input type= 'radio' id='radioval2' name= 'radioval2' value= '1'  checked/> Women"
-                    }
-                    var o5=document.getElementById("userlastname");
-                    var c5=o5.innerHTML;
-                    o5.innerHTML="<input type='text' id='userlastname2' name='userlastname' size='12' maxlength='15' value="+c5+">";
-                    var o6=document.getElementById("userfirstname");
-                    var c6=o6.innerHTML;
-                    o6.innerHTML="<input type='text' id='userfirstname2' name='userfirstname' size='12' maxlength='15' value="+c6+">";
-                    var o7=document.getElementById("area");
-                    var c7=o7.innerHTML;
-                    o7.innerHTML="<select id='selectlist'>\n <option value='Mainland China'>Mainland China</option>\n<option value='Hong Kong'>Hong Kong</option>\n" +
-                    "                                                <option value='Macao'>Macao</option>\n<option value='Taiwan'>Taiwan</option>\n <option value='Canada'>Canada</option>\n<option value='United States'>United States</option>\n" +
-                    "                                                <option value='United Kingdom'>United Kingdom</option>\n<option value='Singapore'>Singapore</option>\n<option value='Japan'>Japan</option>\n" +
-                    "                                                <option value='Korea'>Korea</option>\n<option value='Australia'>Australia</option>\n<option value='Germany'>Germany</option>\n" +
-                    "                                            </select>\n</div>";
-                    var o8=document.getElementById("telephone");
-                    var c8=o8.innerHTML;
-                    o8.innerHTML="<input type='text' id='telephone2' name='telephone' size='12' maxlength='11' value="+c8+">";
-                    var o9=document.getElementById("lookp");
-                    // var c9=o9.innerHTML;
-                    o9.innerHTML=" <a href='JavaScript:void(0);' onClick='check()'> 保存资料</a>";
-                    var o10=document.getElementById("birthdate");
-                    var c10=o10.innerHTML;
-                    o10.innerHTML="<input id=\"birthdate2\" type=\"date\" value="+c10+"\"/>";
-            }})
-
-        }
-
-    </script>
-
-    <script type="text/javascript">
-        function check(){
-            $.ajax({
-                url:"http://"+window.location.host+"/changecontent",
-                type:"GET",
-                data:{"flag":"a"},
-                dataType:"json",
-                success:function(data){
-
-                    // var o1=document.getElementById("userId");
-                    // var c1=o1.innerHTML;
-                    // o1.innerHTML="<input type='text' name='userId' size='12' maxlength='8' readonly='true' placeholder="+c1+">"
-                    var o1=document.getElementById("useralias2").value;
-                    var c1=document.getElementById("useralias");
-                    var c2=document.getElementById("usernameopt");
-                    if(o1==="") {
-                        alert("Username cannot be null!")
-                        location.reload()
-                    }
-                    else {
-                        c1.innerHTML = o1
-                        c2.innerHTML = o1
-                    }
-                    var o2=document.getElementById("email2").value;
-                    var c2=document.getElementById("email");
-                    if(o2==="") {
-                        alert("Email cannot be null!")
-                        location.reload()
-                    }
-                    else {
-                        c2.innerHTML=o2
-                    }
-                    var o3=document.getElementById("userlastname2").value;
-                    var c3=document.getElementById("userlastname");
-                    if(o3===""){
-                        alert("Last name cannot be null!")
-                        location.reload()
-                    }
-                    else{
-                        c3.innerHTML=o3
-                    }
-                    var o4=document.getElementById("userfirstname2").value;
-                    var c4=document.getElementById("userfirstname");
-                    if(o4===""){
-                        alert("First name cannot be null!")
-                        location.reload()
-                    }
-                    else{
-                        c4.innerHTML=o4
-                    }
-                    var o5=document.getElementById("telephone2").value;
-                    var c5=document.getElementById("telephone");
-                    if(o5===""){
-                        alert("Telephone cannot be null!")
-                        location.reload()
-                    }
-                    else if (o5.length!==11){
-                        alert("The length of telephone number must be 11!")
-                        location.reload()
-                    }
-                    else{
-                        c5.innerHTML=o5
-
-                    }
-                    var o6=document.getElementById("radioval2");
-                    var c6=$("input:radio[name='radioval2']:checked").val();
-                    if(c6==="1")
-                    {
-                        var o7=document.getElementById("radioval")
-                        o7.innerHTML="Women"
-                    }
-                    else {
-                        var o7=document.getElementById("radioval")
-                        o7.innerHTML="Men"
-                    }
-                    var o8=document.getElementById("selectlist");
-                    var c8=document.getElementById("area");
-                    c8.innerHTML=o8.value;
-                    var o9=document.getElementById("userprofileopt2");
-                    var c9=document.getElementById("userprofileopt");
-                    c9.innerHTML=o9.value;
-                    var o10=document.getElementById("lookp");
-                    // var c10=o10.innerHTML;
-                    o10.innerHTML="<a href=\"JavaScript:void(0);\" onClick=\"changestatus()\"> 编辑资料</a>";
-                    var o11=document.getElementById("birthdate2").value;
-                    var c11=document.getElementById("birthdate");
-                    c11.innerHTML=o11;
-                    // alert(document.getElementById("telephone").value);
-                    var formData={
-                        userId:parseInt(document.getElementById("userId").innerHTML),
-                        username:o1,
-                        password:"NOT APPLICABLE",
-                        gender:o7.innerHTML,
-                        email:o2,
-                        telephone:o5,
-                        firstname:o4,
-                        lastname:o3,
-                        avatar:"None",
-                        lastLogin:document.getElementById("lastlogin").innerHTML,
-                        fansNum:parseInt(document.getElementById("fansNum").innerHTML),
-                        likesNum:parseInt(document.getElementById("likesNum").innerHTML),
-                        blogsNum:parseInt(document.getElementById("blogsNum").innerHTML),
-                        userRefisiterTime:document.getElementById("userRefisiterTime").innerHTML,
-                        birthdate:o11,
-                        profile:document.getElementById("userprofileopt").innerHTML,
-                        area:o8.value
-                    };
-                    submit(formData);
-                }})
-
-        }
-        function submit(formData){
-
-            // alert(document.getElementById("telephone").value);
-            $.ajax({
-                url:"http://"+window.location.host+"/submitinfo",
-                type:"POST",
-                data:JSON.stringify(formData),
-                contentType:'application/json',
-                dataType:"text",
-                success:function(data){
-
-                },
-                error:function(xhr,textStatus,errorThrown){
-                    alert(xhr.status);
-                    alert("Something wrong.");
-                }
-            })
-        }
-
-    </script>
+   <script src="assets/js/userinfo.js"></script>
 
         <!-- Wrapper -->
     <div id="wrapper">
@@ -843,12 +624,19 @@
 
 
                     </div>
-
+<!--                    <script>-->
+<!--                        var o1=document.getElementById("avatarfile");-->
+<!--                        o1.innerHTML="<img src=\"https://bucket-myblog.oss-cn-beijing.aliyuncs.com/avatar/"+"8505477"+".jpg\" alt=\"\">";-->
+<!--                    </script>-->
 
                     <div class="profile-details">
                         <div class="profile-image">
-                            <img src="assets/images/avatars/avatar-2.jpg" alt="">
-                            <a href="#"> </a>
+<!--                            <img src="assets/images/avatars/avatar-2.jpg" alt="">-->
+<!--                            <a href="JavaScript:void(0);" onClick="uploadfiles()"> </a>-->
+<!--                            <img src="assets/images/avatars/avatar-2.jpg" alt="">-->
+                            <div class="preview_box"><p id="avatarfile"></p>
+                            </div>
+                            <!--头像设置-->
                         </div>
                         <div class="profile-details-info">
                             <!--读取session中的username数据然后显示在主页-->
@@ -1046,6 +834,45 @@
                                         <div class="post-state-btns"> <span> 手机号码:&nbsp;</span><p id="telephone"></p>
                                         </div>
                                     </div>
+                                    <div class="post-state">
+                                        <div class="post-state-btns"> <span> 头像上传(支持jpg文件):&nbsp;</span>
+
+
+                                            <form action="/upload" enctype="multipart/form-data" method="post">
+                                                <div class="form-group" id="group">
+                                                    <p id="inputtemp"></p>
+                                                    <input type="file" id="img_input" name="file" style= "background-color:transparent;border:0;" accept="image/jpeg">
+                                                    <label for="img_input" ></label>
+                                                    <button type="submit" id="submit">上传</button>
+                                                </div>
+
+                                                <!--预览图片-->
+
+                                            </form>
+<!--                                            <script type="text/javascript">-->
+<!--                                                uploadfiles(document.getElementById("userId").innerHTML);-->
+
+<!--//                                                $("#img_input").on("change", function (e) {-->
+<!--//                                                    var file = e.target.files[0]; //获取图片资源-->
+<!--//                                                    // 只选择图片文件-->
+<!--//                                                    if (!file.type.match('image.*')) {-->
+<!--//                                                        return false;-->
+<!--//                                                    }-->
+<!--//                                                    var reader = new FileReader();-->
+<!--//                                                    reader.readAsDataURL(file); // 读取文件-->
+<!--//                                                    // 渲染文件-->
+<!--//                                                    reader.onload = function (arg) {-->
+<!--//-->
+<!--//                                                        var img = '<img class="preview" src="' + reader.result + '" alt="preview"/>';-->
+<!--//                                                        $(".preview_box").empty().append(img);-->
+<!--//-->
+<!--//                                                    }-->
+<!--//                                                });-->
+<!--                                            </script>-->
+                                        </div>
+
+                                    </div>
+
 
                                 </div>
     
@@ -1099,58 +926,16 @@
                                                     d="M13,9H11V7H13M13,17H11V11H13M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2Z">
                                                 </path>
                                             </svg></span>
-                                        <h4> 我的关注 </h4>
+                                        <h4> My followings</h4>
                                     </div>
+                                    <div class="sl_user-widget-wrap-right"> <a href="#" class="see-all"> See all</a></div>
                                 </div>
                                 <ul class="sl_right_user_info">
-                            
-                                    <li class="list-group-item">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24">
-                                            <path fill="currentColor"
-                                                d="M12,9A3,3 0 0,0 9,12A3,3 0 0,0 12,15A3,3 0 0,0 15,12A3,3 0 0,0 12,9M12,17A5,5 0 0,1 7,12A5,5 0 0,1 12,7A5,5 0 0,1 17,12A5,5 0 0,1 12,17M12,4.5C7,4.5 2.73,7.61 1,12C2.73,16.39 7,19.5 12,19.5C17,19.5 21.27,16.39 23,12C21.27,7.61 17,4.5 12,4.5Z">
-                                            </path>
-                                        </svg>
-                                        <span class="text-success"> Online </span>
-                                    </li>
-                                    <li class="list-group-item">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24">
-                                            <path fill="currentColor"
-                                                d="M20 22H4a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1h16a1 1 0 0 1 1 1v18a1 1 0 0 1-1 1zm-1-2V4H5v16h14zM7 6h4v4H7V6zm0 6h10v2H7v-2zm0 4h10v2H7v-2zm6-9h4v2h-4V7z">
-                                            </path>
-                                        </svg>
-                                        <span id="user_post_count">27</span> posts </li>
-                            
-                                    <li class="list-group-item">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24">
-                                            <path fill="currentColor"
-                                                d="M3.9,12C3.9,10.29 5.29,8.9 7,8.9H11V7H7A5,5 0 0,0 2,12A5,5 0 0,0 7,17H11V15.1H7C5.29,15.1 3.9,13.71 3.9,12M8,13H16V11H8V13M17,7H13V8.9H17C18.71,8.9 20.1,10.29 20.1,12C20.1,13.71 18.71,15.1 17,15.1H13V17H17A5,5 0 0,0 22,12A5,5 0 0,0 17,7Z">
-                                            </path>
-                                        </svg>
-                                        <a href="#" target="_blank">https://mydomain.com</a>
-                                    </li>
-                            
-                                    <li class="list-group-item">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24">
-                                            <path fill="currentColor"
-                                                d="M9,11.75A1.25,1.25 0 0,0 7.75,13A1.25,1.25 0 0,0 9,14.25A1.25,1.25 0 0,0 10.25,13A1.25,1.25 0 0,0 9,11.75M15,11.75A1.25,1.25 0 0,0 13.75,13A1.25,1.25 0 0,0 15,14.25A1.25,1.25 0 0,0 16.25,13A1.25,1.25 0 0,0 15,11.75M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M12,20C7.59,20 4,16.41 4,12C4,11.71 4,11.42 4.05,11.14C6.41,10.09 8.28,8.16 9.26,5.77C11.07,8.33 14.05,10 17.42,10C18.2,10 18.95,9.91 19.67,9.74C19.88,10.45 20,11.21 20,12C20,16.41 16.41,20 12,20Z">
-                                            </path>
-                                        </svg>
-                                        Male </li>
-                            
-                                    <li class="list-group-item">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24">
-                                            <path fill="currentColor"
-                                                d="M12,21.35L10.55,20.03C5.4,15.36 2,12.27 2,8.5C2,5.41 4.42,3 7.5,3C9.24,3 10.91,3.81 12,5.08C13.09,3.81 14.76,3 16.5,3C19.58,3 22,5.41 22,8.5C22,12.27 18.6,15.36 13.45,20.03L12,21.35Z">
-                                            </path>
-                                        </svg>
-                                        Single </li>
+
+                                    <p id="my_follows"></p>
+
                                     <hr class="my-2">
                                     </li>
-
-
-                            
-
-
                             
                                 </ul>
                             </div>
@@ -1164,54 +949,13 @@
                                                     d="M22,16V4A2,2 0 0,0 20,2H8A2,2 0 0,0 6,4V16A2,2 0 0,0 8,18H20A2,2 0 0,0 22,16M11,12L13.03,14.71L16,11L20,16H8M2,6V20A2,2 0 0,0 4,22H18V20H4V6">
                                                 </path>
                                             </svg></span> 
-                                            <a href="#">我的收藏</a>&nbsp;<div style="font-weight: 600">12</div>
+                                            <a href="#">My favorites</a>&nbsp;
                                     </div>
                                     <div class="sl_user-widget-wrap-right"> <a href="#" class="see-all"> See all</a></div>
                                 </div>
                             
                                 <ul class="sidebar-user-data-container">
-                                    <div class="sidebar-user-data">
-                                        <a href="#" title="" uk-tooltip="My album 1">
-                                            <div class="sidebar-listed-user-avatar">
-                                                <img src="assets/images/avatars/avatar-1.jpg" alt="">
-                                            </div>
-                                        </a>
-                                    </div>
-                                    <div class="sidebar-user-data">
-                                        <a href="#" title="" uk-tooltip="My album 2">
-                                            <div class="sidebar-listed-user-avatar">
-                                                <img src="assets/images/avatars/avatar-2.jpg" alt="">
-                                            </div>
-                                        </a>
-                                    </div>
-                                    <div class="sidebar-user-data">
-                                        <a href="#" title="" uk-tooltip="My album 3">
-                                            <div class="sidebar-listed-user-avatar">
-                                                <img src="assets/images/avatars/avatar-3.jpg" alt="">
-                                            </div>
-                                        </a>
-                                    </div>
-                                    <div class="sidebar-user-data">
-                                        <a href="#" title="" uk-tooltip="My album 4">
-                                            <div class="sidebar-listed-user-avatar">
-                                                <img src="assets/images/avatars/avatar-4.jpg" alt="">
-                                            </div>
-                                        </a>
-                                    </div>
-                                    <div class="sidebar-user-data">
-                                        <a href="#" title="" uk-tooltip="My album 5">
-                                            <div class="sidebar-listed-user-avatar">
-                                                <img src="assets/images/avatars/avatar-5.jpg" alt="">
-                                            </div>
-                                        </a>
-                                    </div>
-                                    <div class="sidebar-user-data">
-                                        <a href="#" title="" uk-tooltip="My album 6">
-                                            <div class="sidebar-listed-user-avatar">
-                                                <img src="assets/images/avatars/avatar-6.jpg" alt="">
-                                            </div>
-                                        </a>
-                                    </div>
+                                    <p id="my_favorites"></p>
                                 </ul>
                             
                             </div>
