@@ -21,7 +21,7 @@ public class FilterLogin implements Filter {
         String userID = req.getHeader("ID");
 
         if (req.getSession().getAttribute("token") != null) {
-            res.sendRedirect("/mainpage");//如果存在token 就证明已经登录了 所以直接转向主页
+            res.sendRedirect("/index");//如果存在token 就证明已经登录了 所以直接转向主页
         } else {
             chain.doFilter(request, response);//如果不存在 直接访问主页
         }
