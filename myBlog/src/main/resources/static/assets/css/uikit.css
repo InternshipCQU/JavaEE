@@ -2507,10 +2507,10 @@ select.uk-form-width-xsmall {
 @media (min-width: 1200px) {
   /* Horizontal */
   .uk-grid {
-    margin-left: -25px;
+    margin-left: -15px;
   }
   .uk-grid > * {
-    padding-left: 30px;
+    padding-left: 10px;
   }
   /* Vertical */
   .uk-grid + .uk-grid,

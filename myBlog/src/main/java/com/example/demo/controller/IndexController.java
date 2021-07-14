@@ -28,7 +28,7 @@ public class IndexController {
 
     @RequestMapping("/index")
     public String index(){
-        return "calendar";
+        return "index";
     }
     @RequestMapping("/index/{cla}")
     public String index1(@PathVariable("cla") String cla,HttpServletRequest request){
