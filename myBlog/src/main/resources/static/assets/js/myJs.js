@@ -166,7 +166,9 @@ function loadTheBlog()
         beforeSend: function () {
             $("loading").show();
         },
-
+        error:function(jqXHR,textStatus,errorThrown ){
+            alert(errorThrown)
+        },
         success: function(data) {
             //console.log(data)
             var blog = JSON.parse(data);
@@ -174,9 +176,10 @@ function loadTheBlog()
             $("#final").attr("id", "null")
 
 
+
             if (blog.noMore === "true") {
-                $("#bottom").before("<hr data-text='no more'>")
-                $("#bottom").attr("id","bottomAfter")
+
+                $("#final").after("<hr style=\"top: 13px; position: relative;\">")
             } else {
 
                 if (data != null) {

@@ -17,6 +17,7 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import static com.example.demo.utils.SplitString.splitId;
@@ -77,10 +78,20 @@ public class HomeServiceImpl implements HomeService {
             User user = profileMapper.getUser((Integer)request.getAttribute("userID"));
             model.addAttribute("bloggerAvatar",user.getAvatar());
             model.addAttribute("bloggerPath","/blogger/" + user.getUsername() + "/" + user.getUserId());
+            model.addAttribute("spacePath","/space/"+user.getUserId());
+            model.addAttribute("username",user.getUsername());
+            model.addAttribute("hiddenLogout","false");
+            model.addAttribute("hiddenLogin","true");
+
         }else{
-            model.addAttribute("bloggerAvatar","");
+            model.addAttribute("bloggerAvatar","https://bucket-myblog.oss-cn-beijing.aliyuncs.com/avatar/defaultAvatar.jpg");
             model.addAttribute("bloggerPath","/login");
+            model.addAttribute("spacePath","/login");
+            model.addAttribute("username","login please");
+            model.addAttribute("hiddenLogout","true");
+            model.addAttribute("hiddenLogin","false");
         }
+        System.out.println(model.getAttribute("bloggerAvatar"));
 
     }
 
@@ -100,11 +111,16 @@ public class HomeServiceImpl implements HomeService {
     @Override
     public void Init(String cla, HttpServletRequest request) {
         HttpSession session = request.getSession();
-        if(session.getAttribute("Token") != null){
-            session.setAttribute("blogs", getRecommendBlogViews((Integer) session.getAttribute("userID")));
+        if(cla.equals("ALL")){
+            if(session.getAttribute("Token") != null){
+                session.setAttribute("blogs", getRecommendBlogViews((Integer) session.getAttribute("userID")));
+            }else{
+                session.setAttribute("blogs", getBlogViews());
+            }
         }else{
-            session.setAttribute("blogs", getBlogViews());
+            session.setAttribute("blogs", tagToBlogs(cla));
         }
+
 
         ArrayList<HomeBlogView> s1 = (ArrayList<HomeBlogView>) session.getAttribute("blogs");
         session.setAttribute("count", 0);
@@ -117,7 +133,9 @@ public class HomeServiceImpl implements HomeService {
         int count = (Integer) session.getAttribute("count");
         int size = (Integer) session.getAttribute("size");
         ArrayList<HomeBlogView> blogs = (ArrayList<HomeBlogView>) session.getAttribute("blogs");
-
+        if(size == 0){
+            return "{\"noMore\":\"true\"}";
+        }
 
         int blogId = blogs.get(count).getBlogId();
         String userAvater = blogs.get(count).getAvater();
