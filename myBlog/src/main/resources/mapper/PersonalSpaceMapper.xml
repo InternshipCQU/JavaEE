@@ -18,7 +18,7 @@
     <select id="showCalendarFigure" resultType="com.example.demo.entity.BlogInfo">
         SELECT `blogInfo`.createTime, `blogInfo`.clickNum
         FROM blogInfo
-        WHERE blogInfo.userId = #{userId};
+        WHERE blogInfo.username = #{username};
     </select>
 
     <select id="showTag1Blogs" resultType="com.example.demo.entity.BlogInfo">

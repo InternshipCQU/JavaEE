@@ -82,28 +82,39 @@ function randomColor() {//得到随机的颜色值
     return "rgb(" + r + "," + g + "," + b + ")";
 }
 
+function hide_error_user()
+{
+    var error_username = document.getElementById("error_username");
+    error_username.setAttribute("hidden", true);
+}
 
+
+function hide_error_password()
+{
+    var error_password = document.getElementById("error_password");
+    error_password.setAttribute("hidden", true);
+}
 
 
 function check()
 {
-    var username = document.getElementById("username");
-    var password = document.getElementById("password");
+    // var username = document.getElementById("username");
+    // var password = document.getElementById("password");
     var val=document.getElementById("code").value;
     val = val.toLowerCase();
     var num = show_num.join("");
     num = num.toLowerCase();
-    if(("" === username.value))
-    {
-        alert("请输入用户名")
-        username.focus()
-        return false;
-    }
-    if("" === password.value) {
-        alert("请输入密码")
-        password.focus()
-        return false;
-    }
+    // if(("" === username.value))
+    // {
+    //     alert("请输入用户名")
+    //     username.focus()
+    //     return false;
+    // }
+    // if("" === password.value) {
+    //     alert("请输入密码")
+    //     password.focus()
+    //     return false;
+    // }
     if(val === ""){
         alert('请输入验证码！');
         document.getElementById("code").focus()
