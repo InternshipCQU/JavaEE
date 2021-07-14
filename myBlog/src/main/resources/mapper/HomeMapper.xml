@@ -14,8 +14,8 @@
         SELECT blogInfo.blogTitle, blogInfo.blogContent, blogInfo.createTime,
             blogInfo.clickNum, blogInfo.likesNum, blogInfo.userId, blogInfo.tagId
         FROM blogInfo, blogTag, tagBlogInfo
-        WHERE blogInfo.blogTitle LIKE "%"+#{keyword}+"%"
-            OR (blogTag.tagName = #{keyword}
+        WHERE blogInfo.blogTitle LIKE "%"#{keyword}"%"
+            OR (blogTag.tagName LIKE  "%"#{keyword}"%"
                 AND blogTag.tagId = tagBlogInfo.tagId
                 AND tagBlogInfo.blogId = blogInfo.blogId);
     </select>
