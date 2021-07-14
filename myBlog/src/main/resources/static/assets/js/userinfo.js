@@ -42,12 +42,13 @@
             document.getElementById("fansNum").innerHTML=recdata.fansNum;
             document.getElementById("likesNum").innerHTML=recdata.likesNum;
             document.getElementById("birthdate").innerHTML=recdata.birthdate;
+            var avatarfile=recdata.avatar;
             //TODO：要改
             getfollowlist(recdata.userId);
             getfavoriteslist(recdata.userId);
             uploadfiles(recdata.userId.toString());
             var o1=document.getElementById("avatarfile");
-            o1.innerHTML="<img src=\"https://bucket-myblog.oss-cn-beijing.aliyuncs.com/avatar/"+recdata.userId+".jpg\" alt=\"\"\>"
+            o1.innerHTML="<img src=\""+avatarfile+"\" alt=\"\"\>"
             var o2=document.getElementById("inputtemp");
 
             o2.innerHTML="<input name=\"userId\" value="+recdata.userId.toString()+ " type=\"hidden\">"
@@ -353,11 +354,11 @@
                 success: function (receivedata) {
                     var c1 = document.getElementById("my_favorites");
                     // var BLOG1=receivedata.BLOG1;
-                    if (receivedata.LIKES1 === "") {
+                    if (receivedata.LIKES1 === undefined) {
                         c1.innerHTML = "There's no favorite blog."
                     } else {
 
-                        if (receivedata.LIKES1 !== "") {
+                        if (receivedata.LIKES1 !== undefined) {
                             c1.innerHTML = c1.innerHTML + "                                    <li class=\"list-group-item\">\n" +
                                 "                                        <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" viewBox=\"0 0 24 24\">\n" +
                                 "                                            <path fill=\"currentColor\"\n" +
@@ -366,7 +367,7 @@
                                 "                                        </svg>\n" +
                                 "                                        <a href=" + receivedata.LINK1 + ">" + receivedata.LIKES1 + "</a> </li>"
                         }
-                        if (receivedata.LIKES2 !== "") {
+                        if (receivedata.LIKES2 !== undefined) {
                             c1.innerHTML = c1.innerHTML + "                                    <li class=\"list-group-item\">\n" +
                                 "                                        <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" viewBox=\"0 0 24 24\">\n" +
                                 "                                            <path fill=\"currentColor\"\n" +
@@ -375,7 +376,7 @@
                                 "                                        </svg>\n" +
                                 "                                        <a href=" + receivedata.LINK2 + ">" + receivedata.LIKES2 + "</a> </li>"
                         }
-                        if (receivedata.LIKES3 !== "") {
+                        if (receivedata.LIKES3 !== undefined) {
                             c1.innerHTML = c1.innerHTML + "                                    <li class=\"list-group-item\">\n" +
                                 "                                        <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" viewBox=\"0 0 24 24\">\n" +
                                 "                                            <path fill=\"currentColor\"\n" +
@@ -384,7 +385,7 @@
                                 "                                        </svg>\n" +
                                 "                                        <a href=" + receivedata.LINK3 + ">" + receivedata.LIKES3 + "</a> </li>"
                         }
-                        if (receivedata.LIKES4 !== "") {
+                        if (receivedata.LIKES4 !== undefined) {
                             c1.innerHTML = c1.innerHTML + "                                    <li class=\"list-group-item\">\n" +
                                 "                                        <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" viewBox=\"0 0 24 24\">\n" +
                                 "                                            <path fill=\"currentColor\"\n" +
