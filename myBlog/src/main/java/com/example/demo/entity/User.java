@@ -15,12 +15,12 @@ public class User {
     public String telephone;  // 手机号码
     public String firstname;  // 姓
     public String lastname;   // 名
-    public String avatar;     // 头像base64码
+    public String avatar;     // 头像base64码 更改成路径
     public String lastLogin;  // 上一次登陆时间
     public Integer fansNum;    // 粉丝数
     public Integer likesNum;   // 点赞数
     public Integer blogsNum;   // 博客数
-    public String userRefisiterTime;   // 用户注册时间
+    public String userRegisterTime;   // 用户注册时间
     public String birthdate;   // 用户出生日期
     public String profile;   // 用户个人简介
     public String area;        // 用户所在地区
@@ -128,11 +128,11 @@ public class User {
     }
 
     public String getUserRefisiterTime() {
-        return userRefisiterTime;
+        return userRegisterTime;
     }
 
     public void setUserRefisiterTime(String userRefisiterTime) {
-        this.userRefisiterTime = userRefisiterTime;
+        this.userRegisterTime = userRefisiterTime;
     }
 
     public String getBirthdate() {

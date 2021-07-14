@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 
@@ -30,9 +31,13 @@ public class IndexController {
     public String index(){
         return "index";
     }
+
     @RequestMapping("/index/{cla}")
-    public String index1(@PathVariable("cla") String cla,HttpServletRequest request){
+    public String index1(@PathVariable("cla") String cla,HttpServletRequest request,Model model){
         homeService.Init(cla,request);
+        homeService.setRecommendBlogger(request,model);
+        homeService.getTrendings(request,model);
+        homeService.setBlogger(request,model);
         return "index";
     }
 

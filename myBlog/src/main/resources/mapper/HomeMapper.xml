@@ -13,22 +13,23 @@
     <select id="searchBlogs" resultType="com.example.demo.entity.BlogInfo">
         SELECT blogInfo.blogTitle, blogInfo.blogContent, blogInfo.createTime,
             blogInfo.clickNum, blogInfo.likesNum, blogInfo.userId, blogInfo.tagId
-        FROM blogInfo, blogTag, tagblogInfo
-        WHERE blogInfo.blogTitle LIKE "%"+#{keyword}+"%"
-            OR (blogTag.tagName = #{keyword}
-                AND blogTag.tagId = tagblogInfo.tagId
-                AND tagblogInfo.blogId = blogInfo.blogId);
+
+        FROM blogInfo, blogTag, tagBlogInfo
+        WHERE blogInfo.blogTitle LIKE "%"#{keyword}"%"
+            OR (blogTag.tagName LIKE  "%"#{keyword}"%"
+                AND blogTag.tagId = tagBlogInfo.tagId
+                AND tagBlogInfo.blogId = blogInfo.blogId);
     </select>
 
 
     <select id="showHotBlogger" resultType="com.example.demo.entity.User">
-        SELECT `User`.username, `User`.avatar
+        SELECT `User`.username, `User`.avatar ,`User`.userId
         FROM `User` ORDER BY `User`.likesNum DESC limit 6;
     </select>
 
 
     <select id="showRecommendBlogger" resultType="com.example.demo.entity.User">
-        SELECT `User`.username, `User`.avatar
+        SELECT `User`.username, `User`.avatar,`User`.userId
         FROM `User`, userLike
         WHERE userLike.fansId = #{userId}
             AND userLike.userId = `User`.userId

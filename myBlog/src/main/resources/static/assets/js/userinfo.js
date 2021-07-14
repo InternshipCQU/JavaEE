@@ -8,14 +8,22 @@
         type:"GET",
         data:{},
         dataType:"json",
-        success:function(data){
+        success:function(recdata){
             // alert("a "+data);
-            document.getElementById("userId").innerHTML=data.userId;
-            document.getElementById("useralias").innerHTML=data.username;
-            document.getElementById("usernameopt").innerHTML=data.username;
-            document.getElementById("userprofileopt").innerHTML=data.userprofile;
-            document.getElementById("email").innerHTML=data.email;
-            if(data.radiovl=="0")
+            document.getElementById("userId").innerHTML=recdata.userId;
+            document.getElementById("useralias").innerHTML=recdata.username;
+            document.getElementById("usernameopt").innerHTML=recdata.username;
+
+            if(recdata.userprofile!==undefined) {
+                document.getElementById("userprofileopt").innerHTML = recdata.userprofile;
+            }
+            else
+            {
+                document.getElementById("userprofileopt").innerHTML="";
+            }
+            // document.getElementById("userprofileopt").innerHTML=recdata.userprofile;
+            document.getElementById("email").innerHTML=recdata.email;
+            if(recdata.radiovl=="0")
             {
                 document.getElementById("radioval").innerHTML="Men";
             }
@@ -23,26 +31,27 @@
             {
                 document.getElementById("radioval").innerHTML="Women";
             }
-            document.getElementById("userlastname").innerHTML=data.lastname;
-            document.getElementById("userfirstname").innerHTML=data.firstname;
-            document.getElementById("area").innerHTML=data.area;
-            document.getElementById("telephone").innerHTML=data.telephone;
+            document.getElementById("userlastname").innerHTML=recdata.lastname;
+            document.getElementById("userfirstname").innerHTML=recdata.firstname;
+            document.getElementById("area").innerHTML=recdata.area;
+            document.getElementById("telephone").innerHTML=recdata.telephone;
 
-            document.getElementById("lastlogin").innerHTML=data.lastlogin;
-            document.getElementById("userRefisiterTime").innerHTML=data.userRefisiterTime;
-            document.getElementById("blogsNum").innerHTML=data.blogsNum;
-            document.getElementById("fansNum").innerHTML=data.fansNum;
-            document.getElementById("likesNum").innerHTML=data.likesNum;
-            document.getElementById("birthdate").innerHTML=data.birthdate;
+            document.getElementById("lastlogin").innerHTML=recdata.lastlogin;
+            document.getElementById("userRefisiterTime").innerHTML=recdata.userRefisiterTime;
+            document.getElementById("blogsNum").innerHTML=recdata.blogsNum;
+            document.getElementById("fansNum").innerHTML=recdata.fansNum;
+            document.getElementById("likesNum").innerHTML=recdata.likesNum;
+            document.getElementById("birthdate").innerHTML=recdata.birthdate;
+            var avatarfile=recdata.avatar;
             //TODO：要改
-            getfollowlist(data.userId);
-            getfavoriteslist(data.userId);
-            uploadfiles(data.userId.toString());
+            getfollowlist(recdata.userId);
+            getfavoriteslist(recdata.userId);
+            uploadfiles(recdata.userId.toString());
             var o1=document.getElementById("avatarfile");
-            o1.innerHTML="<img src=\"https://bucket-myblog.oss-cn-beijing.aliyuncs.com/avatar/"+data.userId+".jpg\" alt=\"\"\>"
+            o1.innerHTML="<img src=\""+avatarfile+"\" alt=\"\"\>"
             var o2=document.getElementById("inputtemp");
 
-            o2.innerHTML="<input name=\"userId\" value="+data.userId.toString()+ " type=\"hidden\">"
+            o2.innerHTML="<input name=\"userId\" value="+recdata.userId.toString()+ " type=\"hidden\">"
         }
     })
 
@@ -55,7 +64,6 @@
             data: {},
             dataType:"json",
             success:function(data){
-                // alert("!!!!");
                 $("#img_input").on("change", function (e) {
                     var file = e.target.files[0]; //获取图片资源
                     // 只选择图片文件
@@ -151,6 +159,7 @@
             if(o1==="") {
                 alert("Username cannot be null!")
                 location.reload()
+
             }
             else {
                 c1.innerHTML = o1
@@ -199,14 +208,17 @@
             }
             var o6=document.getElementById("radioval2");
             var c6=$("input:radio[name='radioval2']:checked").val();
+            var oM_IN;
             if(c6==="1")
             {
                 var o7=document.getElementById("radioval")
                 o7.innerHTML="Women"
+                oM_IN="W"
             }
             else {
                 var o7=document.getElementById("radioval")
                 o7.innerHTML="Men"
+                oM_IN="M"
             }
             var o8=document.getElementById("selectlist");
             var c8=document.getElementById("area");
@@ -230,7 +242,7 @@
                 userId:parseInt(document.getElementById("userId").innerHTML),
                 username:o1,
                 password:"NOT APPLICABLE",
-                gender:o7.innerHTML,
+                gender:oM_IN,
                 email:o2,
                 telephone:o5,
                 firstname:o4,
@@ -240,12 +252,15 @@
                 fansNum:parseInt(document.getElementById("fansNum").innerHTML),
                 likesNum:parseInt(document.getElementById("likesNum").innerHTML),
                 blogsNum:parseInt(document.getElementById("blogsNum").innerHTML),
-                userRefisiterTime:document.getElementById("userRefisiterTime").innerHTML,
+                userRegisterTime:document.getElementById("userRefisiterTime").innerHTML,
                 birthdate:o11,
                 profile:document.getElementById("userprofileopt").innerHTML,
                 area:o8.value
             };
-            submit(formData);
+            if(formData.username!==""&&formData.birthdate!==""&&formData.firstname!==""&&formData.lastname!==""&&formData.telephone!==""&&formData.lastname!==""&&formData.firstname!=="")
+            {
+                submit(formData);
+            }
         }})
 
 }
@@ -280,10 +295,10 @@
             success: function (receivedata) {
                 var c1 = document.getElementById("my_follows");
                 // var BLOG1=receivedata.BLOG1;
-                if (receivedata.FOLLOW1 === "") {
+                if (receivedata.FOLLOW1 === undefined) {
                     c1.innerHTML = "You dont follow any people."
                 } else {
-                    if (receivedata.FOLLOW1 !== "") {
+                    if (receivedata.FOLLOW1 !== undefined) {
                         c1.innerHTML = c1.innerHTML + "                                    <li class=\"list-group-item\">\n" +
                             "                                        <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" viewBox=\"0 0 24 24\">\n" +
                             "                                            <path fill=\"currentColor\"\n" +
@@ -292,7 +307,7 @@
                             "                                        </svg>\n" +
                             "                                        <a href=" + receivedata.LINK1 + ">" + receivedata.FOLLOW1 + "</a> </li>"
                     }
-                    if (receivedata.FOLLOW2 !== "") {
+                    if (receivedata.FOLLOW2 !== undefined) {
                         c1.innerHTML = c1.innerHTML + "                                    <li class=\"list-group-item\">\n" +
                             "                                        <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" viewBox=\"0 0 24 24\">\n" +
                             "                                            <path fill=\"currentColor\"\n" +
@@ -301,7 +316,8 @@
                             "                                        </svg>\n" +
                             "                                        <a href=" + receivedata.LINK2 + ">" + receivedata.FOLLOW2 + "</a> </li>"
                     }
-                    if (receivedata.FOLLOW3 !== "") {
+
+                    if (receivedata.FOLLOW3 !== undefined) {
                         c1.innerHTML = c1.innerHTML + "                                    <li class=\"list-group-item\">\n" +
                             "                                        <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" viewBox=\"0 0 24 24\">\n" +
                             "                                            <path fill=\"currentColor\"\n" +
@@ -310,7 +326,7 @@
                             "                                        </svg>\n" +
                             "                                        <a href=" + receivedata.LINK3 + ">" + receivedata.FOLLOW3 + "</a> </li>"
                     }
-                    if (receivedata.FOLLOW4 !== "") {
+                    if (receivedata.FOLLOW4 !== undefined) {
                         c1.innerHTML = c1.innerHTML + "                                    <li class=\"list-group-item\">\n" +
                             "                                        <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" viewBox=\"0 0 24 24\">\n" +
                             "                                            <path fill=\"currentColor\"\n" +
@@ -338,11 +354,11 @@
                 success: function (receivedata) {
                     var c1 = document.getElementById("my_favorites");
                     // var BLOG1=receivedata.BLOG1;
-                    if (receivedata.LIKES1 === "") {
+                    if (receivedata.LIKES1 === undefined) {
                         c1.innerHTML = "There's no favorite blog."
                     } else {
 
-                        if (receivedata.LIKES1 !== "") {
+                        if (receivedata.LIKES1 !== undefined) {
                             c1.innerHTML = c1.innerHTML + "                                    <li class=\"list-group-item\">\n" +
                                 "                                        <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" viewBox=\"0 0 24 24\">\n" +
                                 "                                            <path fill=\"currentColor\"\n" +
@@ -351,7 +367,7 @@
                                 "                                        </svg>\n" +
                                 "                                        <a href=" + receivedata.LINK1 + ">" + receivedata.LIKES1 + "</a> </li>"
                         }
-                        if (receivedata.LIKES2 !== "") {
+                        if (receivedata.LIKES2 !== undefined) {
                             c1.innerHTML = c1.innerHTML + "                                    <li class=\"list-group-item\">\n" +
                                 "                                        <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" viewBox=\"0 0 24 24\">\n" +
                                 "                                            <path fill=\"currentColor\"\n" +
@@ -360,7 +376,7 @@
                                 "                                        </svg>\n" +
                                 "                                        <a href=" + receivedata.LINK2 + ">" + receivedata.LIKES2 + "</a> </li>"
                         }
-                        if (receivedata.LIKES3 !== "") {
+                        if (receivedata.LIKES3 !== undefined) {
                             c1.innerHTML = c1.innerHTML + "                                    <li class=\"list-group-item\">\n" +
                                 "                                        <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" viewBox=\"0 0 24 24\">\n" +
                                 "                                            <path fill=\"currentColor\"\n" +
@@ -369,7 +385,7 @@
                                 "                                        </svg>\n" +
                                 "                                        <a href=" + receivedata.LINK3 + ">" + receivedata.LIKES3 + "</a> </li>"
                         }
-                        if (receivedata.LIKES4 !== "") {
+                        if (receivedata.LIKES4 !== undefined) {
                             c1.innerHTML = c1.innerHTML + "                                    <li class=\"list-group-item\">\n" +
                                 "                                        <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" viewBox=\"0 0 24 24\">\n" +
                                 "                                            <path fill=\"currentColor\"\n" +

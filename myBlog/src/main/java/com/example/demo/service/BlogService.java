@@ -16,4 +16,5 @@ public interface BlogService {
     void updateMarkWhenComment(int tagId, int userId);
     void updateMarkWhenForward(int tagId, int userId);
     void updateMarkWhenCollect(int tagId, int userId);
+
 }

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.demo.mapper.profileMapper">
+    <select id="getUser" resultType="com.example.demo.entity.User">
+        SELECT userId,username,gender,email,telephone,firstname,lastname,avatar,lastLogin,fansNum,likesNum,blogsNum,userRegisterTime,birthdate,profile,area
+        FROM `User`
+        WHERE `User`.userId=#{userId};
+    </select>
+    <update id="setuser">
+        UPDATE `User` set username=#{username},gender=#{gender},email=#{email},telephone=#{telephone},firstname=#{firstname},lastname=#{lastname},lastLogin=#{lastLogin},birthdate=#{birthdate},profile=#{profile},area=#{area}
+        where userId=#{userId};
+    </update>
+    <select id="getfollowing" resultType="com.example.demo.entity.UserLike">
+        SELECT userId,fansId
+        FROM `userLike`
+        where fansId=#{userId};
+    </select>
+    <select id="getcollect" resultType="String">
+        SELECT blogTitle
+        FROM `blogCollect` natural join `blogInfo`
+        where userId=#{userId};
+    </select>
+
+    <select id="getusername" resultType="String">
+        SELECT username
+        FROM `User`
+        where userId=#{userId};
+    </select>
+    <update id="setavatar">
+        UPDATE `User` set avatar=#{dir}
+        where userId=#{userId};
+    </update>
+</mapper>
