@@ -12,6 +12,10 @@ import javax.annotation.Resource;
 @Controller
 public class BlogController {
 
+    @RequestMapping("blogpage")
+    public String blog(){
+        return "blogpage";
+    }
     @Resource
     private BlogService blogService;
 
