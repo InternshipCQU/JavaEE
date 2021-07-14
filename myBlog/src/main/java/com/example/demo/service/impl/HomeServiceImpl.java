@@ -10,6 +10,7 @@ import com.example.demo.service.HomeService;
 import com.example.demo.utils.SplitString;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.ui.Model;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -88,11 +89,12 @@ public class HomeServiceImpl implements HomeService {
 
 
         int blogId = blogs.get(count).getBlogId();
+        String userAvater = blogs.get(count).getAvater();
         String username = blogs.get(count).getUsername();
         String blogTitle = blogs.get(count).getBlogTitle();
         String blogContent = blogs.get(count).getBlogContent();
-        String commentTime = blogs.get(count).getCreateTime();
-        int clickNum = blogs.get(count).getClickNum();
+        String createTime = blogs.get(count).getCreateTime();
+        int clickNumber = blogs.get(count).getClickNum();
         int likeNumber = blogs.get(count).getLikesNum();
         int commentNumber = blogs.get(count).getCommentNum();
         int forwardNumber = blogs.get(count).getForwardNum();
@@ -113,7 +115,7 @@ public class HomeServiceImpl implements HomeService {
             if (commentCount == 3) {
                 break;
             }
-            comment = "\"username\":" + "\"" + cv.getUsername() + "\"" + "," + "\"commentContent\":" + "\"" + cv.getCommentContent() + "\"";
+            comment = "\"username\":" + "\"" + cv.getUsername() + "\"" + "," + "\"commentContent\":" + "\"" + cv.getCommentContent() + "\""+ "," + "\"commentTime\":" + "\"" + cv.getCommentTime() + "\""+ "," + "\"userAvater\":" + "\"" + cv.getUseravater() + "\"";
             comment = "{" + comment + "}";
             if (commentCount == 0) {
                 comments = comments + comment;
@@ -133,7 +135,7 @@ public class HomeServiceImpl implements HomeService {
         } else {
             System.out.println("Hello");
             session.setAttribute("count", count + 1);
-            return "{\"blogContent\":\"" + blogContent + "\",\"blogTitle\":\"" + blogTitle + "\",\"username\":\"" + username + "\",\"likeNumber\":\"" + likeNumber + "\",\"commentNumber\":\"" + commentNumber + "\",\"forwardNumber\":\"" + forwardNumber + "\",\"saveNumber\":\"" + saveNumber + "\",\"comments\":" + comments + ",\"link\":\"" + link + "\"}";
+            return "{\"clickNumber\":\""+clickNumber+"\",\"userAvater\":\""+userAvater +"\",\"createTime\":\""+createTime+"\",\"blogContent\":\"" + blogContent + "\",\"blogTitle\":\"" + blogTitle + "\",\"username\":\"" + username + "\",\"likeNumber\":\"" + likeNumber + "\",\"commentNumber\":\"" + commentNumber + "\",\"forwardNumber\":\"" + forwardNumber + "\",\"saveNumber\":\"" + saveNumber + "\",\"comments\":" + comments + ",\"link\":\"" + link + "\"}";
         }
 
 
@@ -155,4 +157,12 @@ public class HomeServiceImpl implements HomeService {
         return homeMapper.getTagMark(userId);
 
     }
+
+    @Override
+    public void getTrendings(HttpServletRequest request, Model model){
+        //TODO:找到搜索或者点击量最大的几个标签或者搜索词
+        model.addAttribute("trendingOne","TrendingOne");
+        model.addAttribute("trendingTwo","TrendingOne");
+        model.addAttribute("trendingThree","TrendingOne");
+    }//得到向前端发送的trendings
 }

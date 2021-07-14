@@ -19,43 +19,55 @@ public class BlogController {
     @Resource
     private BlogService blogService;
 
-    @RequestMapping("/blogs/{blogId}")
-    public String blog(@PathVariable("blogId") int blogId, Model model){
+    @RequestMapping("/blogs/{userID}/{blogId}")
+    public String blog(@PathVariable("blogId") int blogId,@PathVariable("userID") String userID, Model model){
         BlogInfo blog = blogService.getBlog(blogId);
         model.addAttribute("blog",blog);
-        return "test-blog";
+
+        return "blogpage";
     }
 
-    @RequestMapping("/like")
+
+    @RequestMapping("/blogs/like")
     public void like(@RequestParam("blogId") int blogId, @RequestParam("userId") int userId, @RequestParam("tagId") int tagId){
         blogService.like(blogId);
         blogService.updateMarkWhenLike(tagId, userId);
     }
 
-    @RequestMapping("/cancelLike")
+    @RequestMapping("/blogs/cancelLike")
     public void cancelLike(@RequestParam("blogId") int blogId, @RequestParam("userId") int userId, @RequestParam("tagId") int tagId){
         blogService.cancelLike(blogId);
         blogService.updateMarkWhenCancelLike(tagId, userId);
     }
 
-    @RequestMapping("/comment")
+    @RequestMapping("/blogs/comment")
     public void comment(@RequestParam("blogId") int blogId, @RequestParam("userId") int userId,
                         @RequestParam("tagId") int tagId,@RequestParam("comment") String comment){
+
         blogService.comment(blogId, userId, comment);
         blogService.updateMarkWhenComment(tagId, userId);
     }
 
-    @RequestMapping("/forward")
+
+    @RequestMapping("/blogs/forward")
     public void forward(@RequestParam("blogId") int blogId, @RequestParam("userId") int userId,
                         @RequestParam("tagId") int tagId){
+
         blogService.forward(blogId, userId);
         blogService.updateMarkWhenForward(tagId, userId);
     }
 
-    @RequestMapping("/collect")
+    @RequestMapping("/blogs/collect")
     public void collect(@RequestParam("blogId") int blogId, @RequestParam("userId") int userId,
                         @RequestParam("tagId") int tagId){
         blogService.collect(blogId, userId);
         blogService.updateMarkWhenCollect(tagId, userId);
+    }
+
+    @RequestMapping("/blogs/follow")
+    @ResponseBody
+    public void follow(@PathVariable("blogId") int blogId, @PathVariable("userId") int userId){
+        //TODO:这里向数据库写转发信息
+        blogService.forward(blogId, userId);
     }
 }

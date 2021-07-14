@@ -7,6 +7,7 @@ import org.springframework.data.relational.core.sql.In;
 
 import com.example.demo.entity.view.HomeBlogView;
 import com.example.demo.entity.BlogInfo;
+import org.springframework.ui.Model;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
@@ -33,5 +34,6 @@ public interface HomeService {
     List<HomeBlogView> getRecommendBlogViews(int tagId);    // 按照首页格式，以及推荐算法查询出对应的博客
 
     TagMark getTagMark(int userId);                         //根据userId获取该用户的标签评分
+    void getTrendings(HttpServletRequest request, Model model);//得到向前端发送的trendings
 
 }

@@ -5,6 +5,7 @@ import java.util.List;
 public class HomeBlogView {
 
     private int blogId;
+    private String avater;
     private String username;
     private String blogTitle;
     private String blogContent;
@@ -104,4 +105,11 @@ public class HomeBlogView {
         this.commentList = commentList;
     }
 
+    public void setAvater(String avater) {
+        this.avater = avater;
+    }
+
+    public String getAvater() {
+        return avater;
+    }
 }
