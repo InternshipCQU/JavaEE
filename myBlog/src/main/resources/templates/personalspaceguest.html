@@ -28,8 +28,8 @@
 
 </head>
 
-<body> 
-
+<body >
+    <script src="assets/js/userinfo.js"></script>
         <!-- Wrapper -->
     <div id="wrapper">
 
@@ -663,11 +663,12 @@
                         <div class="left-side">
                             <div class="single-group-image">
                                 <a href="#">
-                                    <img src="assets/images/group/group-avature.jpg" alt="">
+                                    <img th:src = "${avatar}">
+<!--                                    <img src="assets/images/group/group-avature.jpg" alt="">-->
                                 </a>
                             </div>
                             <div class="single-group-details-info">
-                                <h3> Friends For Ever </h3>
+                                <h3 th:text = "${username}"> Friends For Ever </h3>
                                 <p>
                                 <p> <i class="uil-thumbs-up"></i> 12k Joined this </p>
                                 </p>
@@ -675,7 +676,7 @@
                         </div>
                         <div class="right-side">
                             <div class="btn-subscribe">
-                                <a href="#" class="button primary"> <i class="uil-thumbs-up"></i> Join
+                                <a href="#" class="button primary"> <i class="uil-thumbs-up"></i> 关注该博主
                                 </a>
                                 <span class="subs-amount">120K</span>
                             </div>
@@ -882,30 +883,30 @@
                             </div>
 
                             <div class="post">
-                                <div class="post-heading">
-                                    <div class="post-avature">
-                                        <img src="assets/images/avatars/avatar-6.jpg" alt="">
-                                    </div>
-                                    <div class="post-title">
-                                        <h4> Mariah Ali </h4>
-                                        <p> 5 <span> hrs</span> <i class="uil-users-alt"></i> </p>
-                                    </div>
-                                    <div class="post-btn-action">
-                                        <span class="icon-more uil-ellipsis-h"></span>
-                                        <div class="mt-0 p-2" uk-dropdown="pos: top-right;mode:hover ">
-                                            <ul class="uk-nav uk-dropdown-nav">
-                                                <li><a href="#"> <i class="uil-share-alt mr-1"></i> Share</a> </li>
-                                                <li><a href="#"> <i class="uil-edit-alt mr-1"></i> Edit Post </a></li>
-                                                <li><a href="#"> <i class="uil-comment-slash mr-1"></i> Disable comments
-                                                    </a></li>
-                                                <li><a href="#"> <i class="uil-favorite mr-1"></i> Add favorites </a>
-                                                </li>
-                                                <li><a href="#" class="text-danger"> <i class="uil-trash-alt mr-1"></i>
-                                                        Delete </a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
+<!--                                <div class="post-heading">-->
+<!--                                    <div class="post-avature">-->
+<!--                                        <img src="assets/images/avatars/avatar-6.jpg" alt="">-->
+<!--                                    </div>-->
+<!--                                    <div class="post-title">-->
+<!--                                        <h4> Mariah Ali </h4>-->
+<!--                                        <p> 5 <span> hrs</span> <i class="uil-users-alt"></i> </p>-->
+<!--                                    </div>-->
+<!--                                    <div class="post-btn-action">-->
+<!--                                        <span class="icon-more uil-ellipsis-h"></span>-->
+<!--                                        <div class="mt-0 p-2" uk-dropdown="pos: top-right;mode:hover ">-->
+<!--                                            <ul class="uk-nav uk-dropdown-nav">-->
+<!--                                                <li><a href="#"> <i class="uil-share-alt mr-1"></i> Share</a> </li>-->
+<!--                                                <li><a href="#"> <i class="uil-edit-alt mr-1"></i> Edit Post </a></li>-->
+<!--                                                <li><a href="#"> <i class="uil-comment-slash mr-1"></i> Disable comments-->
+<!--                                                    </a></li>-->
+<!--                                                <li><a href="#"> <i class="uil-favorite mr-1"></i> Add favorites </a>-->
+<!--                                                </li>-->
+<!--                                                <li><a href="#" class="text-danger"> <i class="uil-trash-alt mr-1"></i>-->
+<!--                                                        Delete </a></li>-->
+<!--                                            </ul>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                </div>-->
                                 <div class="post-description">
                                     <div class="fullsizeimg">
                                         <img src="assets/images/post/img-1.jpg" alt="">
@@ -935,86 +936,86 @@
                                 </div>
 
                                 <!-- post comments -->
-                                <div class="post-comments">
-                                    <a href="#" class="view-more-comment"> Veiw 8 more Comments</a>
-                                    <div class="post-comments-single">
-                                        <div class="post-comment-avatar">
-                                            <img src="assets/images/avatars/avatar-5.jpg" alt="">
-                                        </div>
-                                        <div class="post-comment-text">
-                                            <div class="post-comment-text-inner">
-                                                <h6> Alex Dolgove</h6>
-                                                <p> Ut wisi enim ad minim laoreet dolore magna aliquam erat </p>
-                                            </div>
-                                            <div class="uk-text-small">
-                                                <a href="#" class="text-danger mr-1"> <i class="uil-heart"></i> Love
-                                                </a>
-                                                <a href="#" class=" mr-1"> Replay </a>
-                                                <span> 1d</span>
-                                            </div>
-                                        </div>
-                                        <a href="#" class="post-comment-opt"></a>
-                                    </div>
-                                    <div class="post-comments-single">
-                                        <div class="post-comment-avatar">
-                                            <img src="assets/images/avatars/avatar-2.jpg" alt="">
-                                        </div>
-                                        <div class="post-comment-text">
-                                            <div class="post-comment-text-inner">
-                                                <h6>Stella Johnson</h6>
-                                                <p> Ut wisi enim ad minim laoreet dolore <strong> David !</strong> </p>
-                                            </div>
-                                            <div class="uk-text-small">
-                                                <a href="#" class="text-primary mr-1"> <i class="uil-thumbs-up"></i>
-                                                    Like
-                                                </a>
-                                                <a href="#" class=" mr-1"> Replay </a>
-                                                <span> 2d</span>
-                                            </div>
-                                        </div>
-                                        <a href="#" class="post-comment-opt"></a>
-                                    </div>
-                                    <div class="post-comments-single">
-                                        <div class="post-comment-avatar">
-                                            <img src="assets/images/avatars/avatar-3.jpg" alt="">
-                                        </div>
-                                        <div class="post-comment-text">
-                                            <div class="post-comment-text-inner">
-                                                <h6> Jonathan Madano </h6>
-                                                <p> sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna
-                                                    aliquam
-                                                    erat
-                                                    volutpat.<strong> David !</strong> </p>
-                                            </div>
-                                            <div class="uk-text-small">
-                                                <a href="#" class="text-danger mr-1"> <i class="uil-heart"></i> Love
-                                                </a>
-                                                <a href="#" class=" mr-1"> Replay </a>
-                                                <span> 3d</span>
-                                            </div>
-                                        </div>
-                                        <a href="#" class="post-comment-opt"></a>
-                                    </div>
+<!--                                <div class="post-comments">-->
+<!--                                    <a href="#" class="view-more-comment"> Veiw 8 more Comments</a>-->
+<!--                                    <div class="post-comments-single">-->
+<!--                                        <div class="post-comment-avatar">-->
+<!--                                            <img src="assets/images/avatars/avatar-5.jpg" alt="">-->
+<!--                                        </div>-->
+<!--                                        <div class="post-comment-text">-->
+<!--                                            <div class="post-comment-text-inner">-->
+<!--                                                <h6> Alex Dolgove</h6>-->
+<!--                                                <p> Ut wisi enim ad minim laoreet dolore magna aliquam erat </p>-->
+<!--                                            </div>-->
+<!--                                            <div class="uk-text-small">-->
+<!--                                                <a href="#" class="text-danger mr-1"> <i class="uil-heart"></i> Love-->
+<!--                                                </a>-->
+<!--                                                <a href="#" class=" mr-1"> Replay </a>-->
+<!--                                                <span> 1d</span>-->
+<!--                                            </div>-->
+<!--                                        </div>-->
+<!--                                        <a href="#" class="post-comment-opt"></a>-->
+<!--                                    </div>-->
+<!--                                    <div class="post-comments-single">-->
+<!--                                        <div class="post-comment-avatar">-->
+<!--                                            <img src="assets/images/avatars/avatar-2.jpg" alt="">-->
+<!--                                        </div>-->
+<!--                                        <div class="post-comment-text">-->
+<!--                                            <div class="post-comment-text-inner">-->
+<!--                                                <h6>Stella Johnson</h6>-->
+<!--                                                <p> Ut wisi enim ad minim laoreet dolore <strong> David !</strong> </p>-->
+<!--                                            </div>-->
+<!--                                            <div class="uk-text-small">-->
+<!--                                                <a href="#" class="text-primary mr-1"> <i class="uil-thumbs-up"></i>-->
+<!--                                                    Like-->
+<!--                                                </a>-->
+<!--                                                <a href="#" class=" mr-1"> Replay </a>-->
+<!--                                                <span> 2d</span>-->
+<!--                                            </div>-->
+<!--                                        </div>-->
+<!--                                        <a href="#" class="post-comment-opt"></a>-->
+<!--                                    </div>-->
+<!--                                    <div class="post-comments-single">-->
+<!--                                        <div class="post-comment-avatar">-->
+<!--                                            <img src="assets/images/avatars/avatar-3.jpg" alt="">-->
+<!--                                        </div>-->
+<!--                                        <div class="post-comment-text">-->
+<!--                                            <div class="post-comment-text-inner">-->
+<!--                                                <h6> Jonathan Madano </h6>-->
+<!--                                                <p> sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna-->
+<!--                                                    aliquam-->
+<!--                                                    erat-->
+<!--                                                    volutpat.<strong> David !</strong> </p>-->
+<!--                                            </div>-->
+<!--                                            <div class="uk-text-small">-->
+<!--                                                <a href="#" class="text-danger mr-1"> <i class="uil-heart"></i> Love-->
+<!--                                                </a>-->
+<!--                                                <a href="#" class=" mr-1"> Replay </a>-->
+<!--                                                <span> 3d</span>-->
+<!--                                            </div>-->
+<!--                                        </div>-->
+<!--                                        <a href="#" class="post-comment-opt"></a>-->
+<!--                                    </div>-->
 
 
-                                    <a href="#" class="view-more-comment"> Veiw 8 more Comments</a>
+<!--                                    <a href="#" class="view-more-comment"> Veiw 8 more Comments</a>-->
 
-                                    <div class="post-add-comment">
-                                        <div class="post-add-comment-avature">
-                                            <img src="assets/images/avatars/avatar-2.jpg" alt="">
-                                        </div>
-                                        <div class="post-add-comment-text-area">
-                                            <input type="text" placeholder="Write your comment...">
-                                            <div class="icons">
-                                                <span class="uil-link-alt"></span>
-                                                <span class="uil-grin"></span>
-                                                <span class="uil-image"></span>
-                                            </div>
-                                        </div>
+<!--                                    <div class="post-add-comment">-->
+<!--                                        <div class="post-add-comment-avature">-->
+<!--                                            <img src="assets/images/avatars/avatar-2.jpg" alt="">-->
+<!--                                        </div>-->
+<!--                                        <div class="post-add-comment-text-area">-->
+<!--                                            <input type="text" placeholder="Write your comment...">-->
+<!--                                            <div class="icons">-->
+<!--                                                <span class="uil-link-alt"></span>-->
+<!--                                                <span class="uil-grin"></span>-->
+<!--                                                <span class="uil-image"></span>-->
+<!--                                            </div>-->
+<!--                                        </div>-->
 
-                                    </div>
+<!--                                    </div>-->
 
-                                </div>
+<!--                                </div>-->
 
 
 
@@ -1423,36 +1424,53 @@
                                                     d="M13,9H11V7H13M13,17H11V11H13M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2Z">
                                                 </path>
                                             </svg></span>
-                                        <h4> Info </h4>
+                                        <h4> 用户信息 </h4>
                                     </div>
                                 </div>
                                 <ul class="sl_right_user_info">
 
-                                    <li class="list-group-item">
+                                    <li class="list-group-item" >
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                             viewBox="0 0 24 24">
+                                            <path fill="currentColor"
+                                                  d="M5.5,7A1.5,1.5 0 0,1 4,5.5A1.5,1.5 0 0,1 5.5,4A1.5,1.5 0 0,1 7,5.5A1.5,1.5 0 0,1 5.5,7M21.41,11.58L12.41,2.58C12.05,2.22 11.55,2 11,2H4C2.89,2 2,2.89 2,4V11C2,11.55 2.22,12.05 2.59,12.41L11.58,21.41C11.95,21.77 12.45,22 13,22C13.55,22 14.05,21.77 14.41,21.41L21.41,14.41C21.78,14.05 22,13.55 22,13C22,12.44 21.77,11.94 21.41,11.58Z">
+                                            </path>
+                                        </svg>
+                                        <span>用户id：</span><span th:text = "${userID}"></span>
+                                    </li>
+
+                                    <li class="list-group-item" >
                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                             viewBox="0 0 24 24">
                                             <path fill="currentColor"
                                                 d="M16,13C15.71,13 15.38,13 15.03,13.05C16.19,13.89 17,15 17,16.5V19H23V16.5C23,14.17 18.33,13 16,13M8,13C5.67,13 1,14.17 1,16.5V19H15V16.5C15,14.17 10.33,13 8,13M8,11A3,3 0 0,0 11,8A3,3 0 0,0 8,5A3,3 0 0,0 5,8A3,3 0 0,0 8,11M16,11A3,3 0 0,0 19,8A3,3 0 0,0 16,5A3,3 0 0,0 13,8A3,3 0 0,0 16,11Z">
                                             </path>
                                         </svg>
-                                        <a href="#"> 12 Members</a>
+                                        <span>粉丝数：</span><span th:text = "${fansNum}"></span>
                                     </li>
-                                    <li class="list-group-item">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                            viewBox="0 0 24 24">
-                                            <path fill="currentColor"
-                                                d="M5.5,7A1.5,1.5 0 0,1 4,5.5A1.5,1.5 0 0,1 5.5,4A1.5,1.5 0 0,1 7,5.5A1.5,1.5 0 0,1 5.5,7M21.41,11.58L12.41,2.58C12.05,2.22 11.55,2 11,2H4C2.89,2 2,2.89 2,4V11C2,11.55 2.22,12.05 2.59,12.41L11.58,21.41C11.95,21.77 12.45,22 13,22C13.55,22 14.05,21.77 14.41,21.41L21.41,14.41C21.78,14.05 22,13.55 22,13C22,12.44 21.77,11.94 21.41,11.58Z">
-                                            </path>
-                                        </svg> Education
-                                    </li>
-                                    <li class="list-group-item">
+
+                                    <li class="list-group-item" >
                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                             viewBox="0 0 24 24">
                                             <path fill="currentColor"
                                                 d="M20 22H4a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1h16a1 1 0 0 1 1 1v18a1 1 0 0 1-1 1zm-1-2V4H5v16h14zM7 6h4v4H7V6zm0 6h10v2H7v-2zm0 4h10v2H7v-2zm6-9h4v2h-4V7z">
                                             </path>
                                         </svg>
-                                        <span id="user_post_count">27</span> posts </li>
+                                        <span>博文数：</span><span th:text = "${blogsNum}"></span>
+                                    </li>
+
+                                    <li class="list-group-item" >
+<!--                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"-->
+<!--                                             viewBox="0 0 24 24">-->
+<!--                                            <path fill="currentColor"-->
+<!--                                                  d="M10,2H14A2,2 0 0,1 16,4V6H20A2,2 0 0,1 22,8V19A2,2 0 0,1 20,21H4C2.89,21 2,20.1 2,19V8C2,6.89 2.89,6 4,6H8V4C8,2.89 8.89,2 10,2M14,6V4H10V6H14Z">-->
+<!--                                            </path>-->
+<!--                                        </svg>-->
+                                        <img src="assets/images/icons/like.svg" width="20" height="20" style="margin:1.8%;">
+                                        <span style="padding-left: 1%;" >获赞数：</span><span th:text = "${likesNum}"></span>
+                                    </li>
+
+                                    <hr class="my-2">
 
                                     <li class="list-group-item">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
@@ -1461,28 +1479,19 @@
                                                 d="M3.9,12C3.9,10.29 5.29,8.9 7,8.9H11V7H7A5,5 0 0,0 2,12A5,5 0 0,0 7,17H11V15.1H7C5.29,15.1 3.9,13.71 3.9,12M8,13H16V11H8V13M17,7H13V8.9H17C18.71,8.9 20.1,10.29 20.1,12C20.1,13.71 18.71,15.1 17,15.1H13V17H17A5,5 0 0,0 22,12A5,5 0 0,0 17,7Z">
                                             </path>
                                         </svg>
-                                        <a href="#" target="_blank">https://mydomain.com</a>
+                                        <a href="#" target="_blank" th:text = "${email}">这里放邮箱</a>
                                     </li>
+<!--                                    </li>-->
 
-                                    <hr class="my-2">
-                                    </li>
-                                    <li class="list-group-item">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                            viewBox="0 0 24 24">
-                                            <path fill="currentColor"
-                                                d="M10,2H14A2,2 0 0,1 16,4V6H20A2,2 0 0,1 22,8V19A2,2 0 0,1 20,21H4C2.89,21 2,20.1 2,19V8C2,6.89 2.89,6 4,6H8V4C8,2.89 8.89,2 10,2M14,6V4H10V6H14Z">
-                                            </path>
-                                        </svg>
-                                        <span>Working at Envanto Market</span>
-                                    </li>
-                                    <li class="list-group-item">
+                                    <li class="list-group-item" >
                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                             viewBox="0 0 24 24">
                                             <path fill="currentColor"
                                                 d="M17.9,17.39C17.64,16.59 16.89,16 16,16H15V13A1,1 0 0,0 14,12H8V10H10A1,1 0 0,0 11,9V7H13A2,2 0 0,0 15,5V4.59C17.93,5.77 20,8.64 20,12C20,14.08 19.2,15.97 17.9,17.39M11,19.93C7.05,19.44 4,16.08 4,12C4,11.38 4.08,10.78 4.21,10.21L9,15V16A2,2 0 0,0 11,18M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2Z">
                                             </path>
                                         </svg>
-                                        Public </li>
+                                        <span style="padding-left: 1%;" >地区：</span><span th:text = "${area}"></span>
+                                    </li>
 
 
                                 </ul>
