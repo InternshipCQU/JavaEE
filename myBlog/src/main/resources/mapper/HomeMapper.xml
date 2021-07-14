@@ -11,7 +11,7 @@
     </select>
 
     <select id="searchBlogs" resultType="com.example.demo.entity.BlogInfo">
-        SELECT blogInfo.blogTitle, blogInfo.blogContent, blogInfo.createTime,
+        SELECT blogInfo.blogId,blogInfo.blogTitle, blogInfo.blogContent, blogInfo.createTime,
             blogInfo.clickNum, blogInfo.likesNum, blogInfo.userId, blogInfo.tagId
         FROM blogInfo, blogTag, tagBlogInfo
         WHERE blogInfo.blogTitle LIKE "%"#{keyword}"%"
@@ -20,6 +20,15 @@
                 AND tagBlogInfo.blogId = blogInfo.blogId);
     </select>
 
+<!--    <select id="searchBlogs" resultType="com.example.demo.entity.view.HomeBlogView">-->
+<!--        SELECT blogInfo.blogId, username, blogInfo.blogTitle, blogInfo.blogContent, blogInfo.createTime, blogInfo.clickNum, blogInfo.likesNum, commentNum, forwardNum, collectNum-->
+<!--        FROM blogInfo, blogTag, tagBlogInfo,User-->
+<!--        WHERE blogInfo.blogTitle LIKE "%"#{keyword}"%"-->
+<!--            OR (blogTag.tagName LIKE  "%"#{keyword}"%"-->
+<!--                AND blogTag.tagId = tagBlogInfo.tagId-->
+<!--                AND blogInfo.userId = User.userId-->
+<!--                AND tagBlogInfo.blogId = blogInfo.blogId);-->
+<!--    </select>-->
 
     <select id="showHotBlogger" resultType="com.example.demo.entity.User">
         SELECT `User`.username, `User`.avatar ,`User`.userId

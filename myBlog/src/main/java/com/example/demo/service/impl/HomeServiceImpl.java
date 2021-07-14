@@ -37,7 +37,7 @@ public class HomeServiceImpl implements HomeService {
     }
 
     @Override
-    public List<BlogInfo> searchBlogs(String keyword) {
+    public ArrayList<BlogInfo> searchBlogs(String keyword) {
         return homeMapper.searchBlogs(keyword);
     }
 
@@ -136,6 +136,10 @@ public class HomeServiceImpl implements HomeService {
         int count = (Integer) session.getAttribute("count");
         int size = (Integer) session.getAttribute("size");
         ArrayList<HomeBlogView> blogs = (ArrayList<HomeBlogView>) session.getAttribute("blogs");
+
+        System.out.println(size);
+        System.out.println(count);
+
         if(size == 0 || count == size){
             return "{\"noMore\":\"true\"}";
         }
@@ -161,27 +165,28 @@ public class HomeServiceImpl implements HomeService {
         String comment = "";
         int commentCount = 0;
 
+        if(commentList != null){
+            for (CommentView cv : commentList) {
 
-        for (CommentView cv : commentList) {
-
-            if (commentCount == 3) {
-                break;
+                if (commentCount == 3) {
+                    break;
+                }
+                comment = "\"username\":" + "\"" + cv.getUsername() + "\"" + "," + "\"commentContent\":" + "\"" + cv.getCommentContent() + "\""+ "," + "\"commentTime\":" + "\"" + cv.getCommentTime() + "\""+ "," + "\"userAvater\":" + "\"" + cv.getUseravater() + "\"";
+                comment = "{" + comment + "}";
+                if (commentCount == 0) {
+                    comments = comments + comment;
+                } else {
+                    comments = comments + "," + comment;
+                }
+                commentCount++;
             }
-            comment = "\"username\":" + "\"" + cv.getUsername() + "\"" + "," + "\"commentContent\":" + "\"" + cv.getCommentContent() + "\""+ "," + "\"commentTime\":" + "\"" + cv.getCommentTime() + "\""+ "," + "\"userAvater\":" + "\"" + cv.getUseravater() + "\"";
-            comment = "{" + comment + "}";
-            if (commentCount == 0) {
-                comments = comments + comment;
-            } else {
-                comments = comments + "," + comment;
-            }
-            commentCount++;
         }
+
         //====
         comments = "[" + comments + "]";
         System.out.println(comments);
 
         String link = "/blogs/" + username + "/" + blogId;
-
 
         System.out.println("Hello");
         session.setAttribute("count", count + 1);

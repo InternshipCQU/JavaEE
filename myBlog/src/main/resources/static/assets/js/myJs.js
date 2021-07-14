@@ -167,15 +167,13 @@ function loadTheBlog()
             $("loading").show();
         },
         error:function(jqXHR,textStatus,errorThrown ){
-            alert(errorThrown)
+            alert("errorThrown")
         },
         success: function(data) {
             //console.log(data)
             var blog = JSON.parse(data);
 
             $("#final").attr("id", "null")
-
-
 
             if (blog.noMore === "true") {
 
@@ -436,4 +434,83 @@ function collect()
 
 
 
+//====
+//==== search The Blog ====
+function searchTheBlog()
+{
+    //alert("load the blog")
+    urls = window.location.pathname;
+    str = urls.split("/")
+    //alert("hello"),
+    //alert(str[2])
+    $.ajax({
+
+        url: 'http://localhost:8080/getTheSearchBlogs', //这里是返回路径 在controller里写好对应函数就行 TODO:记得修改路径后面的 这是测试
+        type: 'get',
+        data: {"class":"other"}, //这里是向后端传输的json 应该是可以直接传对象 比如User这种entity
+        //例如点赞的话 我们传递blogID userID到后端 后端再进行操作
+        async: false,
+
+        error:function(jqXHR,textStatus,errorThrown ){
+            alert("errorThrown")
+        },
+        success: function(data) {
+            //console.log(data)
+            var blog = JSON.parse(data);
+            //alert(blog)
+            $("#final").attr("id", "null")
+            if (blog.noMore === "true") {
+
+            } else {
+
+                if (data != null) {
+
+                    $("#null").after("<div id = \"final\">\n" +
+                        "\n" +
+                        "                            <div class=\"fundings\" >\n" +
+                        "                                <div class=\"fundings_desc\">\n" +
+                        "                                    <a id = \"path\" href=\"#\"><h3 id = \"title\">Please help cleanup the oil and remediation of an spill</h3></a>\n" +
+                        "                                    <div class=\"fundings_desc_meta\">\n" +
+                        "                                        <div class=\"postMeta--author-text\">\n" +
+                        "                                            <a href=\"#\" id = \"bloggerName\">admin</a>\n" +
+                        "                                            <span class=\"middot\">·</span>\n" +
+                        "                                            <time id = \"time\">24 Aug 2020</time>\n" +
+                        "                                        </div>\n" +
+                        "                                    </div>\n" +
+                        "                                    <div class=\"fundings_footer\">\n" +
+                        "                                        <text> 相关度 </text>\n" +
+                        "                                        <div class=\"fund_raise_progress\">\n" +
+                        "                                            <div id = \"relation\" class=\"fund_raise_progress_filler\" style=\"width:35%\"></div>\n" +
+                        "                                        </div>\n" +
+                        "                                    </div>\n" +
+                        "                                    <div class=\"fund_raise_btns\">\n" +
+                        "                                        <a class=\"button small block light px-0\" href=\"#\" id = \"path2\">点击查看</a>\n" +
+                        "                                    </div>\n" +
+                        "                                </div>\n" +
+                        "                            </div>\n" +
+                        "\n" +
+                        "                        </div>");
+                }
+                $("#null").attr("id", "null2");
+                $("#title").html(blog.blogTitle) //设置博客链接
+                $("#title").attr("id","pass")
+                $("#time").html(blog.createTime);//设置博主名字
+                $("#time").attr("id", "pass");
+                $("#path").attr("href",blog.link);//设置点赞数量
+                $("#path").attr("id", "pass");
+                $("#path2").attr("href",blog.link);//设置点赞数量
+                $("#path2").attr("id", "pass");
+                $("#bloggerName").html(blog.username);//设置点赞数量
+                $("#bloggerName").attr("id", "pass");
+                // $("#userAvater").attr("src", blog.userAvater);
+                // $("#userAvater").attr("id", "pass");//设置博主头像
+
+
+            }
+        },
+        complete: function () {
+            $("loading").hide();
+        },
+    });
+}
 //====
