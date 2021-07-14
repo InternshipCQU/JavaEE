@@ -1,6 +1,7 @@
 package com.example.demo.controller;
 import com.aliyun.oss.OSSClient;
 import com.example.demo.entity.User;
+import com.example.demo.entity.BlogInfo;
 import com.example.demo.entity.UserLike;
 
 import com.example.demo.service.*;

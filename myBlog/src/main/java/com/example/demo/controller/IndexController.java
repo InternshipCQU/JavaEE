@@ -29,7 +29,7 @@ public class IndexController {
 
     @RequestMapping("/index")
     public String index(){
-        return "personalspace";
+        return "index";
     }
 
     @RequestMapping("/index/{cla}")

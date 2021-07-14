@@ -31,6 +31,30 @@ public class HomeController {
     @Resource
     private HomeService homeService;
 
+//    @RequestMapping("/home/{tagId}")     //点击标签后查询对应标签的博客
+//    public String tagToBlogs(@PathVariable("tagId") int tagId, Model model) {
+//        model.addAttribute("blogListFilteredByTag", homeService.tagToBlogs(tagId));
+//        return "123";
+//    }
+//<<<<<<< HEAD
+//    @RequestMapping("/home")    //加载主页显示的博客
+//    public String getBlogs(@RequestBody String username, Model model){
+//        model.addAttribute("blogList", homeService.getBlogs(username));
+//        return "index";
+//    }
+//=======
+
+//    @RequestMapping("/home")
+//    public String getBlogs(Model model)
+//    {
+//        model.addAttribute("blogList", homeService.getBlogs());
+//        return "test-home1";
+//    }
+//
+//>>>>>>> 72381607e5eb73cdd5ddfb2836690cb0caa011d3
+
+
+
     @RequestMapping("/home/{tagName}")     //点击标签后查询对应标签的博客
     public String tagToBlogs(@PathVariable("tagName") String tagName, Model model){
         model.addAttribute("blogListFilteredByTag", homeService.tagToBlogs(tagName));
