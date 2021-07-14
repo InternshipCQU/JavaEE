@@ -11,7 +11,10 @@ import javax.annotation.Resource;
 //这个是利用restful去数据库寻找数据 将其传给前端 博客展示界面
 @Controller
 public class BlogController {
-
+    @RequestMapping("personalspace")
+    public String personalspace(){
+        return "personalspace";
+    }
     @RequestMapping("blogpage")
     public String blog(){
         return "blogpage";

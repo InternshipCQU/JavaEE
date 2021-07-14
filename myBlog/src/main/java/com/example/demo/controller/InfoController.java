@@ -17,6 +17,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -28,7 +29,7 @@ import java.util.List;
 
 @Controller
 public class InfoController {
-    @Autowired
+    @Resource
     private setService setss;
     private getService getss;
 
@@ -58,6 +59,7 @@ public class InfoController {
                     String url = aliyunOssUtil.upLoad(newFile,userId);
                     System.out.println(url);
                     model.addAttribute("url",url );
+                    setss.setavatar(url,Integer.valueOf(userId));
                     System.out.println("UPLOAD SUCCESSFULLY");
                 }
             }
@@ -102,7 +104,7 @@ public class InfoController {
         Integer blogsnum=userobj.getBlogsNum();
         Integer fansnum=userobj.getFansNum();
         String birthdate=userobj.getBirthdate();
-
+        String avatar=userobj.getAvatar();
         JSONObject object=new JSONObject();
         object.put("userId",userId);
         object.put("username",username);
@@ -119,6 +121,7 @@ public class InfoController {
         object.put("blogsNum",Integer.toString(blogsnum));
         object.put("fansNum",Integer.toString(fansnum));
         object.put("birthdate",birthdate);
+        object.put("avatar",avatar);
         response.getWriter().write(object.toString());
     }
 
@@ -144,48 +147,46 @@ public class InfoController {
     public void getfollowusrlist(@RequestBody String userId, HttpServletRequest request,HttpServletResponse response,HttpSession session) throws IOException, JSONException{
         JSONObject object=new JSONObject();
         List<UserLike> listuserlike=getss.getfollowing(Integer.valueOf(userId));
-        //TODO:查询关注列表
         object.put("NUM",2);
-        object.put("FOLLOW1","ABC");
+//        object.put("FOLLOW1","ABC");
         int size=listuserlike.size();
         List<String> list=new ArrayList<String>();
         for(UserLike s: listuserlike)
         {
             list.add(Integer.toString(s.getUserId()));
         }
-        System.out.println(list);
+//        System.out.println(list);
         List<String> usernamelist=new ArrayList<String>();
         for(String s:list)
         {
             usernamelist.add(getss.getusername(Integer.valueOf(s)));
         }
-        System.out.println(usernamelist);
+//        System.out.println(usernamelist);
         for(int i=1;i<=usernamelist.size();i++)
         {
             object.put("FOLLOW"+i,usernamelist.get(i-1));
             object.put("LINK"+i,"#");
         }
-//        object.put("FOLLOW1", usernamelist.get(0));
-//        object.put("FOLLOW2",usernamelist.get(1));
-//        object.put("LINK1","#");
-//        object.put("LINK2","#");
-        //TODO
         response.getWriter().write(object.toString());
     }
 
     @RequestMapping(value="/getfavorites",method=RequestMethod.POST)
     public void getfavoriteslist(@RequestBody String userId, HttpServletRequest request,HttpServletResponse response,HttpSession session) throws IOException, JSONException{
         JSONObject object=new JSONObject();
-        //TODO:查询喜欢列表
+        List<String> listfavorites=getss.getcollect(Integer.valueOf(userId));
         object.put("NUM",2);
-        for(int i=1;i<=3;i++)
+        int size=listfavorites.size();
+        List<String> list=new ArrayList<String>();
+        for(String s: listfavorites)
         {
-//            System.out.println(i);
-            object.put("LIKES"+Integer.toString(i),"BLOG "+Integer.toString(i));
-            object.put("LINK"+Integer.toString(i),"#");
+            list.add(s);
         }
-        object.put("LIKES4","");
-        object.put("LINK4","");
+//        System.out.println(list);
+        for(int i=1;i<=list.size();i++)
+        {
+            object.put("LIKES"+i,list.get(i-1));
+            object.put("LINK"+i,"#");
+        }
         response.getWriter().write(object.toString());
     }
 

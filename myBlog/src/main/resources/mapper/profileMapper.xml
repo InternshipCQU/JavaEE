@@ -7,7 +7,7 @@
         WHERE `User`.userId=#{userId};
     </select>
     <update id="setuser">
-        UPDATE `User` set username=#{username},gender=#{gender},email=#{email},telephone=#{telephone},firstname=#{firstname},lastname=#{lastname},avatar="https://bucket-myblog.oss-cn-beijing.aliyuncs.com/avatar/"#{userId}".jpg",lastLogin=#{lastLogin},birthdate=#{birthdate},profile=#{profile},area=#{area}
+        UPDATE `User` set username=#{username},gender=#{gender},email=#{email},telephone=#{telephone},firstname=#{firstname},lastname=#{lastname},lastLogin=#{lastLogin},birthdate=#{birthdate},profile=#{profile},area=#{area}
         where userId=#{userId};
     </update>
     <select id="getfollowing" resultType="com.example.demo.entity.UserLike">
@@ -15,9 +15,19 @@
         FROM `userLike`
         where fansId=#{userId};
     </select>
+    <select id="getcollect" resultType="String">
+        SELECT blogTitle
+        FROM `blogCollect` natural join `blogInfo`
+        where userId=#{userId};
+    </select>
+
     <select id="getusername" resultType="String">
         SELECT username
         FROM `User`
         where userId=#{userId};
     </select>
+    <update id="setavatar">
+        UPDATE `User` set avatar=#{dir}
+        where userId=#{userId};
+    </update>
 </mapper>
