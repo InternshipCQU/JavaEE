@@ -24,7 +24,9 @@ public class User {
     public String birthdate;   // 用户出生日期
     public String profile;   // 用户个人简介
     public String area;        // 用户所在地区
+    public String background; //背景图片
 
+    public String getBackground(){return background;}
     public Integer getUserId() {
         return userId;
     }

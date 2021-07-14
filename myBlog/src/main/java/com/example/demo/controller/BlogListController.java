@@ -1,5 +1,6 @@
 package com.example.demo.controller;
 
+import com.example.demo.mapper.BlogListMapper;
 import org.json.JSONException;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -17,7 +18,7 @@ import java.io.IOException;
 @Controller
 public class BlogListController {
     @Resource
-    private
+    private BlogListMapper blogListMapper;
 
     @RequestMapping("bloglist")
     public String bloglist(){

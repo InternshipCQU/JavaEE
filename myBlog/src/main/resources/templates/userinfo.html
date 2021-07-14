@@ -556,7 +556,7 @@
 
                            <!-- User Name / Avatar -->
                            <!-- User Name / Avatar -->
-                           <a href="timeline.html">
+                           <a href="userinfo.html">
 
                                <div class="dropdown-user-details">
 
@@ -615,14 +615,24 @@
 
  
                 <div class="profile">
+
                     <div class="profile-cover">
 
-                        <!-- profile cover -->
-                        <img src="assets/images/avatars/profile-cover.jpg" alt="">
+                        <div class="bg_preview_box"><p id="inputbackgroundtemp"></p>
+                        </div>
 
-<!--                        <a href="changecontent()"> <i class="uil-camera"></i> Edit </a>-->
+                    </a>
 
 
+<!--                        <script>-->
+<!--                            function previewImage(file) {-->
+<!--                                var img = document.getElementById('imageshow');-->
+<!--                                var reader = new FileReader();-->
+<!--                                reader.onload = function (evt) { img.src = evt.target.result; }-->
+<!--                                reader.readAsDataURL(file.files[0]);-->
+
+<!--                            }-->
+<!--                        </script>-->
                     </div>
 <!--                    <script>-->
 <!--                        var o1=document.getElementById("avatarfile");-->
@@ -835,7 +845,7 @@
                                         </div>
                                     </div>
                                     <div class="post-state">
-                                        <div class="post-state-btns"> <span> <br/>&nbsp;</span>
+                                        <div class="post-state-btns"> <span> <br/>&nbsp;更新头像：</span>
 
 
                                             <form action="/upload" enctype="multipart/form-data" method="post">
@@ -851,6 +861,27 @@
                                                 <!--预览图片-->
 
                                             </form>
+
+
+                                        </div>
+                                    </div>
+                                    <div class="post-state">
+                                        <div class="post-state-btns"> <span> <br/>&nbsp;更新封面：</span>
+
+
+                                            <form action="/changebackground" enctype="multipart/form-data" method="post">
+                                                <div class="form-group" >
+                                                    <p id="inputtemp2"></p>
+                                                    <input type="file" id="file_2" name="file_2" style= "background-color:transparent;border:0;" accept="image/jpeg">
+                                                    <label for="file_2" ></label>
+
+                                                    <button type="submit" id="submit_2">更新背景</button>
+                                                </div>
+
+                                                <!--预览图片-->
+
+                                            </form>
+
 <!--                                            <script type="text/javascript">-->
 <!--                                                uploadfiles(document.getElementById("userId").innerHTML);-->
 

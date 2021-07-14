@@ -8,5 +8,5 @@ public interface setService {
     void setuser(User user);
     boolean checksetinfo(User user);
     void setavatar(String dir,Integer userId);
-
+    void setbackground(String dir,Integer userId);
 }

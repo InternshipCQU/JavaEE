@@ -15,5 +15,7 @@ public interface profileMapper{
     public List<UserLike> getfollowing(Integer userId);
     public List<String> getcollect(Integer userId);
     public String getusername(Integer userId);
-    void setavatar(String dir,Integer userId);
+    public void setavatar(String dir,Integer userId);
+    public String getbackground(Integer userId);
+    public void setbackground(String dir, Integer userId);
 }
