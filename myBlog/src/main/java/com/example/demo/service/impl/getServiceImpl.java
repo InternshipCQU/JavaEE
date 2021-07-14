@@ -1,5 +1,6 @@
 package com.example.demo.service.impl;
 
+import com.example.demo.entity.BlogCollect;
 import com.example.demo.entity.User;
 import com.example.demo.entity.UserLike;
 import com.example.demo.mapper.profileMapper;
@@ -28,6 +29,12 @@ public class getServiceImpl implements getService {
     public List<UserLike> getfollowing(Integer userId){
         List<UserLike> ul=profileMapper.getfollowing(userId);
         return ul;
+    }
+
+    @Override
+    public List<String> getcollect(Integer userId){
+        List<String> bc=profileMapper.getcollect(userId);
+        return bc;
     }
 
     @Override

@@ -26,6 +26,10 @@ public class setServiceImpl implements setService {
        profileMapper.setuser(user);
    }
    @Override
+   public void setavatar(String dir,Integer userId){
+       profileMapper.setavatar(dir,userId);
+   }
+   @Override
     public boolean checksetinfo(User user)
    {
        String username=user.username;
