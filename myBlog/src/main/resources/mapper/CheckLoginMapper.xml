@@ -7,6 +7,7 @@
         WHERE `User`.username = #{username};
     </select>
 
+    <!--saj-->
     <select id="userExist" resultType="String">
         SELECT `User`.username
         FROM `User`
