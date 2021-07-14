@@ -115,6 +115,8 @@ public class HomeServiceImpl implements HomeService {
             if(session.getAttribute("Token") != null){
                 session.setAttribute("blogs", getRecommendBlogViews((Integer) session.getAttribute("userID")));
             }else{
+                System.out.println("加载所有的博客");
+
                 session.setAttribute("blogs", getBlogViews());
             }
         }else{
@@ -123,6 +125,7 @@ public class HomeServiceImpl implements HomeService {
 
 
         ArrayList<HomeBlogView> s1 = (ArrayList<HomeBlogView>) session.getAttribute("blogs");
+        System.out.println(s1.size());
         session.setAttribute("count", 0);
         session.setAttribute("size", s1.size());
     }
@@ -133,7 +136,7 @@ public class HomeServiceImpl implements HomeService {
         int count = (Integer) session.getAttribute("count");
         int size = (Integer) session.getAttribute("size");
         ArrayList<HomeBlogView> blogs = (ArrayList<HomeBlogView>) session.getAttribute("blogs");
-        if(size == 0){
+        if(size == 0 || count == size){
             return "{\"noMore\":\"true\"}";
         }
 
@@ -179,14 +182,10 @@ public class HomeServiceImpl implements HomeService {
 
         String link = "/blogs/" + username + "/" + blogId;
 
-        if (count == size - 1) {
-            return "{\"noMore\":\"true\"}";
-        } else {
-            System.out.println("Hello");
-            session.setAttribute("count", count + 1);
-            return "{\"clickNumber\":\""+clickNumber+"\",\"userAvater\":\""+userAvater +"\",\"createTime\":\""+createTime+"\",\"blogContent\":\"" + blogContent + "\",\"blogTitle\":\"" + blogTitle + "\",\"username\":\"" + username + "\",\"likeNumber\":\"" + likeNumber + "\",\"commentNumber\":\"" + commentNumber + "\",\"forwardNumber\":\"" + forwardNumber + "\",\"saveNumber\":\"" + saveNumber + "\",\"comments\":" + comments + ",\"link\":\"" + link + "\"}";
-        }
 
+        System.out.println("Hello");
+        session.setAttribute("count", count + 1);
+        return "{\"clickNumber\":\""+clickNumber+"\",\"userAvater\":\""+userAvater +"\",\"createTime\":\""+createTime+"\",\"blogContent\":\"" + blogContent + "\",\"blogTitle\":\"" + blogTitle + "\",\"username\":\"" + username + "\",\"likeNumber\":\"" + likeNumber + "\",\"commentNumber\":\"" + commentNumber + "\",\"forwardNumber\":\"" + forwardNumber + "\",\"saveNumber\":\"" + saveNumber + "\",\"comments\":" + comments + ",\"link\":\"" + link + "\"}";
 
     }
 

@@ -245,19 +245,6 @@ function loadTheBlog()
                         "    <div class=\"post-comments\" >\n" +
                         "        <a id = \"commentsNull\">   </a>\n"+
                         "        <a href=\"#\" class=\"view-more-comment\"   id = \"commentLink\"> Veiw 8 more Comments</a>\n" +
-                        "        <div class=\"post-add-comment\">\n" +
-                        "            <div class=\"post-add-comment-avature\">\n" +
-                        "                <img src=\"http://localhost:8080/assets/images/avatars/avatar-2.jpg\" alt=\"\">\n" +
-                        "            </div>\n" +
-                        "            <div class=\"post-add-comment-text-area\">\n" +
-                        "                <input type=\"text\" placeholder=\"Write your comment...\">\n" +
-                        "                <div class=\"icons\">\n" +
-                        "                    <span class=\"uil-link-alt\"></span>\n" +
-                        "                    <span class=\"uil-grin\"></span>\n" +
-                        "                    <span class=\"uil-image\"></span>\n" +
-                        "                </div>\n" +
-                        "            </div>\n" +
-                        "        </div>\n" +
                         "    </div>\n" +
                         "</div>");
                 }
