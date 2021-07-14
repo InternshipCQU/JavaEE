@@ -135,9 +135,7 @@ public class InfoController {
 
     @RequestMapping(value="/submitinfo",method=RequestMethod.POST)
     public ResponseEntity submitdata(@RequestBody User user,HttpServletRequest request,HttpServletResponse response,HttpSession session) throws IOException,JSONException{
-        System.out.println("USERID:"+user.userId);
         String ps=getss.getuserprofile(user.userId).getPassword();
-        System.out.println("PASSWORD:"+ps);
         user.setPassword(ps);
         setss.setuser(user);//通过setuser，将新数据存到数据库
 
