@@ -6,6 +6,7 @@ import com.example.demo.entity.User;
 import com.example.demo.entity.view.CommentView;
 import com.example.demo.entity.view.HomeBlogView;
 import com.example.demo.mapper.HomeMapper;
+import com.example.demo.mapper.profileMapper;
 import com.example.demo.service.HomeService;
 import com.example.demo.utils.SplitString;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +17,7 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import static com.example.demo.utils.SplitString.splitId;
@@ -25,6 +27,9 @@ public class HomeServiceImpl implements HomeService {
 
     @Resource
     private HomeMapper homeMapper;
+
+    @Resource
+    private profileMapper profileMapper;
 
     @Override
     public List<BlogInfo> tagToBlogs(String tagName) {
@@ -48,7 +53,7 @@ public class HomeServiceImpl implements HomeService {
 
     @Override
     // 【登陆后】根据关注的人，推荐关注列表热门博主
-    public List<User> showRecommendBlogger(int userId) {
+    public ArrayList<User> showRecommendBlogger(int userId) {
         return homeMapper.showRecommendBlogger(userId);
     }
 
@@ -57,6 +62,38 @@ public class HomeServiceImpl implements HomeService {
         return null;
     }
 
+
+    @Override
+    public void setRecommendBlogger(HttpServletRequest request,Model model){
+        if(request.getAttribute("token")!=null){
+            model.addAttribute("recommendBlogger",showRecommendBlogger(((Integer)request.getAttribute("userID"))));
+        }else{
+            model.addAttribute("recommendBlogger",showHotBlogger());
+        }
+    }
+
+    @Override
+    public void setBlogger(HttpServletRequest request, Model model) { //在前端页面上设置右上角头像和链接
+        if(request.getAttribute("userID")!=null){
+            User user = profileMapper.getUser((Integer)request.getAttribute("userID"));
+            model.addAttribute("bloggerAvatar",user.getAvatar());
+            model.addAttribute("bloggerPath","/blogger/" + user.getUsername() + "/" + user.getUserId());
+            model.addAttribute("spacePath","/space/"+user.getUserId());
+            model.addAttribute("username",user.getUsername());
+            model.addAttribute("hiddenLogout","false");
+            model.addAttribute("hiddenLogin","true");
+
+        }else{
+            model.addAttribute("bloggerAvatar","https://bucket-myblog.oss-cn-beijing.aliyuncs.com/avatar/defaultAvatar.jpg");
+            model.addAttribute("bloggerPath","/login");
+            model.addAttribute("spacePath","/login");
+            model.addAttribute("username","login please");
+            model.addAttribute("hiddenLogout","true");
+            model.addAttribute("hiddenLogin","false");
+        }
+        System.out.println(model.getAttribute("bloggerAvatar"));
+
+    }
 
     //test
     @Override
@@ -74,7 +111,17 @@ public class HomeServiceImpl implements HomeService {
     @Override
     public void Init(String cla, HttpServletRequest request) {
         HttpSession session = request.getSession();
-        session.setAttribute("blogs", getBlogViews());
+        if(cla.equals("ALL")){
+            if(session.getAttribute("Token") != null){
+                session.setAttribute("blogs", getRecommendBlogViews((Integer) session.getAttribute("userID")));
+            }else{
+                session.setAttribute("blogs", getBlogViews());
+            }
+        }else{
+            session.setAttribute("blogs", tagToBlogs(cla));
+        }
+
+
         ArrayList<HomeBlogView> s1 = (ArrayList<HomeBlogView>) session.getAttribute("blogs");
         session.setAttribute("count", 0);
         session.setAttribute("size", s1.size());
@@ -86,7 +133,9 @@ public class HomeServiceImpl implements HomeService {
         int count = (Integer) session.getAttribute("count");
         int size = (Integer) session.getAttribute("size");
         ArrayList<HomeBlogView> blogs = (ArrayList<HomeBlogView>) session.getAttribute("blogs");
-
+        if(size == 0){
+            return "{\"noMore\":\"true\"}";
+        }
 
         int blogId = blogs.get(count).getBlogId();
         String userAvater = blogs.get(count).getAvater();
@@ -142,8 +191,8 @@ public class HomeServiceImpl implements HomeService {
     }
 
     @Override
-    public List<HomeBlogView> getRecommendBlogViews(int tagId) {
-        List<HomeBlogView> blogList = homeMapper.getRecommendBlogViews(tagId);
+    public ArrayList<HomeBlogView> getRecommendBlogViews(int tagId) {
+        ArrayList<HomeBlogView> blogList = homeMapper.getRecommendBlogViews(tagId);
         for (int i = 0; i < blogList.size(); i++) {
             int blogId = blogList.get(i).getBlogId();
             List<CommentView> commentList = homeMapper.getCommentViews(blogId);
