@@ -15,6 +15,7 @@
 package com.example.demo.controller;
 
 
+import com.example.demo.entity.BlogInfo;
 import com.example.demo.entity.view.HomeBlogView;
 import com.example.demo.service.HomeService;
 import org.springframework.stereotype.Controller;
@@ -58,11 +59,18 @@ public class HomeController {
         return "test-home2";
     }
 
-    @RequestMapping("/search")
-    public String searchBlogs(@RequestParam("keyword")  String keyword, Model model) {
+    @RequestMapping("/search/{keyword}")
+    // 根据关键词（标题，标签名）模糊搜索博客，
+    public String searchBlogs(@PathVariable("keyword")  String keyword, Model model) {
         model.addAttribute("blogListFilteredByKeyword", homeService.searchBlogs(keyword));
         return "test-home3";
     }
+
+//    @RequestMapping("/search")
+//    public String searchBlogs(@RequestParam("keyword")  String keyword, Model model) {
+//        model.addAttribute("blogListFilteredByKeyword", homeService.searchBlogs(keyword));
+//        return "test-home3";
+//    }
 
     //根据前端格式返回JSON数据
     @RequestMapping("/home")
