@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.example.demo.mapper.profileMapper">
     <select id="getUser" resultType="com.example.demo.entity.User">
-        SELECT userId,username,gender,email,telephone,firstname,lastname,avatar,lastLogin,fansNum,likesNum,blogsNum,userRegisterTime,birthdate,profile,area,background
+        SELECT `User`.userId,`User`.username,`User`.gender,`User`.email,`User`.telephone,`User`.firstname,`User`.lastname,`User`.avatar,`User`.lastLogin,`User`.fansNum,`User`.likesNum,`User`.blogsNum,`User`.userRegisterTime,`User`.birthdate,`User`.profile,`User`.area,`User`.background
         FROM `User`
         WHERE `User`.userId=#{userId};
     </select>

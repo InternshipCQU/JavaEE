@@ -61,12 +61,6 @@ public class HomeController {
         return "test-home2";
     }
 
-    @RequestMapping("/search")
-    // 根据关键词（标题，标签名）模糊搜索博客，
-    public String searchBlogs(@RequestParam("keyword")  String keyword, Model model) {
-        model.addAttribute("blogListFilteredByKeyword", homeService.searchBlogs(keyword));
-        return "test-home3";
-    }
 
 //    @RequestMapping("/search")
 //    public String searchBlogs(@RequestParam("keyword")  String keyword, Model model) {

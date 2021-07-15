@@ -43,6 +43,12 @@
         WHERE blogInfo.blogId = #{blogId} AND blogInfo.tagId = blogTag.tagId;
     </select>
 
+    <select id="searchLikeBlog" resultType="com.example.demo.entity.BlogLike">
+        SELECT blogLike.blogId
+        FROM blogLike
+        WHERE blogLike.userId = #{userId};
+    </select>
+
     <update id="updateMarkWhenLike">
         UPDATE TagMark SET ${tagName} = ${tagName} + 1 WHERE userId = #{userId}
     </update>

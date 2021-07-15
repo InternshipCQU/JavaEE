@@ -1013,49 +1013,35 @@
                             // categorySelect.init();
                         });
 
-                        //下面这部分不需要
-                        // var testEditor;
-                        // $(function () {
-                        //     testEditor = editormd.markdownToHTML("doc-content", {//注意：这里是上面DIV的id
-                        //             htmlDecode: "style,script,iframe",
-                        //             emoji: true,
-                        //             taskList: true,
-                        //             tex: true, // 默认不解析
-                        //             flowChart: true, // 默认不解析
-                        //             sequenceDiagram: true, // 默认不解析
-                        //             codeFold: true,
-                        //         }
-                        //     );
-                        // });
 
                         /* 发布文章*/
                         var writeArticle = {
                             doSubmit: function () {//提交
-
-
                                 if (writeArticle.doCheck()) {
                                     //debugger;
-                                    var title = $("#articleTitle").val();
-                                    var content = $("#articleContent").val();
-                                    var typeId = $("#articleCategory").val();
-                                    var doccontent = $("#doc-content").val();//测试了一下为空
-                                    // alert(title+ typeof title);
-                                    // alert(content+ typeof content);
-                                    // alert(typeId+ typeof typeId);
-                                    // alert(doccontent);
-                                    // alert(typeof doccontent);
 
-                                    var htmlcontent = editor.getHTML();
-                                    alert(htmlcontent);
-                                    console.log(htmlcontent);
-                                    alert(typeof htmlcontent);
+                                    //获取当前时间
+                                    var date = new Date();
+                                    var createTime = date .toISOString().replace(/T.*/,' ')+ date .toLocaleTimeString().replace(/ G.*/,"");
+
+                                    var blogTitle = $("#articleTitle").val();
+                                    var abstractContent = $("#articleContent").val(); //后面摘要可以用
+                                    var tagName = $("#articleCategory").val();
+
+                                    var htmlContent = editor.getHTML();
+                                    console.log(htmlContent);
+
+                                    blogTitle = encodeURI(blogTitle);
+                                    createTime = encodeURI(createTime);
+                                    htmlContent = encodeURI(htmlContent);
+                                    // tagName = encodeURI(tagName);
 
                                     $.ajax({
-                                        type: "POST",
-                                        url: '<%=basePath %>article/saveOrUpdateArticle.do',
-                                        data: {'title':title,'content':content,'typeId':typeId},
+                                        type: 'GET',
+                                        url: 'http://localhost:8080/submitarticle',
+                                        data: {'blogTitle':blogTitle,'blogContent':htmlContent,'tagName':tagName,'createTime':createTime},  //'typeId':typeId
                                         dataType:'json',
-                                        //contentType:"application/json",
+                                        contentType: 'text/json,charset=utf-8',
                                         cache: false,
                                         success: function(data){
                                             //debugger;
@@ -1064,6 +1050,8 @@
                                                 setTimeout(function(){
                                                     window.close();
                                                 },3000);
+                                            } else {
+                                                alert("保存失败！");
                                             }
                                         }
                                     });

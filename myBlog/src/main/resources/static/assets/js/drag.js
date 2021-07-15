@@ -95,6 +95,24 @@ function hide_error_password()
     error_password.setAttribute("hidden", true);
 }
 
+function signHideErrorUser()
+{
+    var userError = document.getElementById("userError");
+    userError.setAttribute("hidden", true);
+}
+
+function signHideErrorPassword()
+{
+    var passwordError = document.getElementById("passwordError");
+    passwordError.setAttribute("hidden", true);
+}
+
+function signHideErrorEmail()
+{
+    var emailError = document.getElementById("emailError");
+    emailError.setAttribute("hidden", true);
+}
+
 
 function check()
 {
@@ -132,6 +150,9 @@ function check()
     }
 
 }
+
+
+
 
 function CheckSignup()
 {
