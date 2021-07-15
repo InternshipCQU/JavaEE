@@ -59,23 +59,21 @@ public class LoginServiceImpl implements LoginService {
         HttpSession token = request.getSession();
         token.setAttribute("token","yes");
         token.setAttribute("username", name);
+
 //        System.out.println(lastLogin+" "+name);
-        checkLoginMapper.addDate(lastLogin, name);
+        checkLoginMapper.addDate(lastLogin, name);      //添加登录日期
+
+//        int userID = checkLoginMapper.getUserID(name);        //返回用户ID
+
+        token.setAttribute("userID", checkLoginMapper.getUserID(name));
+
+//        System.out.println("userID: "+token.getAttribute("userID"));
 //
+//        Cookie cookieLoginStatue = new Cookie("loginStatue", "Yes");
+//        response.addCookie(cookieLoginStatue);
 //
-//        token.setAttribute("username", name);
-//        token.setAttribute("password", password);
-
-
-
-        Cookie cookieLoginStatue = new Cookie("loginStatue", "Yes");
-        response.addCookie(cookieLoginStatue);
-
-        //这个name应该是用户名
-        Cookie cookieName = new Cookie("ID", name);
-        response.addCookie(cookieName);
-
-
-
+//        //这个name应该是用户名
+//        Cookie cookieName = new Cookie("ID", name);
+//        response.addCookie(cookieName);
     }
 }

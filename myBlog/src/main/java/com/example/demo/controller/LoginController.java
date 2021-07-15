@@ -61,7 +61,7 @@ public class LoginController {
             return modelAndView;
         }
 
-        System.out.println("sub2: "+submitStatue2);
+//        System.out.println("sub2: "+submitStatue2);
         if (!submitStatue2)
         {
             modelAndView.addObject("error_username", "用户不存在");
@@ -84,7 +84,7 @@ public class LoginController {
 //            return modelAndView;
 //        }
 
-        System.out.println("sub1: "+submitStatue1);
+//        System.out.println("sub1: "+submitStatue1);
         if (!submitStatue1)
         {
             System.out.println("submitStatue1");
@@ -102,7 +102,7 @@ public class LoginController {
         Calendar calendar = Calendar.getInstance(); // gets current instance of the calendar
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
         String lastLogin = formatter.format(calendar.getTime());
-        System.out.println(lastLogin);
+//        System.out.println(lastLogin);
 
         user.setUsername(username);
         user.setPassword(password);

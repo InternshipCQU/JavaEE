@@ -4,11 +4,13 @@ import com.example.demo.service.LogoutService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.annotation.Resource;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 @Controller()
@@ -24,6 +26,15 @@ public class LogoutController {
         //TODO:这里应该转成重定向到mainpage
         response.sendRedirect("/index/a");
         return ;
+    }
+
+    @RequestMapping("/logout")
+    public ModelAndView logout(ModelAndView modelAndView, HttpServletRequest  request, HttpServletResponse response)
+    {
+        logoutSer.logout(request, response);
+        //重定向到登录页面
+        modelAndView.setViewName("redirect:/login");
+        return modelAndView;
     }
 
     @RequestMapping("/ajax")

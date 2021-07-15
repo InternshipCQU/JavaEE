@@ -29,7 +29,7 @@ public class RegisterController {
     {
         boolean userExits = registerService.checkUser(signUsername);
         boolean checkPassword = registerService.checkPassword(signPassword, confirmPassword);
-        System.out.println("signUsername: "+signUsername);
+//        System.out.println("signUsername: "+signUsername);
         if (signUsername.equals(""))
         {
             modelAndView.addObject("userError", "请输入用户名");
@@ -37,7 +37,7 @@ public class RegisterController {
             return modelAndView;
         }
 
-        System.out.println("userExits:"+userExits);
+//        System.out.println("userExits:"+userExits);
         if (userExits)
         {
             modelAndView.addObject("userError", "用户已存在");
@@ -45,7 +45,7 @@ public class RegisterController {
             return modelAndView;
         }
 
-        System.out.println("signEmail:"+signEmail);
+//        System.out.println("signEmail:"+signEmail);
         if (signEmail.equals(""))
         {
             modelAndView.addObject("emailError","请输入邮箱");
@@ -53,8 +53,8 @@ public class RegisterController {
             return modelAndView;
         }
 
-        System.out.println("signPassword:"+signPassword);
-        System.out.println("confirmPassword:"+confirmPassword);
+//        System.out.println("signPassword:"+signPassword);
+//        System.out.println("confirmPassword:"+confirmPassword);
         if (signPassword.equals(""))
         {
             modelAndView.addObject("passwordError","请输入密码");
@@ -62,7 +62,14 @@ public class RegisterController {
             return modelAndView;
         }
 
-        System.out.println("checkPassword:"+checkPassword);
+        if (signPassword.length() < 6 || signPassword.length()>20)
+        {
+            modelAndView.addObject("passwordError","密码长度必须是6-20位");
+            modelAndView.setViewName("form-singup");
+            return modelAndView;
+        }
+
+//        System.out.println("checkPassword:"+checkPassword);
         if (!checkPassword)
         {
             modelAndView.addObject("passwordError","请确认密码是否一致");
@@ -73,7 +80,7 @@ public class RegisterController {
         Calendar calendar = Calendar.getInstance(); // gets current instance of the calendar
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
         String userRegisterTime = formatter.format(calendar.getTime());
-        System.out.println(userRegisterTime);
+//        System.out.println(userRegisterTime);
 
         registerService.addUser(signUsername, signPassword, userRegisterTime);
         modelAndView.setViewName("redirect:/login");

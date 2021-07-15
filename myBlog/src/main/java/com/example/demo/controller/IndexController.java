@@ -62,7 +62,7 @@ public class IndexController {
         //TODO:在这里向数据库寻找数据进行返回 这个str是类需要用这个确定查询的博客的类别进行加载 预计使用session进行值的记录 防止重复推送
         //如果没有推文了 需要传回一个没有的json数据 {none:true}
         String s = homeService.giveTheBlogToIndex(str,request);
-        System.out.println(s);
+//        System.out.println(s);
         return s;
     }
 

@@ -10,4 +10,6 @@ public interface CheckLoginMapper {
     String userExist(String username);   // 检查用户名是否存在
 
     void addDate(String lastLogin, String username);
+
+    Integer getUserID(String username);
 }
