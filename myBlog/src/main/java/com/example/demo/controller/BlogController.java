@@ -2,11 +2,16 @@ package com.example.demo.controller;
 
 import com.example.demo.entity.BlogInfo;
 import com.example.demo.service.BlogService;
+import net.sf.json.JSON;
+import org.json.JSONException;
+import org.json.JSONObject;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 
 //这个是利用restful去数据库寻找数据 将其传给前端 博客展示界面
 @Controller
@@ -25,22 +30,41 @@ public class BlogController {
     @RequestMapping("/blogs/{userID}/{blogId}")
     public String blog(@PathVariable("blogId") int blogId,@PathVariable("userID") String userID, Model model){
         BlogInfo blog = blogService.getBlog(blogId);
+        blog.blogId=blogId;
         model.addAttribute("blog",blog);
-
+        System.out.println("blogId:"+blog.blogId);
+        System.out.println("userId:"+blog.userId);
+        System.out.println("tagId:"+blog.tagId);
+        System.out.println("likenumber:"+blog.likesNum);
         return "blogpage";
     }
-
+    @RequestMapping("/blogs/querylike")
+    public void querylike(@RequestParam("blogId") int blogId, @RequestParam("userId") int userId,  HttpServletResponse response) throws JSONException, IOException{
+        boolean f=blogService.isliked(blogId,userId);
+        System.out.println("is like?:"+f);
+        JSONObject object=new JSONObject();
+        object.put("IsLiked",f);
+        response.getWriter().write(object.toString());
+    }
 
     @RequestMapping("/blogs/like")
-    public void like(@RequestParam("blogId") int blogId, @RequestParam("userId") int userId, @RequestParam("tagId") int tagId){
+    public void like(@RequestParam("blogId") int blogId, @RequestParam("userId") int userId, @RequestParam("tagId") int tagId, @RequestParam("likenumber")int num, HttpServletResponse response) throws JSONException, IOException {
         blogService.like(blogId);
-        blogService.updateMarkWhenLike(tagId, userId);
+        blogService.writelikerecord(blogId,userId);
+        System.out.println("im in like");
+        JSONObject object=new JSONObject();
+        response.getWriter().write(object.toString());
+
     }
 
     @RequestMapping("/blogs/cancelLike")
-    public void cancelLike(@RequestParam("blogId") int blogId, @RequestParam("userId") int userId, @RequestParam("tagId") int tagId){
+    public void cancelLike(@RequestParam("blogId") int blogId, @RequestParam("userId") int userId, @RequestParam("tagId") int tagId,@RequestParam("likenumber")int num,HttpServletResponse response) throws JSONException,IOException {
+        JSONObject object=new JSONObject();
         blogService.cancelLike(blogId);
-        blogService.updateMarkWhenCancelLike(tagId, userId);
+        blogService.deletelikerecord(blogId,userId);
+        System.out.println("im in dislike");
+        response.getWriter().write(object.toString());
+
     }
 
     @RequestMapping("/blogs/comment")
