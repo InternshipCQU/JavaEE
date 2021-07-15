@@ -7,4 +7,5 @@ import java.security.NoSuchAlgorithmException;
 public interface RegisterService {
     void submitInfo(User user) throws NoSuchAlgorithmException;//TODO:这里记得将user改成一串数据，直接接受的是前端数据
 
+    void addUser(String username, String password);
 }
