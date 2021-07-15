@@ -39,10 +39,11 @@ public class BloglistServiceImpl implements BloglistService {
     public void Init(HttpServletRequest request) {
         HttpSession session = request.getSession();
         int userId = -1;
-        if(session.getAttribute("userId") == null){
+        if(session.getAttribute("userID") == null){
+            System.out.println("并没有登录");//TODO:这里应该是回到跳转状态
 
         }else{
-            userId = (Integer) session.getAttribute("userId");
+            userId = (Integer) session.getAttribute("userID");
         }
         List<BlogInfo> blogs = personalSpaceMapper.showUsersBlog(userId);
 
@@ -84,11 +85,9 @@ public class BloglistServiceImpl implements BloglistService {
 
         //====
         comments = "[" + comments + "]";
-        System.out.println(comments);
-
+        blogContent = "";
         String link = "/blogs/" + username + "/" + blogId;
 
-        System.out.println("Hello");
         session.setAttribute("count", count + 1);
 
 

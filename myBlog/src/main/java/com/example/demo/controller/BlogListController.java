@@ -27,14 +27,15 @@ public class BlogListController {
     @RequestMapping("bloglist")
     public String bloglist(HttpServletRequest request){
         bloglistService.Init(request);
-
         return "bloglist";
     }
 
     @RequestMapping("/manageBlog")
     @ResponseBody
-    public String manageBlog(){
-
+    public String manageBlog(HttpServletRequest request){
+        String s = bloglistService.manageTheBlogs(request);
+        System.out.println(s);
+        return s;
     }
 
     @RequestMapping(value="/deletemyblog",method = RequestMethod.POST)
