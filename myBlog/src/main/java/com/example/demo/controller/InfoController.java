@@ -6,7 +6,7 @@ import com.example.demo.entity.UserLike;
 import com.example.demo.service.*;
 import com.example.demo.utils.UploadAvatarUtil;
 import com.example.demo.utils.UploadBackgroundUtil;
-import jdk.nashorn.internal.ir.RuntimeNode;
+//import jdk.nashorn.internal.ir.RuntimeNode;
 import org.apache.commons.io.FileUtils;
 import org.json.JSONException;
 import org.json.JSONObject;
