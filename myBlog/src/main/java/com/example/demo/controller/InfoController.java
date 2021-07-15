@@ -86,7 +86,7 @@ public class InfoController {
         String userprofile=userobj.getProfile();
         String email=userobj.getEmail();
         String gender;
-        if(userobj.getGender()=="M")
+        if(userobj.getGender().equals("M"))
         {
             gender="1";
         }
