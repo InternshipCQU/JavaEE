@@ -29,7 +29,7 @@ public class IndexController {
 
     @RequestMapping("/index")
     public String index(){
-        return "personalspace";
+        return "index";
     }
 
     @RequestMapping("/index/{cla}")
@@ -63,7 +63,7 @@ public class IndexController {
         //如果没有推文了 需要传回一个没有的json数据 {none:true}
         System.out.println("I'm here");
         String s = homeService.giveTheBlogToIndex(str,request);
-        System.out.println(s);
+//        System.out.println(s);
         return s;
     }
 

@@ -73,4 +73,11 @@ public class BlogController {
         //TODO:这里向数据库写转发信息
         blogService.forward(blogId, userId);
     }
+
+    @RequestMapping("/blogs/{userId}")
+    // 根据userId查找该用户点赞过的所有博客id
+    public String searchLikeBlog(@PathVariable("userId") int userId, Model model) {
+        model.addAttribute("searchLikeBlogList", blogService.searchLikeBlog(userId));
+        return "test-searchLikeBlog";
+    }
 }

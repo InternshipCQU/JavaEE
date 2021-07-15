@@ -1,8 +1,14 @@
 package com.example.demo.entity;
 
+import javax.validation.constraints.NotEmpty;
+
 public class User {
     public Integer userId;     // 用户ID
+
+    @NotEmpty(message = "请输入用户名")
     public String username;   // 用户名称
+
+    @NotEmpty(message = "请输入密码")
     public String password;   // 密码
     public String gender;     // 性别，M代表男性，F代表女性
     public String email;      // 邮箱
@@ -18,7 +24,9 @@ public class User {
     public String birthdate;   // 用户出生日期
     public String profile;   // 用户个人简介
     public String area;        // 用户所在地区
+    public String background; //背景图片
 
+    public String getBackground(){return background;}
     public Integer getUserId() {
         return userId;
     }

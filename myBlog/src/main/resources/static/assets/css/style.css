@@ -7252,6 +7252,12 @@ header .opts_icon_link:hover {
   .fead-area {
     width: 62% !important;
   }
+  .fead-area-for-bloglist {
+    width: 100% !important;
+  }
+  .fead-area-for-blogpage {
+    width: 100% !important;
+  }
 }
 
 @media (min-width: 1600px) {
@@ -10196,7 +10202,7 @@ ul.story-side-list li a .story-user-innr p span.story-time-ago{
 
 
 
-/*èצ���ް�ť*/
+/*猫爪点赞按钮的css*/
 .paw-button {
   --background: #fff;
   --background-active: #FEE8F4;
@@ -10575,7 +10581,7 @@ html {
   padding-right:70px;
 }
 
-/*��һ��������*/
+/*搜索框的css*/
 body {
   margin: 0;
   padding: 0;

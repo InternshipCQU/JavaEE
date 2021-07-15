@@ -43,4 +43,10 @@ public class getServiceImpl implements getService {
         return res;
     }
 
+    @Override
+    public String getbackgroundurl(Integer userId){
+        String res=profileMapper.getbackground(userId);
+        return res;
+    }
+
 }

@@ -8,4 +8,5 @@ import java.util.List;
 public interface PersonalSpaceService {
     List<BlogInfo> blogs(int userID);
     List<User> users(int userID);
+    List<BlogInfo> showCalendarFigure(String username);
 }
