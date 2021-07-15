@@ -270,8 +270,8 @@ function loadTheBlog()
                 $("#time").html(blog.createTime);
                 $("#time").attr("id", "pass");//设置时间
 
-                // $("#userAvater").attr("src", blog.userAvater);
-                // $("#userAvater").attr("id", "pass");//设置博主头像
+                $("#userAvater").attr("src", blog.userAvater);
+                $("#userAvater").attr("id", "pass");//设置博主头像
 
                 $("#comments").attr("id", "commentsNull")
 

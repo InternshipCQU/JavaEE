@@ -1,7 +1,7 @@
 package com.example.demo.controller;
 
 import com.example.demo.mapper.BlogListMapper;
-import com.example.demo.service.BloglistService;
+import com.example.demo.service.BlogManagerService;
 import org.json.JSONException;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -13,27 +13,27 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import java.awt.image.ImagingOpException;
 import java.io.IOException;
 
 @Controller
-public class BlogListController {
+public class BlogManagerController {
     @Resource
     private BlogListMapper blogListMapper;
 
     @Resource
-    BloglistService bloglistService;
+    BlogManagerService blogManagerService;
 
-    @RequestMapping("bloglist")
+    @RequestMapping("/blogManager")
     public String bloglist(HttpServletRequest request){
-        bloglistService.Init(request);
-        return "bloglist";
+
+        blogManagerService.Init(request);
+        return "blogManager";
     }
 
     @RequestMapping("/manageBlog")
     @ResponseBody
     public String manageBlog(HttpServletRequest request){
-        String s = bloglistService.manageTheBlogs(request);
+        String s = blogManagerService.manageTheBlogs(request);
         System.out.println(s);
         return s;
     }

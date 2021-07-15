@@ -27,11 +27,6 @@ public class IndexController {
     @Resource
     private HomeService homeService;
 
-    @RequestMapping("/index")
-    public String index(){
-        return "index";
-    }
-
     @RequestMapping("/index/{cla}")
     public String index1(@PathVariable("cla") String cla,HttpServletRequest request,Model model){
         homeService.Init(cla,request);

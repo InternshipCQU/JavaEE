@@ -65,7 +65,7 @@ public class HomeServiceImpl implements HomeService {
 
     @Override
     public void setRecommendBlogger(HttpServletRequest request,Model model){
-        if(request.getAttribute("token")!=null){
+        if(request.getAttribute("userID")!=null){
             model.addAttribute("recommendBlogger",showRecommendBlogger(((Integer)request.getAttribute("userID"))));
         }else{
             model.addAttribute("recommendBlogger",showHotBlogger());
@@ -74,12 +74,18 @@ public class HomeServiceImpl implements HomeService {
 
     @Override
     public void setBlogger(HttpServletRequest request, Model model) { //在前端页面上设置右上角头像和链接
-        if(request.getAttribute("userID")!=null){
-            User user = profileMapper.getUser((Integer)request.getAttribute("userID"));
-            model.addAttribute("bloggerAvatar",user.getAvatar());
+        HttpSession session = request.getSession();
+        if(session.getAttribute("userID")!=null){
+
+            System.out.println("userId: " + session.getAttribute("userID"));
+
+
+            User user = profileMapper.getUser((Integer) session.getAttribute("userID"));
+            System.out.println("user: " + user);
             model.addAttribute("bloggerPath","/blogger/" + user.getUsername() + "/" + user.getUserId());
-            model.addAttribute("spacePath","/space/"+user.getUserId());
+            model.addAttribute("spacePath","/blogManager");
             model.addAttribute("username",user.getUsername());
+            model.addAttribute("bloggerAvatar",user.getAvatar());
             model.addAttribute("hiddenLogout","false");
             model.addAttribute("hiddenLogin","true");
 
@@ -145,7 +151,9 @@ public class HomeServiceImpl implements HomeService {
         }
 
         int blogId = blogs.get(count).getBlogId();
-        String userAvater = blogs.get(count).getAvater();
+        int userId = blogs.get(count).getUserId();
+        User user = profileMapper.getUser(userId);
+        String userAvater = user.getAvatar();
         String username = blogs.get(count).getUsername();
         String blogTitle = blogs.get(count).getBlogTitle();
         String blogContent = blogs.get(count).getBlogContent();
@@ -157,6 +165,9 @@ public class HomeServiceImpl implements HomeService {
         int saveNumber = blogs.get(count).getCollectNum();
         List<CommentView> commentList = blogs.get(count).getCommentList();//TODO:这里要做一个json 在前面通过循环方式进行添加
 
+
+        System.out.println("userAvater: "+ userAvater);
+        System.out.println("userId: " + userId);
 //        private String username;
 //        private String commentContent;
 

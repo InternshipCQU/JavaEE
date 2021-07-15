@@ -5,11 +5,8 @@ import com.example.demo.entity.BlogInfo;
 import com.example.demo.mapper.BlogListMapper;
 import com.example.demo.mapper.PersonalSpaceMapper;
 import com.example.demo.mapper.profileMapper;
-import com.example.demo.service.BloglistService;
-import org.springframework.data.relational.core.sql.In;
+import com.example.demo.service.BlogManagerService;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -18,7 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service("BloglistService")
-public class BloglistServiceImpl implements BloglistService {
+public class BlogManagerServiceImpl implements BlogManagerService {
 
     @Resource
     private BlogListMapper blogss;

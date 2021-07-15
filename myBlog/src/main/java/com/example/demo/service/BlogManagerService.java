@@ -2,7 +2,7 @@ package com.example.demo.service;
 
 import javax.servlet.http.HttpServletRequest;
 
-public interface BloglistService {
+public interface BlogManagerService {
 
     void deleteblog(Integer blogId);
 
