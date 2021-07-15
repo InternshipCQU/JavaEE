@@ -510,3 +510,194 @@ function searchTheBlog()
     });
 }
 //====
+
+//=====getUserBlog======
+function getUserBlog()
+{
+    //alert("load the blog")
+    urls = window.location.pathname;
+    str = urls.split("/")
+    //alert("hello"),
+    //alert(str[2])
+    $.ajax({
+
+        url: 'http://localhost:8080/getPersonalBlog', //这里是返回路径 在controller里写好对应函数就行 TODO:记得修改路径后面的 这是测试
+        type: 'get',
+        data: {}, //这里是向后端传输的json 应该是可以直接传对象 比如User这种entity
+        //例如点赞的话 我们传递blogID userID到后端 后端再进行操作
+        async: false,
+
+        error:function(jqXHR,textStatus,errorThrown ){
+            alert("errorThrown")
+        },
+        success: function(data) {
+            //console.log(data)
+            var blog = JSON.parse(data);
+            //alert(blog)
+            $("#final").attr("id", "null")
+            if (blog.noMore === "true") {
+
+            } else {
+                //alert(blog.blogTitle)
+
+                if (data != null) {
+
+                    $("#null").after("<div class=\"post\" id = \"final\">\n" +
+                        "                                <div class=\"post-description\" id = \"path\">\n" +
+                        "                                   <h3 id = \"title\">    </h3>\n" +
+                        "                                   <p id = \"content\"> </p>              \n" +
+                        "                                    <div class=\"post-state-details\">\n" +
+                        "                                        <div>\n" +
+                        "                                            <img src=\"http://localhost:8080/assets/images/icons/reactions_like.png\" alt=\"\">\n" +
+                        "                                            <img src=\"http://localhost:8080/assets/images/icons/reactions_love.png\" alt=\"\">\n" +
+                        "                                            <p> 13 </p>\n" +
+                        "                                        </div>\n" +
+                        "                                        <p id = \"time\"> 24 Comments</p>\n" +
+                        "                                        <p id = \"clickNumber\"> 24 Comments</p>\n" +
+
+                        "                                    </div>\n" +
+                        "\n" +
+                        "                                </div>\n" +
+                        "\n" +
+                        "                                <div class=\"post-state\">\n" +
+                        "                                    <div class=\"post-state-btns\" > <i class=\"uil-thumbs-up\"></i> <text id = \"likeNumber\"> </text> <span> Liked </span>\n" +
+                        "                                    </div>\n" +
+                        "                                    <div class=\"post-state-btns\"> <i class=\"uil-heart\"></i> 18 <span> Coments</span>\n" +
+                        "                                    </div>\n" +
+                        "                                    <div class=\"post-state-btns\"> <i class=\"uil-share-alt\"></i> 193 <span> Shared\n" +
+                        "                                        </span>\n" +
+                        "                                    </div>\n" +
+                        "                                    <div class=\"post-state-btns\"> <i class=\"uil-bookmark\"></i> 13 <span> Saved </span>\n" +
+                        "                                    </div>\n" +
+                        "                                </div>\n" +
+                        "\n" +
+                        "\n" +
+                        "\n" +
+                        "                            </div>");
+                }
+                $("#null").attr("id", "null2");
+
+                $("#path").attr("href",blog.link);//设置点赞数量
+                $("#path").attr("id", "pass");
+                $("#clickNumber").html(blog.clickNumber + " views");
+                $("#clickNumber").attr("id", "pass");
+
+                $("#likeNumber").html(blog.likeNumber);
+                $("#likeNumber").attr("id", "pass");
+
+                $("#title").html("《" + blog.blogTitle+"》");
+                $("#title").attr("id", "pass");//设置博客标题
+
+                $("#content").html(blog.blogContent);
+                $("#content").attr("id", "pass");//设置博客内容
+                $("#time").html(blog.createTime);
+                $("#time").attr("id", "pass");//设置时间
+
+                // $("#userAvater").attr("src", blog.userAvater);
+                // $("#userAvater").attr("id", "pass");//设置博主头像
+
+
+            }
+        },
+        complete: function () {
+            $("loading").hide();
+        },
+    });
+}
+//====
+
+
+//=====manageBlog======
+function manageBlog()
+{
+    //alert("load the blog")
+    urls = window.location.pathname;
+    str = urls.split("/")
+    //alert("hello"),
+    //alert(str[2])
+    $.ajax({
+
+        url: 'http://localhost:8080/getPersonalBlog', //这里是返回路径 在controller里写好对应函数就行 TODO:记得修改路径后面的 这是测试
+        type: 'get',
+        data: {}, //这里是向后端传输的json 应该是可以直接传对象 比如User这种entity
+        //例如点赞的话 我们传递blogID userID到后端 后端再进行操作
+        async: false,
+
+        error:function(jqXHR,textStatus,errorThrown ){
+            alert("errorThrown")
+        },
+        success: function(data) {
+            //console.log(data)
+            var blog = JSON.parse(data);
+            //alert(blog)
+            $("#final").attr("id", "null")
+            if (blog.noMore === "true") {
+
+            } else {
+                //alert(blog.blogTitle)
+
+                if (data != null) {
+
+                    $("#null").after("<div class=\"post\" id = \"final\">\n" +
+                        "                                <div class=\"post-description\" id = \"path\">\n" +
+                        "                                   <h3 id = \"title\">    </h3>\n" +
+                        "                                   <p id = \"content\"> </p>              \n" +
+                        "                                    <div class=\"post-state-details\">\n" +
+                        "                                        <div>\n" +
+                        "                                            <img src=\"http://localhost:8080/assets/images/icons/reactions_like.png\" alt=\"\">\n" +
+                        "                                            <img src=\"http://localhost:8080/assets/images/icons/reactions_love.png\" alt=\"\">\n" +
+                        "                                            <p> 13 </p>\n" +
+                        "                                        </div>\n" +
+                        "                                        <p id = \"time\"> 24 Comments</p>\n" +
+                        "                                        <p id = \"clickNumber\"> 24 Comments</p>\n" +
+
+                        "                                    </div>\n" +
+                        "\n" +
+                        "                                </div>\n" +
+                        "\n" +
+                        "                                <div class=\"post-state\">\n" +
+                        "                                    <div class=\"post-state-btns\" > <i class=\"uil-thumbs-up\"></i> <text id = \"likeNumber\"> </text> <span> Liked </span>\n" +
+                        "                                    </div>\n" +
+                        "                                    <div class=\"post-state-btns\"> <i class=\"uil-heart\"></i> 18 <span> Coments</span>\n" +
+                        "                                    </div>\n" +
+                        "                                    <div class=\"post-state-btns\"> <i class=\"uil-share-alt\"></i> 193 <span> Shared\n" +
+                        "                                        </span>\n" +
+                        "                                    </div>\n" +
+                        "                                    <div class=\"post-state-btns\"> <i class=\"uil-bookmark\"></i> 13 <span> Saved </span>\n" +
+                        "                                    </div>\n" +
+                        "                                </div>\n" +
+                        "\n" +
+                        "\n" +
+                        "\n" +
+                        "                            </div>");
+                }
+                $("#null").attr("id", "null2");
+
+                $("#path").attr("href",blog.link);//设置点赞数量
+                $("#path").attr("id", "pass");
+                $("#clickNumber").html(blog.clickNumber + " views");
+                $("#clickNumber").attr("id", "pass");
+
+                $("#likeNumber").html(blog.likeNumber);
+                $("#likeNumber").attr("id", "pass");
+
+                $("#title").html("《" + blog.blogTitle+"》");
+                $("#title").attr("id", "pass");//设置博客标题
+
+                $("#content").html(blog.blogContent);
+                $("#content").attr("id", "pass");//设置博客内容
+                $("#time").html(blog.createTime);
+                $("#time").attr("id", "pass");//设置时间
+
+                // $("#userAvater").attr("src", blog.userAvater);
+                // $("#userAvater").attr("id", "pass");//设置博主头像
+
+
+            }
+        },
+        complete: function () {
+            $("loading").hide();
+        },
+    });
+}
+//====

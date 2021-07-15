@@ -1,6 +1,7 @@
 package com.example.demo.controller;
 
 import com.example.demo.mapper.BlogListMapper;
+import com.example.demo.service.BloglistService;
 import org.json.JSONException;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -20,9 +21,20 @@ public class BlogListController {
     @Resource
     private BlogListMapper blogListMapper;
 
+    @Resource
+    BloglistService bloglistService;
+
     @RequestMapping("bloglist")
-    public String bloglist(){
+    public String bloglist(HttpServletRequest request){
+        bloglistService.Init(request);
+
         return "bloglist";
+    }
+
+    @RequestMapping("/manageBlog")
+    @ResponseBody
+    public String manageBlog(){
+
     }
 
     @RequestMapping(value="/deletemyblog",method = RequestMethod.POST)

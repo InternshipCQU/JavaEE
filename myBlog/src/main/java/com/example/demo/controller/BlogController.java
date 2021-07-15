@@ -15,6 +15,7 @@ public class BlogController {
     public String personalspace(){
         return "personalspace";
     }
+
     @RequestMapping("blogpage")
     public String blog(){
         return "blogpage";

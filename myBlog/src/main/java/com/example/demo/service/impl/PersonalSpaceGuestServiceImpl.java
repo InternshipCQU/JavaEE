@@ -1,15 +1,14 @@
 package com.example.demo.service.impl;
 
-
 import com.example.demo.entity.BlogInfo;
-import com.example.demo.mapper.BlogListMapper;
+import com.example.demo.entity.User;
 import com.example.demo.mapper.PersonalSpaceMapper;
 import com.example.demo.mapper.profileMapper;
-import com.example.demo.service.BloglistService;
+import com.example.demo.service.PersonalSpaceGuestService;
+import com.example.demo.service.getService;
 import org.springframework.data.relational.core.sql.In;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.ui.Model;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -17,43 +16,57 @@ import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.List;
 
-@Service("BloglistService")
-public class BloglistServiceImpl implements BloglistService {
+@Service("PersonalSpaceGuestService")
+public class PersonalSpaceGuestServiceImpl implements PersonalSpaceGuestService {
 
     @Resource
-    private BlogListMapper blogss;
-
-    @Resource
-    profileMapper profileMapper;
+    private getService getss;
 
     @Resource
     PersonalSpaceMapper personalSpaceMapper;
 
-    @Override
-    public void deleteblog(Integer blogId)
-    {
-        blogss.deleteblog(blogId);
-    }
+    @Resource
+    profileMapper profileMapper;
 
     @Override
-    public void Init(HttpServletRequest request) {
+    public void PersonalSpaceGuestInit(String userID, Model model, HttpServletRequest request){
+
+
+        //====getTheBlogs=====
         HttpSession session = request.getSession();
-        int userId = -1;
-        if(session.getAttribute("userId") == null){
-
-        }else{
-            userId = (Integer) session.getAttribute("userId");
-        }
-        List<BlogInfo> blogs = personalSpaceMapper.showUsersBlog(userId);
-
+        List<BlogInfo> blogs = personalSpaceMapper.showUsersBlog(Integer.parseInt(userID));
         session.setAttribute("blogs",blogs);
         session.setAttribute("count",0);
         session.setAttribute("size",blogs.size());
 
+
+        //====set the page====
+        User userobj = getss.getuserprofile(Integer.parseInt(userID));
+
+        String username=userobj.getUsername();
+        String userprofile=userobj.getProfile();
+        String email=userobj.getEmail();
+        Integer likesnum=userobj.getLikesNum();
+        Integer blogsnum=userobj.getBlogsNum();
+        Integer fansnum=userobj.getFansNum();
+        String avatar=userobj.getAvatar();
+        String area=userobj.getArea();
+
+        model.addAttribute("userID",userID);
+        model.addAttribute("username",username);
+        model.addAttribute("userprofile",userprofile);
+        model.addAttribute("email",email);
+        model.addAttribute("area",area);
+        model.addAttribute("likesNum",Integer.toString(likesnum));
+        model.addAttribute("blogsNum",Integer.toString(blogsnum));
+        model.addAttribute("fansNum",Integer.toString(fansnum));
+        model.addAttribute("avatar",avatar);
+        //=====
+
     }
 
     @Override
-    public String manageTheBlogs(HttpServletRequest request) {
+    public String giveTheBlogToPersonal(HttpServletRequest request) {
 
         HttpSession session = request.getSession();
         int count = (Integer) session.getAttribute("count");
@@ -94,6 +107,6 @@ public class BloglistServiceImpl implements BloglistService {
 
         return "{\"clickNumber\":\""+clickNumber+"\",\"createTime\":\""+createTime+"\",\"blogContent\":\"" + blogContent + "\",\"blogTitle\":\"" + blogTitle + "\",\"username\":\"" + username + "\",\"likeNumber\":\"" + likeNumber + "\",\"comments\":" + comments + ",\"link\":\"" + link + "\"}";
 
-    }
 
+    }
 }

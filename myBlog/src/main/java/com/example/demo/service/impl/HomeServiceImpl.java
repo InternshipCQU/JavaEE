@@ -125,7 +125,7 @@ public class HomeServiceImpl implements HomeService {
 
 
         ArrayList<HomeBlogView> s1 = (ArrayList<HomeBlogView>) session.getAttribute("blogs");
-        System.out.println(s1.size());
+        //System.out.println(s1.size());
         session.setAttribute("count", 0);
         session.setAttribute("size", s1.size());
     }
