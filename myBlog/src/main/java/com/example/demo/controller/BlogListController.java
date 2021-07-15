@@ -16,8 +16,8 @@ import java.io.IOException;
 
 @Controller
 public class BlogListController {
-    @Resource
-    private
+//    @Resource
+//    private
 
     @RequestMapping("bloglist")
     public String bloglist(){
