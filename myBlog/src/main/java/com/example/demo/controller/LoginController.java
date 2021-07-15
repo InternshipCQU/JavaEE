@@ -101,8 +101,8 @@ public class LoginController {
         user.setPassword(password);
         model.addAttribute("user",user);
         loginSer.setToken(username, password, response , request);
-        modelAndView.setViewName("index");
-        response.sendRedirect("/index");//TODO:返回登录页面
+        modelAndView.setViewName("redirect:/index/ALL");//TODO:返回主页面
+//        response.sendRedirect("/index");//
         return modelAndView;
     }
 
