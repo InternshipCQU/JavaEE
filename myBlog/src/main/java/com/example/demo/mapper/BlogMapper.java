@@ -1,8 +1,11 @@
 package com.example.demo.mapper;
 
 import com.example.demo.entity.BlogInfo;
+import com.example.demo.entity.BlogLike;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 //对应ViewBlogService中的功能
 @Mapper
@@ -13,6 +16,8 @@ public interface BlogMapper {
     void comment(int blogId, int userId, @Param("createTime") String createTime, String comment);    //评论
     void forward(int blogId, int userId, @Param("createTime") String createTime);                    //转发
     void collect(int blogId, int userId, @Param("createTime") String createTime);                    //收藏
+
+    List<BlogLike> searchLikeBlog(int userId);   // 根据用户Id寻找点赞的所有博客id
 
     void updateMarkWhenLike(String tagName, int userId);
     void updateMarkWhenCancelLike(String tagName, int userId);

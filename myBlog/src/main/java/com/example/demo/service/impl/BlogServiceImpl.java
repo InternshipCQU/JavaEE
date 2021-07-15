@@ -1,6 +1,8 @@
 package com.example.demo.service.impl;
 
 import com.example.demo.entity.BlogInfo;
+import com.example.demo.entity.BlogLike;
+import com.example.demo.entity.UserLike;
 import com.example.demo.mapper.BlogMapper;
 import com.example.demo.service.BlogService;
 import com.example.demo.utils.GetTime;
@@ -9,6 +11,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 @Component
 @Service("BlogService")
@@ -53,6 +56,11 @@ public class BlogServiceImpl implements BlogService {
         GetTime getTime = new GetTime();
         blogMapper.collect(blogId, userId, getTime.getCurrentTime());
         return "收藏成功";
+    }
+
+    @Override
+    public List<BlogLike> searchLikeBlog(int userId) {
+        return blogMapper.searchLikeBlog(userId);
     }
 
     @Override

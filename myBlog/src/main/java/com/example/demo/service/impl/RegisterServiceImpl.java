@@ -1,6 +1,7 @@
 package com.example.demo.service.impl;
 
 import com.example.demo.entity.User;
+import com.example.demo.mapper.RegisterMapper;
 import com.example.demo.service.RegisterService;
 import com.example.demo.utils.code;
 import org.springframework.stereotype.Service;
@@ -18,6 +19,26 @@ public class RegisterServiceImpl implements RegisterService {
 //    {
 //
 //    }
+    @Resource
+    private RegisterMapper registerMapper;
+
+    @Override
+    public boolean checkUser(String signUsername)
+    {
+        if(registerMapper.userExist(signUsername) == null) return false;
+        else return true;
+    }
+
+    @Override
+    public boolean checkPassword(String signPassword, String comfirmPassword)
+    {
+        if (signPassword.equals(comfirmPassword))
+        {
+            return true;
+        }
+        else return false;
+    }
+
 
     @Override
     public void submitInfo(User user) throws NoSuchAlgorithmException {
@@ -25,6 +46,12 @@ public class RegisterServiceImpl implements RegisterService {
         String password = "s";
         code.encode(password);
         //TODO:这里去利用DAO层的新建用户操作进行创建
+    }
 
+
+
+    @Override
+    public void addUser(String username, String password, String userRegisterTime) {
+        registerMapper.addUser(username, password, userRegisterTime);
     }
 }

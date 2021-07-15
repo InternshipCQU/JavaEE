@@ -13,4 +13,8 @@
         FROM `User`
         WHERE `User`.username = #{username};
     </select>
+
+    <update id="addDate">
+        UPDATE `User` SET `User`.lastLogin = #{lastLogin} where `User`.username = #{username};
+    </update>
 </mapper>

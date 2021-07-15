@@ -13,6 +13,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Objects;
 
 //@Controller 传递页面
@@ -97,10 +99,15 @@ public class LoginController {
 //            return ;//
 //            // TODO:这里是需要转成个人博客界面（需要像数据库索取数据 用Model传值）
 //        }
+        Calendar calendar = Calendar.getInstance(); // gets current instance of the calendar
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+        String lastLogin = formatter.format(calendar.getTime());
+        System.out.println(lastLogin);
+
         user.setUsername(username);
         user.setPassword(password);
         model.addAttribute("user",user);
-        loginSer.setToken(username, password, response , request);
+        loginSer.setToken(username, password, lastLogin, response , request);
         modelAndView.setViewName("redirect:/index/ALL");//TODO:返回主页面
 //        response.sendRedirect("/index");//
         return modelAndView;
