@@ -35,6 +35,8 @@ public class LoginServiceImpl implements LoginService {
 
 
 
+
+
     @Override
     public boolean checkTheCookie(int userID,String cookie,HttpServletRequest request){
         User user;
@@ -53,14 +55,16 @@ public class LoginServiceImpl implements LoginService {
     }
 
     @Override
-    public void setToken(String name, String password, HttpServletResponse response, HttpServletRequest request){
+    public void setToken(String name, String password, String lastLogin, HttpServletResponse response, HttpServletRequest request){
         HttpSession token = request.getSession();
         token.setAttribute("token","yes");
         token.setAttribute("username", name);
-
-
-        token.setAttribute("username", name);
-        token.setAttribute("password", password);
+//        System.out.println(lastLogin+" "+name);
+        checkLoginMapper.addDate(lastLogin, name);
+//
+//
+//        token.setAttribute("username", name);
+//        token.setAttribute("password", password);
 
 
 

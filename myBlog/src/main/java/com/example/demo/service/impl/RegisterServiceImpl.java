@@ -11,8 +11,34 @@ import java.security.NoSuchAlgorithmException;
 
 @Service("SubmitService")
 public class RegisterServiceImpl implements RegisterService {
+
+
+
+//    @Override
+//    boolean checkUser(String username)
+//    {
+//
+//    }
     @Resource
     private RegisterMapper registerMapper;
+
+    @Override
+    public boolean checkUser(String signUsername)
+    {
+        if(registerMapper.userExist(signUsername) == null) return false;
+        else return true;
+    }
+
+    @Override
+    public boolean checkPassword(String signPassword, String comfirmPassword)
+    {
+        if (signPassword.equals(comfirmPassword))
+        {
+            return true;
+        }
+        else return false;
+    }
+
 
     @Override
     public void submitInfo(User user) throws NoSuchAlgorithmException {
@@ -20,11 +46,12 @@ public class RegisterServiceImpl implements RegisterService {
         String password = "s";
         code.encode(password);
         //TODO:这里去利用DAO层的新建用户操作进行创建
-
     }
 
+
+
     @Override
-    public void addUser(String username, String password) {
-        registerMapper.addUser(username, password);
+    public void addUser(String username, String password, String userRegisterTime) {
+        registerMapper.addUser(username, password, userRegisterTime);
     }
 }
