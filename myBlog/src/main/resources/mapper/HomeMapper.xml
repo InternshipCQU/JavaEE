@@ -4,31 +4,32 @@
     <select id="tagToBlogs" resultType="com.example.demo.entity.BlogInfo">
         SELECT blogInfo.blogTitle, blogInfo.blogContent, blogInfo.createTime,
             blogInfo.clickNum, blogInfo.likesNum, blogInfo.userId
-        FROM blogInfo, blogTag, tagBlogInfo
+        FROM blogInfo, blogTag, tagblogInfo
         WHERE blogTag.tagName = #{tagName}
-            AND blogTag.tagId = tagBlogInfo.tagId
-            AND tagBlogInfo.blogId = blogInfo.blogId;
+            AND blogTag.tagId = tagblogInfo.tagId
+            AND tagblogInfo.blogId = blogInfo.blogId;
     </select>
 
     <select id="searchBlogs" resultType="com.example.demo.entity.BlogInfo">
         SELECT blogInfo.blogTitle, blogInfo.blogContent, blogInfo.createTime,
             blogInfo.clickNum, blogInfo.likesNum, blogInfo.userId, blogInfo.tagId
+
         FROM blogInfo, blogTag, tagBlogInfo
-        WHERE blogInfo.blogTitle LIKE "%"+#{keyword}+"%"
-            OR (blogTag.tagName = #{keyword}
+        WHERE blogInfo.blogTitle LIKE "%"#{keyword}"%"
+            OR (blogTag.tagName LIKE  "%"#{keyword}"%"
                 AND blogTag.tagId = tagBlogInfo.tagId
                 AND tagBlogInfo.blogId = blogInfo.blogId);
     </select>
 
 
     <select id="showHotBlogger" resultType="com.example.demo.entity.User">
-        SELECT `User`.username, `User`.avatar
+        SELECT `User`.username, `User`.avatar ,`User`.userId
         FROM `User` ORDER BY `User`.likesNum DESC limit 6;
     </select>
 
 
     <select id="showRecommendBlogger" resultType="com.example.demo.entity.User">
-        SELECT `User`.username, `User`.avatar
+        SELECT `User`.username, `User`.avatar,`User`.userId
         FROM `User`, userLike
         WHERE userLike.fansId = #{userId}
             AND userLike.userId = `User`.userId
@@ -59,8 +60,8 @@
 
     <select id="getRecommendBlogViews" resultType="com.example.demo.entity.view.HomeBlogView">
         SELECT blogId, username, blogTitle, blogContent, createTime, clickNum, blogInfo.likesNum, commentNum, forwardNum, collectNum
-        FROM blogInfo, User, tagBlogInfo
-        WHERE blogInfo.userId = User.userId AND tagBlogInfo.tagId = #{tagId} AND blogInfo.blogId = tagBlogInfo.blogId
+        FROM blogInfo, User, tagblogInfo
+        WHERE blogInfo.userId = User.userId AND tagblogInfo.tagId = #{tagId} AND blogInfo.blogId = tagblogInfo.blogId
         ORDER BY likesNum DESC limit 5;
     </select>
 

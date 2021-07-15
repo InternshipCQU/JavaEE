@@ -15,7 +15,7 @@ public interface PersonalSpaceMapper {
     List<BlogInfo> showUsersBlog(int userId);
 
     // 【数据可视化】类似github的日历热度图展示
-    List<BlogInfo> showCalendarFigure(int userId);
+    List<BlogInfo> showCalendarFigure(String username);
 
     // 【数据可视化】各标签博客数量统计图（可用饼状图展示）
     // 【暂定5个标签，可再加】

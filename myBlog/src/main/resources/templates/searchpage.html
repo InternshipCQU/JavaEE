@@ -6,11 +6,11 @@
     <!-- Basic Page Needs
     ================================================== -->
     <title>Simplest Social Network HTML Template</title>
-    <meta charset="gbk">
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Simplest is - Professional A unique and beautiful collection of UI elements">
-    <link rel="icon" href="./assets/images/favicon.png">
-    <script src="https://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+    <link rel="icon" href="assets/images/favicon.png">
+
     <!-- CSS 
     ================================================== -->
     <link rel="stylesheet" href="assets/css/style.css">
@@ -19,7 +19,7 @@
 
     <!-- icons
     ================================================== -->
-    <link rel="stylesheet" href="./assets/css/icons.css">
+    <link rel="stylesheet" href="assets/css/icons.css">
     <script src="https://kit.fontawesome.com/815e388c50.js" crossorigin="anonymous"></script>
 
     <!-- Google font
@@ -28,112 +28,9 @@
 
 </head>
 
-<body onload="getuser();">
-    <script type="text/javascript">
-    function getuser(){
-        $.ajax({
-            url:"http://"+window.location.host+"/getusersess",
-            type:"GET",
-            data:{"userId":"a","username":"a","userprofile":"b","email":"a","radioval":"a","lastname":"a",
-                "lastlogin":"a","userRefisiterTime":"a",
-                "likesNum":"a","blogsNum":"a","fansNum":"a","firstname":"a","area":"a","telephone":"a"},
-            dataType:"json",
-            success:function(data){
-                document.getElementById("userId").innerHTML=data.userId;
-                document.getElementById("useralias").innerHTML=data.username;
-                document.getElementById("usernameopt").innerHTML=data.username;
-                document.getElementById("userprofileopt").innerHTML=data.userprofile;
-                document.getElementById("email").innerHTML=data.email;
-                if(data.radiovl=="0")
-                {
-                    document.getElementById("radioval").innerHTML="男";
-                }
-                else
-                {
-                    document.getElementById("radioval").innerHTML="女";
-                }
-                document.getElementById("userlastname").innerHTML=data.lastname;
-                document.getElementById("userfirstname").innerHTML=data.firstname;
-                document.getElementById("area").innerHTML=data.area;
-                document.getElementById("telephone").innerHTML=data.telephone;
+<body>
+ 
 
-                document.getElementById("lastlogin").innerHTML=data.lastlogin;
-                document.getElementById("userRefisiterTime").innerHTML=data.userRefisiterTime;
-                document.getElementById("blogsNum").innerHTML=data.blogsNum;
-                document.getElementById("fansNum").innerHTML=data.fansNum;
-                document.getElementById("likesNum").innerHTML=data.likesNum;
-
-            }
-        })
-
-    }
-    </script>
-    <script type="text/javascript">
-        function changestatus(){
-            $.ajax({
-                url:"http://"+window.location.host+"/changecontent",
-                type:"GET",
-                data:{"flag":"a"},
-                dataType:"json",
-                success:function(data){
-
-                    // var o1=document.getElementById("userId");
-                    // var c1=o1.innerHTML;
-                    // o1.innerHTML="<input type='text' name='userId' size='12' maxlength='8' readonly='true' placeholder="+c1+">"
-                    var o2=document.getElementById("useralias");
-                    var c2=o2.innerHTML;
-                    o2.innerHTML="<input type='text' name='useralias' size='12' maxlength='32'  placeholder="+c2+">"
-                    var o3=document.getElementById("email");
-                    var c3=o3.innerHTML;
-                    o3.innerHTML="<input type='text' name='email' size='16' maxlength='60' placeholder="+c3+">"
-                    var o4=document.getElementById("radioval");
-                    var c4=o4.innerHTML;
-                    if (c4=="男"){
-                    o4.innerHTML="<input type= 'radio' name= 'radioval' value= '0' onclick='check_sex(this)' checked='checked'/> 男<input type= 'radio' name= 'radioval' value= '1' onclick='check_sex(this)'/> 女";}
-                    else
-                    {
-                        o4.innerHTML="<input type= 'radio' name= 'radioval' value= '0' onclick='check_sex(this)'/> 男<input type= 'radio' name= 'radioval' value= '1' onclick='check_sex(this)' checked='checked'/> 女";
-                    }
-                    var o5=document.getElementById("userlastname");
-                    var c5=o5.innerHTML;
-                    o5.innerHTML="<input type='text' name='userlastname' size='12' maxlength='2' placeholder="+c5+">";
-                    var o6=document.getElementById("userfirstname");
-                    var c6=o6.innerHTML;
-                    o6.innerHTML="<input type='text' name='userfirstname' size='12' maxlength='2' placeholder="+c6+">";
-                    var o7=document.getElementById("area");
-                    var c7=o7.innerHTML;
-                    o7.innerHTML="<select >\n <option value='CN'>Mainland China</option>\n<option value='HK'>Hong Kong</option>\n" +
-                    "                                                <option value='MO'>Macao</option>\n<option value='TW'>Taiwan</option>\n <option value='CA'>Canada</option>\n<option value='US'>United States</option>\n" +
-                    "                                                <option value='UK'>United Kingdom</option>\n<option value='SG'>Singapore</option>\n<option value='JP'>Japan</option>\n" +
-                    "                                                <option value='KR'>Korea</option>\n<option value='AU'>Australia</option>\n<option value='DE'>Germany</option>\n" +
-                    "                                            </select>\n</div>";
-                    var o8=document.getElementById("telephone");
-                    var c8=o8.innerHTML;
-                    o8.innerHTML="<input type='text' name='telephone' size='12' maxlength='11' placeholder="+c8+">";
-                    var o9=document.getElementById("lookp");
-                    var c9=o9.innerHTML;
-                    o9.innerHTML=" <a href='JavaScript:void(0);' onClick='check()'> 保存资料</a>"
-
-
-            }})
-
-        }
-
-        function check(){
-            $.ajax({
-                url:"http://"+window.location.host+"/changecontent",
-                type:"GET",
-                data:{"flag":"a"},
-                dataType:"json",
-                success:function(data){
-
-                    var vo1=document.getElementById("telephone");
-                    var co1=vo1.innerHTML;
-                    vo1.innerHTML=$('input:text[name="radioval"]::placeholder').val();
-
-                }
-            })        }
-    </script>
         <!-- Wrapper -->
     <div id="wrapper">
 
@@ -145,7 +42,7 @@
            <div class="sidebar-header">
                <!-- Logo-->
                <div id="logo">
-                   <a href="feeds.html"> <img src="./assets/images/logo-light.png" alt=""></a>
+                   <a href="feeds.html"> <img src="assets/images/logo-light.png" alt=""></a>
                </div>
                <span class="btn-close" uk-toggle="target: #wrapper ; cls: collapse-sidebar mobile-visible"></span>
            </div>
@@ -205,6 +102,14 @@
                                        </path>
                                    </svg> Games </a>
                            </li>
+                           <li class="active">
+                                <a href="funding.html">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                                    <path fill="#673AB7"
+                                        d="M12.75,3.94C13.75,3.22 14.91,2.86 16.22,2.86C16.94,2.86 17.73,3.05 18.59,3.45C19.45,3.84 20.13,4.3 20.63,4.83C21.66,6.11 22.09,7.6 21.94,9.3C21.78,11 21.22,12.33 20.25,13.27L12.66,20.86C12.47,21.05 12.23,21.14 11.95,21.14C11.67,21.14 11.44,21.05 11.25,20.86C11.06,20.67 10.97,20.44 10.97,20.16C10.97,19.88 11.06,19.64 11.25,19.45L15.84,14.86C16.09,14.64 16.09,14.41 15.84,14.16C15.59,13.91 15.36,13.91 15.14,14.16L10.55,18.75C10.36,18.94 10.13,19.03 9.84,19.03C9.56,19.03 9.33,18.94 9.14,18.75C8.95,18.56 8.86,18.33 8.86,18.05C8.86,17.77 8.95,17.53 9.14,17.34L13.73,12.75C14,12.5 14,12.25 13.73,12C13.5,11.75 13.28,11.75 13.03,12L8.44,16.64C8.25,16.83 8,16.92 7.73,16.92C7.45,16.92 7.21,16.83 7,16.64C6.8,16.45 6.7,16.22 6.7,15.94C6.7,15.66 6.81,15.41 7.03,15.19L11.63,10.59C11.88,10.34 11.88,10.11 11.63,9.89C11.38,9.67 11.14,9.67 10.92,9.89L6.28,14.5C6.06,14.7 5.83,14.81 5.58,14.81C5.3,14.81 5.06,14.71 4.88,14.5C4.69,14.3 4.59,14.06 4.59,13.78C4.59,13.5 4.69,13.27 4.88,13.08C7.94,10 9.83,8.14 10.55,7.45L14.11,10.97C14.5,11.34 14.95,11.53 15.5,11.53C16.2,11.53 16.75,11.25 17.16,10.69C17.44,10.28 17.54,9.83 17.46,9.33C17.38,8.83 17.17,8.41 16.83,8.06L12.75,3.94M14.81,10.27L10.55,6L3.47,13.08C2.63,12.23 2.15,10.93 2.04,9.16C1.93,7.4 2.41,5.87 3.47,4.59C4.66,3.41 6.08,2.81 7.73,2.81C9.39,2.81 10.8,3.41 11.95,4.59L16.22,8.86C16.41,9.05 16.5,9.28 16.5,9.56C16.5,9.84 16.41,10.08 16.22,10.27C16.03,10.45 15.8,10.55 15.5,10.55C15.23,10.55 15,10.45 14.81,10.27V10.27Z">
+                                    </path>
+                                </svg> Fundings </a>
+                           </li>
                            <li>
                                <a href="offers.html">
                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
@@ -236,15 +141,7 @@
                                            d="M10,2H14A2,2 0 0,1 16,4V6H20A2,2 0 0,1 22,8V19A2,2 0 0,1 20,21H4C2.89,21 2,20.1 2,19V8C2,6.89 2.89,6 4,6H8V4C8,2.89 8.89,2 10,2M14,6V4H10V6H14Z">
                                        </path>
                                    </svg> Jobs </a>
-                           </li>
-                           <li id="more-veiw" hidden="">
-                               <a href="funding.html">
-                                   <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-                                       <path fill="#673AB7"
-                                           d="M12.75,3.94C13.75,3.22 14.91,2.86 16.22,2.86C16.94,2.86 17.73,3.05 18.59,3.45C19.45,3.84 20.13,4.3 20.63,4.83C21.66,6.11 22.09,7.6 21.94,9.3C21.78,11 21.22,12.33 20.25,13.27L12.66,20.86C12.47,21.05 12.23,21.14 11.95,21.14C11.67,21.14 11.44,21.05 11.25,20.86C11.06,20.67 10.97,20.44 10.97,20.16C10.97,19.88 11.06,19.64 11.25,19.45L15.84,14.86C16.09,14.64 16.09,14.41 15.84,14.16C15.59,13.91 15.36,13.91 15.14,14.16L10.55,18.75C10.36,18.94 10.13,19.03 9.84,19.03C9.56,19.03 9.33,18.94 9.14,18.75C8.95,18.56 8.86,18.33 8.86,18.05C8.86,17.77 8.95,17.53 9.14,17.34L13.73,12.75C14,12.5 14,12.25 13.73,12C13.5,11.75 13.28,11.75 13.03,12L8.44,16.64C8.25,16.83 8,16.92 7.73,16.92C7.45,16.92 7.21,16.83 7,16.64C6.8,16.45 6.7,16.22 6.7,15.94C6.7,15.66 6.81,15.41 7.03,15.19L11.63,10.59C11.88,10.34 11.88,10.11 11.63,9.89C11.38,9.67 11.14,9.67 10.92,9.89L6.28,14.5C6.06,14.7 5.83,14.81 5.58,14.81C5.3,14.81 5.06,14.71 4.88,14.5C4.69,14.3 4.59,14.06 4.59,13.78C4.59,13.5 4.69,13.27 4.88,13.08C7.94,10 9.83,8.14 10.55,7.45L14.11,10.97C14.5,11.34 14.95,11.53 15.5,11.53C16.2,11.53 16.75,11.25 17.16,10.69C17.44,10.28 17.54,9.83 17.46,9.33C17.38,8.83 17.17,8.41 16.83,8.06L12.75,3.94M14.81,10.27L10.55,6L3.47,13.08C2.63,12.23 2.15,10.93 2.04,9.16C1.93,7.4 2.41,5.87 3.47,4.59C4.66,3.41 6.08,2.81 7.73,2.81C9.39,2.81 10.8,3.41 11.95,4.59L16.22,8.86C16.41,9.05 16.5,9.28 16.5,9.56C16.5,9.84 16.41,10.08 16.22,10.27C16.03,10.45 15.8,10.55 15.5,10.55C15.23,10.55 15,10.45 14.81,10.27V10.27Z">
-                                       </path>
-                                   </svg> Fundings </a>
-                           </li>
+                           </li> 
                        </ul>
                        <a href="#" class="button secondary px-5 btn-more"
                            uk-toggle="target: #more-veiw; animation: uk-animation-fade">
@@ -340,13 +237,57 @@
 
                     <!-- Logo-->
                     <div id="logo">
-                       <a href="feeds.html"> <img src="./assets/images/logo.png" alt=""></a>
-                       <a href="feeds.html"> <img src="./assets/images/logo-light.png" class="logo-inverse"
-                                                  alt=""></a>
+                       <a href="feeds.html"> <img src="assets/images/logo.png" alt=""></a>
+                       <a href="feeds.html"> <img src="assets/images/logo-light.png" class="logo-inverse"
+                               alt=""></a>
                    </div>
 
                    <!-- form search-->
+<!--                   <div class="head_search">-->
+<!--                       <form>-->
+<!--                           <div class="head_search_cont">-->
+<!--                               <input value="" type="text" class="form-control"-->
+<!--                                   placeholder="Search for Friends , Videos and more.." autocomplete="off">-->
+<!--                               <i class="s_icon uil-search-alt"></i>-->
+<!--                           </div>-->
 
+<!--                           &lt;!&ndash; Search box dropdown &ndash;&gt;-->
+<!--                           <div uk-dropdown="pos: top;mode:click;animation: uk-animation-slide-bottom-small"-->
+<!--                               class="dropdown-search display-hidden">-->
+<!--                               &lt;!&ndash; User menu &ndash;&gt;-->
+
+<!--                               <ul class="dropdown-search-list">-->
+<!--                                   <li class="list-title"> Recent Searches </li>-->
+<!--                                   <li> <a href="#">-->
+<!--                                           <img src="assets/images/avatars/avatar-2.jpg" alt="">-->
+<!--                                           <p> Erica Jones <span> 2 hours ago </span> </p>-->
+<!--                                       </a>-->
+<!--                                   </li>-->
+<!--                                   <li> <a href="#">-->
+<!--                                           <img src="assets/images/avatars/avatar-3.jpg" alt="">-->
+<!--                                           <p> Adrian Mohani <span> 13 days ago </span> </p>-->
+<!--                                       </a>-->
+<!--                                   </li>-->
+<!--                                   <li> <a href="#">-->
+<!--                                           <img src="assets/images/avatars/avatar-4.jpg" alt="">-->
+<!--                                           <p> Mountain Riders <span> 3 days ago <span>Group</span> </span> </p>-->
+<!--                                       </a>-->
+<!--                                   </li>-->
+<!--                                   <li> <a href="#">-->
+<!--                                           <img src="assets/images/avatars/avatar-5.jpg" alt="">-->
+<!--                                           <p> Coffee Addicts <span> 12 days ago <span> Page</span></span> </p>-->
+<!--                                       </a>-->
+<!--                                   </li>-->
+<!--                                   <li class="menu-divider"></li>-->
+<!--                                   <li class="list-footer"> <a href="your-history.html"> Searches History </a>-->
+<!--                                   </li>-->
+<!--                               </ul>-->
+
+<!--                           </div>-->
+
+
+<!--                       </form>-->
+<!--                   </div>-->
 
                    <!-- user icons -->
                    <div class="head_user">
@@ -354,7 +295,7 @@
 
                        <!-- browse apps  -->
                        <a href="#" class="opts_icon uk-visible@s" uk-tooltip="title: Create ; pos: bottom ;offset:7">
-                           <img src="./assets/images/icons/apps.svg" alt="">
+                           <img src="assets/images/icons/apps.svg" alt="">
                        </a>
 
                        <!-- browse apps dropdown -->
@@ -406,7 +347,7 @@
 
                        <!-- Message  notificiation dropdown -->
                        <a href="#" class="opts_icon" uk-tooltip="title: Messages ; pos: bottom ;offset:7">
-                           <img src="./assets/images/icons/chat.svg" alt=""> <span>4</span>
+                           <img src="assets/images/icons/chat.svg" alt=""> <span>4</span>
                        </a>
 
                        <!-- Message  notificiation dropdown -->
@@ -430,7 +371,7 @@
                                    <li>
                                        <a href="#">
                                            <span class="notification-avatar status-online">
-                                               <img src="./assets/images/avatars/avatar-2.jpg" alt="">
+                                               <img src="assets/images/avatars/avatar-2.jpg" alt="">
                                            </span>
                                            <div class="notification-text notification-msg-text">
                                                <strong>Jonathan Madano</strong>
@@ -442,7 +383,7 @@
                                    <li>
                                        <a href="#">
                                            <span class="notification-avatar">
-                                               <img src="./assets/images/avatars/avatar-3.jpg" alt="">
+                                               <img src="assets/images/avatars/avatar-3.jpg" alt="">
                                            </span>
                                            <div class="notification-text notification-msg-text">
                                                <strong>Stella Johnson</strong>
@@ -454,7 +395,7 @@
                                    <li>
                                        <a href="#">
                                            <span class="notification-avatar status-online">
-                                               <img src="./assets/images/avatars/avatar-1.jpg" alt="">
+                                               <img src="assets/images/avatars/avatar-1.jpg" alt="">
                                            </span>
                                            <div class="notification-text notification-msg-text">
                                                <strong>Alex Dolgove</strong>
@@ -465,7 +406,7 @@
                                    <li>
                                        <a href="#">
                                            <span class="notification-avatar status-online">
-                                               <img src="./assets/images/avatars/avatar-4.jpg" alt="">
+                                               <img src="assets/images/avatars/avatar-4.jpg" alt="">
                                            </span>
                                            <div class="notification-text notification-msg-text">
                                                <strong>Adrian Mohani</strong>
@@ -476,7 +417,7 @@
                                    <li>
                                        <a href="#">
                                            <span class="notification-avatar">
-                                               <img src="./assets/images/avatars/avatar-2.jpg" alt="">
+                                               <img src="assets/images/avatars/avatar-2.jpg" alt="">
                                            </span>
                                            <div class="notification-text notification-msg-text">
                                                <strong>Jonathan Madano</strong>
@@ -655,7 +596,7 @@
 
                            <!-- User Name / Avatar -->
                            <!-- User Name / Avatar -->
-                           <a href="timeline.html">
+                           <a href="userinfo.html">
 
                                <div class="dropdown-user-details">
 
@@ -709,438 +650,261 @@
        </div>
 
             <div class="main_content_inner">
-
-                <div id="spinneroverlay"> </div>
-
  
-                <div class="profile">
-                    <div class="profile-cover">
 
-                        <!-- profile cover -->
-                        <img src="assets/images/avatars/profile-cover.jpg" alt="">
+                <br>
+                <!--搜索框-->
+<!--                搜索框-->
+<!--                <div class="container">-->
+<!--                    <form autocomplete="off">-->
+<!--                        <div class="finder">-->
+<!--                            <div class="finder__outer">-->
+<!--                                <div class="finder__inner">-->
+<!--                                    <div class="finder__icon" ref="icon"></div>-->
+<!--                                    <input class="finder__input" type="text" name="q" />-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </form>-->
+<!--                </div>-->
 
-<!--                        <a href="changecontent()"> <i class="uil-camera"></i> Edit </a>-->
+<!--                <script type="text/javascript">-->
+<!--                    const input = document.querySelector(".finder__input");-->
+<!--                    const finder = document.querySelector(".finder");-->
+<!--                    const form = document.querySelector("form");-->
+
+<!--                    input.addEventListener("focus", () => {-->
+<!--                        finder.classList.add("active");-->
+<!--                    });-->
+
+<!--                    input.addEventListener("blur", () => {-->
+<!--                        if (input.value.length === 0) {-->
+<!--                            finder.classList.remove("active");-->
+<!--                        }-->
+<!--                    });-->
+
+<!--                    form.addEventListener("submit", (ev) => {-->
+<!--                        ev.preventDefault();-->
+<!--                        finder.classList.add("processing");-->
+<!--                        finder.classList.remove("active");-->
+<!--                        input.disabled = true;-->
+<!--                        setTimeout(() => {-->
+<!--                            finder.classList.remove("processing");-->
+<!--                            input.disabled = false;-->
+<!--                            if (input.value.length > 0) {-->
+<!--                                finder.classList.add("active");-->
+<!--                            }-->
+<!--                        }, 1000);-->
+<!--                    });-->
+
+<!--                </script>-->
 
 
-                    </div>
-
-
-                    <div class="profile-details">
-                        <div class="profile-image">
-                            <img src="assets/images/avatars/avatar-2.jpg" alt="">
-                            <a href="#"> </a>
-                        </div>
-                        <div class="profile-details-info">
-                            <!--读取session中的username数据然后显示在主页-->
-                            <h1> <p id="usernameopt"></p>
-                            </h1>
-<!--                            <input id="changecontent" type="button" value="修改" onclick="changecontent()"/>-->
-                            <p> <p id="userprofileopt"></p><p id="lookp"><a href="JavaScript:void(0);" onClick="changestatus()"> 编辑资料</a> </p></p>
-                        </div>
-
-                    </div>
-
-
-
-
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+<!--                另一个搜索框-->
+                <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css">
+                <div class="search__box">
+                    <input class="search__txt" type="text" name="" placeholder="Type to search">
+                    <a class="search__btn" href="#">
+                        <i class="fas fa-search"></i>
+                    </a>
                 </div>
+<!--                另一个搜索框-->
 
+<!--                    <div class="uk-flex uk-flex-between uk-flex-middle mb-4">-->
+<!--                        <ul class="uk-width-expand" uk-tab>-->
+<!--                            <li class="uk-active"><a href="#">   Suggestions   </a></li>-->
+<!--                            <li><a href="#">  Newest </a></li>-->
+<!--                            <li class="uk-visible@s"><a href="#"> My Funds </a></li>-->
+<!--                        </ul>-->
+<!--                        <a href="#" class="button primary small circle uk-visible@s"> <i class="uil-plus"> </i>-->
+<!--                            Create New Fund </a>-->
+<!--    -->
+<!--                    </div>-->
+                    <!-- funding   -->
+                    <div class="uk-child-width-1-3@m k-child-width-1-2@s uk-grid-small" uk-grid>
+                        <div>
 
-                <div class="section-small">
-
-                    <div uk-grid>
-                <!-- 这个是个人主页的设置页面-->
-                        <div class="uk-width-2-3@m fead-area">
-
-                            <div class="post-newer mt-lg-2">
-
-                            <!--?-->
-    
-                                <div class="post-pop">
-    
-                                    <div class="post-new-overyly" uk-toggle="target: body ; cls: post-focus"></div>
-    
-                                    <div class="post-new uk-animation-slide-top-small">
-    
-    
-                                        <div class="post-new-header">
-    
-                                            <h4> Create new post</h4>
-    
-                                            <!-- close button-->
-                                            <span class="post-new-btn-close" uk-toggle="target: body ; cls: post-focus"
-                                                uk-tooltip="title:Close; pos: left "></span>
-    
-                                        </div>
-    
-                                        <div class="post-new-media">
-                                            <div class="post-new-media-user">
-                                                <img src="assets/images/avatars/avatar-2.jpg" alt="">
-                                            </div>
-                                            <div class="post-new-media-input">
-                                                <input type="text" class="uk-input"
-                                                    placeholder="What's Your Mind ? Dennis!">
-                                            </div>
-                                        </div>
-                                        <div class="post-new-tab-nav">
-                                            <a href="#">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                                    viewBox="0 0 24 24">
-                                                    <path fill="#4db3f6"
-                                                        d="M8.5,13.5L11,16.5L14.5,12L19,18H5M21,19V5C21,3.89 20.1,3 19,3H5A2,2 0 0,0 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19Z">
-                                                    </path>
-                                                </svg>
-                                                <span> Upload Image</span>
-                                            </a>
-                                            <a href="#">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                                    viewBox="0 0 512 512">
-                                                    <path fill="#71a257"
-                                                        d="M450.6 153.6c-3.3 0-6.5.9-9.3 2.7l-86.5 54.6c-2.5 1.6-4 4.3-4 7.2v76c0 2.9 1.5 5.6 4 7.2l86.5 54.6c2.8 1.7 6 2.7 9.3 2.7h20.8c4.8 0 8.6-3.8 8.6-8.5v-188c0-4.7-3.9-8.5-8.6-8.5h-20.8zM273.5 384h-190C55.2 384 32 360.8 32 332.6V179.4c0-28.3 23.2-51.4 51.4-51.4h190c28.3 0 51.4 23.2 51.4 51.4v153.1c.1 28.3-23 51.5-51.3 51.5z">
-                                                    </path>
-                                                </svg>
-                                                <span> Upload Videos</span>
-                                            </a>
-                                            <a href="#">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23"
-                                                    viewBox="0 0 24 24">
-                                                    <path fill="#f3c038"
-                                                        d="M12,2C6.486,2,2,6.486,2,12s4.486,10,10,10c5.514,0,10-4.486,10-10S17.514,2,12,2z M8.5,8C9.328,8,10,8.896,10,10	s-0.672,2-1.5,2S7,11.104,7,10S7.672,8,8.5,8z M12,18c-1.905,0-3.654-0.874-4.8-2.399l1.599-1.201C9.563,15.417,10.73,16,12,16	c1.27,0,2.436-0.583,3.2-1.601l1.6,1.201C15.653,17.126,13.904,18,12,18z M15.5,12c-0.828,0-1.5-0.896-1.5-2s0.672-2,1.5-2	S17,8.896,17,10S16.328,12,15.5,12z">
-                                                    </path>
-                                                </svg>
-                                                <span> Feeling </span>
-                                            </a>
-                                            <a href="#">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25"
-                                                    viewBox="0 0 24 24">
-                                                    <path fill="#673ab7"
-                                                        d="M17.5,12A1.5,1.5 0 0,1 16,10.5A1.5,1.5 0 0,1 17.5,9A1.5,1.5 0 0,1 19,10.5A1.5,1.5 0 0,1 17.5,12M14.5,8A1.5,1.5 0 0,1 13,6.5A1.5,1.5 0 0,1 14.5,5A1.5,1.5 0 0,1 16,6.5A1.5,1.5 0 0,1 14.5,8M9.5,8A1.5,1.5 0 0,1 8,6.5A1.5,1.5 0 0,1 9.5,5A1.5,1.5 0 0,1 11,6.5A1.5,1.5 0 0,1 9.5,8M6.5,12A1.5,1.5 0 0,1 5,10.5A1.5,1.5 0 0,1 6.5,9A1.5,1.5 0 0,1 8,10.5A1.5,1.5 0 0,1 6.5,12M12,3A9,9 0 0,0 3,12A9,9 0 0,0 12,21A1.5,1.5 0 0,0 13.5,19.5C13.5,19.11 13.35,18.76 13.11,18.5C12.88,18.23 12.73,17.88 12.73,17.5A1.5,1.5 0 0,1 14.23,16H16A5,5 0 0,0 21,11C21,6.58 16.97,3 12,3Z">
-                                                    </path>
-                                                </svg>
-                                                <span> Post Color </span>
-                                            </a>
-                                            <a href="#">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23"
-                                                    viewBox="0 0 24 24">
-                                                    <path fill="#ff3a55"
-                                                        d="M12,2A3,3 0 0,1 15,5V11A3,3 0 0,1 12,14A3,3 0 0,1 9,11V5A3,3 0 0,1 12,2M19,11C19,14.53 16.39,17.44 13,17.93V21H11V17.93C7.61,17.44 5,14.53 5,11H7A5,5 0 0,0 12,16A5,5 0 0,0 17,11H19Z">
-                                                    </path>
-                                                </svg>
-                                                <span> Recording </span>
-                                            </a>
-                                            <a href="#">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25"
-                                                    viewBox="0 0 512 512">
-                                                    <path fill="#6bcfef"
-                                                        d="M312 155h91c2.8 0 5-2.2 5-5 0-8.9-3.9-17.3-10.7-22.9L321 63.5c-5.8-4.8-13-7.4-20.6-7.4-4.1 0-7.4 3.3-7.4 7.4V136c0 10.5 8.5 19 19 19z">
-                                                    </path>
-                                                    <path fill="#6bcfef"
-                                                        d="M267 136V56H136c-17.6 0-32 14.4-32 32v336c0 17.6 14.4 32 32 32h240c17.6 0 32-14.4 32-32V181h-96c-24.8 0-45-20.2-45-45z">
-                                                    </path>
-                                                </svg>
-                                                <span> File </span>
-                                            </a>
-                                            <a href="#">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22"
-                                                    viewBox="0 0 24 24">
-                                                    <path fill="#f07729"
-                                                        d="M3.572,5.572l4.506,10.813C8.233,16.757,8.597,17,9.001,17H18c0.417,0,0.79-0.259,0.937-0.648l3-8 c0.115-0.308,0.072-0.651-0.114-0.921C21.635,7.161,21.328,7,21,7H6.333L4.923,3.615C4.768,3.243,4.404,3,4,3H2v2h1L3.572,5.572z">
-                                                    </path>
-                                                    <circle fill="#f07729" cx="10.5" cy="20.5" r="1.5"></circle>
-                                                    <circle fill="#f07729" cx="16.438" cy="20.5" r="1.5"></circle>
-                                                </svg>
-                                                <span> Product </span>
-                                            </a>
-                                            <a href="#">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26"
-                                                    viewBox="0 0 24 24">
-                                                    <path fill="#31a38c"
-                                                        d="M17,17H15V13H17M13,17H11V7H13M9,17H7V10H9M19,3H5C3.89,3 3,3.89 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5C21,3.89 20.1,3 19,3Z">
-                                                    </path>
-                                                </svg>
-                                                <span> Create Poll </span>
-                                            </a>
-                                            <a href="#">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23"
-                                                    viewBox="0 0 24 24">
-                                                    <path fill="#f35369"
-                                                        d="M12,11.5A2.5,2.5 0 0,1 9.5,9A2.5,2.5 0 0,1 12,6.5A2.5,2.5 0 0,1 14.5,9A2.5,2.5 0 0,1 12,11.5M12,2A7,7 0 0,0 5,9C5,14.25 12,22 12,22C12,22 19,14.25 19,9A7,7 0 0,0 12,2Z">
-                                                    </path>
-                                                </svg>
-                                                <span> Location </span>
-                                            </a>
-    
-                                        </div>
-                                        <div class="uk-flex uk-flex-between">
-    
-                                            <button class="button outline-light circle" type="button" style="
-                                            border-color: #e6e6e6;  border-width: 1px;  ">Public</button>
-                                            <div uk-dropdown>
-                                                <ul class="uk-nav uk-dropdown-nav">
-                                                    <li class="uk-active"><a href="#">Only me</a></li>
-                                                    <li><a href="#">Every one</a></li>
-                                                    <li><a href="#"> People I Follow </a></li>
-                                                    <li><a href="#">I People Follow Me</a></li>
-                                                </ul>
-                                            </div>
-    
-                                            <a href="#" class="button primary px-6"> Share </a>
-                                        </div>
-                                    </div>
-    
+                            <div class="fundings">
+                                <div class="avatar">
+                                    <a href="#"> <img src="assets/images/funding/img-1.jpg" alt=""></a>
                                 </div>
-    
-                            </div>
-    
-                            <div class="post">
-    
-                                <div class="post-state">
-                                    <div class="post-state">
-                                        <div class="post-state-btns">用户信息</div>
-                                    </div>
-                                    <div class="post-state">
-                                        <div class="post-state-btns"> <span> 用户ID:&nbsp;</span> <p id="userId"> </p>
-                                        </div>
-                                        <div class="post-state-btns"> <span> 用户昵称:&nbsp;</span><p id="useralias"></p>
+                                <div class="fundings_desc">
+                                    <h3><a href="#">Please help cleanup the oil and remediation of an spill</a></h3>
+                                    <div class="fundings_desc_meta">
+                                        <div class="postMeta--author-text">
+                                            <a href="#">admin</a>
+                                            <span class="middot">·</span>
+                                            <time>24 Aug 2020</time>
                                         </div>
                                     </div>
-
-                                    <div class="post-state">
-                                        <div class="post-state-btns"> <span> 用户邮箱:&nbsp;</span><p id="email"></p>
-                                        </div>
-                                        <div class="post-state-btns"> <span> 用户性别:&nbsp;</span><div class="form"><p id="radioval"></p> </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="post-state">
-                                        <div class="post-state-btns"> <span> 用户姓氏:&nbsp;</span><p id="userlastname"></p>
-                                        </div>
-                                        <div class="post-state-btns"> <span> 用户名字:&nbsp;</span><p id="userfirstname"></p>
+                                    <div class="fundings_footer">
+                                        <p>$1400 Raised of $2800</p>
+                                        <div class="fund_raise_progress">
+                                            <div class="fund_raise_progress_filler" style="width:35%"></div>
                                         </div>
                                     </div>
-
-                                    <div class="post-state">
-                                        <div class="post-state-btns"> <span> 所在地区:&nbsp;</span><p id="area"></p>
-                                        </div>
-                                        <div class="post-state-btns"> <span> 手机号码:&nbsp;</span><p id="telephone"></p>
-                                        </div>
+                                    <div class="fund_raise_btns">
+                                        <a class="button small block light px-0" href="#">Donate</a>
                                     </div>
-
                                 </div>
-    
-                                <!-- post comments -->
-    
-                            </div>
-
-                            <div class="post">
-
-                                <div class="post-state">
-                                    <div class="post-state">
-                                        <div class="post-state-btns">统计</div>
-                                    </div>
-                                    <div class="post-state">
-                                        <div class="post-state-btns"> <span> 上次登录:<p id="lastlogin"></p></span>
-                                        </div>
-                                        <div class="post-state-btns"> <span> 注册时间:<p id="userRefisiterTime"></p></span>
-                                        </div>
-                                        <div class="post-state-btns"> <span> 点赞数量:&nbsp;<p id="likesNum"></p></span>
-                                        </div>
-
-                                    </div>
-
-                                    <div class="post-state">
-                                        <div class="post-state-btns"> <span> 博文数量:&nbsp;<p id="blogsNum"></p></span>
-                                        </div>
-                                        <div class="post-state-btns"> <span> 粉丝数量:&nbsp;<p id="fansNum"></p></span>
-                                        </div>
-                                    </div>
-
-
-
-
-
-                                </div>
-
-                                <!-- post comments -->
-
                             </div>
 
                         </div>
+                        <div>
 
-                        <!-- sidebar -->
-                        <div class="uk-width-expand ml-lg-2">
-
-                            <div class="sl_user-widget">
-                                <div class="sl_user-widget-wrap-header pb-0">
-                                    <div class="sl_user-widget-wrap-header-left">
-                                        <span><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24">
-                                                <path fill="currentColor"
-                                                    d="M13,9H11V7H13M13,17H11V11H13M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2Z">
-                                                </path>
-                                            </svg></span>
-                                        <h4> 我的关注 </h4>
-                                    </div>
+                            <div class="fundings">
+                                <div class="avatar">
+                                    <a href="#"> <img src="assets/images/funding/img-2.jpg" alt=""></a>
                                 </div>
-                                <ul class="sl_right_user_info">
-                            
-                                    <li class="list-group-item">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24">
-                                            <path fill="currentColor"
-                                                d="M12,9A3,3 0 0,0 9,12A3,3 0 0,0 12,15A3,3 0 0,0 15,12A3,3 0 0,0 12,9M12,17A5,5 0 0,1 7,12A5,5 0 0,1 12,7A5,5 0 0,1 17,12A5,5 0 0,1 12,17M12,4.5C7,4.5 2.73,7.61 1,12C2.73,16.39 7,19.5 12,19.5C17,19.5 21.27,16.39 23,12C21.27,7.61 17,4.5 12,4.5Z">
-                                            </path>
-                                        </svg>
-                                        <span class="text-success"> Online </span>
-                                    </li>
-                                    <li class="list-group-item">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24">
-                                            <path fill="currentColor"
-                                                d="M20 22H4a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1h16a1 1 0 0 1 1 1v18a1 1 0 0 1-1 1zm-1-2V4H5v16h14zM7 6h4v4H7V6zm0 6h10v2H7v-2zm0 4h10v2H7v-2zm6-9h4v2h-4V7z">
-                                            </path>
-                                        </svg>
-                                        <span id="user_post_count">27</span> posts </li>
-                            
-                                    <li class="list-group-item">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24">
-                                            <path fill="currentColor"
-                                                d="M3.9,12C3.9,10.29 5.29,8.9 7,8.9H11V7H7A5,5 0 0,0 2,12A5,5 0 0,0 7,17H11V15.1H7C5.29,15.1 3.9,13.71 3.9,12M8,13H16V11H8V13M17,7H13V8.9H17C18.71,8.9 20.1,10.29 20.1,12C20.1,13.71 18.71,15.1 17,15.1H13V17H17A5,5 0 0,0 22,12A5,5 0 0,0 17,7Z">
-                                            </path>
-                                        </svg>
-                                        <a href="#" target="_blank">https://mydomain.com</a>
-                                    </li>
-                            
-                                    <li class="list-group-item">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24">
-                                            <path fill="currentColor"
-                                                d="M9,11.75A1.25,1.25 0 0,0 7.75,13A1.25,1.25 0 0,0 9,14.25A1.25,1.25 0 0,0 10.25,13A1.25,1.25 0 0,0 9,11.75M15,11.75A1.25,1.25 0 0,0 13.75,13A1.25,1.25 0 0,0 15,14.25A1.25,1.25 0 0,0 16.25,13A1.25,1.25 0 0,0 15,11.75M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M12,20C7.59,20 4,16.41 4,12C4,11.71 4,11.42 4.05,11.14C6.41,10.09 8.28,8.16 9.26,5.77C11.07,8.33 14.05,10 17.42,10C18.2,10 18.95,9.91 19.67,9.74C19.88,10.45 20,11.21 20,12C20,16.41 16.41,20 12,20Z">
-                                            </path>
-                                        </svg>
-                                        Male </li>
-                            
-                                    <li class="list-group-item">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24">
-                                            <path fill="currentColor"
-                                                d="M12,21.35L10.55,20.03C5.4,15.36 2,12.27 2,8.5C2,5.41 4.42,3 7.5,3C9.24,3 10.91,3.81 12,5.08C13.09,3.81 14.76,3 16.5,3C19.58,3 22,5.41 22,8.5C22,12.27 18.6,15.36 13.45,20.03L12,21.35Z">
-                                            </path>
-                                        </svg>
-                                        Single </li>
-                                    <hr class="my-2">
-                                    </li>
-
-
-                            
-
-
-                            
-                                </ul>
-                            </div>
-
-                            <!-- Albums -->
-                            <div class="sl_user-widget">
-                                <div class="sl_user-widget-wrap-header">
-                                    <div class="sl_user-widget-wrap-header-left">
-                                        <span><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24">
-                                                <path fill="currentColor"
-                                                    d="M22,16V4A2,2 0 0,0 20,2H8A2,2 0 0,0 6,4V16A2,2 0 0,0 8,18H20A2,2 0 0,0 22,16M11,12L13.03,14.71L16,11L20,16H8M2,6V20A2,2 0 0,0 4,22H18V20H4V6">
-                                                </path>
-                                            </svg></span> 
-                                            <a href="#">我的收藏</a>&nbsp;<div style="font-weight: 600">12</div>
-                                    </div>
-                                    <div class="sl_user-widget-wrap-right"> <a href="#" class="see-all"> See all</a></div>
-                                </div>
-                            
-                                <ul class="sidebar-user-data-container">
-                                    <div class="sidebar-user-data">
-                                        <a href="#" title="" uk-tooltip="My album 1">
-                                            <div class="sidebar-listed-user-avatar">
-                                                <img src="assets/images/avatars/avatar-1.jpg" alt="">
-                                            </div>
-                                        </a>
-                                    </div>
-                                    <div class="sidebar-user-data">
-                                        <a href="#" title="" uk-tooltip="My album 2">
-                                            <div class="sidebar-listed-user-avatar">
-                                                <img src="assets/images/avatars/avatar-2.jpg" alt="">
-                                            </div>
-                                        </a>
-                                    </div>
-                                    <div class="sidebar-user-data">
-                                        <a href="#" title="" uk-tooltip="My album 3">
-                                            <div class="sidebar-listed-user-avatar">
-                                                <img src="assets/images/avatars/avatar-3.jpg" alt="">
-                                            </div>
-                                        </a>
-                                    </div>
-                                    <div class="sidebar-user-data">
-                                        <a href="#" title="" uk-tooltip="My album 4">
-                                            <div class="sidebar-listed-user-avatar">
-                                                <img src="assets/images/avatars/avatar-4.jpg" alt="">
-                                            </div>
-                                        </a>
-                                    </div>
-                                    <div class="sidebar-user-data">
-                                        <a href="#" title="" uk-tooltip="My album 5">
-                                            <div class="sidebar-listed-user-avatar">
-                                                <img src="assets/images/avatars/avatar-5.jpg" alt="">
-                                            </div>
-                                        </a>
-                                    </div>
-                                    <div class="sidebar-user-data">
-                                        <a href="#" title="" uk-tooltip="My album 6">
-                                            <div class="sidebar-listed-user-avatar">
-                                                <img src="assets/images/avatars/avatar-6.jpg" alt="">
-                                            </div>
-                                        </a>
-                                    </div>
-                                </ul>
-                            
-                            </div>
-
-
-
-
-                            <!-- Footer menus-->
-                            <div class="footer-wrapper-sidebar">
-                                <div class="footer-powered">
-                                    <p>  © 2020 Simplest.net</p>
-                                </div>
-                                
-                                <hr>
-                        
-                                <ul class="list-inline">
-                                    <li><a href="#">About</a></li>
-                                    <li><a href="#">Blog</a></li> 
-                                    <li><a href="#"> Privecy</a></li>
-                                    <li><a href="#">Contact Us</a></li>
-                                    <li><a href="#">Developers</a></li>
-                                    <li>
-                                        <div class="dropdown dropup sun_foot_drop_menu">
-                                            <a href="#" class="dropdown-toggle">
-                                                More <span class="caret"></span>
-                                            </a>
-                                            <div uk-dropdown="pos: bottom-left ; mode:hover " class="uk-dropdown uk-dropdown-bottom-right" style="left: 745px; top: 87px;">
-                                                <ul class="uk-nav uk-dropdown-nav">
-                                                    <li><a href="#"> View as guast </a></li>
-                                                    <li><a href="#"> Bloc this person </a></li>
-                                                    <li><a href="#"> Report abuse</a></li>
-                                                </ul>
-                                            </div>
+                                <div class="fundings_desc">
+                                    <h3><a href="#">Beirut, Lebanon: +180 killed and thousands injured after huge explosion</a></h3>
+                                    <div class="fundings_desc_meta">
+                                        <div class="postMeta--author-text">
+                                            <a href="#">admin</a>
+                                            <span class="middot">·</span>
+                                            <time>24 Aug 2020</time>
                                         </div>
-                                    </li> 
-                                </ul>
-                                <div class="clear"></div>
+                                    </div>
+                                    <div class="fundings_footer">
+                                        <p>$250 Raised of $1200</p>
+                                        <div class="fund_raise_progress">
+                                            <div class="fund_raise_progress_filler" style="width:15%"></div>
+                                        </div>
+                                    </div>
+                                    <div class="fund_raise_btns">
+                                        <a class="button small block light px-0" href="#">Donate</a>
+                                    </div>
+                                </div>
                             </div>
-
 
                         </div>
+                        <div>
 
+                            <div class="fundings">
+                                <div class="avatar">
+                                    <a href="#"> <img src="assets/images/group/group-cover-1.jpg" alt=""></a>
+                                </div>
+                                <div class="fundings_desc">
+                                    <h3><a href="#"> Help Children back to school There is -500m out of school</a></h3>
+                                    <div class="fundings_desc_meta">
+                                        <div class="postMeta--author-text">
+                                            <a href="#">admin</a>
+                                            <span class="middot">·</span>
+                                            <time>24 Aug 2020</time>
+                                        </div>
+                                    </div>
+                                    <div class="fundings_footer">
+                                        <p>$250 Raised of $1200</p>
+                                        <div class="fund_raise_progress">
+                                            <div class="fund_raise_progress_filler" style="width:15%"></div>
+                                        </div>
+                                    </div>
+                                    <div class="fund_raise_btns">
+                                        <a class="button small block light px-0" href="#">Donate</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div>
+
+                            <div class="fundings">
+                                <div class="avatar">
+                                    <a href="#"> <img src="assets/images/group/group-cover-1.jpg" alt=""></a>
+                                </div>
+                                <div class="fundings_desc">
+                                    <h3><a href="#"> Help Children back to school There is -500m out of school</a></h3>
+                                    <div class="fundings_desc_meta">
+                                        <div class="postMeta--author-text">
+                                            <a href="#">admin</a>
+                                            <span class="middot">·</span>
+                                            <time>24 Aug 2020</time>
+                                        </div>
+                                    </div>
+                                    <div class="fundings_footer">
+                                        <p>$250 Raised of $1200</p>
+                                        <div class="fund_raise_progress">
+                                            <div class="fund_raise_progress_filler" style="width:15%"></div>
+                                        </div>
+                                    </div>
+                                    <div class="fund_raise_btns">
+                                        <a class="button small block light px-0" href="#">Donate</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div>
+
+                            <div class="fundings">
+                                <div class="avatar">
+                                    <a href="#"> <img src="assets/images/funding/img-2.jpg" alt=""></a>
+                                </div>
+                                <div class="fundings_desc">
+                                    <h3><a href="#">Beirut, Lebanon: +180 killed and thousands injured after huge explosion</a></h3>
+                                    <div class="fundings_desc_meta">
+                                        <div class="postMeta--author-text">
+                                            <a href="#">admin</a>
+                                            <span class="middot">·</span>
+                                            <time>24 Aug 2020</time>
+                                        </div>
+                                    </div>
+                                    <div class="fundings_footer">
+                                        <p>$250 Raised of $1200</p>
+                                        <div class="fund_raise_progress">
+                                            <div class="fund_raise_progress_filler" style="width:15%"></div>
+                                        </div>
+                                    </div>
+                                    <div class="fund_raise_btns">
+                                        <a class="button small block light px-0" href="#">Donate</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div>
+
+                            <div class="fundings">
+                                <div class="avatar">
+                                    <a href="#"> <img src="assets/images/funding/img-1.jpg" alt=""></a>
+                                </div>
+                                <div class="fundings_desc">
+                                    <h3><a href="#">Please help cleanup the oil and remediation of an spill</a></h3>
+                                    <div class="fundings_desc_meta">
+                                        <div class="postMeta--author-text">
+                                            <a href="#">admin</a>
+                                            <span class="middot">·</span>
+                                            <time>24 Aug 2020</time>
+                                        </div>
+                                    </div>
+                                    <div class="fundings_footer">
+                                        <p>$1400 Raised of $2800</p>
+                                        <div class="fund_raise_progress">
+                                            <div class="fund_raise_progress_filler" style="width:35%"></div>
+                                        </div>
+                                    </div>
+                                    <div class="fund_raise_btns">
+                                        <a class="button small block light px-0" href="#">Donate</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
                     </div>
 
-                </div>
 
-
-
-
-
+                    <div class="load-more">
+                        <button class="btn button">Load more Funding</button>
+                    </div>
+                     
+                    
             </div>
 
         </div>

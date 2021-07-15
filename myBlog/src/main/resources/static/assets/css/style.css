@@ -1,4 +1,5 @@
 @charset "UTF-8";
+
 /*
  * Author: Hamse Mohamoud
  * URL: http://Holathemes.net
@@ -106,6 +107,10 @@ html body {-webkit-font-smoothing: antialiased;overflow-x: hidden;padding: .75re
  * 1. Box sizing has to be `content-box` so the max-width is always the same and
  *    unaffected by the padding on different breakpoints. It's important for the size modifiers.
  */
+
+
+
+
 .container {
   /* 1 */
   box-sizing: content-box;
@@ -317,7 +322,7 @@ body{
   background: #FFBD1E;
 }
 select{
-  font-family: "微软雅黑";
+  font-family: "΢���ź�";
   /*margin:100px;*/
   background: rgba(0,0,0,0);
   width: 150px;
@@ -356,11 +361,6 @@ input:focus{
   -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(102,175,233,.6);
   box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(102,175,233,.6)
 }
-
-
-
-
-
 .section-header {
   position: relative;
   display: flex;
@@ -1493,7 +1493,6 @@ fieldset:disabled a.button {
 
 /* button groupss  */
 .buttons {
-  /*display: -webkit-inline-box;*/
   display: -webkit-inline-box;
   display: -ms-inline-flexbox;
   display: inline-flex;
@@ -7253,6 +7252,12 @@ header .opts_icon_link:hover {
   .fead-area {
     width: 62% !important;
   }
+  .fead-area-for-bloglist {
+    width: 100% !important;
+  }
+  .fead-area-for-blogpage {
+    width: 100% !important;
+  }
 }
 
 @media (min-width: 1600px) {
@@ -7826,7 +7831,6 @@ header .opts_icon_link:hover {
   border-radius: 6px;
 }
 
-
 .post .post-heading {
   padding: 20px 15px;
   display: flex;
@@ -7948,15 +7952,15 @@ header .opts_icon_link:hover {
   border-radius: 2px;
   color: #616770;
   font-size: 13px;
-  border-radius: 5px;
+  /*border-radius: 5px;*/
   font-weight: 600;
   line-height: 19px;
   flex: 1;
   width: 100%;
   border: 0;
-  margin: 4px 4px;
+  margin: 4px 0px;
   box-shadow: none;
-  padding: 9px 5px; 
+  padding: 9px 0px;
   transition: all .1s ease-in-out;
   cursor: pointer;
   display: flex;
@@ -7977,7 +7981,7 @@ header .opts_icon_link:hover {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-top: 4px;
+  padding-top: -1px;
   padding-right: 4px;
 }
 
@@ -10184,41 +10188,21 @@ ul.story-side-list li a .story-user-innr p span.story-time-ago{
   margin-right: 30px;
 }
 
-/*twitter点赞按钮的css*/
-/*.heart {*/
-/*  width: 100px;*/
-/*  height: 100px;*/
-/*  background: url("https://cssanimation.rocks/images/posts/steps/heart.png") no-repeat;*/
-/*  background-position: 0 0;*/
-/*  cursor: pointer;*/
-/*  -webkit-transition: background-position 1s steps(28);*/
-/*  transition: background-position 1s steps(28);*/
-/*  -webkit-transition-duration: 0s;*/
-/*  transition-duration: 0s;*/
-/*}*/
-/*.heart.is-active {*/
-/*  -webkit-transition-duration: 1s;*/
-/*  transition-duration: 1s;*/
-/*  background-position: -2800px 0;*/
-/*}*/
+/*���������������ķָ���*/
+.nav-single-group uk-sticky {
+  width: 80%;
+}
+/*���������������ķָ���*/
 
-/*body {*/
-/*  background: -webkit-linear-gradient(315deg, #121721 0%, #000000 100%) fixed;*/
-/*  background: linear-gradient(135deg, #121721 0%, #000000 100%) fixed;*/
-/*  color: #FFF;*/
-/*  font: 300 16px/1.5 "Open Sans", sans-serif;*/
-/*}*/
+/*author-bar*/
+#author-bar {
+  width: 80%;
+}
+/*author-bar*/
 
 
-/*.stage {*/
-/*  position: absolute;*/
-/*  top: 19%;*/
-/*  left: 35%;*/
-/*  -webkit-transform: translate(-50%, -50%);*/
-/*  transform: translate(-50%, -50%);*/
-/*}*/
 
-/*猫爪点赞按钮*/
+/*猫爪点赞按钮的css*/
 .paw-button {
   --background: #fff;
   --background-active: #FEE8F4;
@@ -10561,7 +10545,7 @@ html {
 /*  align-items: center;*/
 /*  background: #2c2c2c;*/
 /*}*/
-/*猫爪点赞按钮*/
+/*èצ���ް�ť*/
 
 
 /*writing blog page */
@@ -10597,4 +10581,70 @@ html {
   padding-right:70px;
 }
 
+/*搜索框的css*/
+body {
+  margin: 0;
+  padding: 0;
+  background: #ff5252;
+}
 
+.search__box {
+  position: absolute;
+  top: 10%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #2f3640;
+  height: 60px;
+  /*width: 70%;*/
+  border-radius: 40px;
+  padding: 10px 15px 10px 15px;
+}
+
+.search__box:hover > .search__txt {
+  width: 240px;
+  padding: 0 6px;
+}
+
+.search__box:hover > .search__btn {
+  background: #fff;
+}
+.search__box:hover > .search__btn i {
+  color: #34ace0;
+  transition: 0.9s;
+}
+
+.search__btn {
+  color: #e84118;
+  float: right;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #34ace0;
+  display: flex;
+  justify-content: center;
+  align-item: center;
+  text-decoration: none;
+}
+.search__btn i {
+  line-height: 40px;
+  color: #fff;
+  transition: 0.9s;
+}
+
+.search__txt {
+  border: none;
+  background: none;
+  outline: none;
+  float: left;
+  padding: 0;
+  color: #fff;
+  font-size: 16px;
+  transition: 0.2s;
+  line-height: 40px;
+  width: 0;
+}
+
+/*��һ��������*/
+
+
+/*����ҳ��ĵ�����*/

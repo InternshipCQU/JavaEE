@@ -214,7 +214,7 @@ pre,
 address,
 fieldset,
 figure {
-  margin: 0 0 10px 0;
+  margin: 0 0 0px 0;
 }
 /* Add margin if adjacent element */
 * + p,
@@ -2507,10 +2507,10 @@ select.uk-form-width-xsmall {
 @media (min-width: 1200px) {
   /* Horizontal */
   .uk-grid {
-    margin-left: -25px;
+    margin-left: -15px;
   }
   .uk-grid > * {
-    padding-left: 30px;
+    padding-left: 10px;
   }
   /* Vertical */
   .uk-grid + .uk-grid,

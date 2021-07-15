@@ -74,16 +74,18 @@
                         <h2 class="mb-0"> 欢迎回来</h2>
                         <p class="my-2">登录账号</p>
                     </div>
-                    <form name="form1" action="/index" method="post" onsubmit="return check();">
+                    <form name="form1" action="/tologin" method="post" onsubmit="return check();">
                         <div class="uk-form-group">
                             <label class="uk-form-label"> 账号</label>
+                            <span id="error_username" style="font-size: 12px;color: red" th:text="${error_username}" aria-describedby="basic-addon0"></span>
+
 
                             <div class="uk-position-relative w-100">
                                 <span class="uk-form-icon">
                                     <i class="icon-feather-mail"></i>
                                 </span>
 <!--                                <label>-->
-                                    <input id="username" name="username" class="uk-input" type="text" placeholder="用户名">
+                                    <input id="username" name="username" class="uk-input" type="text" placeholder="用户名" onclick="hide_error_user()">
 <!--                                </label>-->
                             </div>
 
@@ -91,13 +93,13 @@
 
                         <div class="uk-form-group">
                             <label class="uk-form-label"> 密码</label>
-
+                            <span id="error_password" style="font-size: 12px;color: red" th:text="${error_password}" aria-describedby="basic-addon0"></span>
                             <div class="uk-position-relative w-100">
                                 <span class="uk-form-icon">
                                     <i class="icon-feather-lock"></i>
                                 </span>
 <!--                                <label>-->
-                                    <input id="password" name="password" class="uk-input" type="password" placeholder="********">
+                                    <input id="password" name="password" class="uk-input" type="password" placeholder="********" onclick="hide_error_password()">
 <!--                                </label>-->
                             </div>
 
@@ -143,7 +145,7 @@
 <!--                    <form>-->
                         <div class="mt-4 uk-flex-middle uk-grid-small" uk-grid>
                             <div class="uk-width-expand@s">
-                                <p> 没有账号？  <a href="/register">注册</a></p>
+                                <p> 没有账号？  <a href="/register">注册一个</a></p>
                             </div>
 <!--                            <div class="uk-width-auto@s">-->
 <!--                                <button type="submit" class="button primary">登录</button>-->

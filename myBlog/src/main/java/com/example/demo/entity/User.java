@@ -1,24 +1,32 @@
 package com.example.demo.entity;
 
+import javax.validation.constraints.NotEmpty;
+
 public class User {
     public Integer userId;     // 用户ID
+
+    @NotEmpty(message = "请输入用户名")
     public String username;   // 用户名称
+
+    @NotEmpty(message = "请输入密码")
     public String password;   // 密码
     public String gender;     // 性别，M代表男性，F代表女性
     public String email;      // 邮箱
     public String telephone;  // 手机号码
     public String firstname;  // 姓
     public String lastname;   // 名
-    public String avatar;     // 头像base64码
+    public String avatar;     // 头像base64码 更改成路径
     public String lastLogin;  // 上一次登陆时间
     public Integer fansNum;    // 粉丝数
     public Integer likesNum;   // 点赞数
     public Integer blogsNum;   // 博客数
-    public String userRefisiterTime;   // 用户注册时间
+    public String userRegisterTime;   // 用户注册时间
     public String birthdate;   // 用户出生日期
     public String profile;   // 用户个人简介
     public String area;        // 用户所在地区
+    public String background; //背景图片
 
+    public String getBackground(){return background;}
     public Integer getUserId() {
         return userId;
     }
@@ -122,11 +130,11 @@ public class User {
     }
 
     public String getUserRefisiterTime() {
-        return userRefisiterTime;
+        return userRegisterTime;
     }
 
     public void setUserRefisiterTime(String userRefisiterTime) {
-        this.userRefisiterTime = userRefisiterTime;
+        this.userRegisterTime = userRefisiterTime;
     }
 
     public String getBirthdate() {
