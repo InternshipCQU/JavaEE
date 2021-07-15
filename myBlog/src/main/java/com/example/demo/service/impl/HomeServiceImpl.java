@@ -91,7 +91,7 @@ public class HomeServiceImpl implements HomeService {
             model.addAttribute("hiddenLogout","true");
             model.addAttribute("hiddenLogin","false");
         }
-        System.out.println(model.getAttribute("bloggerAvatar"));
+        //System.out.println(model.getAttribute("bloggerAvatar"));
 
     }
 
@@ -184,8 +184,12 @@ public class HomeServiceImpl implements HomeService {
 
         //====
         comments = "[" + comments + "]";
-        System.out.println(comments);
-
+        //System.out.println(comments);
+        //System.out.println(blogContent);
+        if(blogContent.length() > 32){
+            blogContent =  blogContent.substring(0,30);
+        }
+        blogContent = "你好 世界";
         String link = "/blogs/" + username + "/" + blogId;
 
         System.out.println("Hello");

@@ -213,10 +213,6 @@ function loadTheBlog()
                         "    <div class=\"post-description\">\n" +
                         "            <h3 id = \"title\">    </h3>\n" +
                         "            <p id = \"content\"> </p>              \n" +
-                        "        <div class=\"fullsizeimg\">\n" +
-
-                        "            <img src=\"http://localhost:8080/assets/images/post/img-1.jpg\" alt=\"\">\n" +
-                        "        </div>\n" +
                         "        <div class=\"post-state-details\">\n" +
                         "            <div>\n" +
                         "                <img src=\"http://localhost:8080/assets/images/icons/reactions_like.png\" alt=\"\">\n" +
