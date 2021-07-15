@@ -12,5 +12,6 @@ public interface getService {
     List<UserLike> getfollowing(Integer userID);
     List<String> getcollect(Integer userID);
     String getusername(Integer userID);
+    String getbackgroundurl(Integer userId);
 }
 
