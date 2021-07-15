@@ -24,7 +24,7 @@ public class LogoutController {
         model.addAttribute("href","login");
         logoutSer.logout(request,response);
         //TODO:这里应该转成重定向到mainpage
-        response.sendRedirect("/index/a");
+        response.sendRedirect("/index/ALL");
         return ;
     }
 

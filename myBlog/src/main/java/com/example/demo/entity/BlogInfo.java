@@ -2,6 +2,7 @@ package com.example.demo.entity;
 
 // 博客信息表
 public class BlogInfo {
+
     public Integer blogId;       // 博客ID
     public String blogTitle;    // 博客标题
     public String blogContent;  // 博客内容
@@ -111,5 +112,6 @@ public class BlogInfo {
     public void setTagName(String tagName) {
         this.tagName = tagName;
     }
+
 
 }
