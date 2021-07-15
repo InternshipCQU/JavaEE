@@ -1,6 +1,23 @@
+//
+// $.ajax({
+//     url:"https://"+window.location.host+"/changebackground",
+//     type:"GET",
+//     data:JSON.stringify(document.getElementById("userId").innerHTML),
+//     dataType:"json",
+//     success:function(data){
+//         document.getElementById('imageshow').src=data;
+//     },
+//     error:function(){
+//         alert("ERROR!");
+//     }
+// })
 
-
-
+function previewImage(file) {
+    var img = document.getElementById('imageshow');
+    var reader = new FileReader();
+    reader.onload = function (evt) { img.src = evt.target.result; }
+    reader.readAsDataURL(file.files[0]);
+}
 
     function getuser(){
     $.ajax({
@@ -13,7 +30,7 @@
             document.getElementById("userId").innerHTML=recdata.userId;
             document.getElementById("useralias").innerHTML=recdata.username;
             document.getElementById("usernameopt").innerHTML=recdata.username;
-
+            // document.getElementById("imageshow").src=recdata.background;
             if(recdata.userprofile!==undefined) {
                 document.getElementById("userprofileopt").innerHTML = recdata.userprofile;
             }
@@ -43,15 +60,20 @@
             document.getElementById("likesNum").innerHTML=recdata.likesNum;
             document.getElementById("birthdate").innerHTML=recdata.birthdate;
             var avatarfile=recdata.avatar;
-            //TODO：要改
+            var o1=document.getElementById("avatarfile");
+            o1.innerHTML="<img src=\""+avatarfile+"\" alt=\"\"\>";
+            var o2=document.getElementById("inputtemp");
+
+            o2.innerHTML="<input name=\"userId\" value="+recdata.userId.toString()+ " type=\"hidden\">";
+            var o3=document.getElementById("inputbackgroundtemp");
+            o3.innerHTML="<img src=\""+recdata.background+"\" id=\"imageshow\" alt=\"\"> \n";
+            var o4=document.getElementById("inputtemp2");
+            o4.innerHTML="<input name=\"userId\" value="+recdata.userId.toString()+ " type=\"hidden\">";
             getfollowlist(recdata.userId);
             getfavoriteslist(recdata.userId);
             uploadfiles(recdata.userId.toString());
-            var o1=document.getElementById("avatarfile");
-            o1.innerHTML="<img src=\""+avatarfile+"\" alt=\"\"\>"
-            var o2=document.getElementById("inputtemp");
+            showbackground(recdata.userId.toString());
 
-            o2.innerHTML="<input name=\"userId\" value="+recdata.userId.toString()+ " type=\"hidden\">"
         }
     })
 
@@ -60,7 +82,7 @@
     function uploadfiles(userId){
         $.ajax({
             url:"http://"+window.location.host+"/upload",
-            type:"GET",
+            type:"POST",
             data: {},
             dataType:"json",
             success:function(data){
@@ -79,6 +101,33 @@
 
                         var img = '<img class="preview" src="' + reader.result + '" alt="preview"/>';
                         $(".preview_box").empty().append(img);
+                    }
+                });
+            }})
+    }
+
+    function showbackground(userId){
+        $.ajax({
+            url:"http://"+window.location.host+"/changebackground",
+            type:"POST",
+            data: {},
+            dataType:"json",
+            success:function(data){
+                $("#input_2").on("change", function (e) {
+                    var file = e.target.files[0]; //获取图片资源
+                    // 只选择图片文件
+                    alert(file.type);
+                    if (!file.type.match('image.*')) {
+                        return false;
+                    }
+                    var reader = new FileReader();
+                    reader.readAsDataURL(file); // 读取文件
+                    // alert("RECEIVED FILE");
+                    // 渲染文件
+                    reader.onload = function (arg) {
+
+                        var img = '"<img src=\\"'+reader.result+'\\" id=\\"imageshow\\" alt=\\"\\">";';
+                        $(".bg_preview_box").empty().append(img);
                     }
                 });
             }})
@@ -133,10 +182,6 @@
             var c10=o10.innerHTML;
 
             o10.innerHTML="<input id=\"birthdate2\" type=\"date\" placeholder="+c10+"\" value="+c10+"/>";
-            // var o11=document.getElementById("avatarsetting");
-            // var c11=o11.innerHTML;
-            // alert(c11);
-            // o11.innerHTML="HI!!!!!";
         }})
 
 }

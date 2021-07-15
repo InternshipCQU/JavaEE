@@ -20,7 +20,7 @@ public interface HomeMapper {
     List<BlogInfo> tagToBlogs(String tagName);
 
     // 根据标签或博客标题搜索对应博客
-    List<BlogInfo> searchBlogs(String keyword);
+    ArrayList<BlogInfo> searchBlogs(String keyword);
 
     // 展示热门博客(top10)
     List<BlogInfo> getBlogs();

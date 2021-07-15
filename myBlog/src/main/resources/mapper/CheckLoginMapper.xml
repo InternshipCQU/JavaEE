@@ -7,10 +7,20 @@
         WHERE `User`.username = #{username};
     </select>
 
+    <select id="getUserID" resultType="Integer">
+        SELECT `User`.userId
+        FROM `User`
+        WHERE `User`.username = #{username}
+    </select>
+
     <!--saj-->
     <select id="userExist" resultType="String">
         SELECT `User`.username
         FROM `User`
         WHERE `User`.username = #{username};
     </select>
+
+    <update id="addDate">
+        UPDATE `User` SET `User`.lastLogin = #{lastLogin} where `User`.username = #{username};
+    </update>
 </mapper>

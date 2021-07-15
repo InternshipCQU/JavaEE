@@ -15,6 +15,7 @@ public class BlogController {
     public String personalspace(){
         return "personalspace";
     }
+
     @RequestMapping("blogpage")
     public String blog(){
         return "blogpage";
@@ -72,5 +73,12 @@ public class BlogController {
     public void follow(@PathVariable("blogId") int blogId, @PathVariable("userId") int userId){
         //TODO:这里向数据库写转发信息
         blogService.forward(blogId, userId);
+    }
+
+    @RequestMapping("/blogs/{userId}")
+    // 根据userId查找该用户点赞过的所有博客id
+    public String searchLikeBlog(@PathVariable("userId") int userId, Model model) {
+        model.addAttribute("searchLikeBlogList", blogService.searchLikeBlog(userId));
+        return "test-searchLikeBlog";
     }
 }

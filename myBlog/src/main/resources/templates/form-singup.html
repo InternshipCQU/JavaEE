@@ -54,18 +54,20 @@
 <!--                            <p class="my-2">Login to manage your account.</p>-->
                         </div>
 
-                    <form class="uk-child-width-1-1 uk-grid-small" uk-grid action="/login" onsubmit="return CheckSignup();" name="form2"
-                    method="get">
+                    <form class="uk-child-width-1-1 uk-grid-small" uk-grid action="/toRegister"  name="form2"
+                    method="post">
 
                         <div>
                             <div class="uk-form-group">
                                 <label class="uk-form-label"> 账号</label>
+                                <span id="userError" style="font-size: 12px;color: red" th:text="${userError}" aria-describedby="basic-addon0"></span>
+
 
                                 <div class="uk-position-relative w-100">
                                     <span class="uk-form-icon">
                                         <i class="icon-feather-user"></i>
                                     </span>
-                                    <input class="uk-input" type="text" placeholder="用户名" id="sign-username" name="sign-username">
+                                    <input class="uk-input" type="text" placeholder="用户名" id="sign-username" name="sign-username" onclick="signHideErrorUser()">
                                 </div>
 
                             </div>
@@ -73,31 +75,34 @@
                         <div>
                             <div class="uk-form-group">
                                 <label class="uk-form-label"> 邮箱</label>
+                                <span id="emailError" style="font-size: 12px;color: red" th:text="${emailError}" aria-describedby="basic-addon0"></span>
+
 
                                 <div class="uk-position-relative w-100">
                                     <span class="uk-form-icon">
                                         <i class="icon-feather-mail"></i>
                                     </span>
-                                    <input class="uk-input" type="email" placeholder="name@example.com" id="sign-email" name="sign-email">
+                                    <input class="uk-input" type="email" placeholder="name@example.com" id="sign-email" name="sign-email" onclick="signHideErrorEmail()">
                                 </div>
 
                             </div>
                         </div>
 
-                        <div class="uk-width-1-2@s">
+<!--                        <div class="uk-width-1-2@s">-->
                             <div class="uk-form-group">
                                 <label class="uk-form-label"> 密码</label>
+                                <span id="passwordError" style="font-size: 12px;color: red" th:text="${passwordError}" aria-describedby="basic-addon0"></span>
 
                                 <div class="uk-position-relative w-100">
                                     <span class="uk-form-icon">
                                         <i class="icon-feather-lock"></i>
                                     </span>
-                                    <input class="uk-input" type="password" placeholder="********" id="sign-password" name="sign-password">
+                                    <input class="uk-input" type="password" placeholder="********" id="sign-password" name="sign-password" onclick="signHideErrorPassword()">
                                 </div>
 
                             </div>
-                        </div>
-                        <div class="uk-width-1-2@s">
+<!--                        </div>-->
+<!--                        <div class="uk-width-1-2@s">-->
                             <div class="uk-form-group">
                                 <label class="uk-form-label"> 确认密码</label>
 
@@ -109,7 +114,7 @@
                                 </div>
 
                             </div>
-                        </div>
+<!--                        </div>-->
 
                         <div>
                             <div class="mt-4 uk-flex-middle uk-grid-small" uk-grid>
