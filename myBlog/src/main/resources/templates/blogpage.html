@@ -682,15 +682,15 @@
                             <li><a href="#" id="repost" > 转发</a></li>
                             <li><a href="#" id="postDate" th:text =  "${blog.createTime}"> </a></li>
 <!--                            <li>Like <span id="likenum" th:text =  "${blog.likesNum}"></span></li>-->
-                            <li><a href="javascript:click()" id="likenum"  th:text="'点赞  '+${blog.likesNum}"> </a>
+                            <li class="uk-active"><a href="javascript:click()" id="likenum" th:text="'Likes: '+${blog.likesNum}"> </a>
                             </li>
-
-                            <p id="userId" style="opacity: 0"  th:text="${blog.userId}" ></p>
-                            <p id="blogId" style="opacity: 0" th:text="${blog.blogId}" ></p>
-                            <p id="tagId" style="opacity: 0" th:text="${blog.tagId}" ></p>
                         </ul>
                     </nav>
 
+                    <p id="userId" style="opacity: 0"  th:text="${blog.userId}" ></p>
+                    <p id="blogId" style="opacity: 0" th:text="${blog.blogId}" ></p>
+                    <p id="tagId" style="opacity: 0" th:text="${blog.tagId}" ></p>
+                    <p id="likenumusr" style="opacity:0" th:text="${blog.likesNum}"></p>
 
 
 
@@ -719,23 +719,8 @@
 
                     <!--猫爪点赞的script-->
                     <script type="text/javascript">
-                        var senddata={"blogId":document.getElementById("userId").innerHTML,"userId":document.getElementById("blogId").innerHTML};
-                        // $.ajax({
-                        //     url: "http://" + window.location.host + "/blogs/querylike",
-                        //     type: 'get',
-                        //     contentType: 'application/json',
-                        //     dataType: 'json',
-                        //     data: senddata,
-                        //     success:function(o){
-                        //         if(o.IsLiked==true){
-                        //             document.getElementById("typehint").innerHTML="<a href=\"javascript:click()\" id=\"likenum\"  th:text=\"'已点赞  '+${blog.likesNum}\"> </a>";
-                        //         }
-                        //         else{
-                        //             document.getElementById("typehint").innerHTML="<a href=\"javascript:click()\" id=\"likenum\"  th:text=\"'点赞  '+${blog.likesNum}\"> </a>";
-                        //
-                        //         }
-                        //     }
-                        // })
+                        // var senddata={"blogId":document.getElementById("userId").innerHTML,"userId":document.getElementById("blogId").innerHTML};
+
 
                         let confettiAmount = 60,
                             confettiColors = [
@@ -760,7 +745,10 @@
                                 to.appendChild(elem);
                             };
 
-                        var jsonStr={"blogId":1,"userId":1,"tagId":13,"likenumber":0};
+
+                        var jsonStr={"blogId":parseInt(document.getElementById("blogId").innerHTML),"userId":document.getElementById("userId").innerHTML,"tagId":1,"likenumber":0};
+
+
 
                         function click() {
                             $.ajax({
@@ -770,14 +758,16 @@
                                 dataType: 'json',
                                 data: jsonStr,
                                 success: function (o) {
-                                    var o1 = document.getElementById("likenum");
+                                    var o1 = document.getElementById("likenumusr");
                                     var length = o1.innerHTML.length;
                                     var c1 = o1.innerHTML;
+
                                     // alert(c1.substring(6,length));
 
                                     <!--定位-->
                                     if (o.IsLiked == false) {
-                                        var c1_temp = parseInt(c1.substring(6, length)) + 1;
+                                        var c1_temp = parseInt(c1) + 1;
+
                                         jsonStr.likenumber = c1_temp;
                                         jsonStr.userId = parseInt(document.getElementById("userId").innerHTML);
                                         jsonStr.blogId = parseInt(document.getElementById("blogId").innerHTML);
@@ -795,8 +785,9 @@
                                         })
 
                                     } else {
-                                        var c1_temp = parseInt(c1.substring(6, length)) - 1;
+                                        var c1_temp = parseInt(c1) - 1;
                                         jsonStr.likenumber = c1_temp;
+
                                         $.ajax({
                                             url: "http://" + window.location.host + "/blogs/cancelLike",
                                             type: 'get',
@@ -804,7 +795,7 @@
                                             dataType: 'json',
                                             data: jsonStr,
                                             success: function () {
-                                                alert("取消赞成功");
+                                                alert("已经点赞过了，取消赞成功");
                                                 location.reload();
                                             }
                                         })
