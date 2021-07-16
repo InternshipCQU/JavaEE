@@ -3,7 +3,9 @@ package com.example.demo.service;
 import com.example.demo.entity.BlogInfo;
 import com.example.demo.entity.BlogLike;
 import com.example.demo.entity.UserLike;
+import org.springframework.ui.Model;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 public interface BlogService {
@@ -22,5 +24,10 @@ public interface BlogService {
     void updateMarkWhenComment(int tagId, int userId);
     void updateMarkWhenForward(int tagId, int userId);
     void updateMarkWhenCollect(int tagId, int userId);
+
+
+    String getAuthorName(int userId, Model model);
+
+    String giveTheCommentsToBlog(int userId, HttpServletRequest request);
 
 }

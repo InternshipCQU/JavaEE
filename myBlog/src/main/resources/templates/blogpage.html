@@ -3,6 +3,20 @@
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 
 <head>
+    <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script type='text/javascript'>
+
+        window.onload = function () {
+            getblogPageComments()
+            getblogPageComments()
+
+        }
+
+    </script>
+</head>
+
+
+<head>
 
     <!-- Basic Page Needs
     ================================================== -->
@@ -913,8 +927,8 @@
                                     <img src="http://localhost:8080/assets/images/avatars/avatar-6.jpg" alt="">
                                 </div>
                                 <div class="post-title">
-                                    <h4> Mariah Ali </h4>
-                                    <p> 5 <span> hrs</span> <i class="uil-users-alt"></i> </p>
+                                    <h4 th:text = "${AuthorName}"> Mariah Ali </h4>
+                                    <p th:text = "${blog.createTime}"> 5 <span> hrs</span> <i class="uil-users-alt"></i> </p>
                                 </div>
                                 <div class="post-btn-action">
                                     <span class="icon-more uil-ellipsis-h" aria-expanded="false"></span>
@@ -935,14 +949,14 @@
 
 
                             <div class="post-state">
-                                <div class="post-state-btns"> <i class="uil-thumbs-up"></i> 126<span> Liked </span>
+                                <div class="post-state-btns"> <i class="uil-thumbs-up"></i> <text th:text="${blog.likesNum}">126</text><span> Liked </span>
                                 </div>
-                                <div class="post-state-btns"> <i class="uil-heart"></i> 18 <span> Coments</span>
+                                <div class="post-state-btns"> <i class="uil-heart"></i> <text th:text="${blog.commentNum}">126</text> <span> Coments</span>
                                 </div>
-                                <div class="post-state-btns"> <i class="uil-share-alt"></i> 193 <span> Shared
+                                <div class="post-state-btns"> <i class="uil-share-alt"></i> <text th:text="${blog.forwardNum}">126</text> <span> Shared
                     </span>
                                 </div>
-                                <div class="post-state-btns"> <i class="uil-bookmark"></i> 13 <span> Saved </span>
+                                <div class="post-state-btns"> <i class="uil-bookmark"></i> <text th:text="${blog.collectNum}">126</text> <span> Saved </span>
                                 </div>
                             </div>
 
@@ -984,7 +998,7 @@
 
                             <!-- post comments -->
                             <div class="post-comments">
-                                <a href="#" class="view-more-comment"> Veiw 8 more Comments</a>
+                                <a id = "commentsNull"></a>
                                 <div class="post-comments-single">
                                     <div class="post-comment-avatar">
                                         <img src="http://localhost:8080/assets/images/avatars/avatar-5.jpg" alt="">
@@ -1044,8 +1058,6 @@
                                     <a href="#" class="post-comment-opt"></a>
                                 </div>
 
-
-                                <a href="#" class="view-more-comment"> Veiw 8 more Comments</a>
 
                                 <div class="post-add-comment">
                                     <div class="post-add-comment-avature">
@@ -1222,6 +1234,8 @@
     ================================================== -->
     <script src="http://localhost:8080/assets/js/uikit.js"></script>
     <script src="http://localhost:8080/assets/js/simplebar.js"></script>
+        <script src="http://localhost:8080/assets/js/blogpageOnScroll.js"></script>
+        <script src="http://localhost:8080/assets/js/myJs.js"></script>
     
 
 </body>

@@ -1,16 +1,19 @@
 package com.example.demo.service.impl;
 
-import com.example.demo.entity.BlogInfo;
-import com.example.demo.entity.BlogLike;
-import com.example.demo.entity.UserLike;
+import com.example.demo.entity.*;
+import com.example.demo.entity.view.CommentView;
+import com.example.demo.mapper.BlogDetailsMapper;
 import com.example.demo.mapper.BlogMapper;
+import com.example.demo.mapper.profileMapper;
 import com.example.demo.service.BlogService;
 import com.example.demo.utils.GetTime;
 import com.example.demo.utils.TagMap;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
+import org.springframework.ui.Model;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 @Component
@@ -19,6 +22,12 @@ public class BlogServiceImpl implements BlogService {
 
     @Resource
     private BlogMapper blogMapper;
+
+    @Resource
+    profileMapper profileMapper;
+
+    @Resource
+    BlogDetailsMapper blogDetailsMapper;
 
     @Override
     public BlogInfo getBlog(int blogId) {
@@ -92,4 +101,49 @@ public class BlogServiceImpl implements BlogService {
         TagMap map = new TagMap();
         blogMapper.updateMarkWhenCollect(map.getTagName(tagId), userId);
     }
+
+    @Override
+    public String getAuthorName(int userId, Model model) {
+        User user = profileMapper.getUser(userId);
+        model.addAttribute("AuthorName",user.getUsername());
+        return null;
+    }
+
+    @Override
+    public String giveTheCommentsToBlog(int blogId, HttpServletRequest request) {
+
+        List<BlogCommentVo> commentList = blogDetailsMapper.showBlogComment(blogId);
+
+        if(commentList == null){
+            return "{\"noMore\" : \"True\"}";
+        }
+
+        //====生成comment json
+        String comments = "";
+        String comment = "";
+        int commentCount = 0;
+
+        if(commentList != null){
+            for (BlogCommentVo cv : commentList) {
+
+                if (commentCount == 3) {
+                    break;
+                }
+                comment = "\"username\":" + "\"" + cv.getUsername() + "\"" + "," + "\"commentContent\":" + "\"" + cv.getCommentContext() + "\""+ "," + "\"commentTime\":" + "\"" + cv.getCreateTime() + "\""+ "," + "\"userAvatar\":" + "\"" + cv.getAvatar() + "\"";
+                comment = "{" + comment + "}";
+                if (commentCount == 0) {
+                    comments = comments + comment;
+                } else {
+                    comments = comments + "," + comment;
+                }
+                commentCount++;
+            }
+        }
+        comments = "[" + comments + "]";
+
+
+        return  "{\"comments\":" + comments + "}";
+    }
+
+
 }

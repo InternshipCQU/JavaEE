@@ -7,10 +7,13 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 
 //这个是利用restful去数据库寻找数据 将其传给前端 博客展示界面
 @Controller
 public class BlogController {
+
+
     @RequestMapping("personalspace")
     public String personalspace(){
         return "personalspace";
@@ -27,6 +30,8 @@ public class BlogController {
     public String blog(@PathVariable("blogId") int blogId,@PathVariable("userID") String userID, Model model){
         BlogInfo blog = blogService.getBlog(blogId);
         model.addAttribute("blog",blog);
+        //System.out.println(blog.getUserId());
+        blogService.getAuthorName(blog.getUserId(),model);
 
         return "blogpage";
     }
@@ -81,4 +86,14 @@ public class BlogController {
         model.addAttribute("searchLikeBlogList", blogService.searchLikeBlog(userId));
         return "test-searchLikeBlog";
     }
+
+
+    @RequestMapping("/getComments")
+    @ResponseBody
+    public String getComments(@RequestParam("blogId") int blogId, HttpServletRequest request){
+        String s = blogService.giveTheCommentsToBlog(blogId,request);
+        System.out.println("s:"  + s);
+        return s;
+    }
+
 }
