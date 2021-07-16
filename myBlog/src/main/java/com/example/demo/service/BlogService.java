@@ -11,6 +11,9 @@ import java.util.List;
 public interface BlogService {
     BlogInfo getBlog(int blogId);
     String like(int blogId);              //点赞
+    boolean isliked(int blogId,int userId);
+    void writelikerecord(int blogId,int userId);
+    void deletelikerecord(int blogId,int userId);
     void cancelLike(int blogId);          //取消点赞
     String comment(int blogId, int userId, String comment); //评论
     String forward(int blogId, int userId);                 //转发

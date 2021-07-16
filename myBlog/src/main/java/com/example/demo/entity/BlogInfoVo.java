@@ -6,8 +6,8 @@ public class BlogInfoVo {
     public String blogTitle;    // 博客标题
     public String blogContent;  // 博客内容
     public String createTime;   // 博客创建时间
-    public Integer clickNum;     // 点击量，默认为0
-    public Integer likesNum;     // 点赞数，默认为0
+    public Integer clickNum;      // 点击量，默认为0
+    public Integer likesNum;    // 点赞数，默认为0
     public Integer commentNum;   // 评论数，默认为0
     public Integer forwardNum;   // 转发数，默认为0
     public Integer collectNum;    // 收藏数，默认为0

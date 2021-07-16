@@ -695,32 +695,17 @@
 <!--                            <li><a href="#" > 点赞</a></li>-->
                             <li><a href="#" id="repost" > 转发</a></li>
                             <li><a href="#" id="postDate" th:text =  "${blog.createTime}"> </a></li>
-
-
+<!--                            <li>Like <span id="likenum" th:text =  "${blog.likesNum}"></span></li>-->
+                            <li class="uk-active"><a href="javascript:click()" id="likenum" th:text="'Likes: '+${blog.likesNum}"> </a>
+                            </li>
                         </ul>
                     </nav>
 
-                    <!-- 猫爪点赞按钮 -->
-                    <a href="" class="paw-button">
-                        <div class="text">
-                            <svg>
-                                <use xlink:href="#heart">
-                            </svg>
-                            <span>Like</span>
-                        </div>
-                        <span th:text =  "${blog.likesNum}"></span>
-                        <div class="paws">
-                            <svg class="paw">
-                                <use xlink:href="#paw">
-                            </svg>
-                            <div class="paw-effect">
-                                <div></div>
-                            </div>
-                            <svg class="paw-clap">
-                                <use xlink:href="#paw-clap">
-                            </svg>
-                        </div>
-                    </a>
+                    <p id="userId" style="opacity: 0"  th:text="${blog.userId}" ></p>
+                    <p id="blogId" style="opacity: 0" th:text="${blog.blogId}" ></p>
+                    <p id="tagId" style="opacity: 0" th:text="${blog.tagId}" ></p>
+                    <p id="likenumusr" style="opacity:0" th:text="${blog.likesNum}"></p>
+
 
 
                     <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
@@ -745,7 +730,12 @@
                         </symbol>
                     </svg>
 
+
+                    <!--猫爪点赞的script-->
                     <script type="text/javascript">
+                        // var senddata={"blogId":document.getElementById("userId").innerHTML,"userId":document.getElementById("blogId").innerHTML};
+
+
                         let confettiAmount = 60,
                             confettiColors = [
                                 '#7d32f5',
@@ -769,9 +759,79 @@
                                 to.appendChild(elem);
                             };
 
+
+                        var jsonStr={"blogId":parseInt(document.getElementById("blogId").innerHTML),"userId":document.getElementById("userId").innerHTML,"tagId":1,"likenumber":0};
+
+
+
+                        function click() {
+                            $.ajax({
+                                url: "http://" + window.location.host + "/blogs/querylike",
+                                type: 'get',
+                                contentType: 'application/json',
+                                dataType: 'json',
+                                data: jsonStr,
+                                success: function (o) {
+                                    var o1 = document.getElementById("likenumusr");
+                                    var length = o1.innerHTML.length;
+                                    var c1 = o1.innerHTML;
+
+                                    // alert(c1.substring(6,length));
+
+                                    <!--定位-->
+                                    if (o.IsLiked == false) {
+                                        var c1_temp = parseInt(c1) + 1;
+
+                                        jsonStr.likenumber = c1_temp;
+                                        jsonStr.userId = parseInt(document.getElementById("userId").innerHTML);
+                                        jsonStr.blogId = parseInt(document.getElementById("blogId").innerHTML);
+                                        jsonStr.tagId = parseInt(document.getElementById("tagId").innerHTML);
+                                        $.ajax({
+                                            url: "http://" + window.location.host + "/blogs/like",
+                                            type: 'get',
+                                            contentType: 'application/json',
+                                            dataType: 'json',
+                                            data: jsonStr,
+                                            success: function () {
+                                                alert("点赞成功");
+                                               location.reload();
+                                                     }
+                                        })
+
+                                    } else {
+                                        var c1_temp = parseInt(c1) - 1;
+                                        jsonStr.likenumber = c1_temp;
+
+                                        $.ajax({
+                                            url: "http://" + window.location.host + "/blogs/cancelLike",
+                                            type: 'get',
+                                            contentType: 'application/json',
+                                            dataType: 'json',
+                                            data: jsonStr,
+                                            success: function () {
+                                                alert("已经点赞过了，取消赞成功");
+                                                location.reload();
+                                            }
+                                        })
+                                    }
+
+                                },
+                                error: function (xhr) {
+                                    alert("出错啦," + xhr.status);
+                                }
+
+                            });
+
+                        }
+
+
+
                         document.querySelectorAll('.paw-button').forEach(elem => {
                             elem.addEventListener('click', e => {
+
+                                <!--number是点赞数量-->
                                 let number = elem.children[1].textContent;
+                                alert(number);
                                 if(!elem.classList.contains('animation')) {
                                     elem.classList.add('animation');
                                     for(let i = 0; i < confettiAmount; i++) {
@@ -781,7 +841,7 @@
                                         elem.classList.add('confetti');
                                         setTimeout(() => {
                                             elem.classList.add('liked');
-                                            elem.children[1].textContent = parseInt(number) + 1;
+                                            elem.children[1].textContent = parseInt(number) + 1; <!--点赞数加1-->
                                         }, 400);
                                         setTimeout(() => {
                                             elem.querySelectorAll('i').forEach(i => i.remove());
@@ -789,7 +849,7 @@
                                     }, 260);
                                 } else {
                                     elem.classList.remove('animation', 'liked', 'confetti');
-                                    elem.children[1].textContent = parseInt(number) - 1;
+                                    elem.children[1].textContent = parseInt(number) - 1;  <!--点赞数减1-->
                                 }
                                 e.preventDefault();
                             });
@@ -922,6 +982,7 @@
 
 
                         <div class="post" style="width: 100%;">
+
                             <div class="post-heading">
                                 <div class="post-avature">
                                     <img src="http://localhost:8080/assets/images/avatars/avatar-6.jpg" alt="">
@@ -959,6 +1020,9 @@
                                 <div class="post-state-btns"> <i class="uil-bookmark"></i> <text th:text="${blog.collectNum}">126</text> <span> Saved </span>
                                 </div>
                             </div>
+
+
+
 
 
                         </div>
