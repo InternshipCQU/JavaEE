@@ -33,4 +33,6 @@ public interface BlogService {
 
     String giveTheCommentsToBlog(int userId, HttpServletRequest request);
 
+
+    void Init(int blogId, HttpServletRequest request);
 }

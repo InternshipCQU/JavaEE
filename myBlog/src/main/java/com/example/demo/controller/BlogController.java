@@ -2,6 +2,7 @@ package com.example.demo.controller;
 
 import com.example.demo.entity.BlogInfo;
 import com.example.demo.service.BlogService;
+import com.example.demo.service.HomeService;
 import net.sf.json.JSON;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -32,16 +33,19 @@ public class BlogController {
     }
     @Resource
     private BlogService blogService;
+    @Resource
+    HomeService homeService;
 
     @RequestMapping("/blogs/{userID}/{blogId}")
-    public String blog(@PathVariable("blogId") int blogId,@PathVariable("userID") String userID, Model model){
+    public String blog(@PathVariable("blogId") int blogId,@PathVariable("userID") String userID, Model model,HttpServletRequest request){
         BlogInfo blog = blogService.getBlog(blogId);
         blog.blogId=blogId;
         model.addAttribute("blog",blog);
+        blogService.Init(blogId,request);
 
         //System.out.println(blog.getUserId());
         blogService.getAuthorName(blog.getUserId(),model);
-
+        homeService.setBlogger(request,model);
 
         return "blogpage";
     }

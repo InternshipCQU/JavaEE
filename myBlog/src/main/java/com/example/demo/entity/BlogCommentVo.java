@@ -2,8 +2,8 @@ package com.example.demo.entity;
 
 // 博客评论表
 public class BlogCommentVo {
-    public Integer commentID;        // 博客评论ID
-    public String commentContext;   // 博客评论内容
+    public Integer commentId;        // 博客评论ID
+    public String commentContent;   // 博客评论内容
     public String createTime;       // 评论创建时间
     public Integer blogId;           // 被评论的博客ID
     public Integer userId;           // 发布评论的用户ID
@@ -11,20 +11,20 @@ public class BlogCommentVo {
     private String username;
     private String avatar;
 
-    public Integer getCommentID() {
-        return commentID;
+    public Integer getcommentId() {
+        return commentId;
     }
 
-    public void setCommentID(Integer commentID) {
-        this.commentID = commentID;
+    public void setcommentId(Integer commentId) {
+        this.commentId = commentId;
     }
 
-    public String getCommentContext() {
-        return commentContext;
+    public String getCommentContent() {
+        return commentContent;
     }
 
-    public void setCommentContext(String commentContext) {
-        this.commentContext = commentContext;
+    public void setCommentContent(String commentContext) {
+        this.commentContent = commentContext;
     }
 
     public String getCreateTime() {

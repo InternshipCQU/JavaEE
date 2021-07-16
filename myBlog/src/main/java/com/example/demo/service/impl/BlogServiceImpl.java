@@ -7,13 +7,16 @@ import com.example.demo.mapper.BlogMapper;
 import com.example.demo.mapper.profileMapper;
 import com.example.demo.service.BlogService;
 import com.example.demo.utils.GetTime;
+import com.example.demo.utils.SplitString;
 import com.example.demo.utils.TagMap;
+import org.springframework.data.relational.core.sql.In;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 @Component
@@ -128,40 +131,40 @@ public class BlogServiceImpl implements BlogService {
         return null;
     }
 
+
+
     @Override
     public String giveTheCommentsToBlog(int blogId, HttpServletRequest request) {
+        System.out.println("blogId: ===  " + blogId);
+        HttpSession session = request.getSession();
+        int count = (Integer) session.getAttribute("count");
+        int size = (Integer) session.getAttribute("size");
+        List<BlogCommentVo> commentList = (List<BlogCommentVo> )session.getAttribute("commentList");
 
-        List<BlogCommentVo> commentList = blogDetailsMapper.showBlogComment(blogId);
-
-        if(commentList == null){
+        if(commentList == null|| (count == size)){
             return "{\"noMore\" : \"True\"}";
         }
 
-        //====生成comment json
-        String comments = "";
-        String comment = "";
-        int commentCount = 0;
+        BlogCommentVo cv = commentList.get(count);
+//        String commentContent = SplitString.getComment(cv.getCommentContent(),'[');
+//        commentContent = SplitString.getComment(commentContent,']');
+//
+//        System.out.println(commentContent);
 
-        if(commentList != null){
-            for (BlogCommentVo cv : commentList) {
-
-                if (commentCount == 3) {
-                    break;
-                }
-                comment = "\"username\":" + "\"" + cv.getUsername() + "\"" + "," + "\"commentContent\":" + "\"" + cv.getCommentContext() + "\""+ "," + "\"commentTime\":" + "\"" + cv.getCreateTime() + "\""+ "," + "\"userAvatar\":" + "\"" + cv.getAvatar() + "\"";
-                comment = "{" + comment + "}";
-                if (commentCount == 0) {
-                    comments = comments + comment;
-                } else {
-                    comments = comments + "," + comment;
-                }
-                commentCount++;
-            }
-        }
-        comments = "[" + comments + "]";
+        String comment = "\"username\":" + "\"" + cv.getUsername() + "\"" + "," + "\"commentContent\":" + "\"" + cv.getCommentContent() + "\""+ "," + "\"commentTime\":" + "\"" + cv.getCreateTime() + "\""+ "," + "\"userAvatar\":" + "\"" + cv.getAvatar() + "\"";
 
 
-        return  "{\"comments\":" + comments + "}";
+        session.setAttribute("count",count + 1);
+        return  "{" + comment +"}";
+    }
+
+    @Override
+    public void Init(int blogId, HttpServletRequest request) {
+        List<BlogCommentVo> commentList = blogDetailsMapper.showBlogComment(blogId);
+        HttpSession session = request.getSession();
+        session.setAttribute("commentList",commentList);
+        session.setAttribute("size",commentList.size());
+        session.setAttribute("count",0);
     }
 
 

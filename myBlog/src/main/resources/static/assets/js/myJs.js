@@ -715,51 +715,45 @@ function getblogPageComments()
         },
         success: function(data) {
             //console.log(data)
-            var blog = JSON.parse(data);
+            var comment = JSON.parse(data);
             //alert(blog)
             $("#comments").attr("id", "commentsNull")
 
-            if(blog.noMore !== "True") {
+            if(comment.noMore !== "True") {
 
-                var comments = blog.comments
-                if (comments !== "{}") {
-                    $.each(comments, function (index, comment) {
-                        console.log(comment)
-                        //var comment = JSON.parse(comment);
-                        $("#commentsNull").after("<div class=\"post-comments-single\">\n" +
-                            "                                    <div class=\"post-comment-avatar\">\n" +
-                            "                                        <img id = \"commentAvater\" src=\"http://localhost:8080/assets/images/avatars/avatar-5.jpg\" alt=\"\">\n" +
-                            "                                    </div>\n" +
-                            "                                    <div class=\"post-comment-text\">\n" +
-                            "                                        <div class=\"post-comment-text-inner\">\n" +
-                            "                                            <h6 id = \"commentUser\"> Alex Dolgove</h6>\n" +
-                            "                                            <p id = \"commentText\"> Ut wisi enim ad minim laoreet dolore magna aliquam erat </p>\n" +
-                            "                                        </div>\n" +
-                            "                                        <div class=\"uk-text-small\">\n" +
-                            "                                            <a href=\"#\" class=\"text-danger mr-1\"> <i class=\"uil-heart\"></i> Love\n" +
-                            "                                            </a>\n" +
-                            "                                            <a href=\"#\" class=\" mr-1\"> Replay </a>\n" +
-                            "                                            <span id = \"commentTime\"> 1d</span>\n" +
-                            "                                        </div>\n" +
-                            "                                    </div>\n" +
-                            "                                    <a href=\"#\" class=\"post-comment-opt\"></a>\n" +
-                            "                                </div>"
-                        )
+                if (comment !== "{}") {
+                    $("#commentsNull").after("<div class=\"post-comments-single\" id='comments'>\n" +
+                        "                                    <div class=\"post-comment-avatar\">\n" +
+                        "                                        <img id = \"commentAvater\" src=\"http://localhost:8080/assets/images/avatars/avatar-5.jpg\" alt=\"\">\n" +
+                        "                                    </div>\n" +
+                        "                                    <div class=\"post-comment-text\">\n" +
+                        "                                        <div class=\"post-comment-text-inner\">\n" +
+                        "                                            <h6 id = \"commentUser\"> Alex Dolgove</h6>\n" +
+                        "                                            <p id = \"commentText\"> Ut wisi enim ad minim laoreet dolore magna aliquam erat </p>\n" +
+                        "                                        </div>\n" +
+                        "                                        <div class=\"uk-text-small\">\n" +
+                        "                                            <a href=\"#\" class=\"text-danger mr-1\"> <i class=\"uil-heart\"></i> Love\n" +
+                        "                                            </a>\n" +
+                        "                                            <a href=\"#\" class=\" mr-1\"> Replay </a>\n" +
+                        "                                            <span id = \"commentTime\"> 1d</span>\n" +
+                        "                                        </div>\n" +
+                        "                                    </div>\n" +
+                        "                                    <a href=\"#\" class=\"post-comment-opt\"></a>\n" +
+                        "                                </div>"
+                    )
 
-
-                        $("#commentUser").html(comment.username);
-                        $("#commentUser").attr("id", "pass");//设置评论者名字
-                        $("#commentText").html(comment.commentContent);
-                        $("#commentText").attr("id", "pass");//设置评论内容
-                        $("#commentTime").html(comment.commentTime);
-                        $("#commentTime").attr("id", "pass");//设置时间
-                        //
-                        $("#commentAvater").attr("src", comment.userAvatar);
-                        $("#commentAvater").attr("id", "pass");//设置用户头像
-                    });
+                    $("#commentsNull").attr("id", "commentsNull2")
+                    $("#commentUser").html(comment.username);
+                    $("#commentUser").attr("id", "pass");//设置评论者名字
+                    $("#commentText").html(comment.commentContent);
+                    $("#commentText").attr("id", "pass");//设置评论内容
+                    $("#commentTime").html(comment.commentTime);
+                    $("#commentTime").attr("id", "pass");//设置时间
+                    //
+                    $("#commentAvater").attr("src", comment.userAvatar);
+                    $("#commentAvater").attr("id", "pass");//设置用户头像
 
                 }
-                $("#commentsNull").attr("id", "pass")
             }
         },
         complete: function () {
