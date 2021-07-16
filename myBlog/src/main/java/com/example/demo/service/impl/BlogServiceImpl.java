@@ -78,6 +78,43 @@ public class BlogServiceImpl implements BlogService {
     }
 
     @Override
+    public void cancelCollect(int blogId, int userId)
+    {
+        blogMapper.cancelCollect(blogId, userId);
+    }
+
+    @Override
+    public boolean isCollect(int blogId, int userId)
+    {
+        Integer iscollect = blogMapper.isCollect(blogId, userId);
+        if (iscollect == null)
+        {
+            return false;
+        }
+        else return true;
+    }
+
+    @Override
+    public void addCollectNum(int blogId)
+    {
+        blogMapper.addCollectNum(blogId);
+    }
+
+    @Override
+    public void deductCollectNum(int blogId)
+    {
+        blogMapper.deductCollectNum(blogId);
+    }
+
+    @Override
+    public void updateMarkWhenCancelCollect(int tagId, int userId)
+    {
+        TagMap map = new TagMap();
+        blogMapper.updateMarkWhenCancelCollect(map.getTagName(tagId), userId);
+    }
+
+
+    @Override
     public List<BlogLike> searchLikeBlog(int userId) {
         return blogMapper.searchLikeBlog(userId);
     }

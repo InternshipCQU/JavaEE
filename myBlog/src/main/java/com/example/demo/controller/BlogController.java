@@ -85,11 +85,32 @@ public class BlogController {
         blogService.updateMarkWhenForward(tagId, userId);
     }
 
+    @RequestMapping("/blogs/isCollect")
+    public void isCollect(@RequestParam("blogId") int blogId, @RequestParam("userId") int userId,
+                          @RequestParam("tagId") int tagId, Model model)
+    {
+        boolean isCollect = blogService.isCollect(blogId, userId);
+        model.addAttribute("isCollect",isCollect);
+//        System.out.println(model.getAttribute("isCollect"));
+    }
+
+
     @RequestMapping("/blogs/collect")
     public void collect(@RequestParam("blogId") int blogId, @RequestParam("userId") int userId,
-                        @RequestParam("tagId") int tagId){
+                        @RequestParam("tagId") int tagId, Model model){
+
         blogService.collect(blogId, userId);
+        blogService.addCollectNum(blogId);
         blogService.updateMarkWhenCollect(tagId, userId);
+
+
+    }
+
+    @RequestMapping("/blogs/cancelCollect")
+    public void cancelCollect (@RequestParam("blogId") int blogId, @RequestParam("userId") int userId,
+                               @RequestParam("tagId") int tagId, Model model)
+    {
+
     }
 
     @RequestMapping("/blogs/follow")
@@ -105,4 +126,7 @@ public class BlogController {
         model.addAttribute("searchLikeBlogList", blogService.searchLikeBlog(userId));
         return "test-searchLikeBlog";
     }
+
+
+
 }

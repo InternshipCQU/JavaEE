@@ -18,6 +18,7 @@
     <link rel="stylesheet" href="http://localhost:8080/assets/css/uikit.css">
     <link rel="stylesheet" href="http://localhost:8080/assets/css/uikit.css">
     <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="http://localhost:8080/assets/css/collect.css">
 
     <!-- icons
     ================================================== -->
@@ -661,6 +662,7 @@
                 <br>
                 <div class="uk-flex uk-flex-between">
 
+
 <!--                    推特点赞按钮-->
 <!--                    <div class="stage">-->
 <!--                                <div class="heart"></div>-->
@@ -684,6 +686,7 @@
 <!--                            <li>Like <span id="likenum" th:text =  "${blog.likesNum}"></span></li>-->
                             <li><a href="javascript:click()" id="likenum"  th:text="'点赞  '+${blog.likesNum}"> </a>
                             </li>
+                            <li> <a href="javascript:collect()" id="collect">收藏</a></li>
 
                             <p id="userId" style="opacity: 0"  th:text="${blog.userId}" ></p>
                             <p id="blogId" style="opacity: 0" th:text="${blog.blogId}" ></p>
@@ -716,6 +719,20 @@
                         </symbol>
                     </svg>
 
+                    <script>
+                        var jsonStr={"blogId":1,"userId":1,"tagId":13,"likenumber":0};
+                        function collect()
+                        {
+                            $.ajax({
+                                url:'/blogs/isCollect',	//这是后端接口的url
+                                method:'get',
+                                success:function (res) {
+                                    console.log(res)
+                                },
+                            })
+                        }
+
+                    </script>
 
                     <!--猫爪点赞的script-->
                     <script type="text/javascript">
