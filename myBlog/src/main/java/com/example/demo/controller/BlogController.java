@@ -2,6 +2,7 @@ package com.example.demo.controller;
 
 import com.example.demo.entity.BlogInfo;
 import com.example.demo.service.BlogService;
+import com.example.demo.service.HomeService;
 import net.sf.json.JSON;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -10,12 +11,18 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
+
 
 //这个是利用restful去数据库寻找数据 将其传给前端 博客展示界面
 @Controller
 public class BlogController {
+
+
     @RequestMapping("personalspace")
     public String personalspace(){
         return "personalspace";
@@ -27,16 +34,20 @@ public class BlogController {
     }
     @Resource
     private BlogService blogService;
+    @Resource
+    HomeService homeService;
 
     @RequestMapping("/blogs/{userID}/{blogId}")
-    public String blog(@PathVariable("blogId") int blogId,@PathVariable("userID") String userID, Model model){
+    public String blog(@PathVariable("blogId") int blogId,@PathVariable("userID") String userID, Model model,HttpServletRequest request){
         BlogInfo blog = blogService.getBlog(blogId);
         blog.blogId=blogId;
         model.addAttribute("blog",blog);
-        System.out.println("blogId:"+blog.blogId);
-        System.out.println("userId:"+blog.userId);
-        System.out.println("tagId:"+blog.tagId);
-        System.out.println("likenumber:"+blog.likesNum);
+        blogService.Init(blogId,request);
+
+        //System.out.println(blog.getUserId());
+        blogService.getAuthorName(blog.getUserId(),model);
+        homeService.setBlogger(request,model);
+
         return "blogpage";
     }
     @RequestMapping("/blogs/querylike")
@@ -69,11 +80,22 @@ public class BlogController {
     }
 
     @RequestMapping("/blogs/comment")
-    public void comment(@RequestParam("blogId") int blogId, @RequestParam("userId") int userId,
-                        @RequestParam("tagId") int tagId,@RequestParam("comment") String comment){
+    @ResponseBody
+    public String comment(@RequestParam("blogId") int blogId,
+                        @RequestParam("tagId") int tagId,@RequestParam("comment") String comment,HttpServletRequest request){
+
+
+        System.out.println("comment here");
+        HttpSession session = request.getSession();
+        if(session.getAttribute("userID") == null){
+            return "{\"login\":\"false\"}";
+        }
+        int userId = (Integer)session.getAttribute("userID");
+
 
         blogService.comment(blogId, userId, comment);
         blogService.updateMarkWhenComment(tagId, userId);
+        return "{\"login\":\"true\"}";
     }
 
 
@@ -105,4 +127,14 @@ public class BlogController {
         model.addAttribute("searchLikeBlogList", blogService.searchLikeBlog(userId));
         return "test-searchLikeBlog";
     }
+
+
+    @RequestMapping("/getComments")
+    @ResponseBody
+    public String getComments(@RequestParam("blogId") int blogId, HttpServletRequest request){
+        String s = blogService.giveTheCommentsToBlog(blogId,request);
+        //System.out.println("s:"  + s);
+        return s;
+    }
+
 }
