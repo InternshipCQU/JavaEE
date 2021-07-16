@@ -1,5 +1,6 @@
 package com.example.demo.service.impl;
 
+import com.example.demo.constants.MapofTagNameAndTagID;
 import com.example.demo.entity.*;
 import com.example.demo.entity.view.CommentView;
 import com.example.demo.mapper.BlogDetailsMapper;
@@ -96,31 +97,31 @@ public class BlogServiceImpl implements BlogService {
 
     @Override
     public void updateMarkWhenLike(int tagId, int userId) {
-        TagMap map = new TagMap();
+        MapofTagNameAndTagID map = new MapofTagNameAndTagID();
         blogMapper.updateMarkWhenLike(map.getTagName(tagId), userId);
     }
 
     @Override
     public void updateMarkWhenCancelLike(int tagId, int userId) {
-        TagMap map = new TagMap();
+        MapofTagNameAndTagID map = new MapofTagNameAndTagID();
         blogMapper.updateMarkWhenCancelLike(map.getTagName(tagId), userId);
     }
 
     @Override
     public void updateMarkWhenComment(int tagId, int userId) {
-        TagMap map = new TagMap();
+        MapofTagNameAndTagID map = new MapofTagNameAndTagID();
         blogMapper.updateMarkWhenComment(map.getTagName(tagId), userId);
     }
 
     @Override
     public void updateMarkWhenForward(int tagId, int userId) {
-        TagMap map = new TagMap();
+        MapofTagNameAndTagID map = new MapofTagNameAndTagID();
         blogMapper.updateMarkWhenForward(map.getTagName(tagId), userId);
     }
 
     @Override
     public void updateMarkWhenCollect(int tagId, int userId) {
-        TagMap map = new TagMap();
+        MapofTagNameAndTagID map = new MapofTagNameAndTagID();
         blogMapper.updateMarkWhenCollect(map.getTagName(tagId), userId);
     }
 
