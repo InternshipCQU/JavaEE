@@ -14,6 +14,7 @@ import javax.annotation.Resource;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 
@@ -79,11 +80,22 @@ public class BlogController {
     }
 
     @RequestMapping("/blogs/comment")
-    public void comment(@RequestParam("blogId") int blogId, @RequestParam("userId") int userId,
-                        @RequestParam("tagId") int tagId,@RequestParam("comment") String comment){
+    @ResponseBody
+    public String comment(@RequestParam("blogId") int blogId,
+                        @RequestParam("tagId") int tagId,@RequestParam("comment") String comment,HttpServletRequest request){
+
+
+        System.out.println("comment here");
+        HttpSession session = request.getSession();
+        if(session.getAttribute("userID") == null){
+            return "{\"login\":\"false\"}";
+        }
+        int userId = (Integer)session.getAttribute("userID");
+
 
         blogService.comment(blogId, userId, comment);
         blogService.updateMarkWhenComment(tagId, userId);
+        return "{\"login\":\"true\"}";
     }
 
 
@@ -121,7 +133,7 @@ public class BlogController {
     @ResponseBody
     public String getComments(@RequestParam("blogId") int blogId, HttpServletRequest request){
         String s = blogService.giveTheCommentsToBlog(blogId,request);
-        System.out.println("s:"  + s);
+        //System.out.println("s:"  + s);
         return s;
     }
 

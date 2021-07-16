@@ -22,6 +22,7 @@ public class FilterPersonal implements Filter {
         if (req.getSession().getAttribute("token") != null) {//如果存在token直接进入该用户主页
             chain.doFilter(request, response);//如果不存在token 证明没有登录就直接转向登录页面
         } else {
+
             res.sendRedirect("/login");//如果存在token 就证明已经登录了 所以直接转向主页
         }
     }

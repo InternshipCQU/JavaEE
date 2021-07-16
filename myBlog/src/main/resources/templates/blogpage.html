@@ -604,7 +604,7 @@
 <!--                    </script>-->
                     <nav class="responsive-tab style-1 mb-3">
                         <ul>
-                            <li class="uk-active"><a href="#"> 博文作者 </a></li>
+                            <li class="uk-active" ><a href="#" th:text="${AuthorName}"> 博文作者 </a></li>
                             <li><a href="#" th:text = "${blog.tagName}">  </a></li>
 <!--                            <li><a href="#" > 点赞</a></li>-->
                             <li><a href="#" id="repost" > 转发</a></li>
@@ -899,7 +899,7 @@
 
                             <div class="post-heading">
                                 <div class="post-avature">
-                                    <img src="http://localhost:8080/assets/images/avatars/avatar-6.jpg" alt="">
+                                    <img th:src="${bloggerAvatar}" alt="">
                                 </div>
                                 <div class="post-title">
                                     <h4 th:text = "${AuthorName}"> Mariah Ali </h4>
@@ -979,22 +979,20 @@
                                 <a id = "commentsNull"></a>
 
 
-                                <form action="/index/ALL">
+
                                 <div class="post-add-comment">
                                     <div class="post-add-comment-avature">
-                                        <img src="http://localhost:8080/assets/images/avatars/avatar-2.jpg" alt="">
+                                        <img th:src="${bloggerAvatar}" alt="">
                                     </div>
                                     <div class="post-add-comment-text-area">
-                                        <input type="text" placeholder="Write your comment...">
+                                        <input id = "commentContent" type="text" placeholder="Write your comment...">
                                         <div class="icons">
 
-                                            <button class="uil-image" type="submit"></button>
+                                            <a class="uil-image" onclick="comment()"></a>
                                         </div>
                                     </div>
 
                                 </div>
-                                </form>
-
                             </div>
 
 
