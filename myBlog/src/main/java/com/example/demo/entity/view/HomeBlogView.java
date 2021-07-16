@@ -5,6 +5,7 @@ import java.util.List;
 public class HomeBlogView {
 
     private int blogId;
+    private int userId;
     private String avater;
     private String username;
     private String blogTitle;
@@ -111,5 +112,13 @@ public class HomeBlogView {
 
     public String getAvater() {
         return avater;
+    }
+
+    public void setUserId(int userId) {
+        this.userId = userId;
+    }
+
+    public int getUserId() {
+        return userId;
     }
 }

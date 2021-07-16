@@ -4,7 +4,7 @@ spring:
   #数据库连接配置
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://43.130.45.46:3306/blog?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC
+    url: jdbc:mysql://43.130.45.46:3306/blog?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC&useUnicode=true&characterEncoding=utf8
     username: root
     password: cquintern
 

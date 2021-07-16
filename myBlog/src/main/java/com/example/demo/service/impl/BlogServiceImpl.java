@@ -32,6 +32,25 @@ public class BlogServiceImpl implements BlogService {
     }
 
     @Override
+    public void writelikerecord(int blogId,int userId){
+        blogMapper.writelikerecord(blogId,userId);
+    }
+
+    @Override
+    public void deletelikerecord(int blogId,int userId){
+        blogMapper.deletelikerecord(blogId,userId);
+    }
+
+    @Override
+    public boolean isliked(int blogId,int userId){
+        Integer f=blogMapper.isliked(blogId,userId);
+        if (f==0){
+            return false;
+        }
+        else return true;
+
+    }
+    @Override
     public void cancelLike(int blogId) {
         blogMapper.cancelLike(blogId);
     }
