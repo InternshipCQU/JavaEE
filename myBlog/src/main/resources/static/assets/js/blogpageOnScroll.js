@@ -23,10 +23,10 @@ window.onscroll = function () {
             if(getScrollHeight() == getDocumentTop() + getWindowHeight()){
                 //当滚动条到底时,这里是触发内容
                 //异步请求数据,局部刷新dom
-                loadTheBlog()//调用上面自定义的事件函数。
-                loadTheBlog()
-                loadTheBlog()
-                loadTheBlog()
+                getblogPageComments()//调用上面自定义的事件函数。
+                getblogPageComments()
+                getblogPageComments()
+                getblogPageComments()
             }
         }, 105);
     }, 100);

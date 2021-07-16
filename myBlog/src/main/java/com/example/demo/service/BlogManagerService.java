@@ -4,7 +4,7 @@ import javax.servlet.http.HttpServletRequest;
 
 public interface BlogManagerService {
 
-    void deleteblog(Integer blogId);
+    void deleteblog(Integer blogId,Integer userId);
 
     void Init(HttpServletRequest request);
 

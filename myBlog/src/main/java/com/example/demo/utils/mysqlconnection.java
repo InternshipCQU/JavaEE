@@ -7,7 +7,7 @@ public class mysqlconnection {
         //驱动类。
         String driver = "com.mysql.cj.jdbc.Driver";
         //数据库连接描述符。
-        String sourceURL = "jdbc:mysql://43.130.45.46:3306/blog?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC";
+        String sourceURL = "jdbc:mysql://43.130.45.46:3306/blog?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC&allowMultiQueries=true";
         Connection conn = null;
 
         try

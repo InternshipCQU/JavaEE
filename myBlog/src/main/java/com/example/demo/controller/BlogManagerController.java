@@ -4,10 +4,7 @@ import com.example.demo.mapper.BlogListMapper;
 import com.example.demo.service.BlogManagerService;
 import org.json.JSONException;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -38,9 +35,10 @@ public class BlogManagerController {
         return s;
     }
 
-    @RequestMapping(value="/deletemyblog",method = RequestMethod.POST)
-    public void deletemyblog(@RequestBody Integer userId, HttpServletRequest request, HttpServletResponse response, HttpSession session) throws IOException, JSONException
+    @RequestMapping(value="/deletemyblog",method = RequestMethod.GET)
+    public void deletemyblog(@RequestParam("userId") Integer userId,@RequestParam("blogId") Integer blogId, HttpServletRequest request, HttpServletResponse response, HttpSession session) throws IOException, JSONException
     {
+        blogManagerService.deleteblog(blogId,userId);
 
     }
 }
