@@ -634,7 +634,7 @@ function manageBlog()
             if (blog.noMore === "true") {
 
             } else {
-                //alert(blog.blogTitle)
+
 
                 if (data != null) {
 
@@ -652,13 +652,14 @@ function manageBlog()
                         "                                                <a href=\"userinfo.html\"> <span class=\"user-name\" id = \"title\"> Dennis Han </span>  </a>\n" +
                         "                                            </span>\n" +
                         "                                        </div>\n" +
-                        "                                        <button type=\"button\" class=\"button light small\" style=\"margin: 5px\">\n" +
-                        "                                            <img src=\"http://localhost:8080/assets/images/icons/edit.svg\" width=\"20\" height=\"20\" style=\"margin-right: 10px\"></img><span class=\"button-text\">编辑</span>\n" +
+
+                        "                                        <input type=\"button\" class=\"button light small\" style=\"margin: 5px\" value='编辑博文'>\n" +
+
                         "\n" +
-                        "                                        </button>\n" +
-                        "                                        <button type=\"button\" class=\"button light small\" style=\"margin: 5px\">\n" +
-                        "                                            <img src=\"http://localhost:8080/assets/images/icons/delete.svg\" width=\"20\" height=\"20\" style=\"margin-right: 10px\"></img><span class=\"button-text\">删除</span>\n" +
-                        "                                        </button>\n" +
+                        "                                        </input>\n" +
+                        "                                        <input type=\"button\" class=\"button light small\" onclick='deleteblog("+blog.blogId+","+blog.userId+")' style=\"margin: 5px\" value='删除博文'>\n" +
+
+                        "                                        </input>\n" +
                         "                                    </div>\n" +
                         "                                </div>\n" +
                         "                            </div>\n" +
@@ -689,4 +690,19 @@ function manageBlog()
         },
     });
 }
-//====
+//====i
+
+function deleteblog(blogId,userId){
+    // alert("I am deleting blog."+parseInt(blogId)+" "+parseInt(userId));
+    var infomsg={"blogId":blogId,"userId":userId};
+    $.ajax({
+        url: 'http://localhost:8080/deletemyblog',
+        type: 'get',
+        data: infomsg,
+        async: false,
+        success:function (o){
+            alert("删除博客成功");
+            location.reload();
+        }
+    })
+}
