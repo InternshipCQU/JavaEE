@@ -584,9 +584,17 @@
        </div>
 
             <div class="main_content_inner">
+                <div id="container">
 
-                <h1 class="uk-flex uk-flex-between" th:text = "${blog.blogTitle}">  </h1>
-                <br>
+<!--                    <div class="feed" id="feed2" style="width:30px;">-->
+<!--                        <div class="heart" id="like2" rel="like"></div> <div class="likeCount" id="likeCount2">10</div>-->
+<!--                    </div>-->
+
+                </div>
+                <h2 class="uk-flex uk-flex-between" th:text = "${blog.blogTitle}">  </h2>
+
+
+
                 <div class="uk-flex uk-flex-between">
 
 <!--                    推特点赞按钮-->
@@ -602,18 +610,26 @@
 
 <!--                        });-->
 <!--                    </script>-->
-                    <nav class="responsive-tab style-1 mb-3">
+                    <div class="responsive-tab style-1 mb-3">
                         <ul>
                             <li class="uk-active" ><a href="#" th:text="${AuthorName}"> 博文作者 </a></li>
                             <li><a href="#" th:text = "${blog.tagName}">  </a></li>
 <!--                            <li><a href="#" > 点赞</a></li>-->
                             <li><a href="#" id="repost" > 转发</a></li>
                             <li><a href="#" id="postDate" th:text =  "${blog.createTime}"> </a></li>
-<!--                            <li>Like <span id="likenum" th:text =  "${blog.likesNum}"></span></li>-->
-                            <li class="uk-active"><a href="javascript:click()" id="likenum" th:text="'Likes: '+${blog.likesNum}"> </a>
+                            <li>
+                                    <div class="feed" id="feed2" style="width:60px;">
+                                        <div class="heart" id="like2" rel="like" style="top: 5px;"></div>
+                                        <div class="likeCount" id="likeCount2" style="top: 5px;">10</div>
+                                    </div>
                             </li>
+
+<!--                            <li>Like <span id="likenum" th:text =  "${blog.likesNum}"></span></li>-->
+
                         </ul>
-                    </nav>
+
+
+                    </div>
 
                     <p id="userId" style="opacity: 0"  th:text="${blog.userId}" ></p>
                     <p id="blogId" style="opacity: 0" th:text="${blog.blogId}" ></p>
@@ -645,153 +661,106 @@
                     </svg>
 
 
-                    <!--猫爪点赞的script-->
-                    <script type="text/javascript">
-                        // var senddata={"blogId":document.getElementById("userId").innerHTML,"userId":document.getElementById("blogId").innerHTML};
 
+                    <!--爱心点赞-->
+                    <script>
+                        var jsonStr_1={"blogId":parseInt(document.getElementById("blogId").innerHTML),"userId":document.getElementById("userId").innerHTML,"tagId":1,"likenumber":0};
+                        $.ajax({
+                            url: "http://" + window.location.host + "/blogs/querylike",
+                            type: 'get',
+                            contentType: 'application/json',
+                            dataType: 'json',
+                            data: jsonStr_1,
+                            success: function (o) {
+                                var o1 = document.getElementById("likenumusr");
+                                var c1 = o1.innerHTML;
+                                var o2= document.getElementById("likeCount2");
+                                o2.innerHTML=c1;
 
-                        let confettiAmount = 60,
-                            confettiColors = [
-                                '#7d32f5',
-                                '#f6e434',
-                                '#63fdf1',
-                                '#e672da',
-                                '#295dfe',
-                                '#6e57ff'
-                            ],
-                            random = (min, max) => {
-                                return Math.floor(Math.random() * (max - min + 1) + min);
-                            },
-                            createConfetti = to => {
-                                let elem = document.createElement('i'),
-                                    set = Math.random() < 0.5 ? -1 : 1;
-                                elem.style.setProperty('--x', random(-260, 260) + 'px');
-                                elem.style.setProperty('--y', random(-160, 160) + 'px');
-                                elem.style.setProperty('--r', random(0, 360) + 'deg');
-                                elem.style.setProperty('--s', random(.6, 1));
-                                elem.style.setProperty('--b', confettiColors[random(0, 5)]);
-                                to.appendChild(elem);
-                            };
+                                $(document).ready(function()
+                                {
+                                    // var stat=o.IsLiked;
+                                    var element=document.getElementById("like2")
+                                    if(o.IsLiked===false)
+                                    {
+                                        element.setAttribute("rel","like");
 
+                                    }
+                                    else{
+                                        element.setAttribute("rel","unlike");
+                                        element.setAttribute("class","heart heartAnimation");
 
-                        var jsonStr={"blogId":parseInt(document.getElementById("blogId").innerHTML),"userId":document.getElementById("userId").innerHTML,"tagId":1,"likenumber":0};
-
-
-
-                        function click() {
-                            $.ajax({
-                                url: "http://" + window.location.host + "/blogs/querylike",
-                                type: 'get',
-                                contentType: 'application/json',
-                                dataType: 'json',
-                                data: jsonStr,
-                                success: function (o) {
-                                    var o1 = document.getElementById("likenumusr");
-                                    var length = o1.innerHTML.length;
-                                    var c1 = o1.innerHTML;
-
-                                    // alert(c1.substring(6,length));
-
-                                    <!--定位-->
-                                    if (o.IsLiked == false) {
-                                        var c1_temp = parseInt(c1) + 1;
-
-                                        jsonStr.likenumber = c1_temp;
-                                        jsonStr.userId = parseInt(document.getElementById("userId").innerHTML);
-                                        jsonStr.blogId = parseInt(document.getElementById("blogId").innerHTML);
-                                        jsonStr.tagId = parseInt(document.getElementById("tagId").innerHTML);
-                                        $.ajax({
-                                            url: "http://" + window.location.host + "/blogs/like",
-                                            type: 'get',
-                                            contentType: 'application/json',
-                                            dataType: 'json',
-                                            data: jsonStr,
-                                            success: function () {
-                                                alert("点赞成功");
-                                               location.reload();
-                                                     }
-                                        })
-
-                                    } else {
-                                        var c1_temp = parseInt(c1) - 1;
-                                        jsonStr.likenumber = c1_temp;
-
-                                        $.ajax({
-                                            url: "http://" + window.location.host + "/blogs/cancelLike",
-                                            type: 'get',
-                                            contentType: 'application/json',
-                                            dataType: 'json',
-                                            data: jsonStr,
-                                            success: function () {
-                                                alert("已经点赞过了，取消赞成功");
-                                                location.reload();
-                                            }
-                                        })
                                     }
 
-                                },
-                                error: function (xhr) {
-                                    alert("出错啦," + xhr.status);
-                                }
 
-                            });
 
+                                    $('body').on("click",'.heart',function()
+                                    {
+
+                                        var A=$(this).attr("id");
+                                        var B=A.split("like");
+                                        var messageID=B[1];
+                                        var C=parseInt($("#likeCount"+messageID).html());
+                                        $(this).css("background-position","")
+                                        var D=$(this).attr("rel");
+                                        if(D === 'like')
+                                        {
+                                            $("#likeCount"+messageID).html(C+1);
+                                            $(this).addClass("heartAnimation").attr("rel","unlike");
+                                            jsonStr_1.likenumber=parseInt(C+1);
+                                            $.ajax({
+                                                url: "http://" + window.location.host + "/blogs/like",
+                                                type: 'get',
+                                                contentType: 'application/json',
+                                                dataType: 'json',
+                                                data: jsonStr_1,
+                                                success: function () {
+
+                                                }
+                                            })
+
+                                        }
+                                        else
+                                        {
+                                            $("#likeCount"+messageID).html(C-1);
+                                            $(this).removeClass("heartAnimation").attr("rel","like");
+                                            $(this).css("background-position","left");
+                                            jsonStr_1.likenumber=parseInt(C-1);
+                                            $.ajax({
+                                                url: "http://" + window.location.host + "/blogs/cancelLike",
+                                                type: 'get',
+                                                contentType: 'application/json',
+                                                dataType: 'json',
+                                                data: jsonStr_1,
+                                                success: function () {
+
+                                                }
+                                            })
+
+                                        }
+
+
+                                    });
+
+
+                                });
+
+                            }
                         }
+                        );
 
-
-
-                        document.querySelectorAll('.paw-button').forEach(elem => {
-                            elem.addEventListener('click', e => {
-
-                                <!--number是点赞数量-->
-                                let number = elem.children[1].textContent;
-                                alert(number);
-                                if(!elem.classList.contains('animation')) {
-                                    elem.classList.add('animation');
-                                    for(let i = 0; i < confettiAmount; i++) {
-                                        createConfetti(elem);
-                                    }
-                                    setTimeout(() => {
-                                        elem.classList.add('confetti');
-                                        setTimeout(() => {
-                                            elem.classList.add('liked');
-                                            elem.children[1].textContent = parseInt(number) + 1; <!--点赞数加1-->
-                                        }, 400);
-                                        setTimeout(() => {
-                                            elem.querySelectorAll('i').forEach(i => i.remove());
-                                        }, 600);
-                                    }, 260);
-                                } else {
-                                    elem.classList.remove('animation', 'liked', 'confetti');
-                                    elem.children[1].textContent = parseInt(number) - 1;  <!--点赞数减1-->
-                                }
-                                e.preventDefault();
-                            });
-                        });
 
                     </script>
 
-<!--                    <a href="#" class="button primary small circle uk-visible@s"> <i class="uil-plus"> </i> Create new-->
-<!--                    </a>-->
                 </div>
 
 
 <!--                    <div id="testDiv" th:text =  "${test}">-->
                 <br>
 
+
                 <div >
 
-<!--                    <div class="section-header pb-0" style="margin-top: -15px;">-->
-<!--                        <div class="section-header-left">-->
-<!--                            <h3> Categories </h3>-->
-<!--                            <p> Find a group <span class="uk-visible@s"> by browsing top Categories </span></p>-->
-<!--                        </div>-->
-<!--                        <div class="section-header-right">-->
-<!--                            <a href="#" class="see-all"> See all</a>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                    <hr class="header-separater" style="color:#F00;border: 100px"/>-->
-<!--                    <HR style="FILTER: alpha(opacity=100,finishopacity=0,style=2)" width="100%" color=#987cb9 SIZE=10>-->
                     <div class="alert alert-info" role="alert"></div>
                     <ul class="nav nav-list"><li class="divider"></li></ul>
                     <!--博客正文-->
@@ -809,86 +778,6 @@
                 </div>
 
 
-<!--                <div class="post-comments">-->
-<!--                    <a href="#" class="view-more-comment"> Veiw 8 more Comments</a>-->
-<!--                    <div class="post-comments-single">-->
-<!--                        <div class="post-comment-avatar">-->
-<!--                            <img src="http://localhost:8080/assets/images/avatars/avatar-5.jpg" alt="">-->
-<!--                        </div>-->
-<!--                        <div class="post-comment-text">-->
-<!--                            <div class="post-comment-text-inner">-->
-<!--                                <h6> Alex Dolgove</h6>-->
-<!--                                <p> Ut wisi enim ad minim laoreet dolore magna aliquam erat </p>-->
-<!--                            </div>-->
-<!--                            <div class="uk-text-small">-->
-<!--                                <a href="#" class="text-danger mr-1"> <i class="uil-heart"></i> Love-->
-<!--                                </a>-->
-<!--                                <a href="#" class=" mr-1"> Replay </a>-->
-<!--                                <span> 1d</span>-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                        <a href="#" class="post-comment-opt"></a>-->
-<!--                    </div>-->
-<!--                    <div class="post-comments-single">-->
-<!--                        <div class="post-comment-avatar">-->
-<!--                            <img src="http://localhost:8080/assets/images/avatars/avatar-2.jpg" alt="">-->
-<!--                        </div>-->
-<!--                        <div class="post-comment-text">-->
-<!--                            <div class="post-comment-text-inner">-->
-<!--                                <h6>Stella Johnson</h6>-->
-<!--                                <p> Ut wisi enim ad minim laoreet dolore <strong> David !</strong> </p>-->
-<!--                            </div>-->
-<!--                            <div class="uk-text-small">-->
-<!--                                <a href="#" class="text-primary mr-1"> <i class="uil-thumbs-up"></i>-->
-<!--                                    Like-->
-<!--                                </a>-->
-<!--                                <a href="#" class=" mr-1"> Replay </a>-->
-<!--                                <span> 2d</span>-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                        <a href="#" class="post-comment-opt"></a>-->
-<!--                    </div>-->
-<!--                    <div class="post-comments-single">-->
-<!--                        <div class="post-comment-avatar">-->
-<!--                            <img src="http://localhost:8080/assets/images/avatars/avatar-3.jpg" alt="">-->
-<!--                        </div>-->
-<!--                        <div class="post-comment-text">-->
-<!--                            <div class="post-comment-text-inner">-->
-<!--                                <h6> Jonathan Madano </h6>-->
-<!--                                <p> sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna-->
-<!--                                    aliquam-->
-<!--                                    erat-->
-<!--                                    volutpat.<strong> David !</strong> </p>-->
-<!--                            </div>-->
-<!--                            <div class="uk-text-small">-->
-<!--                                <a href="#" class="text-danger mr-1"> <i class="uil-heart"></i> Love-->
-<!--                                </a>-->
-<!--                                <a href="#" class=" mr-1"> Replay </a>-->
-<!--                                <span> 3d</span>-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                        <a href="#" class="post-comment-opt"></a>-->
-<!--                    </div>-->
-
-
-<!--                    <a href="#" class="view-more-comment"> Veiw 8 more Comments</a>-->
-
-<!--                    <div class="post-add-comment">-->
-<!--                        <div class="post-add-comment-avature">-->
-<!--                            <img src="http://localhost:8080/assets/images/avatars/avatar-2.jpg" alt="">-->
-<!--                        </div>-->
-<!--                        <div class="post-add-comment-text-area">-->
-<!--                            <input type="text" placeholder="Write your comment...">-->
-<!--                            <div class="icons">-->
-<!--                                <span class="uil-link-alt"></span>-->
-<!--                                <span class="uil-grin"></span>-->
-<!--                                <span class="uil-image"></span>-->
-<!--                            </div>-->
-<!--                        </div>-->
-
-<!--                    </div>-->
-
-<!--                </div>-->
 
                 <div uk-grid="" class="uk-grid">
 
