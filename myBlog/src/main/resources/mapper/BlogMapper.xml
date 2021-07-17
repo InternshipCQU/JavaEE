@@ -60,7 +60,7 @@
     <select id="getBlog" resultType="com.example.demo.entity.BlogInfo">
         SELECT blogInfo.blogTitle, blogInfo.blogContent, blogInfo.createTime,
             blogInfo.clickNum, blogInfo.likesNum, blogInfo.commentNum,
-            blogInfo.forwardNum, blogInfo.collectNum, blogInfo.userId, blogInfo.tagId, blogTag.tagName
+            blogInfo.forwardNum, blogInfo.collectNum, blogInfo.userId, blogInfo.tagId, blogTag.tagName,blogInfo.isForward
         FROM blogInfo, blogTag
         WHERE blogInfo.blogId = #{blogId} AND blogInfo.tagId = blogTag.tagId;
     </select>

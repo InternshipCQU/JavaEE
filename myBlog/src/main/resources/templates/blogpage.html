@@ -617,7 +617,7 @@
                             <li class="uk-active" ><a href="#" th:text="${AuthorName}"> 博文作者 </a></li>
                             <li><a href="#" th:text = "${blog.tagName}">  </a></li>
 <!--                            <li><a href="#" > 点赞</a></li>-->
-                            <li><a href="#" id="repost" > 转发</a></li>
+                            <li><a href="#" id="repost" onclick="forward()"> 转发</a></li>
                             <li><a href="#" id="postDate" th:text =  "${blog.createTime}"> </a></li>
                             <div class="feed" id="feed2" style="width:60px;top: 2px;left: 450px;">
                                 <div class="heart" id="like2" rel="like" style="top: 5px;"></div>
