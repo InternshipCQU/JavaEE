@@ -9,6 +9,7 @@
  * {@link       https://github.com/pandao/editor.md}
  * @updateTime  2015-06-09
  */
+import '../lib/codemirror/codemirror.min';
 
 ;(function(factory) {
     "use strict";

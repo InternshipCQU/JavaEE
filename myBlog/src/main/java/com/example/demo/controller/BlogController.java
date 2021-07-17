@@ -2,6 +2,7 @@ package com.example.demo.controller;
 
 import com.example.demo.entity.BlogInfo;
 import com.example.demo.service.BlogService;
+import com.example.demo.service.BlogWritingService;
 import com.example.demo.service.HomeService;
 import net.sf.json.JSON;
 import org.json.JSONException;
@@ -27,6 +28,9 @@ public class BlogController {
     public String personalspace(){
         return "personalspace";
     }
+
+    @Resource
+    private BlogWritingService blogWritingService;
 
     @RequestMapping("blogpage")
     public String blog(){
@@ -95,16 +99,24 @@ public class BlogController {
 
         blogService.comment(blogId, userId, comment);
         blogService.updateMarkWhenComment(tagId, userId);
-        return "{\"login\":\"true\"}";
+        return "{\"login\":\"true\"}";//TODO:记得写到Service里
     }
 
 
     @RequestMapping("/blogs/forward")
-    public void forward(@RequestParam("blogId") int blogId, @RequestParam("userId") int userId,
-                        @RequestParam("tagId") int tagId){
-
+    @ResponseBody
+    public String forward(@RequestParam("blogId") int blogId,
+                        @RequestParam("tagId") int tagId,HttpServletRequest request){
+        HttpSession session = request.getSession();
+        if(session.getAttribute("userID") == null){
+            return "{\"login\":\"false\"}";
+        }
+        int userId = (Integer)session.getAttribute("userID");
+        BlogInfo blog = blogService.getBlog(blogId);
+        blogWritingService.addBlog(blog.blogTitle,blog.blogContent,blog.createTime,blog.tagName,1,blog.summary,request);
         blogService.forward(blogId, userId);
         blogService.updateMarkWhenForward(tagId, userId);
+        return "{\"login\":\"true\"}";//TODO:记得写到Service里
     }
 
     @RequestMapping("/blogs/isCollect")
