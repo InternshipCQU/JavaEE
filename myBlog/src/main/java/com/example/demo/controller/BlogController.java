@@ -44,7 +44,7 @@ public class BlogController {
     @RequestMapping("/blogs/{userID}/{blogId}")
     public String blog(@PathVariable("blogId") int blogId,@PathVariable("userID") String userID, Model model,HttpServletRequest request){
         BlogInfo blog = blogService.getBlog(blogId);
-        blog.blogId=blogId;
+        blog.blogId= blogId;
         model.addAttribute("blog",blog);
         blogService.Init(blogId,request);
 
@@ -113,17 +113,38 @@ public class BlogController {
         }
         int userId = (Integer)session.getAttribute("userID");
         BlogInfo blog = blogService.getBlog(blogId);
-        blogWritingService.addblog(blog.blogTitle,blog.blogContent,blog.createTime,blog.tagName,1,request);
+        blogWritingService.addBlog(blog.blogTitle,blog.blogContent,blog.createTime,blog.tagName,1,blog.blogSummary,request);
         blogService.forward(blogId, userId);
         blogService.updateMarkWhenForward(tagId, userId);
         return "{\"login\":\"true\"}";//TODO:记得写到Service里
     }
 
+    @RequestMapping("/blogs/isCollect")
+    public void isCollect(@RequestParam("blogId") int blogId, @RequestParam("userId") int userId,
+                          @RequestParam("tagId") int tagId, Model model)
+    {
+        boolean isCollect = blogService.isCollect(blogId, userId);
+        model.addAttribute("isCollect",isCollect);
+//        System.out.println(model.getAttribute("isCollect"));
+    }
+
+
     @RequestMapping("/blogs/collect")
     public void collect(@RequestParam("blogId") int blogId, @RequestParam("userId") int userId,
-                        @RequestParam("tagId") int tagId){
+                        @RequestParam("tagId") int tagId, Model model){
+
         blogService.collect(blogId, userId);
+        blogService.addCollectNum(blogId);
         blogService.updateMarkWhenCollect(tagId, userId);
+
+
+    }
+
+    @RequestMapping("/blogs/cancelCollect")
+    public void cancelCollect (@RequestParam("blogId") int blogId, @RequestParam("userId") int userId,
+                               @RequestParam("tagId") int tagId, Model model)
+    {
+
     }
 
     @RequestMapping("/blogs/follow")

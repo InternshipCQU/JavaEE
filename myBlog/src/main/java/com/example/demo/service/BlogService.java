@@ -17,7 +17,14 @@ public interface BlogService {
     void cancelLike(int blogId);          //取消点赞
     String comment(int blogId, int userId, String comment); //评论
     String forward(int blogId, int userId);                 //转发
-    String collect(int blogId, int userId);                 //收藏
+
+    String collect(int blogId, int userId);                 //收藏, 插入一条记录
+    void cancelCollect(int blogId, int userId);             //取消收藏，删除一条记录
+    boolean isCollect(int blogId, int userId);
+    void addCollectNum(int blogId);                     //收藏数加1
+    void deductCollectNum(int blogId);                  //收藏数减1
+    void updateMarkWhenCancelCollect(int tagId, int userId);   //取消收藏分数减3
+
 
     List<BlogLike> searchLikeBlog(int userId);    // 根据用户id搜索其点赞过的博客id
 

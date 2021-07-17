@@ -27,9 +27,14 @@ public class BlogManagerServiceImpl implements BlogManagerService {
     PersonalSpaceMapper personalSpaceMapper;
 
     @Override
-    public void deleteblog(Integer blogId)
+    public void deleteblog(Integer blogId,Integer userId)
     {
-        blogss.deleteblog(blogId);
+        blogss.deletecollect(blogId,userId);
+        blogss.deleteblogcomment(blogId,userId);
+        blogss.deletebloglike(blogId,userId);
+        blogss.deleteblogforward(blogId,userId);
+        blogss.deletetagbloginfo(blogId,userId);
+        blogss.deletebloginfo(blogId,userId);
     }
 
     @Override
@@ -86,9 +91,10 @@ public class BlogManagerServiceImpl implements BlogManagerService {
         String link = "/blogs/" + username + "/" + blogId;
 
         session.setAttribute("count", count + 1);
+        System.out.println("BlogId:"+blogId);
+        System.out.println("UserId:"+userId);
 
-
-        return "{\"clickNumber\":\""+clickNumber+"\",\"createTime\":\""+createTime+"\",\"blogContent\":\"" + blogContent + "\",\"blogTitle\":\"" + blogTitle + "\",\"username\":\"" + username + "\",\"likeNumber\":\"" + likeNumber + "\",\"comments\":" + comments + ",\"link\":\"" + link + "\"}";
+        return "{\"userId\":\""+userId+"\",\"createTime\":\""+createTime+"\",\"blogContent\":\"" + blogContent + "\",\"blogTitle\":\"" + blogTitle + "\",\"username\":\"" + username + "\",\"likeNumber\":\"" + likeNumber + "\",\"comments\":" + comments + ",\"blogId\":\"" + blogId + "\"}";
 
     }
 

@@ -40,7 +40,7 @@ function previewImage(file) {
             }
             // document.getElementById("userprofileopt").innerHTML=recdata.userprofile;
             document.getElementById("email").innerHTML=recdata.email;
-            if(recdata.radiovl=="0")
+            if(recdata.radiovl==="0")
             {
                 document.getElementById("radioval").innerHTML="Men";
             }
@@ -48,17 +48,43 @@ function previewImage(file) {
             {
                 document.getElementById("radioval").innerHTML="Women";
             }
-            document.getElementById("userlastname").innerHTML=recdata.lastname;
-            document.getElementById("userfirstname").innerHTML=recdata.firstname;
+
             document.getElementById("area").innerHTML=recdata.area;
-            document.getElementById("telephone").innerHTML=recdata.telephone;
+
 
             document.getElementById("lastlogin").innerHTML=recdata.lastlogin;
             document.getElementById("userRefisiterTime").innerHTML=recdata.userRefisiterTime;
             document.getElementById("blogsNum").innerHTML=recdata.blogsNum;
             document.getElementById("fansNum").innerHTML=recdata.fansNum;
             document.getElementById("likesNum").innerHTML=recdata.likesNum;
-            document.getElementById("birthdate").innerHTML=recdata.birthdate;
+            if(recdata.birthdate===undefined)
+            {
+                document.getElementById("birthdate").innerHTML="";
+            }
+            else{
+                document.getElementById("birthdate").innerHTML=recdata.birthdate;
+            }
+
+            if(recdata.lastname==="undefined"){
+                document.getElementById("userlastname").innerHTML="";
+
+            }
+            else{
+                document.getElementById("userlastname").innerHTML=recdata.lastname;
+            }
+            if(recdata.firstname==="undefined"){
+                document.getElementById("userfirstname").innerHTML="";
+            }
+            else{
+                document.getElementById("userfirstname").innerHTML=recdata.firstname;
+            }
+            if(recdata.telephone==="undefined"){
+                document.getElementById("telephone").innerHTML="";
+            }
+            else{
+                document.getElementById("telephone").innerHTML=recdata.telephone;
+            }
+
             var avatarfile=recdata.avatar;
             var o1=document.getElementById("avatarfile");
             o1.innerHTML="<img src=\""+avatarfile+"\" alt=\"\"\>";

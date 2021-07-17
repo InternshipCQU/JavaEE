@@ -35,6 +35,28 @@
         values(#{createTime}, #{blogId}, #{userId})
     </insert>
 
+    <update id="addCollectNum">
+        update blogInfo set collectNum = collectNum + 1 where blogId = #{blogId}
+    </update>
+
+    <update id="deductCollectNum">
+        update blogInfo set collectNum = collectNum - 1 where blogId = #{blogId}
+    </update>
+
+    <update id="updateMarkWhenCancelCollect">
+        UPDATE TagMark SET ${tagName} = ${tagName} - 3 WHERE userId = #{userId}
+    </update>
+
+
+    <select id="isCollect" resultType="Integer">
+        select `blogCollect`.blogId from `blogCollect`
+        where #{blogID} = `blogCollect`.blogId and #{userId} = `blogCollect`.userId
+    </select>
+
+    <delete id="cancelCollect">
+        delete from `blogCollect` where #{blogID} = `blogCollect`.blogId and #{userId} = `blogCollect`.userId
+    </delete>
+
     <select id="getBlog" resultType="com.example.demo.entity.BlogInfo">
         SELECT blogInfo.blogTitle, blogInfo.blogContent, blogInfo.createTime,
             blogInfo.clickNum, blogInfo.likesNum, blogInfo.commentNum,

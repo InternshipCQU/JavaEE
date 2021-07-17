@@ -159,7 +159,7 @@ function loadTheBlog()
 
         url: 'http://localhost:8080/getTheBlogs', //这里是返回路径 在controller里写好对应函数就行 TODO:记得修改路径后面的 这是测试
         type: 'get',
-        data: {"class":str[2],"chinese":"你好 世界"}, //这里是向后端传输的json 应该是可以直接传对象 比如User这种entity
+        data: {"class":str[2]}, //这里是向后端传输的json 应该是可以直接传对象 比如User这种entity
         //例如点赞的话 我们传递blogID userID到后端 后端再进行操作
         async: false,
 
@@ -597,7 +597,7 @@ function manageBlog()
             if (blog.noMore === "true") {
 
             } else {
-                //alert(blog.blogTitle)
+
 
                 if (data != null) {
 
@@ -615,13 +615,14 @@ function manageBlog()
                         "                                                <a href=\"userinfo.html\"> <span class=\"user-name\" id = \"title\"> Dennis Han </span>  </a>\n" +
                         "                                            </span>\n" +
                         "                                        </div>\n" +
-                        "                                        <button type=\"button\" class=\"button light small\" style=\"margin: 5px\">\n" +
-                        "                                            <img src=\"http://localhost:8080/assets/images/icons/edit.svg\" width=\"20\" height=\"20\" style=\"margin-right: 10px\"></img><span class=\"button-text\">编辑</span>\n" +
+
+                        "                                        <input type=\"button\" class=\"button light small\" style=\"margin: 5px\" value='编辑博文'>\n" +
+
                         "\n" +
-                        "                                        </button>\n" +
-                        "                                        <button type=\"button\" class=\"button light small\" style=\"margin: 5px\">\n" +
-                        "                                            <img src=\"http://localhost:8080/assets/images/icons/delete.svg\" width=\"20\" height=\"20\" style=\"margin-right: 10px\"></img><span class=\"button-text\">删除</span>\n" +
-                        "                                        </button>\n" +
+                        "                                        </input>\n" +
+                        "                                        <input type=\"button\" class=\"button light small\" onclick='deleteblog("+blog.blogId+","+blog.userId+")' style=\"margin: 5px\" value='删除博文'>\n" +
+
+                        "                                        </input>\n" +
                         "                                    </div>\n" +
                         "                                </div>\n" +
                         "                            </div>\n" +
@@ -651,6 +652,23 @@ function manageBlog()
             $("loading").hide();
         },
     });
+}
+
+//====i
+
+function deleteblog(blogId,userId) {
+    // alert("I am deleting blog."+parseInt(blogId)+" "+parseInt(userId));
+    var infomsg = {"blogId": blogId, "userId": userId};
+    $.ajax({
+        url: 'http://localhost:8080/deletemyblog',
+        type: 'get',
+        data: infomsg,
+        async: false,
+        success: function (o) {
+            alert("删除博客成功");
+            location.reload();
+        }
+    })
 }
 //====
 
@@ -751,10 +769,10 @@ function comment()
                 window.location.href = 'http://localhost:8080/login';
             }
 
-            //window.location.href = 'http://localhost:8080/mainpage';
-            //这里是如果成功的将数据传递之后做的操作 可以写alert和跳转语句 根据情况进行书写就写
+
         }
     });
+
 }
 
 //=====forward=====

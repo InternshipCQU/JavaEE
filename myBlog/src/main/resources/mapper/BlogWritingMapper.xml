@@ -2,7 +2,38 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.example.demo.mapper.BlogwritingMapper">
     <insert id="addblog">
-        insert into blogInfo(blogTitle, blogContent, tagId, createTime,  userId,isForward)
-        values(#{blogTitle}, #{blogContent}, #{tagID}, #{createTime},  #{userID}, #{isForward})
+
+        insert into blogInfo(blogTitle, blogContent, tagId, createTime,  userId, isForward,summary)
+        values(#{blogTitle}, #{blogContent}, #{tagID}, #{createTime},  #{userID}, #{isForward},#{summaryContent})
+
     </insert>
+
+    <insert id="addDraft">
+        insert into blogDraft(userId, draftTitle, draftContent, draftTagName)
+        values(#{userID}, #{draftTitle}, #{draftContent}, #{draftTagName} )
+    </insert>
+
+    <update id="updateDraft">
+        UPDATE blogDraft
+        SET draftTitle=#{draftTitle}, draftContent=#{draftContent}, draftTagName=#{draftTagName}
+        WHERE userId=#{userID};
+    </update>
+
+    <select id="draftNum" resultType="java.lang.Integer">
+        select count(*)
+        from blogDraft
+        where userId=#{userID};
+    </select>
+
+    <select id="getDraft" resultType="com.example.demo.entity.BlogDraft">
+        select draftTitle, draftContent, draftTagName, userId
+        from blogDraft
+        where userId=#{userID};
+    </select>
+
+    <delete id="deleteDraft">
+        delete
+        from blogDraft
+        where userId = #{userID};
+    </delete>
 </mapper>

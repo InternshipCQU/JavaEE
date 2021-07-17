@@ -9,7 +9,9 @@ public class MapofTagNameAndTagID {
     private HashMap<Integer,String> map2;
 
     public MapofTagNameAndTagID(){
+
         this.map1 = new HashMap<String,Integer>();
+        map1.put("Other",0);
         map1.put("TensorFlow",1);
         map1.put("NumPy",2);
         map1.put("IntelliJ IDEA",3);
@@ -24,6 +26,7 @@ public class MapofTagNameAndTagID {
         map1.put("html",12);
 
         this.map2 = new HashMap<Integer,String>();
+        map2.put(0, "Other");
         map2.put(1, "TensorFlow");
         map2.put(2, "NumPy");
         map2.put(3, "IntelliJ IDEA");

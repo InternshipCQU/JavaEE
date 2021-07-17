@@ -1,0 +1,23 @@
+.icon-xin{
+    font-size: 20px;
+    color: rgba(0,0,0,0.3);
+}
+.active{
+    color: #E1251B;
+}
+.active{
+    animation: heart 0.5s linear;
+}
+@keyframes heart{
+    from{
+        font-size: 20px;
+    }
+    50%{
+        font-size: 18px;
+    }
+    to{
+        font-size: 20px;
+    }
+}
+
+

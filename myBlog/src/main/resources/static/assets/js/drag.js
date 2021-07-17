@@ -33,6 +33,7 @@ function draw(show_num) {
     var canvas_width=document.getElementById('canvas').clientWidth;
     var canvas_height=document.getElementById('canvas').clientHeight;
     var canvas = document.getElementById("canvas");//获取到canvas的对象，演员
+    
     var context = canvas.getContext("2d");//获取到canvas画图的环境，演员表演的舞台
     canvas.width = canvas_width;
     canvas.height = canvas_height;
@@ -143,7 +144,7 @@ function check()
         draw(show_num);
         return true;
     }else{
-        alert('验证码错误！\n你输入的是:  '+val+"\n正确的是:  "+num+'\n请重新输入！');
+        alert('验证码错误！'+'\n请重新输入！');
         document.getElementById("code").value='';
         draw(show_num);
         return false;

@@ -17,7 +17,14 @@ public interface BlogMapper {
     void cancelLike(int blogId);                                                //取消点赞
     void comment(int blogId, int userId, @Param("createTime") String createTime, String comment);    //评论
     void forward(int blogId, int userId, @Param("createTime") String createTime);                    //转发
-    void collect(int blogId, int userId, @Param("createTime") String createTime);                    //收藏
+
+    void collect(int blogId, int userId, @Param("createTime") String createTime);                    //收藏,插入一条记录
+    void addCollectNum(int blogId);                     //收藏数加1
+    Integer isCollect(int blogId, int userId);          //是否收藏
+
+    void deductCollectNum(int blogId);                  //收藏数减1
+    void cancelCollect(int blogId, int userId);         //删除记录
+    void updateMarkWhenCancelCollect(String tagName, int userId);   //取消收藏分数减3
 
     List<BlogLike> searchLikeBlog(int userId);   // 根据用户Id寻找点赞的所有博客id
 

@@ -121,8 +121,7 @@ public class HomeServiceImpl implements HomeService {
             if(session.getAttribute("Token") != null){
                 session.setAttribute("blogs", getRecommendBlogViews((Integer) session.getAttribute("userID")));
             }else{
-                System.out.println("加载所有的博客");
-
+//                System.out.println("加载所有的博客");
                 session.setAttribute("blogs", getBlogViews());
             }
         }else{
