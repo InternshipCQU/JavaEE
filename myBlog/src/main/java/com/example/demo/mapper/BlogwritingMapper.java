@@ -4,6 +4,6 @@ import org.apache.ibatis.annotations.Mapper;
 
 @Mapper
 public interface BlogwritingMapper {
-    void addblog(String blogTitle, String blogContent, String createTime, int tagID, int userID);
+    void addblog(String blogTitle, String blogContent, String createTime, int tagID, int userID,int isForward);
 
 }

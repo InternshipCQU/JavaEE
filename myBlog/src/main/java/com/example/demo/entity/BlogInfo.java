@@ -15,6 +15,7 @@ public class BlogInfo {
     public Integer userId;       // 用户ID
     public Integer tagId;       // 博客标签ID
     public String tagName;      // 博客标签名
+    public int isForward;
 
 
     public Integer getBlogId() {
@@ -113,5 +114,11 @@ public class BlogInfo {
         this.tagName = tagName;
     }
 
+    public void setIsForward(int isForward) {
+        this.isForward = isForward;
+    }
 
+    public int getIsForward() {
+        return isForward;
+    }
 }

@@ -43,7 +43,7 @@ public class WritingController {
         System.out.println(tagName);
 
         try{
-            blogWritingService.addblog(blogTitle, blogContent, createTime, tagName,  request);
+            blogWritingService.addblog(blogTitle, blogContent, createTime, tagName, 0, request);
             System.out.println("here");
             result.put("result","success");
             return result.toJSONString();

@@ -17,7 +17,7 @@ public class BlogWritingServiceImpl implements BlogWritingService {
     private BlogwritingMapper blogWritingMapper;
 
     @Override
-    public void addblog(String blogTitle, String blogContent,String createTime, String tagName, HttpServletRequest request) {
+    public void addblog(String blogTitle, String blogContent,String createTime, String tagName, int isForward,HttpServletRequest request) {
 
         System.out.println(tagName.getClass().getName().toString());
         MapofTagNameAndTagID map = new MapofTagNameAndTagID();
@@ -26,11 +26,11 @@ public class BlogWritingServiceImpl implements BlogWritingService {
         int tagID = map.getTagID(tagName);
 
         //再通过session获取一下用户ID，等后面用户id写入session
-//        int userID = request.getSession().getAttribute("userID");
+        int userID = (int)request.getSession().getAttribute("userID");
 
-        int userID = 1;
+        //int userID = 1;
 
-        blogWritingMapper.addblog(blogTitle, blogContent, createTime, tagID, userID);
+        blogWritingMapper.addblog(blogTitle, blogContent, createTime, tagID, userID,isForward);
 
 
     }
