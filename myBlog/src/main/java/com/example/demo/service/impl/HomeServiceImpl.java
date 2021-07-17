@@ -5,6 +5,7 @@ import com.example.demo.entity.TagMark;
 import com.example.demo.entity.User;
 import com.example.demo.entity.view.CommentView;
 import com.example.demo.entity.view.HomeBlogView;
+import com.example.demo.mapper.BlogMapper;
 import com.example.demo.mapper.HomeMapper;
 import com.example.demo.mapper.profileMapper;
 import com.example.demo.service.HomeService;
@@ -30,6 +31,9 @@ public class HomeServiceImpl implements HomeService {
 
     @Resource
     private profileMapper profileMapper;
+
+    @Resource
+    private BlogMapper blogMapper;
 
     @Override
     public List<BlogInfo> tagToBlogs(String tagName) {
@@ -121,8 +125,7 @@ public class HomeServiceImpl implements HomeService {
             if(session.getAttribute("Token") != null){
                 session.setAttribute("blogs", getRecommendBlogViews((Integer) session.getAttribute("userID")));
             }else{
-                System.out.println("加载所有的博客");
-
+//                System.out.println("加载所有的博客");
                 session.setAttribute("blogs", getBlogViews());
             }
         }else{
@@ -156,7 +159,9 @@ public class HomeServiceImpl implements HomeService {
         String userAvater = user.getAvatar();
         String username = blogs.get(count).getUsername();
         String blogTitle = blogs.get(count).getBlogTitle();
-        String blogContent = blogs.get(count).getBlogContent();
+        BlogInfo blog =blogMapper.getBlog(blogId);
+        System.out.println("blog: " + blog);
+        String blogContent = blog.summary;
         String createTime = blogs.get(count).getCreateTime();
         int clickNumber = blogs.get(count).getClickNum();
         int likeNumber = blogs.get(count).getLikesNum();
@@ -197,10 +202,7 @@ public class HomeServiceImpl implements HomeService {
         comments = "[" + comments + "]";
         //System.out.println(comments);
         //System.out.println(blogContent);
-        if(blogContent.length() > 32){
-            blogContent =  blogContent.substring(0,30);
-        }
-        blogContent = "你好 世界";
+
         String link = "/blogs/" + username + "/" + blogId;
 
         System.out.println("Hello");

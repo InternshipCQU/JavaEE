@@ -77,6 +77,7 @@ public class BlogManagerServiceImpl implements BlogManagerService {
         String createTime = blogs.get(count).getCreateTime();
         int clickNumber = blogs.get(count).getClickNum();
         int likeNumber = blogs.get(count).getLikesNum();
+        String editPath = "/editblog/" + blogId;
 
 //        private String username;
 //        private String commentContent;
@@ -94,7 +95,7 @@ public class BlogManagerServiceImpl implements BlogManagerService {
         System.out.println("BlogId:"+blogId);
         System.out.println("UserId:"+userId);
 
-        return "{\"userId\":\""+userId+"\",\"createTime\":\""+createTime+"\",\"blogContent\":\"" + blogContent + "\",\"blogTitle\":\"" + blogTitle + "\",\"username\":\"" + username + "\",\"likeNumber\":\"" + likeNumber + "\",\"comments\":" + comments + ",\"blogId\":\"" + blogId + "\"}";
+        return "{\"editPath\":\"" + editPath +"\",\"userId\":\""+userId+"\",\"createTime\":\""+createTime+"\",\"blogContent\":\"" + blogContent + "\",\"blogTitle\":\"" + blogTitle + "\",\"username\":\"" + username + "\",\"likeNumber\":\"" + likeNumber + "\",\"comments\":" + comments + ",\"blogId\":\"" + blogId + "\"}";
 
     }
 

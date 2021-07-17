@@ -944,19 +944,28 @@
 
                     <div id="layout">
                         <header id="title-field">
-                            文章标题：<input type="text" id="articleTitle" placeholder="输入文章标题">
+                            文章标题：<input type="text" id="articleTitle" th:attr="value=${draft.draftTitle}" >
+<!--                            th:text = "${draft.draftTitle}"-->
                             类别：
                             <select id="articleCategory" >
-                                <option disabled selected value>- 请选择文章标签</option>
-                                <option value="C++">C++</option>
-                                <option value="Java">Java</option>
-                                <option value="Python">Python</option>
-                                <option value="Go">Go</option>
+                                <option disabled selected value > - 请选择文章标签 </option>
+                                <option th:selected="${draft.draftTagName=='Other'}" value="Other">Other</option>
+                                <option th:selected="${draft.draftTagName=='TensorFlow'}" value="TensorFlow">TensorFlow</option>
+                                <option th:selected="${draft.draftTagName=='NumPy'}" value="NumPy">NumPy</option>
+                                <option th:selected="${draft.draftTagName=='IntelliJ IDEA'}" value="IntelliJ IDEA">IntelliJ IDEA</option>
+                                <option th:selected="${draft.draftTagName=='Tomcat'}" value="Tomcat">Tomcat</option>
+                                <option th:selected="${draft.draftTagName=='Java EE'}" value="Java EE">Java EE</option>
+                                <option th:selected="${draft.draftTagName=='Django'}" value="Django">Django</option>
+                                <option th:selected="${draft.draftTagName=='Git'}" value="Git">Git</option>
+                                <option th:selected="${draft.draftTagName=='Python'}" value="Python">Python</option>
+                                <option th:selected="${draft.draftTagName=='Java'}" value="Java">Java</option>
+                                <option th:selected="${draft.draftTagName=='C++'}" value="C++">C++</option>
+                                <option th:selected="${draft.draftTagName=='html'}" value="html">html</option>
                             </select>
                             <span id="btnList">
                                 <!--存为草稿按钮-->
                                 <!--<button type="button" id="saveAsDraft" onclick="writeArticle.doSubmit();" class="btn btn-info">保存草稿</button>-->
-                                <a href="#" class="button primary small circle uk-visible@s" id="saveAsDraft">
+                                <a href="#" class="button primary small circle uk-visible@s" id="saveAsDraft" onclick="writeArticle.submitDraft();">
                                     <i class="uil-plus"> </i>存为草稿
                                 </a>
                                 <!--发布文章按钮-->
@@ -985,7 +994,7 @@
                     <script src="assets/lib/jquery.flowchart.min.js"></script>
                     <script src="assets/js/editormd.min.js"></script>
                     <div id="test-editor" style="width: 100%;">
-                        <textarea id="articleContent" style="display: none;"></textarea>
+                        <textarea id="articleContent" style="display: none;" th:text = "${draft.draftContent}">康康康</textarea>
                     </div>
 
                     <!--为了保存html形式的文本而设置的textarea-->
@@ -996,9 +1005,10 @@
 
                     <script type="text/javascript">
                         var editor;
+                        var testString =   "## 测试getmarkdown测试getmarkdown\n" + "*牛*";
+
                         $(function() {
                              editor = editormd("test-editor", {
-
                                 height : 1000,
                                 emoji: true,
                                 saveHTMLToTextarea : true,
@@ -1006,12 +1016,14 @@
                                 imageFormats : ["jpg", "jpeg", "gif", "png", "bmp", "webp"],
                                 // imageUploadURL : "editormdPic/",
                                 imageUploadURL : "oss/upload",
-
                                 path   : "assets/lib/"
                             });
-
                             // categorySelect.init();
                         });
+
+                        // $(function( ) {
+                        //     document.getElementById("articleContent").innerHTML = "<strong>设置标签的html内容</strong>";
+                        // });
 
 
                         /* 发布文章*/
@@ -1025,33 +1037,68 @@
                                     var createTime = date .toISOString().replace(/T.*/,' ')+ date .toLocaleTimeString().replace(/ G.*/,"");
 
                                     var blogTitle = $("#articleTitle").val();
-                                    var abstractContent = $("#articleContent").val(); //后面摘要可以用
+                                    var summaryContent = $("#articleContent").val(); //后面摘要可以用
                                     var tagName = $("#articleCategory").val();
-
+                                    // editor.setValue(testString);
                                     var htmlContent = editor.getHTML();
-                                    console.log(htmlContent);
-
+                                    var markdownContent = editor.getMarkdown();
+                                    console.log(markdownContent);
+                                    console.log(summaryContent);
                                     blogTitle = encodeURI(blogTitle);
                                     createTime = encodeURI(createTime);
                                     htmlContent = encodeURI(htmlContent);
-                                    // tagName = encodeURI(tagName);
+                                    summaryContent = encodeURI(summaryContent);
 
                                     $.ajax({
                                         type: 'GET',
                                         url: 'http://localhost:8080/submitarticle',
-                                        data: {'blogTitle':blogTitle,'blogContent':htmlContent,'tagName':tagName,'createTime':createTime},  //'typeId':typeId
+                                        data: {'blogTitle':blogTitle,'blogContent':htmlContent,'tagName':tagName,'createTime':createTime, 'summaryContent':summaryContent},
                                         dataType:'json',
                                         contentType: 'text/json,charset=utf-8',
                                         cache: false,
                                         success: function(data){
                                             //debugger;
                                             if ("success"== data.result) {
-                                                alert("保存成功!");
+                                                alert("文章发布成功!");
                                                 setTimeout(function(){
                                                     window.close();
                                                 },3000);
                                             } else {
-                                                alert("保存失败！");
+                                                alert("文章发布失败！");
+                                            }
+                                        }
+                                    });
+                                }
+                            },
+
+                            //保存草稿
+                            submitDraft: function () {
+                                if (writeArticle.doCheck()) {
+
+                                    var draftTitle = $("#articleTitle").val();
+                                    var draftContent = $("#articleContent").val(); //后面摘要可以用
+                                    var draftTagName = $("#articleCategory").val();
+
+                                    draftTitle = encodeURI(draftTitle);
+                                    draftContent = encodeURI(draftContent);
+
+
+                                    $.ajax({
+                                        type: 'GET',
+                                        url: 'http://localhost:8080/submitdraft',
+                                        data: {'draftTitle':draftTitle,'draftContent':draftContent,'draftTagName':draftTagName },
+                                        dataType:'json',
+                                        contentType: 'text/json,charset=utf-8',
+                                        cache: false,
+                                        success: function(data){
+
+                                            if ("success"== data.result) {
+                                                alert("草稿保存成功!");
+                                                setTimeout(function(){
+                                                    window.close();
+                                                },3000);
+                                            } else {
+                                                alert("草稿保存失败！");
                                             }
                                         }
                                     });
@@ -1074,7 +1121,6 @@
                                 return true;
                             }
                         }
-
 
 
                         //  动态的文章类别下拉框，本次项目中标签为固定的，不需要动态加载

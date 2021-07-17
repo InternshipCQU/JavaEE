@@ -159,7 +159,7 @@ function loadTheBlog()
 
         url: 'http://localhost:8080/getTheBlogs', //这里是返回路径 在controller里写好对应函数就行 TODO:记得修改路径后面的 这是测试
         type: 'get',
-        data: {"class":str[2],"chinese":"你好 世界"}, //这里是向后端传输的json 应该是可以直接传对象 比如User这种entity
+        data: {"class":str[2]}, //这里是向后端传输的json 应该是可以直接传对象 比如User这种entity
         //例如点赞的话 我们传递blogID userID到后端 后端再进行操作
         async: false,
 
@@ -370,26 +370,6 @@ function like()
 }
 
 
-
-
-function forward()
-{
-    urls = window.location.pathname;
-    str = urls.split("/")
-    $.ajax({
-
-        url: 'http://localhost:8080/blogs/forward', //这里是返回路径 在controller里写好对应函数就行 TODO:记得修改路径后面的 这是测试
-        type: 'get',
-        data: {"blogID":str[str.length-1]}, //这里是向后端传输的json 应该是可以直接传对象 比如User这种entity
-        //例如点赞的话 我们传递blogID userID到后端 后端再进行操作
-        async: true,
-        success: function(data){
-            if(data != null){
-
-            }
-        }
-    });
-}
 
 function collect()
 {
@@ -635,9 +615,9 @@ function manageBlog()
                         "                                                <a href=\"userinfo.html\"> <span class=\"user-name\" id = \"title\"> Dennis Han </span>  </a>\n" +
                         "                                            </span>\n" +
                         "                                        </div>\n" +
-
+                        "                                         <a id = \"edit\">\n" +
                         "                                        <input type=\"button\" class=\"button light small\" style=\"margin: 5px\" value='编辑博文'>\n" +
-
+                        "                                         </a>\n" +
                         "\n" +
                         "                                        </input>\n" +
                         "                                        <input type=\"button\" class=\"button light small\" onclick='deleteblog("+blog.blogId+","+blog.userId+")' style=\"margin: 5px\" value='删除博文'>\n" +
@@ -656,6 +636,9 @@ function manageBlog()
 
                 $("#title").html("《" + blog.blogTitle+"》");
                 $("#title").attr("id", "pass");//设置博客标题
+
+                $("#edit").attr("href",blog.editPath);
+                $("#edit").attr("id", "pass");
 
                 // $("#content").html(blog.blogContent);
                 // $("#content").attr("id", "pass");//设置博客内容
@@ -676,20 +659,20 @@ function manageBlog()
 
 //====i
 
-function deleteblog(blogId,userId){
+function deleteblog(blogId,userId) {
     // alert("I am deleting blog."+parseInt(blogId)+" "+parseInt(userId));
-    var infomsg={"blogId":blogId,"userId":userId};
+    var infomsg = {"blogId": blogId, "userId": userId};
     $.ajax({
         url: 'http://localhost:8080/deletemyblog',
         type: 'get',
         data: infomsg,
         async: false,
-        success:function (o){
+        success: function (o) {
             alert("删除博客成功");
             location.reload();
         }
     })
-
+}
 //====
 
 
@@ -792,4 +775,32 @@ function comment()
 
         }
     });
-}}
+
+}
+
+//=====forward=====
+function forward()
+{
+    var tagId = $("#tagId").text()
+    var blogId = $("#blogId").text()
+    $.ajax({
+
+        url: 'http://localhost:8080/blogs/forward', //这里是返回路径 在controller里写好对应函数就行 TODO:记得修改路径后面的 这是测试
+        type: 'get',
+        data: {"tagId":tagId,"blogId":blogId}, //这里是向后端传输的json 应该是可以直接传对象 比如User这种entity
+        //例如点赞的话 我们传递blogID userID到后端 后端再进行操作
+        async: true,
+        success: function(data){
+            var message = JSON.parse(data);
+            if(message.login === "true"){
+                alert("转发成功")
+            }else{
+                alert("请登录")
+                window.location.href = 'http://localhost:8080/login';
+            }
+
+            //window.location.href = 'http://localhost:8080/mainpage';
+            //这里是如果成功的将数据传递之后做的操作 可以写alert和跳转语句 根据情况进行书写就写
+        }
+    });
+}
