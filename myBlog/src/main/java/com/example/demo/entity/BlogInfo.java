@@ -17,6 +17,7 @@ public class BlogInfo {
     public String tagName;      // 博客标签名
 
 
+
     public Integer getBlogId() {
         return blogId;
     }

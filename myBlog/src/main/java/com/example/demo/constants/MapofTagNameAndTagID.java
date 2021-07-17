@@ -7,6 +7,7 @@ public class MapofTagNameAndTagID {
 
     public MapofTagNameAndTagID(){
         this.map = new HashMap<String,Integer>();
+        map.put("Other",0);
         map.put("TensorFlow",1);
         map.put("NumPy",2);
         map.put("IntelliJ IDEA",3);
