@@ -1,6 +1,7 @@
 package com.example.demo.service.impl;
 
 import com.example.demo.entity.BlogInfo;
+import com.example.demo.entity.BlogTag;
 import com.example.demo.entity.TagMark;
 import com.example.demo.entity.User;
 import com.example.demo.entity.view.CommentView;
@@ -106,8 +107,15 @@ public class HomeServiceImpl implements HomeService {
     }
 
     @Override
+    // 主页推荐people you may want to see
     public ArrayList<User> showWantBlogger(int userId) {
         return homeMapper.showWantBlogger(userId);
+    }
+
+    @Override
+    // 主页展示点击量最高的博客对应的标签(#trending)，需要进行去重
+    public ArrayList<BlogTag> getTrending() {
+        return homeMapper.getTrending();
     }
 
     //test

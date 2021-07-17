@@ -1,5 +1,6 @@
 package com.example.demo.mapper;
 
+import com.example.demo.entity.BlogTag;
 import com.example.demo.entity.TagMark;
 import com.example.demo.entity.User;
 
@@ -42,5 +43,8 @@ public interface HomeMapper {
 
     // 主页推荐people you may want to see
     ArrayList<User> showWantBlogger(int userId);
+
+    // 主页展示点击量最高的博客对应的标签(#trending)，需要进行去重
+    ArrayList<BlogTag> getTrending();
 
 }
