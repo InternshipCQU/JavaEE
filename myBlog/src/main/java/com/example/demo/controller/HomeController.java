@@ -16,6 +16,7 @@ package com.example.demo.controller;
 
 
 import com.example.demo.entity.BlogInfo;
+import com.example.demo.entity.User;
 import com.example.demo.entity.view.HomeBlogView;
 import com.example.demo.service.HomeService;
 import org.springframework.stereotype.Controller;
@@ -78,5 +79,11 @@ public class HomeController {
     public List<HomeBlogView> getRecommendBlogs(@RequestParam("userId") int userId){
         int tagId = homeService.getTagMark(userId).getRecommendTag();
         return homeService.getRecommendBlogViews(tagId);
+    }
+
+    @RequestMapping("/home")
+    // 主页推荐people you may want to see
+    public List<User> showWantBlogger(@RequestParam("userId") int userId) {
+        return homeService.showWantBlogger(userId);
     }
 }

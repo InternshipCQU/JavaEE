@@ -39,4 +39,7 @@ public interface HomeService {
     void setRecommendBlogger(HttpServletRequest request,Model model);
 
     void setBlogger(HttpServletRequest request,Model model);
+
+    // 主页推荐people you may want to see
+    ArrayList<User> showWantBlogger(int userId);
 }

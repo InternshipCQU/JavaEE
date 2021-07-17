@@ -40,4 +40,7 @@ public interface HomeMapper {
 
     TagMark getTagMark(int userId);
 
+    // 主页推荐people you may want to see
+    ArrayList<User> showWantBlogger(int userId);
+
 }

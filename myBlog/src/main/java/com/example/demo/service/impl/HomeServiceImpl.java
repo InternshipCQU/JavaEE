@@ -101,6 +101,11 @@ public class HomeServiceImpl implements HomeService {
 
     }
 
+    @Override
+    public ArrayList<User> showWantBlogger(int userId) {
+        return homeMapper.showWantBlogger(userId);
+    }
+
     //test
     @Override
     public ArrayList<HomeBlogView> getBlogViews() {
