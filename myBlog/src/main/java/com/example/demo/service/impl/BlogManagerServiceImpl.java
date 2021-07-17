@@ -95,7 +95,7 @@ public class BlogManagerServiceImpl implements BlogManagerService {
         System.out.println("BlogId:"+blogId);
         System.out.println("UserId:"+userId);
 
-        return "{\"editPath\":\"" + editPath +"\",\"userId\":\""+userId+"\",\"createTime\":\""+createTime+"\",\"blogContent\":\"" + blogContent + "\",\"blogTitle\":\"" + blogTitle + "\",\"username\":\"" + username + "\",\"likeNumber\":\"" + likeNumber + "\",\"comments\":" + comments + ",\"blogId\":\"" + blogId + "\"}";
+        return "{\"link\":\""+link+"\",\"editPath\":\"" + editPath +"\",\"userId\":\""+userId+"\",\"createTime\":\""+createTime+"\",\"blogContent\":\"" + blogContent + "\",\"blogTitle\":\"" + blogTitle + "\",\"username\":\"" + username + "\",\"likeNumber\":\"" + likeNumber + "\",\"comments\":" + comments + ",\"blogId\":\"" + blogId + "\"}";
 
     }
 

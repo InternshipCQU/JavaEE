@@ -668,15 +668,15 @@
                     <div class="group-cover">
 
                         <!--Signle group cover -->
-                        <img src="http://localhost:8080/assets/images/group/group-cover.jpg" alt="">
-
+<!--                        <img src="http://localhost:8080/assets/images/group/group-cover.jpg" alt="">-->
+                        <img th:src="${background}" alt="">
                     </div>
 
                     <div class="single-group-details">
                         <div class="left-side">
                             <div class="single-group-image">
                                 <a href="#">
-                                    <img th:src = "${avatar}">
+                                    <img th:src="${avatar}">
 <!--                                    <img src="http://localhost:8080/assets/images/group/group-avature.jpg" alt="">-->
                                 </a>
                             </div>

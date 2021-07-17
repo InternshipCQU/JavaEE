@@ -51,6 +51,7 @@ public class PersonalSpaceGuestServiceImpl implements PersonalSpaceGuestService 
         Integer fansnum=userobj.getFansNum();
         String avatar=userobj.getAvatar();
         String area=userobj.getArea();
+        String background=userobj.getBackground();
 
         model.addAttribute("userID",userID);
         model.addAttribute("username",username);
@@ -61,6 +62,7 @@ public class PersonalSpaceGuestServiceImpl implements PersonalSpaceGuestService 
         model.addAttribute("blogsNum",Integer.toString(blogsnum));
         model.addAttribute("fansNum",Integer.toString(fansnum));
         model.addAttribute("avatar",avatar);
+        model.addAttribute("background",background);
         //=====
 
     }
