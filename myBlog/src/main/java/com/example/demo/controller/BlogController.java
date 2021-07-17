@@ -113,7 +113,7 @@ public class BlogController {
         }
         int userId = (Integer)session.getAttribute("userID");
         BlogInfo blog = blogService.getBlog(blogId);
-        blogWritingService.addBlog(blog.blogTitle,blog.blogContent,blog.createTime,blog.tagName,1,blog.blogSummary,request);
+        blogWritingService.addBlog(blog.blogTitle,blog.blogContent,blog.createTime,blog.tagName,1,blog.summary,request);
         blogService.forward(blogId, userId);
         blogService.updateMarkWhenForward(tagId, userId);
         return "{\"login\":\"true\"}";//TODO:记得写到Service里

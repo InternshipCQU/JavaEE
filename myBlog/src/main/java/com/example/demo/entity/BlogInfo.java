@@ -16,7 +16,7 @@ public class BlogInfo {
     public Integer tagId;       // 博客标签ID
     public String tagName;      // 博客标签名
     public int isForward;
-    public String blogSummary;
+    public String summary;
 
 
 

@@ -615,9 +615,9 @@ function manageBlog()
                         "                                                <a href=\"userinfo.html\"> <span class=\"user-name\" id = \"title\"> Dennis Han </span>  </a>\n" +
                         "                                            </span>\n" +
                         "                                        </div>\n" +
-
+                        "                                         <a id = \"edit\">\n" +
                         "                                        <input type=\"button\" class=\"button light small\" style=\"margin: 5px\" value='编辑博文'>\n" +
-
+                        "                                         </a>\n" +
                         "\n" +
                         "                                        </input>\n" +
                         "                                        <input type=\"button\" class=\"button light small\" onclick='deleteblog("+blog.blogId+","+blog.userId+")' style=\"margin: 5px\" value='删除博文'>\n" +
@@ -636,6 +636,9 @@ function manageBlog()
 
                 $("#title").html("《" + blog.blogTitle+"》");
                 $("#title").attr("id", "pass");//设置博客标题
+
+                $("#edit").attr("href",blog.editPath);
+                $("#edit").attr("id", "pass");
 
                 // $("#content").html(blog.blogContent);
                 // $("#content").attr("id", "pass");//设置博客内容
