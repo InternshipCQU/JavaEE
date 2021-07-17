@@ -83,7 +83,7 @@ public class HomeController {
         return homeService.getRecommendBlogViews(tagId);
     }
 
-    @RequestMapping("/mayknowpelple")
+    @RequestMapping("/mayknowpeople")
     // 主页推荐people you may want to see
     public List<User> showWantBlogger(@RequestParam("userId") int userId) {
         return homeService.showWantBlogger(userId);
