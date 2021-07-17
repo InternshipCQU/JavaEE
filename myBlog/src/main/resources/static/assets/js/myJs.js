@@ -602,37 +602,40 @@ function manageBlog()
                 if (data != null) {
 
                     $("#null").after("<div class=\"sl_pokes_cont\" id = \"final\">\n" +
-                        "                                <a id = \"path\">\n" +
+                        // "                                <a id = \"path\">\n" +
                         "                            <div class=\"sl_poke_users\" id=\"1\">\n" +
                         "                                <div class=\"sl_poke_info\">\n" +
-                        "                                    <a href=\"userinfo.html\">\n" +
+                        "                                    <a id = \"path\" >\n" +
                         "                                        <div class=\"avatar\"> <img src=\"http://localhost:8080/assets/images/avatars/avatar-1.jpg\" alt=\"\">\n" +
                         "                                            </div>\n" +
                         "                                    </a>\n" +
                         "                                    <div class=\"sl_poke_info_innr\">\n" +
                         "                                        <div class=\"sl_poke_info_innr_user\">\n" +
                         "                                            <span>\n" +
-                        "                                                <a href=\"userinfo.html\"> <span class=\"user-name\" id = \"title\"> Dennis Han </span>  </a>\n" +
+                        "                                                <a id = \"path2\" > <span class=\"user-name\" id = \"title\"> Dennis Han </span>  </a>\n" +
                         "                                            </span>\n" +
                         "                                        </div>\n" +
                         "                                         <a id = \"edit\">\n" +
-                        "                                        <input type=\"button\" class=\"button light small\" style=\"margin: 5px\" value='编辑博文'>\n" +
-                        "                                         </a>\n" +
+                        "                                        <button type=\"button\" class=\"button light small\" style=\"margin: 5px\">\n" +"<img src=\"http://localhost:8080/assets/images/icons/edit.svg\" width=\"20\" height=\"20\" style=\"margin-right: 10px\"><span class=\"button-text\">编辑博文</span>"+
                         "\n" +
-                        "                                        </input>\n" +
-                        "                                        <input type=\"button\" class=\"button light small\" onclick='deleteblog("+blog.blogId+","+blog.userId+")' style=\"margin: 5px\" value='删除博文'>\n" +
+                        "                                        </button>\n" +
+                        "                                         </a>\n" +
+                        "                                        <button type=\"button\" class=\"button light small\" onclick='deleteblog("+blog.blogId+","+blog.userId+")' style=\"margin: 5px\" >\n" + "<img src=\"http://localhost:8080/assets/images/icons/delete.svg\" width=\"20\" height=\"20\" style=\"margin-right: 10px\"><span class=\"button-text\">删除博文</span>"+
 
-                        "                                        </input>\n" +
+                        "                                        </button>\n" +
                         "                                    </div>\n" +
                         "                                </div>\n" +
                         "                            </div>\n" +
-                        "                           </a>\n" +
+                        // "                           </a>\n" +
                         "                        </div>");
                 }
                 // $("#null").attr("id", "null2");
 
                 $("#path").attr("href",blog.link);//设置点赞数量
                 $("#path").attr("id", "pass");
+
+                $("#path2").attr("href",blog.link);//设置点赞数量
+                $("#path2").attr("id", "pass");
 
                 $("#title").html("《" + blog.blogTitle+"》");
                 $("#title").attr("id", "pass");//设置博客标题
@@ -841,7 +844,8 @@ function comment()
         success: function(data){
             var message = JSON.parse(data);
             if(message.login === "true"){
-                alert("评论成功")
+                alert("评论成功");
+                //window.location.href = 'http://localhost:8080/blogs/';
             }else{
                 alert("请登录")
                 window.location.href = 'http://localhost:8080/login';
