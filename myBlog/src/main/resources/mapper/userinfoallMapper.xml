@@ -2,7 +2,12 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.example.demo.mapper.userinfoallMapper">
     <select id="getallfollow" resultType="com.example.demo.entity.User">
-        select `userId`,`username`,`avatar` from (select * from `userLike` natural join `User`) as t where `fansId`=1 ;
-    </select>
-
+        select `userId`,`username`,`avatar` from (select * from `userLike` natural join `User`) as t where `fansId`=1;
+</select>
+    <delete id="cancelfollow">
+        delete from `userLike` where `fansId`=#{userId} and `userId`=#{cancelId};
+    </delete>
+    <update id="reducelikenum">
+        update `User` set `fansNum`= case when `fansNum`=0 then `fansNum`=0 else `fansNum`-1 end where `userId`=#{userId};
+    </update>
 </mapper>

@@ -64,4 +64,12 @@ public class userinfoallServiceImpl implements userinfoallService {
     }
 
 
+
+    @Override
+    public void cancelfollow(Integer cancelId,Integer userId){
+        System.out.println("CancelId:"+cancelId+" userId:"+userId);
+        userinfoallMapper.cancelfollow(cancelId,userId);
+        userinfoallMapper.reducelikenum(cancelId);
+    }
+
 }

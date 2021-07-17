@@ -629,7 +629,7 @@ function manageBlog()
                         "                           </a>\n" +
                         "                        </div>");
                 }
-                $("#null").attr("id", "null2");
+                // $("#null").attr("id", "null2");
 
                 $("#path").attr("href",blog.link);//设置点赞数量
                 $("#path").attr("id", "pass");
@@ -750,8 +750,7 @@ function getblogPageComments()
         //alert("load the blog")
         urls = window.location.pathname;
         str = urls.split("/")
-        //alert("hello"),
-        //alert(str[2])
+
         $.ajax({
 
             url: 'http://localhost:8080/reqfollow',
@@ -779,29 +778,30 @@ function getblogPageComments()
                             "                            <div class=\"sl_poke_users\" id=\"1\">\n" +
                             "                                <div class=\"sl_poke_info\">\n" +
                             "                                    <a href=\"userinfo.html\">\n" +
-                            "                                        <div class=\"avatar\"> <img src=\"http://localhost:8080/assets/images/avatars/avatar-1.jpg\" alt=\"\">\n" +
+                            "                                        <div class=\"avatar\"> <img id=\"touxiang\" src=\""+followings.avatar+"\" alt=\"\">\n" +
                             "                                            </div>\n" +
                             "                                    </a>\n" +
                             "                                    <div class=\"sl_poke_info_innr\">\n" +
                             "                                        <div class=\"sl_poke_info_innr_user\">\n" +
                             "                                            <span>\n" +
-                            "                                                <a href=\"userinfo.html\"> <span class=\"user-name\" id = \"title\"> Dennis Han </span>  </a>\n" +
+                            "                                                <a id=\"directing\" href=\""+followings.userId+"\"> <span class=\"user-name\" id = \"title\"> Dennis Han </span>  </a>\n" +
                             "                                            </span>\n" +
                             "                                        </div>\n" +
-
+                            "                                        <button class=\"button light small\" style=\"margin: 5px\" onclick='clickbutton("+parseInt(followings.userId)+")'> 取消关注</button>\n" +
                             "                                    </div>\n" +
                             "                                </div>\n" +
                             "                            </div>\n" +
                             "                           </a>\n" +
                             "                        </div>");
                     }
-                    $("#null").attr("id", "null2");
+                    // $("#null").attr("id", "null2");
 
-                    $("#path").attr("href",blog.link);//设置点赞数量
+                    // $("#path").attr("href",blog.link);//设置点赞数量
                     $("#path").attr("id", "pass");
-
-                    $("#title").html("《" + blog.blogTitle+"》");
+                    $("#directing").attr("href","/personalspaceguest/"+followings.userId);
+                    $("#title").html(followings.username);
                     $("#title").attr("id", "pass");//设置博客标题
+                    $("#touxinag").attr("src",followings.avatar);
 
                     // $("#content").html(blog.blogContent);
                     // $("#content").attr("id", "pass");//设置博客内容
@@ -850,6 +850,27 @@ function comment()
 
 }
 
+function clickbutton(userId)
+{
+    var jsonstr={"userId":userId};
+    $.ajax({
+        url: 'http://localhost:8080/reqdelfollow', //这里是返回路径 在controller里写好对应函数就行 TODO:记得修改路径后面的 这是测试
+        type: 'get',
+        data: jsonstr, //这里是向后端传输的json 应该是可以直接传对象 比如User这种entity
+
+        //例如点赞的话 我们传递blogID userID到后端 后端再进行操作
+
+        async: false,
+        success:function(data){
+            location.reload();
+},
+        error:function(xhr){
+            alert("something wrong:"+xhr.status);
+        }
+    })
+}
+
+
 //=====forward=====
 function forward()
 {
@@ -859,7 +880,7 @@ function forward()
 
         url: 'http://localhost:8080/blogs/forward', //这里是返回路径 在controller里写好对应函数就行 TODO:记得修改路径后面的 这是测试
         type: 'get',
-        data: {"tagId":tagId,"blogId":blogId}, //这里是向后端传输的json 应该是可以直接传对象 比如User这种entity
+        data: {}, //这里是向后端传输的json 应该是可以直接传对象 比如User这种entity
         //例如点赞的话 我们传递blogID userID到后端 后端再进行操作
         async: true,
         success: function(data){

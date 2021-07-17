@@ -2,9 +2,11 @@ package com.example.demo.controller;
 
 import com.example.demo.entity.User;
 import com.example.demo.service.userinfoallService;
+import org.json.JSONObject;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -30,8 +32,17 @@ public class SeeAllController {
     @ResponseBody
     public String reqfollow(HttpServletRequest request){
         String s=userinfoallService.getallfollow(request);
-        System.out.println(s);
+        System.out.println("GET:"+s);
         return s;
+    }
+
+    @RequestMapping("/reqdelfollow")
+    @ResponseBody
+    public String reqdelfollow(@RequestParam("userId") Integer userId,HttpServletRequest request ){
+        HttpSession session=request.getSession();
+        Integer rel_userId=(Integer)session.getAttribute("userID");
+        userinfoallService.cancelfollow(userId,rel_userId);
+        return "seeAllfollow";
     }
 
 }
