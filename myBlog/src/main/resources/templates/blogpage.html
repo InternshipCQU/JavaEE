@@ -44,6 +44,9 @@
     <script src="https://kit.fontawesome.com/815e388c50.js" crossorigin="anonymous"></script>
     <script src="http://localhost:8080/assets/js/myJS.js"></script>
     <script src="https://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://localhost:8080/assets/js/collect.js"></script>
+    <script src="//unpkg.com/vue/dist/vue.js"></script>
+    <script src="//unpkg.com/element-ui@2.15.3/lib/index.js"></script>
 <!--    <script src="http://libs.baidu.com/jquery/1.9.0/jquery.min.js"></script>-->
 <!--    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>-->
 
@@ -619,15 +622,21 @@
 <!--                            <li><a href="#" > 点赞</a></li>-->
                             <li><a href="#" id="repost" > 转发</a></li>
                             <li><a href="#" id="postDate" th:text =  "${blog.createTime}"> </a></li>
-                            <div class="feed" id="feed2" style="width:60px;top: 2px;left: 450px;">
-                                <div class="heart" id="like2" rel="like" style="top: 5px;"></div>
-                                <div class="likeCount" id="likeCount2" style="top: 5px;">10</div>
-                            </div>
-                            <li> <a href="javascript:collect()" id="collect">收藏</a></li>
+<!--                                <a>-->
+                                <div class="feed" id="feed2">
+                                    <div class="heart" id="like2" rel="like" style="top: 5px; background-position: left center;"></div>
+                                    <div class="likeCount" id="likeCount2" style="top: 0px;">10</div>
+                                </div>
+<!--                                </a>-->
+
+<!--                            <div id="app">-->
+<!--                                <i class="el-icon-star-off"></i>-->
+<!--                            </div>-->
+<!--                            <li> <a href="javascript:collect()" id="collect">收藏</a></li>-->
 
 <!--                            <li>Like <span id="likenum" th:text =  "${blog.likesNum}"></span></li>-->
 
-                        </ul>
+<!--                        </ul>-->
 
 
                     </div>
