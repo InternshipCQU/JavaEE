@@ -765,6 +765,81 @@ function getblogPageComments()
 //====
 
 
+    function getallfollow()
+    {
+        //alert("load the blog")
+        urls = window.location.pathname;
+        str = urls.split("/")
+        //alert("hello"),
+        //alert(str[2])
+        $.ajax({
+
+            url: 'http://localhost:8080/reqfollow',
+            type: 'get',
+            data: {},
+            async: false,
+
+            error:function(jqXHR,textStatus,errorThrown ){
+                alert("errorThrown")
+            },
+            success: function(data) {
+                //console.log(data)
+                var followings = JSON.parse(data);
+                //alert(blog)
+                $("#finalfollowing").attr("id", "null")
+                if (followings.noMore === "true") {
+
+                } else {
+
+
+                    if (followings != null) {
+
+                        $("#null").after("<div class=\"sl_pokes_cont\" id = \"final\">\n" +
+                            "                                <a id = \"path\">\n" +
+                            "                            <div class=\"sl_poke_users\" id=\"1\">\n" +
+                            "                                <div class=\"sl_poke_info\">\n" +
+                            "                                    <a href=\"userinfo.html\">\n" +
+                            "                                        <div class=\"avatar\"> <img src=\"http://localhost:8080/assets/images/avatars/avatar-1.jpg\" alt=\"\">\n" +
+                            "                                            </div>\n" +
+                            "                                    </a>\n" +
+                            "                                    <div class=\"sl_poke_info_innr\">\n" +
+                            "                                        <div class=\"sl_poke_info_innr_user\">\n" +
+                            "                                            <span>\n" +
+                            "                                                <a href=\"userinfo.html\"> <span class=\"user-name\" id = \"title\"> Dennis Han </span>  </a>\n" +
+                            "                                            </span>\n" +
+                            "                                        </div>\n" +
+
+                            "                                    </div>\n" +
+                            "                                </div>\n" +
+                            "                            </div>\n" +
+                            "                           </a>\n" +
+                            "                        </div>");
+                    }
+                    $("#null").attr("id", "null2");
+
+                    $("#path").attr("href",blog.link);//设置点赞数量
+                    $("#path").attr("id", "pass");
+
+                    $("#title").html("《" + blog.blogTitle+"》");
+                    $("#title").attr("id", "pass");//设置博客标题
+
+                    // $("#content").html(blog.blogContent);
+                    // $("#content").attr("id", "pass");//设置博客内容
+                    // $("#time").html(blog.createTime);
+                    // $("#time").attr("id", "pass");//设置时间
+
+                    // $("#userAvater").attr("src", blog.userAvater);
+                    // $("#userAvater").attr("id", "pass");//设置博主头像
+
+
+                }
+            },
+            complete: function () {
+                $("loading").hide();
+            },
+        });
+    }
+
 //==== comment ====
 function comment()
 {
