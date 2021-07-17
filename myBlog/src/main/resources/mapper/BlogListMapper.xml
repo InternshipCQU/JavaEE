@@ -1,7 +1,23 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.example.demo.mapper.BlogListMapper">
-    <delete id="deleteblog" parameterType="Integer">
-        delete from `blogInfo` where blogId=#{blogId};
+    <delete id="deletecollect" parameterType="Integer">
+        delete from `blogCollect` where `blogId`=#{blogId} ;
     </delete>
+    <delete id="deletebloglike" parameterType="Integer">
+        delete from `blogLike` where `blogId`=#{blogId};
+    </delete>
+    <delete id="deleteblogcomment" parameterType="Integer">
+        delete from `blogComment` where `blogId`=#{blogId} ;
+    </delete>
+    <delete id="deleteblogforward" parameterType="Integer">
+        delete from `blogForward` where `blogId`=#{blogId} ;
+    </delete>
+    <delete id="deletetagbloginfo" parameterType="Integer">
+        delete from `tagBlogInfo` where `blogId`=#{blogId};
+    </delete>
+    <delete id="deletebloginfo" parameterType="Integer">
+        delete from `blogInfo` where `blogId`=#{blogId};
+    </delete>
+
 </mapper>

@@ -2,15 +2,27 @@ package com.example.demo.controller;
 
 import com.example.demo.entity.BlogInfo;
 import com.example.demo.service.BlogService;
+import com.example.demo.service.HomeService;
+import net.sf.json.JSON;
+import org.json.JSONException;
+import org.json.JSONObject;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import java.io.IOException;
+
+
 //这个是利用restful去数据库寻找数据 将其传给前端 博客展示界面
 @Controller
 public class BlogController {
+
+
     @RequestMapping("personalspace")
     public String personalspace(){
         return "personalspace";
@@ -22,34 +34,68 @@ public class BlogController {
     }
     @Resource
     private BlogService blogService;
+    @Resource
+    HomeService homeService;
 
     @RequestMapping("/blogs/{userID}/{blogId}")
-    public String blog(@PathVariable("blogId") int blogId,@PathVariable("userID") String userID, Model model){
+    public String blog(@PathVariable("blogId") int blogId,@PathVariable("userID") String userID, Model model,HttpServletRequest request){
         BlogInfo blog = blogService.getBlog(blogId);
+        blog.blogId= blogId;
         model.addAttribute("blog",blog);
+        blogService.Init(blogId,request);
+
+        //System.out.println(blog.getUserId());
+        blogService.getAuthorName(blog.getUserId(),model);
+        homeService.setBlogger(request,model);
 
         return "blogpage";
     }
-
+    @RequestMapping("/blogs/querylike")
+    public void querylike(@RequestParam("blogId") int blogId, @RequestParam("userId") int userId,  HttpServletResponse response) throws JSONException, IOException{
+        boolean f=blogService.isliked(blogId,userId);
+        System.out.println("is like?:"+f);
+        JSONObject object=new JSONObject();
+        object.put("IsLiked",f);
+        response.getWriter().write(object.toString());
+    }
 
     @RequestMapping("/blogs/like")
-    public void like(@RequestParam("blogId") int blogId, @RequestParam("userId") int userId, @RequestParam("tagId") int tagId){
+    public void like(@RequestParam("blogId") int blogId, @RequestParam("userId") int userId, @RequestParam("tagId") int tagId, @RequestParam("likenumber")int num, HttpServletResponse response) throws JSONException, IOException {
         blogService.like(blogId);
-        blogService.updateMarkWhenLike(tagId, userId);
+        blogService.writelikerecord(blogId,userId);
+        System.out.println("im in like");
+        JSONObject object=new JSONObject();
+        response.getWriter().write(object.toString());
+
     }
 
     @RequestMapping("/blogs/cancelLike")
-    public void cancelLike(@RequestParam("blogId") int blogId, @RequestParam("userId") int userId, @RequestParam("tagId") int tagId){
+    public void cancelLike(@RequestParam("blogId") int blogId, @RequestParam("userId") int userId, @RequestParam("tagId") int tagId,@RequestParam("likenumber")int num,HttpServletResponse response) throws JSONException,IOException {
+        JSONObject object=new JSONObject();
         blogService.cancelLike(blogId);
-        blogService.updateMarkWhenCancelLike(tagId, userId);
+        blogService.deletelikerecord(blogId,userId);
+        System.out.println("im in dislike");
+        response.getWriter().write(object.toString());
+
     }
 
     @RequestMapping("/blogs/comment")
-    public void comment(@RequestParam("blogId") int blogId, @RequestParam("userId") int userId,
-                        @RequestParam("tagId") int tagId,@RequestParam("comment") String comment){
+    @ResponseBody
+    public String comment(@RequestParam("blogId") int blogId,
+                        @RequestParam("tagId") int tagId,@RequestParam("comment") String comment,HttpServletRequest request){
+
+
+        System.out.println("comment here");
+        HttpSession session = request.getSession();
+        if(session.getAttribute("userID") == null){
+            return "{\"login\":\"false\"}";
+        }
+        int userId = (Integer)session.getAttribute("userID");
+
 
         blogService.comment(blogId, userId, comment);
         blogService.updateMarkWhenComment(tagId, userId);
+        return "{\"login\":\"true\"}";
     }
 
 
@@ -61,11 +107,32 @@ public class BlogController {
         blogService.updateMarkWhenForward(tagId, userId);
     }
 
+    @RequestMapping("/blogs/isCollect")
+    public void isCollect(@RequestParam("blogId") int blogId, @RequestParam("userId") int userId,
+                          @RequestParam("tagId") int tagId, Model model)
+    {
+        boolean isCollect = blogService.isCollect(blogId, userId);
+        model.addAttribute("isCollect",isCollect);
+//        System.out.println(model.getAttribute("isCollect"));
+    }
+
+
     @RequestMapping("/blogs/collect")
     public void collect(@RequestParam("blogId") int blogId, @RequestParam("userId") int userId,
-                        @RequestParam("tagId") int tagId){
+                        @RequestParam("tagId") int tagId, Model model){
+
         blogService.collect(blogId, userId);
+        blogService.addCollectNum(blogId);
         blogService.updateMarkWhenCollect(tagId, userId);
+
+
+    }
+
+    @RequestMapping("/blogs/cancelCollect")
+    public void cancelCollect (@RequestParam("blogId") int blogId, @RequestParam("userId") int userId,
+                               @RequestParam("tagId") int tagId, Model model)
+    {
+
     }
 
     @RequestMapping("/blogs/follow")
@@ -81,4 +148,14 @@ public class BlogController {
         model.addAttribute("searchLikeBlogList", blogService.searchLikeBlog(userId));
         return "test-searchLikeBlog";
     }
+
+
+    @RequestMapping("/getComments")
+    @ResponseBody
+    public String getComments(@RequestParam("blogId") int blogId, HttpServletRequest request){
+        String s = blogService.giveTheCommentsToBlog(blogId,request);
+        //System.out.println("s:"  + s);
+        return s;
+    }
+
 }

@@ -2,12 +2,23 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.example.demo.mapper.BlogMapper">
     <update id="like">
-        update blogInfo set likesNum = likesNum + 1 where blogId = #{blogId}
+        update blogInfo set likesNum = likesNum + 1 where blogId = #{blogId};
     </update>
 
     <update id="cancelLike">
-        update blogInfo set likesNum = likesNum - 1 where blogId = #{blogId}
+        update blogInfo set likesNum = likesNum - 1 where blogId = #{blogId};
     </update>
+
+    <insert id="writelikerecord">
+        insert into `blogLike`(`blogId`,`userId`) values(#{blogId},#{userId});
+    </insert>
+
+    <select id="isliked" resultType="Integer">
+        select count(*) from `blogLike` where `blogId`=#{blogId} and `userId`=#{userId};
+    </select>
+    <delete id="deletelikerecord">
+        delete from `blogLike` where `blogId`=#{blogId} and `userId`=#{userId};
+    </delete>
 
     <insert id="comment">
         insert into blogComment(commentContent, createTime, blogId, userId)
@@ -23,6 +34,28 @@
         insert into blogCollect(createTime, blogId, userId)
         values(#{createTime}, #{blogId}, #{userId})
     </insert>
+
+    <update id="addCollectNum">
+        update blogInfo set collectNum = collectNum + 1 where blogId = #{blogId}
+    </update>
+
+    <update id="deductCollectNum">
+        update blogInfo set collectNum = collectNum - 1 where blogId = #{blogId}
+    </update>
+
+    <update id="updateMarkWhenCancelCollect">
+        UPDATE TagMark SET ${tagName} = ${tagName} - 3 WHERE userId = #{userId}
+    </update>
+
+
+    <select id="isCollect" resultType="Integer">
+        select `blogCollect`.blogId from `blogCollect`
+        where #{blogID} = `blogCollect`.blogId and #{userId} = `blogCollect`.userId
+    </select>
+
+    <delete id="cancelCollect">
+        delete from `blogCollect` where #{blogID} = `blogCollect`.blogId and #{userId} = `blogCollect`.userId
+    </delete>
 
     <select id="getBlog" resultType="com.example.demo.entity.BlogInfo">
         SELECT blogInfo.blogTitle, blogInfo.blogContent, blogInfo.createTime,

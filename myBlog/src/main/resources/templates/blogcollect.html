@@ -2,37 +2,24 @@
 <html lang="en">
 
 <head>
-    <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
-    <script type='text/javascript'>
-
-        window.onload = function () {
-            getUserBlog()
-            getUserBlog()
-
-        }
-
-    </script>
-</head>
-
-<head>
 
     <!-- Basic Page Needs
     ================================================== -->
-    <title>Simplest Social Network HTML Template</title>
+    <title>收藏的文章</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Simplest is - Professional A unique and beautiful collection of UI elements">
-    <link rel="icon" href="http://localhost:8080/assets/images/favicon.png">
+    <link rel="icon" href="assets/images/favicon.png">
 
     <!-- CSS 
     ================================================== -->
-    <link rel="stylesheet" href="http://localhost:8080/assets/css/style.css">
-    <link rel="stylesheet" href="http://localhost:8080/assets/css/uikit.css">
-    <link rel="stylesheet" href="http://localhost:8080/assets/css/uikit.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/uikit.css">
+    <link rel="stylesheet" href="assets/css/uikit.css">
 
     <!-- icons
     ================================================== -->
-    <link rel="stylesheet" href="http://localhost:8080/assets/css/icons.css">
+    <link rel="stylesheet" href="assets/css/icons.css">
     <script src="https://kit.fontawesome.com/815e388c50.js" crossorigin="anonymous"></script>
 
     <!-- Google font
@@ -41,8 +28,9 @@
 
 </head>
 
-<body >
-    <script src="http://localhost:8080/assets/js/userinfo.js"></script>
+<body>
+ 
+
         <!-- Wrapper -->
     <div id="wrapper">
 
@@ -54,7 +42,7 @@
            <div class="sidebar-header">
                <!-- Logo-->
                <div id="logo">
-                   <a href="feeds.html"> <img src="http://localhost:8080/assets/images/logo-light.png" alt=""></a>
+                   <a href="feeds.html"> <img src="assets/images/logo-light.png" alt=""></a>
                </div>
                <span class="btn-close" uk-toggle="target: #wrapper ; cls: collapse-sidebar mobile-visible"></span>
            </div>
@@ -80,7 +68,7 @@
                                        </path>
                                    </svg> Albums </a>
                            </li>
-                           <li>
+                           <li class="active">
                                <a href="pokes.html">
                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
                                        <path fill="#009688"
@@ -238,7 +226,7 @@
        <!-- contents -->
        <div class="main_content">
 
-        <!-- header -->
+            <!-- header -->
        <div id="main_header">
            <header>
                <div class="header-innr">
@@ -249,57 +237,13 @@
 
                     <!-- Logo-->
                     <div id="logo">
-                       <a href="feeds.html"> <img src="http://localhost:8080/assets/images/logo.png" alt=""></a>
-                       <a href="feeds.html"> <img src="http://localhost:8080/assets/images/logo-light.png" class="logo-inverse"
+                       <a href="feeds.html"> <img src="assets/images/logo.png" alt=""></a>
+                       <a href="feeds.html"> <img src="assets/images/logo-light.png" class="logo-inverse"
                                alt=""></a>
                    </div>
 
-                   <!-- form search-->
-                   <div class="head_search">
-                       <form>
-                           <div class="head_search_cont">
-                               <input value="" type="text" class="form-control"
-                                   placeholder="Search for Friends , Videos and more.." autocomplete="off">
-                               <i class="s_icon uil-search-alt"></i>
-                           </div>
-
-                           <!-- Search box dropdown -->
-                           <div uk-dropdown="pos: top;mode:click;animation: uk-animation-slide-bottom-small"
-                               class="dropdown-search display-hidden">
-                               <!-- User menu -->
-
-                               <ul class="dropdown-search-list">
-                                   <li class="list-title"> Recent Searches </li>
-                                   <li> <a href="#">
-                                           <img src="http://localhost:8080/assets/images/avatars/avatar-2.jpg" alt="">
-                                           <p> Erica Jones <span> 2 hours ago </span> </p>
-                                       </a>
-                                   </li>
-                                   <li> <a href="#">
-                                           <img src="http://localhost:8080/assets/images/avatars/avatar-3.jpg" alt="">
-                                           <p> Adrian Mohani <span> 13 days ago </span> </p>
-                                       </a>
-                                   </li>
-                                   <li> <a href="#">
-                                           <img src="http://localhost:8080/assets/images/avatars/avatar-4.jpg" alt="">
-                                           <p> Mountain Riders <span> 3 days ago <span>Group</span> </span> </p>
-                                       </a>
-                                   </li>
-                                   <li> <a href="#">
-                                           <img src="http://localhost:8080/assets/images/avatars/avatar-5.jpg" alt="">
-                                           <p> Coffee Addicts <span> 12 days ago <span> Page</span></span> </p>
-                                       </a>
-                                   </li>
-                                   <li class="menu-divider"></li>
-                                   <li class="list-footer"> <a href="your-history.html"> Searches History </a>
-                                   </li>
-                               </ul>
-
-                           </div>
 
 
-                       </form>
-                   </div>
 
                    <!-- user icons -->
                    <div class="head_user">
@@ -307,7 +251,7 @@
 
                        <!-- browse apps  -->
                        <a href="#" class="opts_icon uk-visible@s" uk-tooltip="title: Create ; pos: bottom ;offset:7">
-                           <img src="http://localhost:8080/assets/images/icons/apps.svg" alt="">
+                           <img src="assets/images/icons/apps.svg" alt="">
                        </a>
 
                        <!-- browse apps dropdown -->
@@ -359,7 +303,7 @@
 
                        <!-- Message  notificiation dropdown -->
                        <a href="#" class="opts_icon" uk-tooltip="title: Messages ; pos: bottom ;offset:7">
-                           <img src="http://localhost:8080/assets/images/icons/chat.svg" alt=""> <span>4</span>
+                           <img src="assets/images/icons/chat.svg" alt=""> <span>4</span>
                        </a>
 
                        <!-- Message  notificiation dropdown -->
@@ -383,7 +327,7 @@
                                    <li>
                                        <a href="#">
                                            <span class="notification-avatar status-online">
-                                               <img src="http://localhost:8080/assets/images/avatars/avatar-2.jpg" alt="">
+                                               <img src="assets/images/avatars/avatar-2.jpg" alt="">
                                            </span>
                                            <div class="notification-text notification-msg-text">
                                                <strong>Jonathan Madano</strong>
@@ -395,7 +339,7 @@
                                    <li>
                                        <a href="#">
                                            <span class="notification-avatar">
-                                               <img src="http://localhost:8080/assets/images/avatars/avatar-3.jpg" alt="">
+                                               <img src="assets/images/avatars/avatar-3.jpg" alt="">
                                            </span>
                                            <div class="notification-text notification-msg-text">
                                                <strong>Stella Johnson</strong>
@@ -407,7 +351,7 @@
                                    <li>
                                        <a href="#">
                                            <span class="notification-avatar status-online">
-                                               <img src="http://localhost:8080/assets/images/avatars/avatar-1.jpg" alt="">
+                                               <img src="assets/images/avatars/avatar-1.jpg" alt="">
                                            </span>
                                            <div class="notification-text notification-msg-text">
                                                <strong>Alex Dolgove</strong>
@@ -418,7 +362,7 @@
                                    <li>
                                        <a href="#">
                                            <span class="notification-avatar status-online">
-                                               <img src="http://localhost:8080/assets/images/avatars/avatar-4.jpg" alt="">
+                                               <img src="assets/images/avatars/avatar-4.jpg" alt="">
                                            </span>
                                            <div class="notification-text notification-msg-text">
                                                <strong>Adrian Mohani</strong>
@@ -429,7 +373,7 @@
                                    <li>
                                        <a href="#">
                                            <span class="notification-avatar">
-                                               <img src="http://localhost:8080/assets/images/avatars/avatar-2.jpg" alt="">
+                                               <img src="assets/images/avatars/avatar-2.jpg" alt="">
                                            </span>
                                            <div class="notification-text notification-msg-text">
                                                <strong>Jonathan Madano</strong>
@@ -441,7 +385,7 @@
                                    <li>
                                        <a href="#">
                                            <span class="notification-avatar">
-                                               <img src="http://localhost:8080/assets/images/avatars/avatar-3.jpg" alt="">
+                                               <img src="assets/images/avatars/avatar-3.jpg" alt="">
                                            </span>
                                            <div class="notification-text notification-msg-text">
                                                <strong>Stella Johnson</strong>
@@ -453,7 +397,7 @@
                                    <li>
                                        <a href="#">
                                            <span class="notification-avatar">
-                                               <img src="http://localhost:8080/assets/images/avatars/avatar-1.jpg" alt="">
+                                               <img src="assets/images/avatars/avatar-1.jpg" alt="">
                                            </span>
                                            <div class="notification-text notification-msg-text">
                                                <strong>Alex Dolgove</strong>
@@ -464,7 +408,7 @@
                                    <li>
                                        <a href="#">
                                            <span class="notification-avatar">
-                                               <img src="http://localhost:8080/assets/images/avatars/avatar-4.jpg" alt="">
+                                               <img src="assets/images/avatars/avatar-4.jpg" alt="">
                                            </span>
                                            <div class="notification-text notification-msg-text">
                                                <strong>Adrian Mohani</strong>
@@ -485,7 +429,7 @@
 
                        <!-- notificiation icon  -->
                        <a href="#" class="opts_icon" uk-tooltip="title: Notifications ; pos: bottom ;offset:7">
-                           <img src="http://localhost:8080/assets/images/icons/bell.svg" alt=""> <span>3</span>
+                           <img src="assets/images/icons/bell.svg" alt=""> <span>3</span>
                        </a>
 
 
@@ -510,7 +454,7 @@
                                    <li>
                                        <a href="#">
                                            <span class="notification-avatar">
-                                               <img src="http://localhost:8080/assets/images/avatars/avatar-2.jpg" alt="">
+                                               <img src="assets/images/avatars/avatar-2.jpg" alt="">
                                            </span>
                                            <span class="notification-icon bg-gradient-primary">
                                                <i class="icon-feather-thumbs-up"></i></span>
@@ -524,7 +468,7 @@
                                    <li>
                                        <a href="#">
                                            <span class="notification-avatar">
-                                               <img src="http://localhost:8080/assets/images/avatars/avatar-3.jpg" alt="">
+                                               <img src="assets/images/avatars/avatar-3.jpg" alt="">
                                            </span>
                                            <span class="notification-icon bg-gradient-danger">
                                                <i class="icon-feather-star"></i></span>
@@ -538,7 +482,7 @@
                                    <li>
                                        <a href="#">
                                            <span class="notification-avatar">
-                                               <img src="http://localhost:8080/assets/images/avatars/avatar-4.jpg" alt="">
+                                               <img src="assets/images/avatars/avatar-4.jpg" alt="">
                                            </span>
                                            <span class="notification-icon bg-gradient-success">
                                                <i class="icon-feather-message-circle"></i></span>
@@ -552,7 +496,7 @@
                                    <li>
                                        <a href="#">
                                            <span class="notification-avatar">
-                                               <img src="http://localhost:8080/assets/images/avatars/avatar-2.jpg" alt="">
+                                               <img src="assets/images/avatars/avatar-2.jpg" alt="">
                                            </span>
                                            <span class="notification-icon bg-gradient-primary">
                                                <i class="icon-feather-thumbs-up"></i></span>
@@ -566,7 +510,7 @@
                                    <li>
                                        <a href="#">
                                            <span class="notification-avatar">
-                                               <img src="http://localhost:8080/assets/images/avatars/avatar-3.jpg" alt="">
+                                               <img src="assets/images/avatars/avatar-3.jpg" alt="">
                                            </span>
                                            <span class="notification-icon bg-gradient-warning">
                                                <i class="icon-feather-star"></i></span>
@@ -580,7 +524,7 @@
                                    <li>
                                        <a href="#">
                                            <span class="notification-avatar">
-                                               <img src="http://localhost:8080/assets/images/avatars/avatar-4.jpg" alt="">
+                                               <img src="assets/images/avatars/avatar-4.jpg" alt="">
                                            </span>
                                            <span class="notification-icon bg-gradient-success">
                                                <i class="icon-feather-message-circle"></i></span>
@@ -600,7 +544,7 @@
 
 
                        <!-- profile -image -->
-                       <a class="opts_account" href="#"> <img src="http://localhost:8080/assets/images/avatars/avatar-2.jpg" alt=""></a>
+                       <a class="opts_account" href="#"> <img src="assets/images/avatars/avatar-2.jpg" alt=""></a>
 
                        <!-- profile dropdown-->
                        <div uk-dropdown="mode:click ; animation: uk-animation-slide-bottom-small"
@@ -608,15 +552,15 @@
 
                            <!-- User Name / Avatar -->
                            <!-- User Name / Avatar -->
-                           <a href="/userinfo">
+                           <a href="userinfo.html">
 
                                <div class="dropdown-user-details">
 
                                    <div class="dropdown-user-cover">
-                                       <img src="http://localhost:8080/assets/images/avatars/profile-cover.jpg" alt="">
+                                       <img src="assets/images/avatars/profile-cover.jpg" alt="">
                                    </div>
                                    <div class="dropdown-user-avatar">
-                                       <img src="http://localhost:8080/assets/images/avatars/avatar-1.jpg" alt="">
+                                       <img src="assets/images/avatars/avatar-1.jpg" alt="">
                                    </div>
                                    <div class="dropdown-user-name"> James Lewis </div>
                                </div>
@@ -663,458 +607,142 @@
 
             <div class="main_content_inner">
 
+                <div id="spinneroverlay"> </div>
 
-                <div class="single-group">
-                    <div class="group-cover">
 
-                        <!--Signle group cover -->
-                        <img src="http://localhost:8080/assets/images/group/group-cover.jpg" alt="">
+                <div class="uk-grid-large" uk-grid>
 
-                    </div>
+                    <div class="uk-width-1-1@m fead-area-for-bloglist">
 
-                    <div class="single-group-details">
-                        <div class="left-side">
-                            <div class="single-group-image">
-                                <a href="#">
-                                    <img th:src = "${avatar}">
-<!--                                    <img src="http://localhost:8080/assets/images/group/group-avature.jpg" alt="">-->
-                                </a>
-                            </div>
-                            <div class="single-group-details-info">
-                                <h3 th:text = "${username}"> Friends For Ever </h3>
-                                <p>
-                                <p> <i class="uil-thumbs-up"></i> 12k Joined this </p>
-                                </p>
+                        <h2> 我的博文  </h2>
+
+                        <div class="sl_pokes_cont">
+                            <div class="sl_poke_users" id="1">
+                                <div class="sl_poke_info">
+                                    <a href="userinfo.html">
+                                        <div class="avatar"> <img src="assets/images/avatars/avatar-1.jpg" alt="">
+                                            </div>
+                                    </a>
+                                    <div class="sl_poke_info_innr">
+                                        <div class="sl_poke_info_innr_user">
+                                            <span>
+                                                <a href="userinfo.html"> <span class="user-name"> Dennis Han </span>  </a>
+                                            </span>
+                                        </div>
+<!--                                        <button type="button" class="button light small" style="margin: 5px">-->
+<!--                                            <img src="assets/images/icons/edit.svg" width="20" height="20" style="margin-right: 10px"></img><span class="button-text">编辑</span>-->
+
+<!--                                        </button>-->
+                                        <button type="button" class="button light small" style="margin: 5px">
+                                            <img src="assets/images/icons/delete.svg" width="20" height="20" style="margin-right: 10px"></img><span class="button-text">删除</span>
+                                        </button>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                        <div class="right-side">
-                            <div class="btn-subscribe">
-                                <a href="#" class="button primary"> <i class="uil-thumbs-up"></i> 关注该博主
-                                </a>
-                                <span class="subs-amount">120K</span>
+
+                        <div class="sl_pokes_cont">
+                            <div class="sl_poke_users" id="1">
+                                <div class="sl_poke_info">
+                                    <a href="userinfo.html">
+                                        <div class="avatar"> <img src="assets/images/avatars/avatar-6.jpg" alt="">
+                                            </div>
+                                    </a>
+                                    <div class="sl_poke_info_innr">
+                                        <div class="sl_poke_info_innr_user">
+                                            <span>
+                                                <a href="userinfo.html"> <span class="user-name"> Monera Khalifa </span>  </a>
+                                            </span>
+                                        </div>
+<!--                                        <button type="button" class="button light small" style="margin: 5px">-->
+<!--                                            <img src="assets/images/icons/edit.svg" width="20" height="20" style="margin-right: 10px"></img><span class="button-text">编辑</span>-->
+
+<!--                                        </button>-->
+                                        <button type="button" class="button light small" style="margin: 5px">
+                                            <img src="assets/images/icons/delete.svg" width="20" height="20" style="margin-right: 10px"></img><span class="button-text">删除</span>
+                                        </button>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
 
-                    <div class="nav-single-group" uk-sticky="media : @s">
-                        <nav class="responsive-tab">
-                            <ul>
-                                <li class="uk-active"><a class="active" href="#">Feed</a></li>
-                                <li><a href="#">members</a></li>
-                                <li><a href="#">Photos</a></li>
-                                <li><a href="#">Discussions</a></li>
-                                <li><a href="#">Videos</a></li>
-                                <li><a href="#">Manage</a></li>
-                            </ul>
-                        </nav>
-                        <form class="nav-single-group-saerchbox">
-                            <i class="uil-search"></i>
-                            <input class="uk-input" type="text" value="Search Feed...">
-                        </form>
-                    </div>
-
-
-                </div>
-
-
-                <div class="section-small">
-
-                    <div uk-grid>
-
-                        <div class="uk-width-2-3@m fead-area">
-
-                            <div class="post-newer mt-lg-2" id = "final">
-
-                                <div class="post-new" uk-toggle="target: body ; cls: post-focus">
-                                    <div class="post-new-media">
-                                        <div class="post-new-media-user">
-                                            <img src="http://localhost:8080/assets/images/avatars/avatar-2.jpg" alt="">
+                        <div class="sl_pokes_cont">
+                            <div class="sl_poke_users" id="1">
+                                <div class="sl_poke_info">
+                                    <a href="userinfo.html">
+                                        <div class="avatar"> <img src="assets/images/avatars/avatar-2.jpg" alt="">
+                                            </div>
+                                    </a>
+                                    <div class="sl_poke_info_innr">
+                                        <div class="sl_poke_info_innr_user">
+                                            <span>
+                                                <a href="userinfo.html"> <span class="user-name"> Adrian Mohani </span>  </a>
+                                            </span>
                                         </div>
-                                        <div class="post-new-media-input">
-                                            <input type="text" class="uk-input" placeholder="What's Your Mind ? Hamse!">
-                                        </div>
-                                    </div>
-                                    <hr>
-                                    <div class="post-new-type">
+<!--                                        <button type="button" class="button light small" style="margin: 5px">-->
+<!--                                            <img src="assets/images/icons/edit.svg" width="20" height="20" style="margin-right: 10px"></img><span class="button-text">编辑</span>-->
 
-                                        <a href="#">
-                                            <img src="http://localhost:8080/assets/images/icons/live.png" alt="">
-                                            Go Live
-                                        </a>
-
-                                        <a href="#">
-                                            <img src="http://localhost:8080/assets/images/icons/photo.png" alt="">
-                                            Photo/Video
-                                        </a>
-
-                                        <a href="#" class="uk-visible@s">
-                                            <img src="http://localhost:8080/assets/images/icons/tag-friend.png" alt="">
-                                            Tag Friend
-                                        </a>
-
-                                        <a href="#"><img src="http://localhost:8080/assets/images/icons/reactions_wow.png" alt="">
-                                            Fealing
-                                        </a>
-
+<!--                                        </button>-->
+                                        <button type="button" class="button light small" style="margin: 5px">
+                                            <img src="assets/images/icons/delete.svg" width="20" height="20" style="margin-right: 10px"></img><span class="button-text">删除</span>
+                                        </button>
                                     </div>
                                 </div>
-
-                                <div class="post-pop">
-
-                                    <div class="post-new-overyly" uk-toggle="target: body ; cls: post-focus"></div>
-
-                                    <div class="post-new uk-animation-slide-top-small">
-
-
-                                        <div class="post-new-header">
-
-                                            <h4> Create new post</h4>
-
-                                            <!-- close button-->
-                                            <span class="post-new-btn-close" uk-toggle="target: body ; cls: post-focus"
-                                                uk-tooltip="title:Close; pos: left "></span>
-
-                                        </div>
-
-                                        <div class="post-new-media">
-                                            <div class="post-new-media-user">
-                                                <img src="http://localhost:8080/assets/images/avatars/avatar-2.jpg" alt="">
-                                            </div>
-                                            <div class="post-new-media-input">
-                                                <input type="text" class="uk-input"
-                                                    placeholder="What's Your Mind ? Dennis!">
-                                            </div>
-                                        </div>
-                                        <div class="post-new-tab-nav">
-                                            <a href="#">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                                    viewBox="0 0 24 24">
-                                                    <path fill="#4db3f6"
-                                                        d="M8.5,13.5L11,16.5L14.5,12L19,18H5M21,19V5C21,3.89 20.1,3 19,3H5A2,2 0 0,0 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19Z">
-                                                    </path>
-                                                </svg>
-                                                <span> Upload Image</span>
-                                            </a>
-                                            <a href="#">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                                    viewBox="0 0 512 512">
-                                                    <path fill="#71a257"
-                                                        d="M450.6 153.6c-3.3 0-6.5.9-9.3 2.7l-86.5 54.6c-2.5 1.6-4 4.3-4 7.2v76c0 2.9 1.5 5.6 4 7.2l86.5 54.6c2.8 1.7 6 2.7 9.3 2.7h20.8c4.8 0 8.6-3.8 8.6-8.5v-188c0-4.7-3.9-8.5-8.6-8.5h-20.8zM273.5 384h-190C55.2 384 32 360.8 32 332.6V179.4c0-28.3 23.2-51.4 51.4-51.4h190c28.3 0 51.4 23.2 51.4 51.4v153.1c.1 28.3-23 51.5-51.3 51.5z">
-                                                    </path>
-                                                </svg>
-                                                <span> Upload Videos</span>
-                                            </a>
-                                            <a href="#">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23"
-                                                    viewBox="0 0 24 24">
-                                                    <path fill="#f3c038"
-                                                        d="M12,2C6.486,2,2,6.486,2,12s4.486,10,10,10c5.514,0,10-4.486,10-10S17.514,2,12,2z M8.5,8C9.328,8,10,8.896,10,10	s-0.672,2-1.5,2S7,11.104,7,10S7.672,8,8.5,8z M12,18c-1.905,0-3.654-0.874-4.8-2.399l1.599-1.201C9.563,15.417,10.73,16,12,16	c1.27,0,2.436-0.583,3.2-1.601l1.6,1.201C15.653,17.126,13.904,18,12,18z M15.5,12c-0.828,0-1.5-0.896-1.5-2s0.672-2,1.5-2	S17,8.896,17,10S16.328,12,15.5,12z">
-                                                    </path>
-                                                </svg>
-                                                <span> Feeling </span>
-                                            </a>
-                                            <a href="#">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25"
-                                                    viewBox="0 0 24 24">
-                                                    <path fill="#673ab7"
-                                                        d="M17.5,12A1.5,1.5 0 0,1 16,10.5A1.5,1.5 0 0,1 17.5,9A1.5,1.5 0 0,1 19,10.5A1.5,1.5 0 0,1 17.5,12M14.5,8A1.5,1.5 0 0,1 13,6.5A1.5,1.5 0 0,1 14.5,5A1.5,1.5 0 0,1 16,6.5A1.5,1.5 0 0,1 14.5,8M9.5,8A1.5,1.5 0 0,1 8,6.5A1.5,1.5 0 0,1 9.5,5A1.5,1.5 0 0,1 11,6.5A1.5,1.5 0 0,1 9.5,8M6.5,12A1.5,1.5 0 0,1 5,10.5A1.5,1.5 0 0,1 6.5,9A1.5,1.5 0 0,1 8,10.5A1.5,1.5 0 0,1 6.5,12M12,3A9,9 0 0,0 3,12A9,9 0 0,0 12,21A1.5,1.5 0 0,0 13.5,19.5C13.5,19.11 13.35,18.76 13.11,18.5C12.88,18.23 12.73,17.88 12.73,17.5A1.5,1.5 0 0,1 14.23,16H16A5,5 0 0,0 21,11C21,6.58 16.97,3 12,3Z">
-                                                    </path>
-                                                </svg>
-                                                <span> Post Color </span>
-                                            </a>
-                                            <a href="#">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23"
-                                                    viewBox="0 0 24 24">
-                                                    <path fill="#ff3a55"
-                                                        d="M12,2A3,3 0 0,1 15,5V11A3,3 0 0,1 12,14A3,3 0 0,1 9,11V5A3,3 0 0,1 12,2M19,11C19,14.53 16.39,17.44 13,17.93V21H11V17.93C7.61,17.44 5,14.53 5,11H7A5,5 0 0,0 12,16A5,5 0 0,0 17,11H19Z">
-                                                    </path>
-                                                </svg>
-                                                <span> Recording </span>
-                                            </a>
-                                            <a href="#">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25"
-                                                    viewBox="0 0 512 512">
-                                                    <path fill="#6bcfef"
-                                                        d="M312 155h91c2.8 0 5-2.2 5-5 0-8.9-3.9-17.3-10.7-22.9L321 63.5c-5.8-4.8-13-7.4-20.6-7.4-4.1 0-7.4 3.3-7.4 7.4V136c0 10.5 8.5 19 19 19z">
-                                                    </path>
-                                                    <path fill="#6bcfef"
-                                                        d="M267 136V56H136c-17.6 0-32 14.4-32 32v336c0 17.6 14.4 32 32 32h240c17.6 0 32-14.4 32-32V181h-96c-24.8 0-45-20.2-45-45z">
-                                                    </path>
-                                                </svg>
-                                                <span> File </span>
-                                            </a>
-                                            <a href="#">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22"
-                                                    viewBox="0 0 24 24">
-                                                    <path fill="#f07729"
-                                                        d="M3.572,5.572l4.506,10.813C8.233,16.757,8.597,17,9.001,17H18c0.417,0,0.79-0.259,0.937-0.648l3-8 c0.115-0.308,0.072-0.651-0.114-0.921C21.635,7.161,21.328,7,21,7H6.333L4.923,3.615C4.768,3.243,4.404,3,4,3H2v2h1L3.572,5.572z">
-                                                    </path>
-                                                    <circle fill="#f07729" cx="10.5" cy="20.5" r="1.5"></circle>
-                                                    <circle fill="#f07729" cx="16.438" cy="20.5" r="1.5"></circle>
-                                                </svg>
-                                                <span> Product </span>
-                                            </a>
-                                            <a href="#">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26"
-                                                    viewBox="0 0 24 24">
-                                                    <path fill="#31a38c"
-                                                        d="M17,17H15V13H17M13,17H11V7H13M9,17H7V10H9M19,3H5C3.89,3 3,3.89 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5C21,3.89 20.1,3 19,3Z">
-                                                    </path>
-                                                </svg>
-                                                <span> Create Poll </span>
-                                            </a>
-                                            <a href="#">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23"
-                                                    viewBox="0 0 24 24">
-                                                    <path fill="#f35369"
-                                                        d="M12,11.5A2.5,2.5 0 0,1 9.5,9A2.5,2.5 0 0,1 12,6.5A2.5,2.5 0 0,1 14.5,9A2.5,2.5 0 0,1 12,11.5M12,2A7,7 0 0,0 5,9C5,14.25 12,22 12,22C12,22 19,14.25 19,9A7,7 0 0,0 12,2Z">
-                                                    </path>
-                                                </svg>
-                                                <span> Location </span>
-                                            </a>
-
-                                        </div>
-                                        <div class="uk-flex uk-flex-between">
-
-                                            <button class="button outline-light circle" type="button" style="
-                                            border-color: #e6e6e6;  border-width: 1px;  ">Public</button>
-                                            <div uk-dropdown>
-                                                <ul class="uk-nav uk-dropdown-nav">
-                                                    <li class="uk-active"><a href="#">Only me</a></li>
-                                                    <li><a href="#">Every one</a></li>
-                                                    <li><a href="#"> People I Follow </a></li>
-                                                    <li><a href="#">I People Follow Me</a></li>
-                                                </ul>
-                                            </div>
-
-                                            <a href="#" class="button primary px-6"> Share </a>
-                                        </div>
-                                    </div>
-
-                                </div>
-
                             </div>
-
-<!--                            <div class="post" >-->
-<!--                                <div class="post-description">-->
-
-<!--                                    <div class="post-state-details">-->
-<!--                                        <div>-->
-<!--                                            <img src="http://localhost:8080/assets/images/icons/reactions_like.png" alt="">-->
-<!--                                            <img src="http://localhost:8080/assets/images/icons/reactions_love.png" alt="">-->
-<!--                                            <p> 13 </p>-->
-<!--                                        </div>-->
-<!--                                        <p> 24 Comments</p>-->
-<!--                                    </div>-->
-
-<!--                                </div>-->
-
-<!--                                <div class="post-state">-->
-<!--                                    <div class="post-state-btns"> <i class="uil-thumbs-up"></i> 126<span> Liked </span>-->
-<!--                                    </div>-->
-<!--                                    <div class="post-state-btns"> <i class="uil-heart"></i> 18 <span> Coments</span>-->
-<!--                                    </div>-->
-<!--                                    <div class="post-state-btns"> <i class="uil-share-alt"></i> 193 <span> Shared-->
-<!--                                        </span>-->
-<!--                                    </div>-->
-<!--                                    <div class="post-state-btns"> <i class="uil-bookmark"></i> 13 <span> Saved </span>-->
-<!--                                    </div>-->
-<!--                                </div>-->
-
-
-
-<!--                            </div>-->
-
-
-
                         </div>
 
-                        <!-- sidebar -->
-                        <div class="uk-width-expand ml-lg-2">
-
-                            <div class="sl_user-widget">
-                                <div class="sl_user-widget-wrap-header pb-0">
-                                    <div class="sl_user-widget-wrap-header-left">
-                                        <span><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                                viewBox="0 0 24 24">
-                                                <path fill="currentColor"
-                                                    d="M13,9H11V7H13M13,17H11V11H13M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2Z">
-                                                </path>
-                                            </svg></span>
-                                        <h4> 用户信息 </h4>
-                                    </div>
-                                </div>
-                                <ul class="sl_right_user_info">
-
-                                    <li class="list-group-item" >
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                             viewBox="0 0 24 24">
-                                            <path fill="currentColor"
-                                                  d="M5.5,7A1.5,1.5 0 0,1 4,5.5A1.5,1.5 0 0,1 5.5,4A1.5,1.5 0 0,1 7,5.5A1.5,1.5 0 0,1 5.5,7M21.41,11.58L12.41,2.58C12.05,2.22 11.55,2 11,2H4C2.89,2 2,2.89 2,4V11C2,11.55 2.22,12.05 2.59,12.41L11.58,21.41C11.95,21.77 12.45,22 13,22C13.55,22 14.05,21.77 14.41,21.41L21.41,14.41C21.78,14.05 22,13.55 22,13C22,12.44 21.77,11.94 21.41,11.58Z">
-                                            </path>
-                                        </svg>
-                                        <span>用户id：</span><span th:text = "${userID}"></span>
-                                    </li>
-
-                                    <li class="list-group-item" >
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                            viewBox="0 0 24 24">
-                                            <path fill="currentColor"
-                                                d="M16,13C15.71,13 15.38,13 15.03,13.05C16.19,13.89 17,15 17,16.5V19H23V16.5C23,14.17 18.33,13 16,13M8,13C5.67,13 1,14.17 1,16.5V19H15V16.5C15,14.17 10.33,13 8,13M8,11A3,3 0 0,0 11,8A3,3 0 0,0 8,5A3,3 0 0,0 5,8A3,3 0 0,0 8,11M16,11A3,3 0 0,0 19,8A3,3 0 0,0 16,5A3,3 0 0,0 13,8A3,3 0 0,0 16,11Z">
-                                            </path>
-                                        </svg>
-                                        <span>粉丝数：</span><span th:text = "${fansNum}"></span>
-                                    </li>
-
-                                    <li class="list-group-item" >
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                            viewBox="0 0 24 24">
-                                            <path fill="currentColor"
-                                                d="M20 22H4a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1h16a1 1 0 0 1 1 1v18a1 1 0 0 1-1 1zm-1-2V4H5v16h14zM7 6h4v4H7V6zm0 6h10v2H7v-2zm0 4h10v2H7v-2zm6-9h4v2h-4V7z">
-                                            </path>
-                                        </svg>
-                                        <span>博文数：</span><span th:text = "${blogsNum}"></span>
-                                    </li>
-
-                                    <li class="list-group-item" >
-<!--                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"-->
-<!--                                             viewBox="0 0 24 24">-->
-<!--                                            <path fill="currentColor"-->
-<!--                                                  d="M10,2H14A2,2 0 0,1 16,4V6H20A2,2 0 0,1 22,8V19A2,2 0 0,1 20,21H4C2.89,21 2,20.1 2,19V8C2,6.89 2.89,6 4,6H8V4C8,2.89 8.89,2 10,2M14,6V4H10V6H14Z">-->
-<!--                                            </path>-->
-<!--                                        </svg>-->
-                                        <img src="http://localhost:8080/assets/images/icons/like.svg" width="20" height="20" style="margin:1.8%;">
-                                        <span style="padding-left: 1%;" >获赞数：</span><span th:text = "${likesNum}"></span>
-                                    </li>
-
-                                    <hr class="my-2">
-
-                                    <li class="list-group-item">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                            viewBox="0 0 24 24">
-                                            <path fill="currentColor"
-                                                d="M3.9,12C3.9,10.29 5.29,8.9 7,8.9H11V7H7A5,5 0 0,0 2,12A5,5 0 0,0 7,17H11V15.1H7C5.29,15.1 3.9,13.71 3.9,12M8,13H16V11H8V13M17,7H13V8.9H17C18.71,8.9 20.1,10.29 20.1,12C20.1,13.71 18.71,15.1 17,15.1H13V17H17A5,5 0 0,0 22,12A5,5 0 0,0 17,7Z">
-                                            </path>
-                                        </svg>
-                                        <a href="#" target="_blank" th:text = "${email}">这里放邮箱</a>
-                                    </li>
-<!--                                    </li>-->
-
-                                    <li class="list-group-item" >
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                            viewBox="0 0 24 24">
-                                            <path fill="currentColor"
-                                                d="M17.9,17.39C17.64,16.59 16.89,16 16,16H15V13A1,1 0 0,0 14,12H8V10H10A1,1 0 0,0 11,9V7H13A2,2 0 0,0 15,5V4.59C17.93,5.77 20,8.64 20,12C20,14.08 19.2,15.97 17.9,17.39M11,19.93C7.05,19.44 4,16.08 4,12C4,11.38 4.08,10.78 4.21,10.21L9,15V16A2,2 0 0,0 11,18M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2Z">
-                                            </path>
-                                        </svg>
-                                        <span style="padding-left: 1%;" >地区：</span><span th:text = "${area}"></span>
-                                    </li>
-
-
-                                </ul>
-                            </div>
-
-                            <div class="sl_user-widget">
-                                <div class="sl_user-widget-wrap-header pb-0">
-                                    <div class="sl_user-widget-wrap-header-left">
-                                        <h4> About </h4>
-                                    </div>
-                                </div>
-                                <div class="sl_user-widget_text">
-                                    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh
-                                        euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. U</p>
-                                </div>
-                            </div>
-
-
-                            <ul class="sl_user-widget sidebar-conatnier sl_user-widget_text"
-                                id="sidebar-group-list-container">
-
-                                <div class="sl_user-widget-wrap-header">
-                                    <div class="sl_user-widget-wrap-header-left">
-                                        <h4> Suggested groups </h4>
-                                    </div>
-                                </div>
-
-                                <div class="sidebar-group-may-know-container">
-
-                                    <div class="sl_sidebar_sugs">
-                                        <div class="sl_sidebar_sugs_avatar">
-                                            <img src="http://localhost:8080/assets/images/group/group-1.jpg" alt=""> 
-                                        </div>
-                                        <div class="sl_sidebar_sugs_text">
-                                            <a href="#" class="wow_user_link_name"> Architecture </a>
-                                            <span>6 Members</span>
-                                        </div>
-                                        <div class="user-follow-button sl_sidebar_sugs_btns">
-                                            <div class="user-follow-button sl_sidebar_sugs_btns">
-                                                <button type="button" class="button small">
-                                                    <span> Join</span>
-                                                </button>
+                        <div class="sl_pokes_cont">
+                            <div class="sl_poke_users" id="1">
+                                <div class="sl_poke_info">
+                                    <a href="userinfo.html">
+                                        <div class="avatar"> <img src="assets/images/avatars/avatar-5.jpg" alt="">
                                             </div>
+                                    </a>
+                                    <div class="sl_poke_info_innr">
+                                        <div class="sl_poke_info_innr_user">
+                                            <span>
+                                                <a href="userinfo.html"> <span class="user-name"> Stella Johnson </span>  </a>
+                                            </span>
                                         </div>
-                                    </div>
-                                    <div class="sl_sidebar_sugs">
-                                        <div class="sl_sidebar_sugs_avatar">
-                                            <img src="http://localhost:8080/assets/images/group/group-2.jpg" alt=""> 
-                                        </div>
-                                        <div class="sl_sidebar_sugs_text">
-                                            <a href="#" class="wow_user_link_name"> Coffee Addicts </a>
-                                            <span>23 Members</span>
-                                        </div>
-                                        <div class="user-follow-button sl_sidebar_sugs_btns">
-                                                <div class="user-follow-button sl_sidebar_sugs_btns">
-                                                    <button type="button" class="button small">
-                                                        <span> Join</span>
-                                                    </button>
-                                                </div>
-                                        </div>
+<!--                                        <button type="button" class="button light small" style="margin: 5px">-->
+<!--                                            <img src="assets/images/icons/edit.svg" width="20" height="20" style="margin-right: 10px"></img><span class="button-text">编辑</span>-->
+
+<!--                                        </button>-->
+                                        <button type="button" class="button light small" style="margin: 5px">
+                                            <img src="assets/images/icons/delete.svg" width="20" height="20" style="margin-right: 10px"></img><span class="button-text">删除</span>
+                                        </button>
                                     </div>
                                 </div>
-                                <div class="clear"></div>
-                            </ul>
-
-
-                            <div class="footer-wrapper-sidebar">
-                                <div class="footer-powered">
-                                    <p>
-                                        © 2020 Simplest.net </p>
-
-                                </div>
-
-                                <hr>
-
-                                <ul class="list-inline">
-                                    <li><a data-ajax="?link1=terms&amp;type=about-us"
-                                            href="https://Simplest.net/terms/about-us">About</a></li>
-                                    <li><a href="https://Simplest.net/blogs">Blog</a></li>
-                                    <li> <a href="#"> Privecy</a></li>
-                                    <li><a data-ajax="?link1=contact-us" href="https://Simplest.net/contact-us">Contact
-                                            Us</a></li>
-                                    <li><a data-ajax="?link1=developers"
-                                            href="https://Simplest.net/developers">Developers</a></li>
-                                    <li>
-                                        <div class="dropdown dropup sun_foot_drop_menu">
-                                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
-                                                aria-expanded="false">
-                                                More <span class="caret"></span>
-                                            </a>
-                                            <div uk-dropdown="pos: bottom-left ; mode:hover "
-                                                class="uk-dropdown uk-dropdown-bottom-right"
-                                                style="left: 745px; top: 87px;">
-                                                <ul class="uk-nav uk-dropdown-nav">
-                                                    <li><a href="#"> View as guast </a></li>
-                                                    <li><a href="#"> Bloc this person </a></li>
-                                                    <li><a href="#"> Report abuse</a></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </li>
-                                </ul>
-                                <div class="clear"></div>
                             </div>
+                        </div>
 
+                        <div class="sl_pokes_cont">
+                            <div class="sl_poke_users" id="1">
+                                <div class="sl_poke_info">
+                                    <a href="userinfo.html">
+                                        <div class="avatar"> <img src="assets/images/avatars/avatar-3.jpg" alt="">
+                                            </div>
+                                    </a>
+                                    <div class="sl_poke_info_innr">
+                                        <div class="sl_poke_info_innr_user">
+                                            <span>
+                                                <a href="userinfo.html"> <span class="user-name"> Jonathan Madano </span>  </a>
+                                            </span>
+                                        </div>
+<!--                                        <button type="button" class="button light small" style="margin: 5px">-->
+<!--                                            <img src="assets/images/icons/edit.svg" width="20" height="20" style="margin-right: 10px"></img><span class="button-text">编辑</span>-->
 
+<!--                                        </button>-->
+                                        <button type="button" class="button light small" style="margin: 5px">
+                                            <img src="assets/images/icons/delete.svg" width="20" height="20" style="margin-right: 10px"></img><span class="button-text">删除</span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="load-more">
+                            <button class="btn button">Load more Pokes</button>
                         </div>
 
                     </div>
@@ -1136,7 +764,7 @@
             </svg>
             <!--  Chat -->
         </a>
-        <div id="sidebar-chat" style="display:none" class="sidebar-chat px-3" uk-offcanvas="flip: true; overlay: true">
+        <div id="sidebar-chat" class="sidebar-chat px-3" uk-offcanvas="flip: true; overlay: true">
             <div class="uk-offcanvas-bar">
 
                 <div class="sidebar-chat-head mb-2">
@@ -1168,15 +796,15 @@
 
                 <a href="#">
                     <div class="contact-list">
-                        <div class="contact-list-media"> <img src="http://localhost:8080/assets/images/avatars/avatar-2.jpg" alt="">
+                        <div class="contact-list-media"> <img src="assets/images/avatars/avatar-2.jpg" alt="">
                             <span class="online-dot"></span> </div>
-                        <h5> James Lewis </h5>
+                        <h5> Dennis Han</h5>
                     </div>
                 </a>
 
                 <a href="#">
                     <div class="contact-list">
-                        <div class="contact-list-media"> <img src="http://localhost:8080/assets/images/avatars/avatar-1.jpg" alt="">
+                        <div class="contact-list-media"> <img src="assets/images/avatars/avatar-1.jpg" alt="">
                             <span class="online-dot"></span> </div>
                         <h5> Erica Jones </h5>
                     </div>
@@ -1184,7 +812,7 @@
 
                 <a href="#">
                     <div class="contact-list">
-                        <div class="contact-list-media"> <img src="http://localhost:8080/assets/images/avatars/avatar-7.jpg" alt="">
+                        <div class="contact-list-media"> <img src="assets/images/avatars/avatar-7.jpg" alt="">
                             <span class="offline-dot"></span> </div>
                         <h5> Stella Johnson </h5>
                     </div>
@@ -1192,63 +820,63 @@
 
                 <a href="#">
                     <div class="contact-list">
-                        <div class="contact-list-media"> <img src="http://localhost:8080/assets/images/avatars/avatar-5.jpg" alt="">
+                        <div class="contact-list-media"> <img src="assets/images/avatars/avatar-5.jpg" alt="">
                             <span class="offline-dot"></span> </div>
                         <h5> Alex Dolgove </h5>
                     </div>
                 </a>
                 <a href="#">
                     <div class="contact-list">
-                        <div class="contact-list-media"> <img src="http://localhost:8080/assets/images/avatars/avatar-2.jpg" alt="">
+                        <div class="contact-list-media"> <img src="assets/images/avatars/avatar-2.jpg" alt="">
                             <span class="online-dot"></span> </div>
-                        <h5> James Lewis </h5>
+                        <h5> Dennis Han</h5>
                     </div>
                 </a>
                 <a href="#">
                     <div class="contact-list">
-                        <div class="contact-list-media"> <img src="http://localhost:8080/assets/images/avatars/avatar-4.jpg" alt="">
+                        <div class="contact-list-media"> <img src="assets/images/avatars/avatar-4.jpg" alt="">
                             <span class="online-dot"></span> </div>
                         <h5> Erica Jones </h5>
                     </div>
                 </a>
                 <a href="#">
                     <div class="contact-list">
-                        <div class="contact-list-media"> <img src="http://localhost:8080/assets/images/avatars/avatar-3.jpg" alt="">
+                        <div class="contact-list-media"> <img src="assets/images/avatars/avatar-3.jpg" alt="">
                             <span class="offline-dot"></span> </div>
                         <h5> Stella Johnson </h5>
                     </div>
                 </a>
                 <a href="#">
                     <div class="contact-list">
-                        <div class="contact-list-media"> <img src="http://localhost:8080/assets/images/avatars/avatar-5.jpg" alt="">
+                        <div class="contact-list-media"> <img src="assets/images/avatars/avatar-5.jpg" alt="">
                             <span class="offline-dot"></span> </div>
                         <h5> Alex Dolgove </h5>
                     </div>
                 </a>
                 <a href="#">
                     <div class="contact-list">
-                        <div class="contact-list-media"> <img src="http://localhost:8080/assets/images/avatars/avatar-2.jpg" alt="">
+                        <div class="contact-list-media"> <img src="assets/images/avatars/avatar-2.jpg" alt="">
                             <span class="online-dot"></span> </div>
-                        <h5> James Lewis </h5>
+                        <h5> Dennis Han</h5>
                     </div>
                 </a>
                 <a href="#">
                     <div class="contact-list">
-                        <div class="contact-list-media"> <img src="http://localhost:8080/assets/images/avatars/avatar-4.jpg" alt="">
+                        <div class="contact-list-media"> <img src="assets/images/avatars/avatar-4.jpg" alt="">
                             <span class="online-dot"></span> </div>
                         <h5> Erica Jones </h5>
                     </div>
                 </a>
                 <a href="#">
                     <div class="contact-list">
-                        <div class="contact-list-media"> <img src="http://localhost:8080/assets/images/avatars/avatar-3.jpg" alt="">
+                        <div class="contact-list-media"> <img src="assets/images/avatars/avatar-3.jpg" alt="">
                             <span class="offline-dot"></span> </div>
                         <h5> Stella Johnson </h5>
                     </div>
                 </a>
                 <a href="#">
                     <div class="contact-list">
-                        <div class="contact-list-media"> <img src="http://localhost:8080/assets/images/avatars/avatar-5.jpg" alt="">
+                        <div class="contact-list-media"> <img src="assets/images/avatars/avatar-5.jpg" alt="">
                             <span class="offline-dot"></span> </div>
                         <h5> Alex Dolgove </h5>
                     </div>
@@ -1265,10 +893,10 @@
 
      <!-- javaScripts
     ================================================== -->
-    <script src="http://localhost:8080/assets/js/uikit.js"></script>
-    <script src="http://localhost:8080/assets/js/simplebar.js"></script>
-    <script src="http://localhost:8080/assets/js/personalOnScroll.js"></script>
-    <script src="http://localhost:8080/assets/js/myJs.js"></script>
+    <script src="assets/js/uikit.js"></script>
+    <script src="assets/js/simplebar.js"></script>
+    
+
 </body>
 
 </html>
