@@ -57,7 +57,7 @@ public class BlogController {
     @RequestMapping("/blogs/querylike")
     public void querylike(@RequestParam("blogId") int blogId, @RequestParam("userId") int userId,  HttpServletResponse response) throws JSONException, IOException{
         boolean f=blogService.isliked(blogId,userId);
-        System.out.println("is like?:"+f);
+//        System.out.println("is like?:"+f);
         JSONObject object=new JSONObject();
         object.put("IsLiked",f);
         response.getWriter().write(object.toString());
@@ -67,7 +67,7 @@ public class BlogController {
     public void like(@RequestParam("blogId") int blogId, @RequestParam("userId") int userId, @RequestParam("tagId") int tagId, @RequestParam("likenumber")int num, HttpServletResponse response) throws JSONException, IOException {
         blogService.like(blogId);
         blogService.writelikerecord(blogId,userId);
-        System.out.println("im in like");
+//        System.out.println("im in like");
         JSONObject object=new JSONObject();
         response.getWriter().write(object.toString());
 
@@ -78,7 +78,7 @@ public class BlogController {
         JSONObject object=new JSONObject();
         blogService.cancelLike(blogId);
         blogService.deletelikerecord(blogId,userId);
-        System.out.println("im in dislike");
+//        System.out.println("im in dislike");
         response.getWriter().write(object.toString());
 
     }
@@ -121,11 +121,13 @@ public class BlogController {
 
     @RequestMapping("/blogs/isCollect")
     public void isCollect(@RequestParam("blogId") int blogId, @RequestParam("userId") int userId,
-                          @RequestParam("tagId") int tagId, Model model)
-    {
+                          @RequestParam("tagId") int tagId, Model model, HttpServletResponse response) throws JSONException, IOException {
         boolean isCollect = blogService.isCollect(blogId, userId);
-        model.addAttribute("isCollect",isCollect);
-//        System.out.println(model.getAttribute("isCollect"));
+//        model.addAttribute("isCollect",isCollect);
+//        System.out.println("isCollect: "+model.getAttribute("isCollect"));
+        JSONObject object=new JSONObject();
+        object.put("isCollect",isCollect);
+        response.getWriter().write(object.toString());
     }
 
 
@@ -135,7 +137,8 @@ public class BlogController {
 
         blogService.collect(blogId, userId);
         blogService.addCollectNum(blogId);
-        blogService.updateMarkWhenCollect(tagId, userId);
+//        System.out.println("收藏");
+//        blogService.updateMarkWhenCollect(tagId, userId);
 
 
     }
@@ -144,7 +147,11 @@ public class BlogController {
     public void cancelCollect (@RequestParam("blogId") int blogId, @RequestParam("userId") int userId,
                                @RequestParam("tagId") int tagId, Model model)
     {
-
+        blogService.cancelCollect(blogId, userId);
+//        System.out.println("取消收藏");
+        blogService.deductCollectNum(blogId);
+//        System.out.println("数量减1");
+//        blogService.updateMarkWhenCancelCollect(tagId, userId);
     }
 
     @RequestMapping("/blogs/follow")

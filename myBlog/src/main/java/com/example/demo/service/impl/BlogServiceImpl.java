@@ -87,6 +87,7 @@ public class BlogServiceImpl implements BlogService {
     public String collect(int blogId, int userId) {
         GetTime getTime = new GetTime();
         blogMapper.collect(blogId, userId, getTime.getCurrentTime());
+//        System.out.println("插入收藏记录");
         return "收藏成功";
     }
 
@@ -94,6 +95,7 @@ public class BlogServiceImpl implements BlogService {
     public void cancelCollect(int blogId, int userId)
     {
         blogMapper.cancelCollect(blogId, userId);
+//        System.out.println("删除收藏记录");
     }
 
     @Override

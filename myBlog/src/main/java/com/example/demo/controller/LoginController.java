@@ -41,7 +41,7 @@ public class LoginController {
     @RequestMapping("/login")
     public ModelAndView login(ModelAndView modelAndView)
     {
-        modelAndView.setViewName("form-login");
+        modelAndView.setViewName("blogcollect");
         return modelAndView;
     }
 

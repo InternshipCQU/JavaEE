@@ -37,6 +37,8 @@
     <link rel="stylesheet" href="http://localhost:8080/assets/css/uikit.css">
     <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="http://localhost:8080/assets/css/collect.css">
+    <link href="//unpkg.com/element-ui@2.15.3/lib/theme-chalk/index.css" rel="stylesheet">
+
 
     <!-- icons
     ================================================== -->
@@ -44,10 +46,10 @@
     <script src="https://kit.fontawesome.com/815e388c50.js" crossorigin="anonymous"></script>
     <script src="http://localhost:8080/assets/js/myJS.js"></script>
     <script src="https://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
-    <script src="https://localhost:8080/assets/js/collect.js"></script>
-    <script src="//unpkg.com/vue/dist/vue.js"></script>
     <script src="//unpkg.com/element-ui@2.15.3/lib/index.js"></script>
-<!--    <script src="http://libs.baidu.com/jquery/1.9.0/jquery.min.js"></script>-->
+    <script src="http://localhost:8080/assets/js/collect.js"></script>
+
+    <!--    <script src="http://libs.baidu.com/jquery/1.9.0/jquery.min.js"></script>-->
 <!--    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>-->
 
     <!-- Google font
@@ -620,31 +622,150 @@
                             <li class="uk-active" ><a href="#" th:text="${AuthorName}"> 博文作者 </a></li>
                             <li><a href="#" th:text = "${blog.tagName}">  </a></li>
 <!--                            <li><a href="#" > 点赞</a></li>-->
-                            <li><a href="#" id="repost" onclick="forward()"> 转发</a></li>
+                            <li><a href="#" id="repost" > 转发</a></li>
                             <li><a href="#" id="postDate" th:text =  "${blog.createTime}"> </a></li>
-<!--                                <a>-->
-                                <div class="feed" id="feed2">
-                                    <div class="heart" id="like2" rel="like" style="top: 5px; background-position: left center;"></div>
-                                    <div class="likeCount" id="likeCount2" style="top: 0px;">10</div>
+<!--                            <div id="collect" class="feed" style="width:60px;top: 6px;left: 520px;">-->
+                                <div id="btn_collect"  class="feed" style="width: 60px; top: 6px; left: 450px; background-position: left center;">
+                                    <div class="el-icon-star-off" id="btn_collect_icon" rel="uncollect"></div>
+                                    <div class="likeCount" id="collectCount" style="top: 2px;right: 35px;">10</div>
                                 </div>
-<!--                                </a>-->
-
-<!--                            <div id="app">-->
-<!--                                <i class="el-icon-star-off"></i>-->
 <!--                            </div>-->
-<!--                            <li> <a href="javascript:collect()" id="collect">收藏</a></li>-->
+                            <div class="feed" id="feed2" style="width:60px;top: 2px;left: 380px;">
+                                <div class="heart" id="like2" rel="like" style="top: 5px;"></div>
+                                <div class="likeCount" id="likeCount2" style="top: 5px;right: 15px;">10</div>
+                            </div>
+
+                            <p id="userId" style="opacity: 0"  th:text="${blog.userId}" ></p>
+                            <p id="blogId" style="opacity: 0" th:text="${blog.blogId}" ></p>
+                            <p id="tagId" style="opacity: 0" th:text="${blog.tagId}" ></p>
+                            <p id="likenumusr" style="opacity:0" th:text="${blog.likesNum}"></p>
+                            <p id="collectnum" style="opacity: 0" th:text="${blog.collectNum}"></p>
+<!--                            <div class="feed" id="collect" style="width:60px;top: 2px;left: 550px;">-->
+<!--                                <i class="iconfont icon-star"></i><span class="count">50</span>-->
+<!--                            </div>-->
+
+                            <!--收藏-->
+                            <script type="text/javascript">
+                                // $("#btn_collect").click(function(){
+                                //     var classname = $("#btn_collect_icon").attr("class");
+                                //     $("#btn_collect_icon").removeClass("el-icon-star-off el-icon-star-on");
+                                //     if(classname === "el-icon-star-off" ){
+                                //         $("#btn_collect_icon").addClass("el-icon-star-on");
+                                //     }else{
+                                //         $("#btn_collect_icon").addClass("el-icon-star-off");
+                                //     }
+                                // });
+                                var jsonStr_1={"blogId":parseInt(document.getElementById("blogId").innerHTML),"userId":document.getElementById("userId").innerHTML,"tagId":1,"collectnumber":0};
+                                var collectIcon = document.getElementById("btn_collect_icon");
+                                // console.log(jsonStr_1)
+                                $.ajax({
+                                    url: "http://" + window.location.host + "/blogs/isCollect",
+                                    type: 'get',
+                                    contentType: 'application/json',
+                                    dataType: 'json',
+                                    data: jsonStr_1,
+                                    success: function (data)
+                                    {
+                                        var collectnum = document.getElementById("collectnum");
+                                        var temp = collectnum.innerHTML;
+                                        var collectCount = document.getElementById("collectCount")
+                                        collectCount.innerHTML = temp;
+                                        $(document).ready(function ()
+                                            {
+                                                // var collectIcon = document.getElementById("btn_collect_icon")
+                                                if (data.isCollect)
+                                                {
+                                                    //已经收藏
+                                                    // console.log("true")
+                                                    // console.log(data)
+                                                    collectIcon.classList.remove("el-icon-star-off");
+                                                    collectIcon.classList.remove("el-icon-star-on");
+                                                    collectIcon.classList.add("el-icon-star-on");
+                                                    collectIcon.setAttribute("rel","collect");
+                                                }
+                                                else
+                                                {
+                                                    // console.log("false")
+                                                    // console.log(data)
+                                                    //没有收藏
+                                                    collectIcon.classList.remove("el-icon-star-off");
+                                                    collectIcon.classList.remove("el-icon-star-on");
+                                                    // collectIcon.removeClass("el-icon-star-off el-icon-star-on");
+                                                    collectIcon.classList.add("el-icon-star-off");
+                                                    // collectIcon.addClass("el-icon-star-off");
+                                                    collectIcon.setAttribute("rel","uncollect");
+                                                }
+
+                                                $("#btn_collect").click(function (){
+                                                    var A = $(this).attr("id");
+                                                    var B = A.split("collect");
+                                                    var messageID = B[1];
+                                                    var C = parseInt($("#collectCount" + messageID).html());
+                                                    $(this).css("background-position", "")
+                                                    var D = document.getElementById("btn_collect_icon").getAttribute("rel");
+                                                    // console.log(D)
+                                                    // console.log("collectnum"+C)
+                                                    if (D === 'uncollect') {
+                                                        $("#collectCount" + messageID).html(C + 1);
+                                                        // console.log("原来未收藏，现在是点击收藏")
+
+                                                        collectIcon.classList.remove("el-icon-star-off");
+                                                        collectIcon.classList.remove("el-icon-star-on");
+                                                        collectIcon.classList.add("el-icon-star-on");
+                                                        collectIcon.setAttribute("rel", "collect");
+
+                                                        jsonStr_1.collectnumber = parseInt(C + 1);
+                                                        $.ajax({
+                                                            url: "http://" + window.location.host + "/blogs/collect",
+                                                            type: 'get',
+                                                            contentType: 'application/json',
+                                                            dataType: 'json',
+                                                            data: jsonStr_1,
+                                                            success: function () {
+
+                                                            }
+                                                        })
+
+                                                    } else {
+                                                        $("#collectCount" + messageID).html(C - 1);
+                                                        // console.log("原来已经收藏，现在点击取消收藏")
+                                                        collectIcon.classList.remove("el-icon-star-off");
+                                                        collectIcon.classList.remove("el-icon-star-on");
+                                                        collectIcon.classList.add("el-icon-star-off");
+                                                        collectIcon.setAttribute("rel", "uncollect");
+                                                        $(this).css("background-position", "left");
+                                                        jsonStr_1.likenumber = parseInt(C - 1);
+                                                        $.ajax({
+                                                            url: "http://" + window.location.host + "/blogs/cancelCollect",
+                                                            type: 'get',
+                                                            contentType: 'application/json',
+                                                            dataType: 'json',
+                                                            data: jsonStr_1,
+                                                            success: function () {
+
+                                                            }
+                                                        })
+                                                    }
+                                                })
+                                            }
+                                        )
+                                    },
+                                    error: function (e)
+                                    {
+                                        console.log(e)
+                                    }
+                                })
+
+
+                            </script>
 
 <!--                            <li>Like <span id="likenum" th:text =  "${blog.likesNum}"></span></li>-->
 
-<!--                        </ul>-->
+                        </ul>
 
 
                     </div>
 
-                    <p id="userId" style="opacity: 0"  th:text="${blog.userId}" ></p>
-                    <p id="blogId" style="opacity: 0" th:text="${blog.blogId}" ></p>
-                    <p id="tagId" style="opacity: 0" th:text="${blog.tagId}" ></p>
-                    <p id="likenumusr" style="opacity:0" th:text="${blog.likesNum}"></p>
 
 
 
@@ -670,22 +791,6 @@
                         </symbol>
                     </svg>
 
-                    <script>
-                        var jsonStr={"blogId":1,"userId":1,"tagId":13,"likenumber":0};
-                        function collect()
-                        {
-                            $.ajax({
-                                url:'/blogs/isCollect',	//这是后端接口的url
-                                method:'get',
-                                success:function (res) {
-                                    console.log(res)
-                                },
-                            })
-                        }
-
-                    </script>
-
-
                     <!--爱心点赞-->
                     <script>
                         var jsonStr_1={"blogId":parseInt(document.getElementById("blogId").innerHTML),"userId":document.getElementById("userId").innerHTML,"tagId":1,"likenumber":0};
@@ -708,19 +813,16 @@
                                     if(o.IsLiked===false)
                                     {
                                         element.setAttribute("rel","like");
-
                                     }
                                     else{
                                         element.setAttribute("rel","unlike");
                                         element.setAttribute("class","heart heartAnimation");
-
                                     }
 
 
 
                                     $('body').on("click",'.heart',function()
                                     {
-
                                         var A=$(this).attr("id");
                                         var B=A.split("like");
                                         var messageID=B[1];
@@ -762,17 +864,11 @@
                                             })
 
                                         }
-
-
                                     });
-
-
                                 });
-
                             }
                         }
                         );
-
 
                     </script>
 
@@ -889,8 +985,9 @@
 
                             <!-- post comments -->
                             <div class="post-comments">
-
                                 <a id = "commentsNull"></a>
+
+
 
                                 <div class="post-add-comment">
                                     <div class="post-add-comment-avature">

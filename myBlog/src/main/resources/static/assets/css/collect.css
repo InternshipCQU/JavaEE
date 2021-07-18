@@ -20,4 +20,46 @@
     }
 }
 
+
+.icon-star{
+    font-size: 20px;
+    color: rgba(0,0,0,0.3);
+}
+.active{
+    color: #e8b32c;
+}
+.active{
+    animation: star 0.5s linear;
+}
+@keyframes star{
+    from{
+        font-size: 20px;
+    }
+    50%{
+        font-size: 18px;
+    }
+    to{
+        font-size: 20px;
+    }
+}
+
+.like{ font-size:66px;  color:#ccc; cursor:pointer;} /*原始样式*/
+.cs{color:#f00;}/*点击后出现样式*/
+
+/*.el-icon-star-off{*/
+/*    height: 50px;*/
+/*    width: 50px;*/
+/*}*/
+
+/*.el-icon-star-on{*/
+/*    height: 50px;*/
+/*    width: 50px;*/
+/*}*/
+.collectCount{font-family: 'Georgia', Times, Times New Roman, serif;
+    position: absolute;
+    padding-top:0px;
+    margin-top: 0px;
+    margin-left: 40px;
+    font-size: 12px;
+    color: #999999}
 @import url("//unpkg.com/element-ui@2.15.3/lib/theme-chalk/index.css");
