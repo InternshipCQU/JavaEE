@@ -768,6 +768,9 @@ function getblogPageComments()
             },
             success:function (data) {
                 var favorites = JSON.parse(data);
+                console.log("data type: "+typeof data)
+                var blog = JSON.parse(data);
+                console.log("data: "+data)
                 //alert(blog)
                 $("#finalfavorites").attr("id", "null");
                 if (favorites.noMore === "true") {
@@ -785,7 +788,7 @@ function getblogPageComments()
                             "                                                <a id=\"directing\" href=\"" + "#" + "\"> <span class=\"user-name\" id = \"title\"> Dennis Han </span>  </a>\n" +
                             "                                            </span>\n" +
                             "                                        </div>\n" +
-                            "                                        <button class=\"button light small\" style=\"margin: 5px\" onclick='clickbutton(" + parseInt("123") + ")'> 取消收藏</button>\n" +
+                            "                                        <button class=\"button light small\" style=\"margin: 5px\" onclick='cancelFavorites("+favorites.blogid+","+favorites.userid+")'> 取消收藏</button>\n" +
                             "                                    </div>\n" +
                             "                                </div>\n" +
                             "                            </div>\n" +
@@ -804,6 +807,28 @@ function getblogPageComments()
             }}
         )
     }
+
+function cancelFavorites(blogId,userId) {
+    // alert("I am deleting blog."+parseInt(blogId)+" "+parseInt(userId));
+    var infomsg = {"blogId": blogId, "userId": userId};
+    // console.log("blogId type: "+typeof blogId);
+    // console.log("userId type: "+typeof userId);
+    $.ajax({
+        url: 'http://localhost:8080/cancelFavorites',
+        type: 'get',
+        data: infomsg,
+        async: false,
+        success: function (o) {
+            alert("取消收藏成功");
+            location.reload();
+        },
+        error: function (e)
+        {
+            console.log("出错")
+            console.log(e.status)
+        }
+    })
+}
 
 
 

@@ -32,7 +32,8 @@ public interface HomeMapper {
     // 【登录】展示推荐博主(top6)
     ArrayList<User> showRecommendBlogger(int userId);
 
-    //展示热门博客，根据前端页面的格式查询
+    //【未登录】展示热门博客，根据前端页面的格式查询
+    // 【登录】根据userId展示热门博客
     List<CommentView> getCommentViews(int blogId);
 
     ArrayList<HomeBlogView> getBlogViews();

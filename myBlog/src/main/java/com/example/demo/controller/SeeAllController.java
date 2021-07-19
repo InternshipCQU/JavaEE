@@ -1,15 +1,13 @@
 package com.example.demo.controller;
 
 import com.example.demo.entity.User;
+import com.example.demo.service.BlogService;
 import com.example.demo.service.getService;
 import com.example.demo.service.userfavoritesService;
 import com.example.demo.service.userinfoallService;
 import org.json.JSONObject;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.annotation.Resource;
@@ -24,6 +22,9 @@ public class SeeAllController {
 
     @Resource
     userfavoritesService userfavoritesService;
+
+    @Resource
+    BlogService blogService;
 
 
     @RequestMapping("/seeAllfollow")
@@ -57,12 +58,22 @@ public class SeeAllController {
         return "seeAllfollow";
     }
 
+
     @RequestMapping("/reqfavorites")
     @ResponseBody
     public String reqfavorites(HttpServletRequest request){
         String s= userfavoritesService.getallfavorites(request);
+        System.out.println("controller");
         return s;
     }
 
+    @RequestMapping(value="/cancelFavorites",method = RequestMethod.GET)
+    @ResponseBody
+    public void cancelFavorites(@RequestParam("userId") int userId, @RequestParam("blogId") int blogId)
+    {
+        blogService.cancelCollect(blogId,userId);
 
+        System.out.println("取消收藏");
+        blogService.deductCollectNum(blogId);
+    }
 }

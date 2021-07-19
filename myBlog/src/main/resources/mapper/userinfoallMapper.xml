@@ -13,4 +13,7 @@
     <select id="getallfavorites" resultType="com.example.demo.entity.BlogInfo">
         select blogInfo.blogId,blogInfo.blogTitle,blogInfo.userId from blogCollect, blogInfo where blogCollect.blogId=blogInfo.blogId and blogCollect.userId=#{userId};
     </select>
+
+
+
 </mapper>

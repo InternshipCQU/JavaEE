@@ -50,11 +50,15 @@
 
     <select id="isCollect" resultType="Integer">
         select `blogCollect`.blogId from `blogCollect`
-        where #{blogID} = `blogCollect`.blogId and #{userId} = `blogCollect`.userId
+        where #{blogId} = `blogCollect`.blogId and #{userId} = `blogCollect`.userId
     </select>
 
     <delete id="cancelCollect">
-        delete from `blogCollect` where #{blogID} = `blogCollect`.blogId and #{userId} = `blogCollect`.userId
+        delete from `blogCollect` where #{blogId} = `blogCollect`.blogId and #{userId} = `blogCollect`.userId
+    </delete>
+
+    <delete id="cancelCollectByBlogId">
+        delete from `blogCollect` where #{blogId} = `blogCollect`.blogId
     </delete>
 
     <select id="getBlog" resultType="com.example.demo.entity.BlogInfo">
