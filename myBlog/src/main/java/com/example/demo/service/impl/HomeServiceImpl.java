@@ -149,8 +149,6 @@ public class HomeServiceImpl implements HomeService {
             if(session.getAttribute("Token") != null){
                 session.setAttribute("blogs", getRecommendBlogViews((Integer) session.getAttribute("userID")));
             }else{
-//                System.out.println("加载所有的博客");
-
                 session.setAttribute("blogs", getBlogViews());
             }
         }else{
@@ -232,6 +230,9 @@ public class HomeServiceImpl implements HomeService {
         //System.out.println(blogContent);
 
         String link = "/blogs/" + username + "/" + blogId;
+        if(blogContent.length() >=66){
+            blogContent = blogContent.substring(0,65);
+        }
 
         System.out.println("Hello");
         session.setAttribute("count", count + 1);

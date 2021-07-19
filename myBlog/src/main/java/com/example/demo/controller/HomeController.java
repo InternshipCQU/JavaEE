@@ -37,6 +37,12 @@ public class HomeController {
     @Resource
     private HomeService homeService;
 
+    @RequestMapping("/home")
+    public String home(){
+        return "home";
+    }
+
+
     @RequestMapping("/home/{tagName}")     //点击标签后查询对应标签的博客
     public String tagToBlogs(@PathVariable("tagName") String tagName, Model model){
         model.addAttribute("blogListFilteredByTag", homeService.tagToBlogs(tagName));
@@ -51,10 +57,10 @@ public class HomeController {
 //    }
 
     //根据前端格式返回JSON数据
-    @RequestMapping("/home")
-    public List<HomeBlogView> getBlogs(){
-        return homeService.getBlogViews();
-    }
+//    @RequestMapping("/home")
+//    public List<HomeBlogView> getBlogs(){
+//        return homeService.getBlogViews();
+//    }
 
     @RequestMapping("/recommend")
     public List<HomeBlogView> getRecommendBlogs(@RequestParam("userId") int userId){
