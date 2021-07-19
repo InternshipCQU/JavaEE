@@ -184,9 +184,11 @@ function loadTheBlog()
 
                     $("#null").after("<div class=\"post\" id =\"final\" >\n" +
                         "    <div class=\"post-heading\">\n" +
+                        "                      <a id = 'userLink'>\n"+
                         "        <div class=\"post-avature\">\n" +
                         "            <img id = \"userAvater\" src=\"http://localhost:8080/assets/images/avatars/avatar-6.jpg\" alt=\"\">\n" +
                         "        </div>\n" +
+                        "                      </a>\n"+
                         "        <div class=\"post-title\">\n" +
                         "            <h4 id = \"username\">  </h4>\n" +
                         "            <p id = \"time\"> 5 <span> hrs</span>  </p>\n" +
@@ -272,6 +274,9 @@ function loadTheBlog()
 
                 $("#userAvater").attr("src", blog.userAvater);
                 $("#userAvater").attr("id", "pass");//设置博主头像
+
+                $("#userLink").attr("href", blog.userLink);
+                $("#userLink").attr("id", "pass");//设置博主头像
 
                 $("#comments").attr("id", "commentsNull")
 
@@ -849,7 +854,7 @@ function cancelFavorites(blogId,userId) {
                 //alert(blog)
                 $("#finalfollowing").attr("id", "null")
                 if (followings.noMore === "true") {
-                    alert("No more following user!");
+
                 } else {
 
 
@@ -968,6 +973,57 @@ function forward()
                 alert("请登录")
                 window.location.href = 'http://localhost:8080/login';
             }
+
+            //window.location.href = 'http://localhost:8080/mainpage';
+            //这里是如果成功的将数据传递之后做的操作 可以写alert和跳转语句 根据情况进行书写就写
+        }
+    });
+}
+
+
+//=====mayknowpeople=====
+function mayknowpeople()
+{
+    $.ajax({
+
+        url: 'http://localhost:8080/mayknowpeople', //这里是返回路径 在controller里写好对应函数就行 TODO:记得修改路径后面的 这是测试
+        type: 'get',
+        data: {}, //这里是向后端传输的json 应该是可以直接传对象 比如User这种entity
+        //例如点赞的话 我们传递blogID userID到后端 后端再进行操作
+        async: true,
+        success: function(data){
+            if(data != null){
+                //alert(data)
+                bloggers1 = JSON.stringify(data);
+                bloggers = JSON.parse(bloggers1)
+                //alert(bloggers)
+                $.each(bloggers, function (index, blogger) {
+                    $("#bloggeryoumayknow").after("\n" +
+                        "                        <div class=\"sl_sidebar_sugs\">\n" +
+                        "                            <div class=\"sl_sidebar_sugs_avatar\">\n" +
+                        "                                <img id = 'avatar' src=\"http://localhost:8080/assets/images/avatars/avatar-1.jpg\" alt=\"\">\n" +
+                        "                            </div>\n" +
+                        "                            <div class=\"sl_sidebar_sugs_text\">\n" +
+                        "                                <a href=\"#\" class=\"sl_user_link_name\" id = 'name'> Jonathan Madano </a>\n" +
+                        "                            </div>\n" +
+                        "                            <div class=\"user-follow-button sl_sidebar_sugs_btns\">\n" +
+                        "                                <button type=\"button\" class=\"button small\">\n" +
+                        "                                    <span> Follow</span>\n" +
+                        "                                </button>\n" +
+                        "                            </div>\n" +
+                        "                        </div>");
+
+                    $("#name").attr("href", "/personalspaceguest/{userId}" + blogger.userId);
+                    $("#name").html(blogger.username);
+                    $("#name").attr("id","pass");
+                    $("#avatar").attr("src", blogger.avatar);//设置博客标题
+                    $("#avatar").attr("id","pass");
+                });
+
+
+
+            }
+
 
             //window.location.href = 'http://localhost:8080/mainpage';
             //这里是如果成功的将数据传递之后做的操作 可以写alert和跳转语句 根据情况进行书写就写

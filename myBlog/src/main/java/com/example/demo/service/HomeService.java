@@ -17,7 +17,7 @@ import java.util.List;
 
 //博客主页相关功能
 public interface HomeService {
-    List<BlogInfo> tagToBlogs(String tagName);                 // 根据标签查找对应的博客
+    List<HomeBlogView> tagToBlogs(String tagName);                 // 根据标签查找对应的博客
     ArrayList<BlogInfo> searchBlogs(String keyword);             // 根据关键词搜索博客
     List<BlogInfo> getBlogs();                              // 主页展示全站点击数top10博客
     List<User> showHotBlogger();                            // 用户未登录时，推送热门博主【全站点赞数top6】
@@ -45,5 +45,5 @@ public interface HomeService {
     ArrayList<User> showWantBlogger(int userId);
 
     // 主页展示点击量最高的博客对应的标签(#trending)，需要进行去重
-    ArrayList<BlogTag> getTrending();
+    ArrayList<BlogTag> getTrending(Model model);
 }
