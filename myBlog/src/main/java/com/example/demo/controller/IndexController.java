@@ -37,6 +37,12 @@ public class IndexController {
     }
 
 
+    @RequestMapping("/about")
+    public String aboutpage()
+    {
+        return "aboutpage";
+    }
+
     @RequestMapping("/classify")
     @ResponseBody
     public String classify(@RequestParam("class") String cla){//获取ajax发的信号
