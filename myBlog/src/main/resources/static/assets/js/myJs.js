@@ -428,8 +428,7 @@ function searchTheBlog()
             } else {
 
                 if (data != null) {
-
-                    $("#null").after("<div id = \"final\">\n" +
+                    $("#null").before("<div id = \"final\">\n" +
                         "\n" +
                         "                            <div class=\"fundings\" >\n" +
                         "                                <div class=\"fundings_desc\">\n" +
@@ -1029,4 +1028,13 @@ function mayknowpeople()
             //这里是如果成功的将数据传递之后做的操作 可以写alert和跳转语句 根据情况进行书写就写
         }
     });
+}
+
+function searchTheBlogs(){
+    searchTheBlog()
+    searchTheBlog()
+    searchTheBlog()
+    searchTheBlog()
+    searchTheBlog()
+    searchTheBlog()
 }

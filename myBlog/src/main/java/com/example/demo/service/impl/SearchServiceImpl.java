@@ -3,6 +3,7 @@ package com.example.demo.service.impl;
 import com.example.demo.entity.BlogInfo;
 import com.example.demo.entity.view.CommentView;
 import com.example.demo.entity.view.HomeBlogView;
+import com.example.demo.mapper.BlogMapper;
 import com.example.demo.mapper.profileMapper;
 import com.example.demo.service.HomeService;
 import com.example.demo.service.SearchService;
@@ -21,6 +22,9 @@ public class SearchServiceImpl implements SearchService {
 
     @Resource
     profileMapper profileMapper;
+
+    @Resource
+    BlogMapper blogMapper;
 
 
     @Override
@@ -52,7 +56,8 @@ public class SearchServiceImpl implements SearchService {
         int blogId = blogs.get(count).getBlogId();
         int userId = blogs.get(count).getUserId();
         String blogTitle = blogs.get(count).getBlogTitle();
-        String blogContent = blogs.get(count).getBlogContent();
+        BlogInfo blogInfo =  blogMapper.getBlog(blogId);
+        String blogContent = blogInfo.summary;
         String createTime = blogs.get(count).getCreateTime();
         int clickNumber = blogs.get(count).getClickNum();
         int likeNumber = blogs.get(count).getLikesNum();
@@ -72,6 +77,9 @@ public class SearchServiceImpl implements SearchService {
 
         System.out.println("Hello");
         session.setAttribute("count", count + 1);
+        if(blogContent.length() >=66){
+            blogContent = blogContent.substring(0,65);
+        }
 
 
         return "{\"clickNumber\":\""+clickNumber+"\",\"createTime\":\""+createTime+"\",\"blogContent\":\"" + blogContent + "\",\"blogTitle\":\"" + blogTitle + "\",\"username\":\"" + username + "\",\"likeNumber\":\"" + likeNumber + "\",\"comments\":" + comments + ",\"link\":\"" + link + "\"}";
