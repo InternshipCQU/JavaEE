@@ -18,7 +18,8 @@
         WHERE blogInfo.blogTitle LIKE "%"#{keyword}"%"
             OR (blogTag.tagName LIKE  "%"#{keyword}"%"
                 AND blogTag.tagId = tagBlogInfo.tagId
-                AND tagBlogInfo.blogId = blogInfo.blogId);
+                AND tagBlogInfo.blogId = blogInfo.blogId)
+        GROUP BY blogId;;
     </select>
 
 <!--    <select id="searchBlogs" resultType="com.example.demo.entity.view.HomeBlogView">-->
@@ -51,7 +52,6 @@
         FROM blogInfo
         ORDER BY `blogInfo`.clickNum DESC limit 10;
     </select>
-
 
 
     <select id="getCommentViews" resultType="com.example.demo.entity.view.CommentView">
