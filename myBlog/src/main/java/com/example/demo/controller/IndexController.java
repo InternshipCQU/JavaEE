@@ -33,6 +33,9 @@ public class IndexController {
         homeService.setRecommendBlogger(request,model);
         homeService.getTrendings(request,model);
         homeService.setBlogger(request,model);
+        //homeService.showWantBlogger(userId);//recommend blogger
+        homeService.getTrending(model);//trending get
+
         return "index";
     }
 
