@@ -37,7 +37,7 @@ public class HomeServiceImpl implements HomeService {
     private BlogMapper blogMapper;
 
     @Override
-    public List<BlogInfo> tagToBlogs(String tagName) {
+    public List<HomeBlogView> tagToBlogs(String tagName) {
         return homeMapper.tagToBlogs(tagName);
     }
 

@@ -829,7 +829,7 @@ function getblogPageComments()
                 //alert(blog)
                 $("#finalfollowing").attr("id", "null")
                 if (followings.noMore === "true") {
-                    alert("No more following user!");
+
                 } else {
 
 
