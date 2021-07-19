@@ -101,6 +101,7 @@ public class HomeServiceImpl implements HomeService {
             model.addAttribute("username","login please");
             model.addAttribute("hiddenLogout","true");
             model.addAttribute("hiddenLogin","false");
+
         }
         //System.out.println(model.getAttribute("bloggerAvatar"));
 

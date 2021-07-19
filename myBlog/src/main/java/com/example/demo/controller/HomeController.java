@@ -18,7 +18,9 @@ package com.example.demo.controller;
 import com.example.demo.entity.BlogInfo;
 import com.example.demo.entity.BlogTag;
 import com.example.demo.entity.User;
+import com.example.demo.entity.news;
 import com.example.demo.entity.view.HomeBlogView;
+import com.example.demo.mapper.HomeMapper;
 import com.example.demo.service.HomeService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -35,6 +37,9 @@ public class HomeController {
 
     @Resource
     private HomeService homeService;
+
+    @Resource
+    HomeMapper homeMapper;
 
     @RequestMapping("/home")
     public String home(){
@@ -79,6 +84,18 @@ public class HomeController {
             return homeService.showWantBlogger(userId);
         }
 
+        return null;
+    }
+
+    @RequestMapping("/notification")
+    @ResponseBody
+    // 主页推荐people you may want to see
+    public List<news> notification(HttpServletRequest request) {
+        HttpSession session = request.getSession();
+        if(session.getAttribute("userID") != null){
+            int userId = (Integer) session.getAttribute("userID");
+            return homeMapper.getNews(userId);
+        }
         return null;
     }
 //

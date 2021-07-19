@@ -253,4 +253,19 @@
         WHERE blogTag.tagId = blogInfo.tagId
         ORDER BY blogInfo.clickNum DESC;
     </select>
+
+    <select id="getNews" resultType="com.example.demo.entity.news">
+        SELECT newsContent,userId,blogId
+        FROM news, blogInfo
+        WHERE news.fansId = #{fansId}
+        AND news.isRead = 0
+    </select>
+
+    <update id="changeNews">
+        update news set isRead = 1 where newsId = #{newsId}
+    </update>
+
+    <insert id="addNews">
+        insert into `news`(`userId`,`fansId`,`newsContent`) values(#{userId},#{fansId},#{newsContent});
+    </insert>
 </mapper>
