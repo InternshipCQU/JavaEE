@@ -34,6 +34,7 @@ public class getServiceImpl implements getService {
     @Override
     public List<String> getcollect(Integer userId){
         List<String> bc=profileMapper.getcollect(userId);
+        System.out.println("GET COLLECT:"+bc+" (userId:"+userId+").");
         return bc;
     }
 

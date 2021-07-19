@@ -423,6 +423,8 @@ function previewImage(file) {
                 contentType: "application/json",
                 dataType: "json",
                 success: function (receivedata) {
+
+
                     var c1 = document.getElementById("my_favorites");
                     // var BLOG1=receivedata.BLOG1;
                     if (receivedata.LIKES1 === undefined) {

@@ -10,6 +10,7 @@ import com.example.demo.utils.UploadBackgroundUtil;
 import org.apache.commons.io.FileUtils;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.springframework.data.relational.core.sql.In;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -185,15 +186,17 @@ public class InfoController {
         }
 //        System.out.println(list);
         List<String> usernamelist=new ArrayList<String>();
+        List<Integer> useridlist=new ArrayList<Integer>();
         for(String s:list)
         {
             usernamelist.add(getss.getusername(Integer.valueOf(s)));
+            useridlist.add(Integer.valueOf(s));
         }
 //        System.out.println(usernamelist);
         for(int i=1;i<=usernamelist.size();i++)
         {
             object.put("FOLLOW"+i,usernamelist.get(i-1));
-            object.put("LINK"+i,"#");
+            object.put("LINK"+i,"/personalspaceguest/"+useridlist.get(i-1));
         }
         response.getWriter().write(object.toString());
     }
