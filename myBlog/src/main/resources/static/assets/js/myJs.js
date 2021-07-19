@@ -428,8 +428,7 @@ function searchTheBlog()
             } else {
 
                 if (data != null) {
-
-                    $("#null").after("<div id = \"final\">\n" +
+                    $("#null").before("<div id = \"final\">\n" +
                         "\n" +
                         "                            <div class=\"fundings\" >\n" +
                         "                                <div class=\"fundings_desc\">\n" +
@@ -1007,7 +1006,7 @@ function mayknowpeople()
                         "                                <a href=\"#\" class=\"sl_user_link_name\" id = 'name'> Jonathan Madano </a>\n" +
                         "                            </div>\n" +
                         "                            <div class=\"user-follow-button sl_sidebar_sugs_btns\">\n" +
-                        "                                <button type=\"button\" class=\"button small\">\n" +
+                        "                                <button type=\"button\" class=\"button small\" onclick='submitfollow("+blogger.userId+")'>\n" +
                         "                                    <span> Follow</span>\n" +
                         "                                </button>\n" +
                         "                            </div>\n" +
@@ -1030,3 +1029,30 @@ function mayknowpeople()
         }
     });
 }
+
+
+
+function submitfollow(userId)
+{
+    var jsonstr={"userId":userId};
+    $.ajax({
+        url: 'http://localhost:8080/submitfollow',
+        type: 'get',
+        data: jsonstr,
+        async: false,
+        success:function (data){
+            location.reload();
+        },
+        error:function(xhr){
+            alert("something wrong");
+        }
+    })
+
+function searchTheBlogs(){
+    searchTheBlog()
+    searchTheBlog()
+    searchTheBlog()
+    searchTheBlog()
+    searchTheBlog()
+    searchTheBlog()
+}}

@@ -3366,7 +3366,8 @@ import '../lib/codemirror/codemirror.min';
 
     // Emoji graphics files url path
     editormd.emoji     = {
-        path  : "https://www.webpagefx.com/tools/emoji-cheat-sheet/graphics/emojis/",
+        path  : "../plugins/emoji-dialog/emoji/",
+        // path  : "https://www.webpagefx.com/tools/emoji-cheat-sheet/graphics/emojis/",
         ext   : ".png"
     };
 

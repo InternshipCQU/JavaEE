@@ -114,6 +114,14 @@ public class HomeServiceImpl implements HomeService {
     }
 
     @Override
+    public void submitfollowing(HttpServletRequest request,int userId){
+        HttpSession session=request.getSession();
+        Integer fansId=(Integer) session.getAttribute("userID");
+        homeMapper.submitfollowing_1(userId,fansId);
+        homeMapper.submitfollowing_2(userId);
+    }
+
+    @Override
     // 主页展示点击量最高的博客对应的标签(#trending)，需要进行去重
     public ArrayList<BlogTag> getTrending(Model model) {
         ArrayList<BlogTag> tags = homeMapper.getTrending();
@@ -141,8 +149,6 @@ public class HomeServiceImpl implements HomeService {
             if(session.getAttribute("Token") != null){
                 session.setAttribute("blogs", getRecommendBlogViews((Integer) session.getAttribute("userID")));
             }else{
-//                System.out.println("加载所有的博客");
-
                 session.setAttribute("blogs", getBlogViews());
             }
         }else{
@@ -224,6 +230,9 @@ public class HomeServiceImpl implements HomeService {
         //System.out.println(blogContent);
 
         String link = "/blogs/" + username + "/" + blogId;
+        if(blogContent.length() >=66){
+            blogContent = blogContent.substring(0,65);
+        }
 
         System.out.println("Hello");
         session.setAttribute("count", count + 1);
