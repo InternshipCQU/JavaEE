@@ -157,6 +157,7 @@ public class HomeServiceImpl implements HomeService {
         int userId = blogs.get(count).getUserId();
         User user = profileMapper.getUser(userId);
         String userAvater = user.getAvatar();
+        String userLink = "/personalspaceguest/" + userId;
         String username = blogs.get(count).getUsername();
         String blogTitle = blogs.get(count).getBlogTitle();
         BlogInfo blog =blogMapper.getBlog(blogId);
@@ -207,7 +208,7 @@ public class HomeServiceImpl implements HomeService {
 
         System.out.println("Hello");
         session.setAttribute("count", count + 1);
-        return "{\"clickNumber\":\""+clickNumber+"\",\"userAvater\":\""+userAvater +"\",\"createTime\":\""+createTime+"\",\"blogContent\":\"" + blogContent + "\",\"blogTitle\":\"" + blogTitle + "\",\"username\":\"" + username + "\",\"likeNumber\":\"" + likeNumber + "\",\"commentNumber\":\"" + commentNumber + "\",\"forwardNumber\":\"" + forwardNumber + "\",\"saveNumber\":\"" + saveNumber + "\",\"comments\":" + comments + ",\"link\":\"" + link + "\"}";
+        return "{\"userLink\":\""+userLink +"\",\"clickNumber\":\""+clickNumber+"\",\"userAvater\":\""+userAvater +"\",\"createTime\":\""+createTime+"\",\"blogContent\":\"" + blogContent + "\",\"blogTitle\":\"" + blogTitle + "\",\"username\":\"" + username + "\",\"likeNumber\":\"" + likeNumber + "\",\"commentNumber\":\"" + commentNumber + "\",\"forwardNumber\":\"" + forwardNumber + "\",\"saveNumber\":\"" + saveNumber + "\",\"comments\":" + comments + ",\"link\":\"" + link + "\"}";
 
     }
 

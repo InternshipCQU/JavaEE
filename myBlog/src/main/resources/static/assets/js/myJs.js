@@ -184,9 +184,11 @@ function loadTheBlog()
 
                     $("#null").after("<div class=\"post\" id =\"final\" >\n" +
                         "    <div class=\"post-heading\">\n" +
+                        "                      <a id = 'userLink'>\n"+
                         "        <div class=\"post-avature\">\n" +
                         "            <img id = \"userAvater\" src=\"http://localhost:8080/assets/images/avatars/avatar-6.jpg\" alt=\"\">\n" +
                         "        </div>\n" +
+                        "                      </a>\n"+
                         "        <div class=\"post-title\">\n" +
                         "            <h4 id = \"username\">  </h4>\n" +
                         "            <p id = \"time\"> 5 <span> hrs</span>  </p>\n" +
@@ -272,6 +274,9 @@ function loadTheBlog()
 
                 $("#userAvater").attr("src", blog.userAvater);
                 $("#userAvater").attr("id", "pass");//设置博主头像
+
+                $("#userLink").attr("href", blog.userLink);
+                $("#userLink").attr("id", "pass");//设置博主头像
 
                 $("#comments").attr("id", "commentsNull")
 
