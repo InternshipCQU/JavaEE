@@ -81,7 +81,7 @@
     </select>
     
     <select id="showWantBlogger" resultType="com.example.demo.entity.User">
-        SELECT `User`.username,`User`.avatar
+        SELECT `User`.username,`User`.avatar,`User`.userId
         FROM `User`,TagMark,blogInfo,blogTag
         WHERE TagMark.userId = #{userId}
           AND blogTag.tagId = blogInfo.tagId
@@ -253,4 +253,11 @@
         WHERE blogTag.tagId = blogInfo.tagId
         ORDER BY blogInfo.clickNum DESC;
     </select>
+    <insert id="submitfollowing_1">
+        insert into `userLike` (userId,fansId) values (#{userId},#{fansId});
+    </insert>
+    <update id="submitfollowing_2">
+        update `User` set fansNum=fansNum+1
+        where `userId`=#{userId};
+    </update>
 </mapper>

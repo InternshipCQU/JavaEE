@@ -20,6 +20,7 @@ import com.example.demo.entity.BlogTag;
 import com.example.demo.entity.User;
 import com.example.demo.entity.view.HomeBlogView;
 import com.example.demo.service.HomeService;
+import org.springframework.data.relational.core.sql.In;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -75,10 +76,10 @@ public class HomeController {
 
         return null;
     }
-//
-//    @RequestMapping("/trending")
-//    // 主页展示点击量最高的博客对应的标签(#trending)，需要进行去重
-//    public ArrayList<BlogTag> getTrending() {
-//        return homeService.getTrending();
-//    }
+
+    @RequestMapping("/submitfollow")
+    @ResponseBody
+    public void submitfollow(@RequestParam("userId") Integer userId, HttpServletRequest request){
+        homeService.submitfollowing(request,userId);
+    }
 }
