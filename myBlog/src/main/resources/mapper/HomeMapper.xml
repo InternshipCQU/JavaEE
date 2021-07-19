@@ -247,6 +247,12 @@
         end);
     </select>
 
+    <select id="checkIsLikeUser" resultType="String">
+        SELECT `userLike`.userId
+        FROM `userLike`
+        WHERE `userLike`.userId = #{userId};
+    </select>
+
     <select id="getTrending" resultType="com.example.demo.entity.BlogTag">
         SELECT tagName
         FROM blogTag, blogInfo
