@@ -20,6 +20,7 @@ public interface BlogService {
 
     String collect(int blogId, int userId);                 //收藏, 插入一条记录
     void cancelCollect(int blogId, int userId);             //取消收藏，删除一条记录
+    void cancelCollectByBlogId(int blogId);
     boolean isCollect(int blogId, int userId);
     void addCollectNum(int blogId);                     //收藏数加1
     void deductCollectNum(int blogId);                  //收藏数减1
