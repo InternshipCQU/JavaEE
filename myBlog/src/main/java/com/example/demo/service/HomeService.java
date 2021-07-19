@@ -45,5 +45,5 @@ public interface HomeService {
     ArrayList<User> showWantBlogger(int userId);
 
     // 主页展示点击量最高的博客对应的标签(#trending)，需要进行去重
-    ArrayList<BlogTag> getTrending();
+    ArrayList<BlogTag> getTrending(Model model);
 }

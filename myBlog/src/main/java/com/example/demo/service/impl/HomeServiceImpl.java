@@ -109,13 +109,16 @@ public class HomeServiceImpl implements HomeService {
     @Override
     // 主页推荐people you may want to see
     public ArrayList<User> showWantBlogger(int userId) {
+
         return homeMapper.showWantBlogger(userId);
     }
 
     @Override
     // 主页展示点击量最高的博客对应的标签(#trending)，需要进行去重
-    public ArrayList<BlogTag> getTrending() {
-        return homeMapper.getTrending();
+    public ArrayList<BlogTag> getTrending(Model model) {
+        ArrayList<BlogTag> tags = homeMapper.getTrending();
+        model.addAttribute("trendings",tags);
+        return tags;
     }
 
     //test
@@ -139,9 +142,12 @@ public class HomeServiceImpl implements HomeService {
                 session.setAttribute("blogs", getRecommendBlogViews((Integer) session.getAttribute("userID")));
             }else{
 //                System.out.println("加载所有的博客");
+
                 session.setAttribute("blogs", getBlogViews());
             }
         }else{
+            System.out.println("筛选的标签为：" + cla);
+            System.out.println(tagToBlogs(cla));
             session.setAttribute("blogs", tagToBlogs(cla));
         }
 
