@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.example.demo.mapper.HomeMapper">
-    <select id="tagToBlogs" resultType="com.example.demo.entity.BlogInfo">
-        SELECT blogInfo.blogTitle, blogInfo.blogContent, blogInfo.createTime,
-            blogInfo.clickNum, blogInfo.likesNum, blogInfo.userId
-        FROM blogInfo, blogTag, tagBlogInfo
+    <select id="tagToBlogs" resultType="com.example.demo.entity.view.HomeBlogView">
+        SELECT `blogInfo`.blogId,`User`.userId,username, blogTitle, blogContent, createTime, clickNum, blogInfo.likesNum, commentNum, forwardNum, collectNum
+        FROM blogInfo, `User`, blogTag, tagBlogInfo
         WHERE blogTag.tagName = #{tagName}
             AND blogTag.tagId = tagBlogInfo.tagId
-            AND tagBlogInfo.blogId = blogInfo.blogId;
+            AND tagBlogInfo.blogId = blogInfo.blogId
+			AND blogInfo.userId = `User`.userId;
     </select>
 
     <select id="searchBlogs" resultType="com.example.demo.entity.BlogInfo">
