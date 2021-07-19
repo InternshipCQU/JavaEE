@@ -10,4 +10,7 @@
     <update id="reducelikenum">
         update `User` set `fansNum`= case when `fansNum`=0 then `fansNum`=0 else `fansNum`-1 end where `userId`=#{userId};
     </update>
+    <select id="getallfavorites" resultType="com.example.demo.entity.BlogInfo">
+        select blogInfo.blogId,blogInfo.blogTitle,blogInfo.userId from blogCollect, blogInfo where blogCollect.blogId=blogInfo.blogId and blogCollect.userId=#{userId};
+    </select>
 </mapper>

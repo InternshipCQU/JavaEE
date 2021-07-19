@@ -1,6 +1,8 @@
 package com.example.demo.controller;
 
 import com.example.demo.entity.User;
+import com.example.demo.service.getService;
+import com.example.demo.service.userfavoritesService;
 import com.example.demo.service.userinfoallService;
 import org.json.JSONObject;
 import org.springframework.stereotype.Controller;
@@ -20,12 +22,22 @@ public class SeeAllController {
     @Resource
     userinfoallService userinfoallService;
 
+    @Resource
+    userfavoritesService userfavoritesService;
+
 
     @RequestMapping("/seeAllfollow")
     public String to(HttpServletRequest request){
         HttpSession session = request.getSession();
         userinfoallService.Init(request);
         return "seeallfollow";
+    }
+
+    @RequestMapping("/seeAllfavorites")
+    public String to_2(HttpServletRequest request){
+        HttpSession session=request.getSession();
+        userfavoritesService.Init(request);
+        return "seeallfavorites";
     }
 
     @RequestMapping("/reqfollow")
@@ -44,5 +56,13 @@ public class SeeAllController {
         userinfoallService.cancelfollow(userId,rel_userId);
         return "seeAllfollow";
     }
+
+    @RequestMapping("/reqfavorites")
+    @ResponseBody
+    public String reqfavorites(HttpServletRequest request){
+        String s= userfavoritesService.getallfavorites(request);
+        return s;
+    }
+
 
 }

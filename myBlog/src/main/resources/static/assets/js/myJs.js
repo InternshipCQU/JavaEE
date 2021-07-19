@@ -749,6 +749,57 @@ function getblogPageComments()
     });
 }
 //====
+    function getallfavorites()
+    {
+        urls=window.location.pathname;
+        str=urls.split("/");
+        $.ajax({
+            url:'http://localhost:8080/reqfavorites',
+            type:'get',
+            data:{},
+            async:false,
+            error:function(xhr){
+                alert("Something wrong.");
+            },
+            success:function (data) {
+                var favorites = JSON.parse(data);
+                //alert(blog)
+                $("#finalfavorites").attr("id", "null");
+                if (favorites.noMore === "true") {
+
+                } else {
+                    if (favorites != null) {
+
+                        $("#null").after("<div class=\"sl_pokes_cont\" id = \"final\">\n" +
+                            "                                <a id = \"path\">\n" +
+                            "                            <div class=\"sl_poke_users\" id=\"1\">\n" +
+                            "                                <div class=\"sl_poke_info\">\n" +
+                            "                                    <div class=\"sl_poke_info_innr\">\n" +
+                            "                                        <div class=\"sl_poke_info_innr_user\">\n" +
+                            "                                            <span>\n" +
+                            "                                                <a id=\"directing\" href=\"" + "#" + "\"> <span class=\"user-name\" id = \"title\"> Dennis Han </span>  </a>\n" +
+                            "                                            </span>\n" +
+                            "                                        </div>\n" +
+                            "                                        <button class=\"button light small\" style=\"margin: 5px\" onclick='clickbutton(" + parseInt("123") + ")'> 取消收藏</button>\n" +
+                            "                                    </div>\n" +
+                            "                                </div>\n" +
+                            "                            </div>\n" +
+                            "                           </a>\n" +
+                            "                        </div>");
+                    }
+                    // $("#null").attr("id", "null2");
+
+                    // $("#path").attr("href",blog.link);//设置点赞数量
+                    $("#path").attr("id", "pass");
+                    $("#directing").attr("href", "/blogs/"+favorites.bloggername+"/" + favorites.blogid);
+                    $("#title").html(favorites.blogname);
+                    $("#title").attr("id", "pass");//设置博客标题
+
+                }
+            }}
+        )
+    }
+
 
 
     function getallfollow()
@@ -773,7 +824,7 @@ function getblogPageComments()
                 //alert(blog)
                 $("#finalfollowing").attr("id", "null")
                 if (followings.noMore === "true") {
-
+                    alert("No more following user!");
                 } else {
 
 
@@ -793,7 +844,7 @@ function getblogPageComments()
                             "                                                <a id=\"directing\" href=\""+followings.userId+"\"> <span class=\"user-name\" id = \"title\"> Dennis Han </span>  </a>\n" +
                             "                                            </span>\n" +
                             "                                        </div>\n" +
-                            "                                        <button class=\"button light small\" style=\"margin: 5px\" onclick='clickbutton("+parseInt(followings.userId)+")'> 取消关注</button>\n" +
+                            "                                        <button class=\"button light small\" style=\"margin: 5px\" onclick='clickbutton("+parseInt(followings.userId)+")'> 取消收藏</button>\n" +
                             "                                    </div>\n" +
                             "                                </div>\n" +
                             "                            </div>\n" +
@@ -809,13 +860,7 @@ function getblogPageComments()
                     $("#title").attr("id", "pass");//设置博客标题
                     $("#touxinag").attr("src",followings.avatar);
 
-                    // $("#content").html(blog.blogContent);
-                    // $("#content").attr("id", "pass");//设置博客内容
-                    // $("#time").html(blog.createTime);
-                    // $("#time").attr("id", "pass");//设置时间
 
-                    // $("#userAvater").attr("src", blog.userAvater);
-                    // $("#userAvater").attr("id", "pass");//设置博主头像
 
 
                 }
