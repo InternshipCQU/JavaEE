@@ -16,6 +16,8 @@ package com.example.demo.controller;
 
 
 import com.example.demo.entity.BlogInfo;
+import com.example.demo.entity.BlogTag;
+import com.example.demo.entity.User;
 import com.example.demo.entity.view.HomeBlogView;
 import com.example.demo.service.HomeService;
 import org.springframework.stereotype.Controller;
@@ -23,6 +25,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -78,5 +81,17 @@ public class HomeController {
     public List<HomeBlogView> getRecommendBlogs(@RequestParam("userId") int userId){
         int tagId = homeService.getTagMark(userId).getRecommendTag();
         return homeService.getRecommendBlogViews(tagId);
+    }
+
+    @RequestMapping("/mayknowpeople")
+    // 主页推荐people you may want to see
+    public List<User> showWantBlogger(@RequestParam("userId") int userId) {
+        return homeService.showWantBlogger(userId);
+    }
+
+    @RequestMapping("/trending")
+    // 主页展示点击量最高的博客对应的标签(#trending)，需要进行去重
+    public ArrayList<BlogTag> getTrending() {
+        return homeService.getTrending();
     }
 }

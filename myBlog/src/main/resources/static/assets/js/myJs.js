@@ -602,37 +602,40 @@ function manageBlog()
                 if (data != null) {
 
                     $("#null").after("<div class=\"sl_pokes_cont\" id = \"final\">\n" +
-                        "                                <a id = \"path\">\n" +
+                        // "                                <a id = \"path\">\n" +
                         "                            <div class=\"sl_poke_users\" id=\"1\">\n" +
                         "                                <div class=\"sl_poke_info\">\n" +
-                        "                                    <a href=\"userinfo.html\">\n" +
+                        "                                    <a id = \"path\" >\n" +
                         "                                        <div class=\"avatar\"> <img src=\"http://localhost:8080/assets/images/avatars/avatar-1.jpg\" alt=\"\">\n" +
                         "                                            </div>\n" +
                         "                                    </a>\n" +
                         "                                    <div class=\"sl_poke_info_innr\">\n" +
                         "                                        <div class=\"sl_poke_info_innr_user\">\n" +
                         "                                            <span>\n" +
-                        "                                                <a href=\"userinfo.html\"> <span class=\"user-name\" id = \"title\"> Dennis Han </span>  </a>\n" +
+                        "                                                <a id = \"path2\" > <span class=\"user-name\" id = \"title\"> Dennis Han </span>  </a>\n" +
                         "                                            </span>\n" +
                         "                                        </div>\n" +
                         "                                         <a id = \"edit\">\n" +
-                        "                                        <input type=\"button\" class=\"button light small\" style=\"margin: 5px\" value='编辑博文'>\n" +
-                        "                                         </a>\n" +
+                        "                                        <button type=\"button\" class=\"button light small\" style=\"margin: 5px\">\n" +"<img src=\"http://localhost:8080/assets/images/icons/edit.svg\" width=\"20\" height=\"20\" style=\"margin-right: 10px\"><span class=\"button-text\">编辑博文</span>"+
                         "\n" +
-                        "                                        </input>\n" +
-                        "                                        <input type=\"button\" class=\"button light small\" onclick='deleteblog("+blog.blogId+","+blog.userId+")' style=\"margin: 5px\" value='删除博文'>\n" +
+                        "                                        </button>\n" +
+                        "                                         </a>\n" +
+                        "                                        <button type=\"button\" class=\"button light small\" onclick='deleteblog("+blog.blogId+","+blog.userId+")' style=\"margin: 5px\" >\n" + "<img src=\"http://localhost:8080/assets/images/icons/delete.svg\" width=\"20\" height=\"20\" style=\"margin-right: 10px\"><span class=\"button-text\">删除博文</span>"+
 
-                        "                                        </input>\n" +
+                        "                                        </button>\n" +
                         "                                    </div>\n" +
                         "                                </div>\n" +
                         "                            </div>\n" +
-                        "                           </a>\n" +
+                        // "                           </a>\n" +
                         "                        </div>");
                 }
-                $("#null").attr("id", "null2");
+                // $("#null").attr("id", "null2");
 
                 $("#path").attr("href",blog.link);//设置点赞数量
                 $("#path").attr("id", "pass");
+
+                $("#path2").attr("href",blog.link);//设置点赞数量
+                $("#path2").attr("id", "pass");
 
                 $("#title").html("《" + blog.blogTitle+"》");
                 $("#title").attr("id", "pass");//设置博客标题
@@ -748,6 +751,81 @@ function getblogPageComments()
 //====
 
 
+    function getallfollow()
+    {
+        //alert("load the blog")
+        urls = window.location.pathname;
+        str = urls.split("/")
+
+        $.ajax({
+
+            url: 'http://localhost:8080/reqfollow',
+            type: 'get',
+            data: {},
+            async: false,
+
+            error:function(jqXHR,textStatus,errorThrown ){
+                alert("errorThrown")
+            },
+            success: function(data) {
+                //console.log(data)
+                var followings = JSON.parse(data);
+                //alert(blog)
+                $("#finalfollowing").attr("id", "null")
+                if (followings.noMore === "true") {
+
+                } else {
+
+
+                    if (followings != null) {
+
+                        $("#null").after("<div class=\"sl_pokes_cont\" id = \"final\">\n" +
+                            "                                <a id = \"path\">\n" +
+                            "                            <div class=\"sl_poke_users\" id=\"1\">\n" +
+                            "                                <div class=\"sl_poke_info\">\n" +
+                            "                                    <a href=\"userinfo.html\">\n" +
+                            "                                        <div class=\"avatar\"> <img id=\"touxiang\" src=\""+followings.avatar+"\" alt=\"\">\n" +
+                            "                                            </div>\n" +
+                            "                                    </a>\n" +
+                            "                                    <div class=\"sl_poke_info_innr\">\n" +
+                            "                                        <div class=\"sl_poke_info_innr_user\">\n" +
+                            "                                            <span>\n" +
+                            "                                                <a id=\"directing\" href=\""+followings.userId+"\"> <span class=\"user-name\" id = \"title\"> Dennis Han </span>  </a>\n" +
+                            "                                            </span>\n" +
+                            "                                        </div>\n" +
+                            "                                        <button class=\"button light small\" style=\"margin: 5px\" onclick='clickbutton("+parseInt(followings.userId)+")'> 取消关注</button>\n" +
+                            "                                    </div>\n" +
+                            "                                </div>\n" +
+                            "                            </div>\n" +
+                            "                           </a>\n" +
+                            "                        </div>");
+                    }
+                    // $("#null").attr("id", "null2");
+
+                    // $("#path").attr("href",blog.link);//设置点赞数量
+                    $("#path").attr("id", "pass");
+                    $("#directing").attr("href","/personalspaceguest/"+followings.userId);
+                    $("#title").html(followings.username);
+                    $("#title").attr("id", "pass");//设置博客标题
+                    $("#touxinag").attr("src",followings.avatar);
+
+                    // $("#content").html(blog.blogContent);
+                    // $("#content").attr("id", "pass");//设置博客内容
+                    // $("#time").html(blog.createTime);
+                    // $("#time").attr("id", "pass");//设置时间
+
+                    // $("#userAvater").attr("src", blog.userAvater);
+                    // $("#userAvater").attr("id", "pass");//设置博主头像
+
+
+                }
+            },
+            complete: function () {
+                $("loading").hide();
+            },
+        });
+    }
+
 //==== comment ====
 function comment()
 {
@@ -766,7 +844,8 @@ function comment()
         success: function(data){
             var message = JSON.parse(data);
             if(message.login === "true"){
-                alert("评论成功")
+                alert("评论成功");
+                //window.location.href = 'http://localhost:8080/blogs/';
             }else{
                 alert("请登录")
                 window.location.href = 'http://localhost:8080/login';
@@ -778,6 +857,27 @@ function comment()
 
 }
 
+function clickbutton(userId)
+{
+    var jsonstr={"userId":userId};
+    $.ajax({
+        url: 'http://localhost:8080/reqdelfollow', //这里是返回路径 在controller里写好对应函数就行 TODO:记得修改路径后面的 这是测试
+        type: 'get',
+        data: jsonstr, //这里是向后端传输的json 应该是可以直接传对象 比如User这种entity
+
+        //例如点赞的话 我们传递blogID userID到后端 后端再进行操作
+
+        async: false,
+        success:function(data){
+            location.reload();
+},
+        error:function(xhr){
+            alert("something wrong:"+xhr.status);
+        }
+    })
+}
+
+
 //=====forward=====
 function forward()
 {
@@ -787,7 +887,7 @@ function forward()
 
         url: 'http://localhost:8080/blogs/forward', //这里是返回路径 在controller里写好对应函数就行 TODO:记得修改路径后面的 这是测试
         type: 'get',
-        data: {"tagId":tagId,"blogId":blogId}, //这里是向后端传输的json 应该是可以直接传对象 比如User这种entity
+        data: {}, //这里是向后端传输的json 应该是可以直接传对象 比如User这种entity
         //例如点赞的话 我们传递blogID userID到后端 后端再进行操作
         async: true,
         success: function(data){
