@@ -89,6 +89,7 @@ public class PersonalSpaceGuestServiceImpl implements PersonalSpaceGuestService 
         String createTime = blogs.get(count).getCreateTime();
         int clickNumber = blogs.get(count).getClickNum();
         int likeNumber = blogs.get(count).getLikesNum();
+        String summary = blogs.get(count).summary;
 
 //        private String username;
 //        private String commentContent;
@@ -107,7 +108,7 @@ public class PersonalSpaceGuestServiceImpl implements PersonalSpaceGuestService 
         session.setAttribute("count", count + 1);
 
 
-        return "{\"clickNumber\":\""+clickNumber+"\",\"createTime\":\""+createTime+"\",\"blogContent\":\"" + blogContent + "\",\"blogTitle\":\"" + blogTitle + "\",\"username\":\"" + username + "\",\"likeNumber\":\"" + likeNumber + "\",\"comments\":" + comments + ",\"link\":\"" + link + "\"}";
+        return "{\"clickNumber\":\""+clickNumber+"\",\"createTime\":\""+createTime+"\",\"blogContent\":\"" + summary + "\",\"blogTitle\":\"" + blogTitle + "\",\"username\":\"" + username + "\",\"likeNumber\":\"" + likeNumber + "\",\"comments\":" + comments + ",\"link\":\"" + link + "\"}";
 
 
     }

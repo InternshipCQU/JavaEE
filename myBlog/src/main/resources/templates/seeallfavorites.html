@@ -5,11 +5,12 @@
     <script type='text/javascript'>
 
         window.onload = function () {
-            getallfollow()
-            getallfollow()
-            getallfollow()
-            getallfollow()
-            getallfollow()
+            getallfavorites()
+            getallfavorites()
+            getallfavorites()
+            getallfavorites()
+            getallfavorites()
+
         }
 
     </script>
@@ -19,7 +20,7 @@
 
     <!-- Basic Page Needs
     ================================================== -->
-    <title>我的所有关注</title>
+    <title>我的所有收藏</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Simplest is - Professional A unique and beautiful collection of UI elements">
@@ -111,14 +112,14 @@
                                     </path>
                                 </svg> My infomation </a>
                         </li>
-                        <li class="active">
+                        <li>
                             <a href="/seeAllfollow">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
                                     <path fill="#f79f58" d="M14.4,6L14,4H5V21H7V14H12.6L13,16H20V6H14.4Z">
                                     </path>
                                 </svg> My followings </a>
                         </li>
-                        <li>
+                        <li class="active">
                             <a href="/seeAllfavorites">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
                                     <path fill="#f35d4d"
@@ -549,12 +550,9 @@
 
                 <div class="uk-width-1-1@m fead-area-for-bloglist">
 
-                    <h2 id = "finalfollowing"> 我的关注列表  </h2>
-
-
-
+                    <h2 id = "finalfavorites"> 我的收藏列表  </h2>
                     <div class="load-more">
-                        <button class="btn button" onclick="getallfollow()">Load more Pokes</button>
+                        <button class="btn button" onclick="getallfavorites()">Load more Pokes</button>
                     </div>
 
                 </div>
@@ -708,7 +706,7 @@
 <script src="http://localhost:8080/assets/js/uikit.js"></script>
 <script src="http://localhost:8080/assets/js/simplebar.js"></script>
 <script src="http://localhost:8080/assets/js/myJs.js"></script>
-<script src="http://localhost:8080/assets/js/manageOnscroll.js"></script>
+<!--<script src="http://localhost:8080/assets/js/manageOnscroll.js"></script>-->
 
 </body>
 

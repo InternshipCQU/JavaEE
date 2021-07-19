@@ -10,7 +10,7 @@
 
     <select id="showUsersBlog" resultType="com.example.demo.entity.BlogInfo">
         SELECT blogInfo.blogId,blogInfo.blogTitle, blogInfo.blogContent, blogInfo.createTime,
-            blogInfo.clickNum, blogInfo.likesNum, blogInfo.userId, blogInfo.tagId
+            blogInfo.clickNum, blogInfo.likesNum, blogInfo.userId, blogInfo.tagId,blogInfo.summary
         FROM blogInfo
         WHERE blogInfo.userId = #{userId};
     </select>
