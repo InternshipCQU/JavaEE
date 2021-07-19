@@ -95,7 +95,13 @@ public class BlogServiceImpl implements BlogService {
     public void cancelCollect(int blogId, int userId)
     {
         blogMapper.cancelCollect(blogId, userId);
-//        System.out.println("删除收藏记录");
+        System.out.println("删除收藏记录");
+    }
+
+    @Override
+    public void cancelCollectByBlogId(int blogId)
+    {
+        blogMapper.cancelCollectByBlogId(blogId);
     }
 
     @Override

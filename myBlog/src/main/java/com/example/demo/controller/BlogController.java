@@ -120,8 +120,10 @@ public class BlogController {
     }
 
     @RequestMapping("/blogs/isCollect")
-    public void isCollect(@RequestParam("blogId") int blogId, @RequestParam("userId") int userId,
-                          @RequestParam("tagId") int tagId, Model model, HttpServletResponse response) throws JSONException, IOException {
+    public void isCollect(@RequestParam("blogId") int blogId,
+                          @RequestParam("tagId") int tagId, Model model, HttpServletResponse response, HttpServletRequest request) throws JSONException, IOException {
+        HttpSession session = request.getSession();
+        int userId = (int) session.getAttribute("userID");
         boolean isCollect = blogService.isCollect(blogId, userId);
 //        model.addAttribute("isCollect",isCollect);
 //        System.out.println("isCollect: "+model.getAttribute("isCollect"));
@@ -132,9 +134,11 @@ public class BlogController {
 
 
     @RequestMapping("/blogs/collect")
-    public void collect(@RequestParam("blogId") int blogId, @RequestParam("userId") int userId,
-                        @RequestParam("tagId") int tagId, Model model){
+    public void collect(@RequestParam("blogId") int blogId,
+                        @RequestParam("tagId") int tagId, Model model, HttpServletRequest request){
 
+        HttpSession session = request.getSession();
+        int userId = (int) session.getAttribute("userID");
         blogService.collect(blogId, userId);
         blogService.addCollectNum(blogId);
 //        System.out.println("收藏");
@@ -144,9 +148,11 @@ public class BlogController {
     }
 
     @RequestMapping("/blogs/cancelCollect")
-    public void cancelCollect (@RequestParam("blogId") int blogId, @RequestParam("userId") int userId,
-                               @RequestParam("tagId") int tagId, Model model)
+    public void cancelCollect (@RequestParam("blogId") int blogId,
+                               @RequestParam("tagId") int tagId, Model model, HttpServletRequest request)
     {
+        HttpSession session = request.getSession();
+        int userId = (int) session.getAttribute("userID");
         blogService.cancelCollect(blogId, userId);
 //        System.out.println("取消收藏");
         blogService.deductCollectNum(blogId);

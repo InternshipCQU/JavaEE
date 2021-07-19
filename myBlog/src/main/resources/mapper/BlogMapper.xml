@@ -57,6 +57,10 @@
         delete from `blogCollect` where #{blogId} = `blogCollect`.blogId and #{userId} = `blogCollect`.userId
     </delete>
 
+    <delete id="cancelCollectByBlogId">
+        delete from `blogCollect` where #{blogId} = `blogCollect`.blogId
+    </delete>
+
     <select id="getBlog" resultType="com.example.demo.entity.BlogInfo">
         SELECT blogInfo.blogTitle, blogInfo.blogContent, blogInfo.createTime,
             blogInfo.clickNum, blogInfo.likesNum, blogInfo.commentNum,

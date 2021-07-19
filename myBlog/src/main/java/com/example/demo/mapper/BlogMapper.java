@@ -25,6 +25,7 @@ public interface BlogMapper {
     void deductCollectNum(int blogId);                  //收藏数减1
     void cancelCollect(int blogId, int userId);         //删除记录
     void updateMarkWhenCancelCollect(String tagName, int userId);   //取消收藏分数减3
+    void cancelCollectByBlogId(int blogId);
 
     List<BlogLike> searchLikeBlog(int userId);   // 根据用户Id寻找点赞的所有博客id
 
