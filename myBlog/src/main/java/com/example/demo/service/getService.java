@@ -13,5 +13,6 @@ public interface getService {
     List<String> getcollect(Integer userID);
     String getusername(Integer userID);
     String getbackgroundurl(Integer userId);
+    String getintroduction(Integer userId);
 }
 

@@ -50,4 +50,10 @@ public class getServiceImpl implements getService {
         return res;
     }
 
+    @Override
+    public String getintroduction(Integer userId){
+        String res=profileMapper.getintroduction(userId);
+        return res;
+    }
+
 }

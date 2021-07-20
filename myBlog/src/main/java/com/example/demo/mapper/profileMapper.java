@@ -18,4 +18,5 @@ public interface profileMapper{
     public void setavatar(String dir,Integer userId);
     public String getbackground(Integer userId);
     public void setbackground(String dir, Integer userId);
+    public String getintroduction(Integer userId);
 }

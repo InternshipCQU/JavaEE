@@ -193,6 +193,18 @@ public class InfoController {
         return new ResponseEntity("Register OK", HttpStatus.OK);
     }
 
+    @RequestMapping(value="/getintroduction",method = RequestMethod.GET)
+    public void getintroduction(@RequestParam("userId") String userId,HttpServletRequest request,HttpServletResponse response)throws  IOException,JSONException{
+        System.out.println("GET USERID="+userId);
+        JSONObject object=new JSONObject();
+        request.setCharacterEncoding("utf-8");
+        response.setContentType("text/html;charset=utf-8");
+        String introres=getss.getintroduction(Integer.valueOf(userId));
+        object.put("rec",introres);
+        response.getWriter().write(object.toString());
+
+    }
+
     @RequestMapping(value="/getfollow",method=RequestMethod.POST)
     public void getfollowusrlist(@RequestBody String userId, HttpServletRequest request,HttpServletResponse response,HttpSession session) throws IOException, JSONException{
         JSONObject object=new JSONObject();

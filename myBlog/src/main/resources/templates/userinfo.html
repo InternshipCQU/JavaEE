@@ -31,10 +31,16 @@
     <!-- Google font
     ================================================== -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
+    <script type='text/javascript'>
 
+        window.onload = function () {
+            getuser()
+        }
+
+    </script>
 </head>
 
-<body onload="getuser();">
+<body>
 
    <script src="assets/js/userinfo.js"></script>
 
@@ -127,6 +133,8 @@
                                            d="M20,11H4V8H20M20,15H13V13H20M20,19H13V17H20M11,19H4V13H11M20.33,4.67L18.67,3L17,4.67L15.33,3L13.67,4.67L12,3L10.33,4.67L8.67,3L7,4.67L5.33,3L3.67,4.67L2,3V19A2,2 0 0,0 4,21H20A2,2 0 0,0 22,19V3L20.33,4.67Z">
                                        </path>
                                    </svg> My favorites </a>
+
+
                            </li>
 
        
@@ -942,6 +950,25 @@
                             
                             </div>
 
+
+                            <div class="sl_user-widget">
+                                <div class="sl_user-widget-wrap-header">
+                                    <div class="sl_user-widget-wrap-header-left">
+                                        <span><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24">
+                                                <path fill="currentColor"
+                                                      d="M22,16V4A2,2 0 0,0 20,2H8A2,2 0 0,0 6,4V16A2,2 0 0,0 8,18H20A2,2 0 0,0 22,16M11,12L13.03,14.71L16,11L20,16H8M2,6V20A2,2 0 0,0 4,22H18V20H4V6">
+                                                </path>
+                                            </svg></span>
+                                        <a href="#">Self introduction</a>&nbsp;
+                                    </div>
+
+                                   </div>
+
+                                <ul class="sidebar-user-data-container">
+                                    <p id="my_selfintroduction"></p>
+                                </ul>
+
+                            </div>
 
 
 

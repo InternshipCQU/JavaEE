@@ -99,7 +99,7 @@ function previewImage(file) {
             getfavoriteslist(recdata.userId);
             uploadfiles(recdata.userId.toString());
             showbackground(recdata.userId.toString());
-
+            seeintroduction(recdata.userId.toString());
         }
     })
 
@@ -208,6 +208,9 @@ function previewImage(file) {
             var c10=o10.innerHTML;
 
             o10.innerHTML="<input id=\"birthdate2\" type=\"date\" placeholder="+c10+"\" value="+c10+"/>";
+            var o11=document.getElementById("my_selfintroduction");
+            var c11=o11.innerHTML;
+            o11.innerHTML="<input id=\"my_selfintroduction_2\" type=\"text\" style='width:350px;height:40px;' value="+c11+"/>"
         }})
 
 }
@@ -309,6 +312,10 @@ function previewImage(file) {
             else {
                 c11.innerHTML = o11
             }
+            var o12=document.getElementById("my_selfintroduction_2").value;
+            var c12=document.getElementById("my_selfintroduction");
+            c12.innerHTML=o12;
+
             var formData={
                 userId:parseInt(document.getElementById("userId").innerHTML),
                 username:o1,
@@ -326,7 +333,8 @@ function previewImage(file) {
                 userRegisterTime:document.getElementById("userRefisiterTime").innerHTML,
                 birthdate:o11,
                 profile:document.getElementById("userprofileopt").innerHTML,
-                area:o8.value
+                area:o8.value,
+                selfIntroduction:o12
             };
             if(formData.username!==""&&formData.birthdate!==""&&formData.firstname!==""&&formData.lastname!==""&&formData.telephone!==""&&formData.lastname!==""&&formData.firstname!=="")
             {
@@ -414,6 +422,33 @@ function previewImage(file) {
                 alert("Something wrong.");
             }
         })}
+
+    function seeintroduction(userId)
+    {
+        var jsonstr={"userId":userId};
+        $.ajax({
+            url:"http://" + window.location.host + "/getintroduction",
+            type:"GET",
+            data:jsonstr,
+            async:false,
+            success:function(data){
+                var data=eval("("+data+")");
+                var o1=document.getElementById("my_selfintroduction");
+                if(data.rec==null)
+                {
+                    o1.innerHTML="There is no self introduction.";
+                }
+                else{
+                    o1.innerHTML=data.rec;
+                }
+
+            },
+            error:function(xhr){
+                alert("something error:"+xhr.status);
+            }
+        })
+    }
+
 
     function getfavoriteslist(userId) {
             $.ajax({
