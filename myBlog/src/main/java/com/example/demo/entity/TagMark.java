@@ -1,67 +1,153 @@
 package com.example.demo.entity;
 
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
+
 import static java.lang.Math.max;
 
 public class TagMark {
 
-    private int tagId1;
-    private int tagId2;
-    private int tagId3;
-    private int tagId4;
-    private int tagId5;
+    private int TensorFlow;
+    private int NumPy;
+    private int PyTorch;
+    private int IDEA;
+    private int Tomcat;
+    private int JavaEE;
+    private int Django;
+    private int Git;
+    private int Python;
+    private int Java;
+    private int C;
+    private int html;
 
-    public TagMark(int tagId1, int tagId2, int tagId3, int tagId4, int tagId5) {
-        this.tagId1 = tagId1;
-        this.tagId2 = tagId2;
-        this.tagId3 = tagId3;
-        this.tagId4 = tagId4;
-        this.tagId5 = tagId5;
+    public TagMark(int tensorFlow, int numPy, int pyTorch, int IDEA, int tomcat, int javaEE, int django, int git, int python, int java, int c, int html) {
+        TensorFlow = tensorFlow;
+        NumPy = numPy;
+        PyTorch = pyTorch;
+        this.IDEA = IDEA;
+        Tomcat = tomcat;
+        JavaEE = javaEE;
+        Django = django;
+        Git = git;
+        Python = python;
+        Java = java;
+        C = c;
+        this.html = html;
+    }
+
+    public int getTensorFlow() {
+        return TensorFlow;
+    }
+
+    public void setTensorFlow(int tensorFlow) {
+        TensorFlow = tensorFlow;
+    }
+
+    public int getNumPy() {
+        return NumPy;
+    }
+
+    public void setNumPy(int numPy) {
+        NumPy = numPy;
+    }
+
+    public int getPyTorch() {
+        return PyTorch;
+    }
+
+    public void setPyTorch(int pyTorch) {
+        PyTorch = pyTorch;
+    }
+
+    public int getIDEA() {
+        return IDEA;
+    }
+
+    public void setIDEA(int IDEA) {
+        this.IDEA = IDEA;
+    }
+
+    public int getTomcat() {
+        return Tomcat;
+    }
+
+    public void setTomcat(int tomcat) {
+        Tomcat = tomcat;
+    }
+
+    public int getJavaEE() {
+        return JavaEE;
+    }
+
+    public void setJavaEE(int javaEE) {
+        JavaEE = javaEE;
+    }
+
+    public int getDjango() {
+        return Django;
+    }
+
+    public void setDjango(int django) {
+        Django = django;
+    }
+
+    public int getGit() {
+        return Git;
+    }
+
+    public void setGit(int git) {
+        Git = git;
+    }
+
+    public int getPython() {
+        return Python;
+    }
+
+    public void setPython(int python) {
+        Python = python;
+    }
+
+    public int getJava() {
+        return Java;
+    }
+
+    public void setJava(int java) {
+        Java = java;
+    }
+
+    public int getC() {
+        return C;
+    }
+
+    public void setC(int c) {
+        C = c;
+    }
+
+    public int getHtml() {
+        return html;
+    }
+
+    public void setHtml(int html) {
+        this.html = html;
     }
 
     public int getRecommendTag(){
-        int i = max(tagId1, tagId2);
-        int j = max(tagId3, tagId4);
-        int k = max(i, j);
-        return max(k, tagId5);
+        ArrayList<Integer> a = new ArrayList<>();
+        a.add(TensorFlow);
+        a.add(NumPy);
+        a.add(PyTorch);
+        a.add(IDEA);
+        a.add(Tomcat);
+        a.add(JavaEE);
+        a.add(Django);
+        a.add(Git);
+        a.add(Python);
+        a.add(Java);
+        a.add(C);
+        a.add(html);
+        a.sort((o1, o2) -> o2 - o1);
+        return a.get(0);
     }
 
-    public int getTagId1() {
-        return tagId1;
-    }
-
-    public void setTagId1(int tagId1) {
-        this.tagId1 = tagId1;
-    }
-
-    public int getTagId2() {
-        return tagId2;
-    }
-
-    public void setTagId2(int tagId2) {
-        this.tagId2 = tagId2;
-    }
-
-    public int getTagId3() {
-        return tagId3;
-    }
-
-    public void setTagId3(int tagId3) {
-        this.tagId3 = tagId3;
-    }
-
-    public int getTagId4() {
-        return tagId4;
-    }
-
-    public void setTagId4(int tagId4) {
-        this.tagId4 = tagId4;
-    }
-
-    public int getTagId5() {
-        return tagId5;
-    }
-
-    public void setTagId5(int tagId5) {
-        this.tagId5 = tagId5;
-    }
 }

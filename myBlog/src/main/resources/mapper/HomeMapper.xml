@@ -75,7 +75,7 @@
     </select>
 
     <select id="getTagMark" resultType="com.example.demo.entity.TagMark">
-        SELECT tagId1, tagId2, tagId3, tagId4, tagId5
+        SELECT TensorFlow, NumPy, PyTorch, IDEA, Tomcat, JavaEE, Django, Git, Python, Java, `C`, html
         FROM TagMark
         WHERE userId = #{userId}
     </select>

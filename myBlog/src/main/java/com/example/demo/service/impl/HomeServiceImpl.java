@@ -149,7 +149,6 @@ public class HomeServiceImpl implements HomeService {
             if(session.getAttribute("Token") != null){
                 session.setAttribute("blogs", getRecommendBlogViews((Integer) session.getAttribute("userID")));
             }else{
-                System.out.println("add all");
                 session.setAttribute("blogs", getBlogViews());
                 //System.out.println(getBlogViews());
             }
@@ -161,7 +160,7 @@ public class HomeServiceImpl implements HomeService {
 
 
         ArrayList<HomeBlogView> s1 = (ArrayList<HomeBlogView>) session.getAttribute("blogs");
-        //System.out.println(s1.size());
+        System.out.println(s1.size());
         session.setAttribute("count", 0);
         session.setAttribute("size", s1.size());
     }
@@ -171,10 +170,11 @@ public class HomeServiceImpl implements HomeService {
         HttpSession session = request.getSession();
         int count = (Integer) session.getAttribute("count");
         int size = (Integer) session.getAttribute("size");
-        ArrayList<HomeBlogView> blogs = (ArrayList<HomeBlogView>) session.getAttribute("blogs");
-
         System.out.println(size);
         System.out.println(count);
+        ArrayList<HomeBlogView> blogs = (ArrayList<HomeBlogView>) session.getAttribute("blogs");
+
+
 
         if(size == 0 || count == size){
             return "{\"noMore\":\"true\"}";
@@ -243,7 +243,9 @@ public class HomeServiceImpl implements HomeService {
     }
 
     @Override
-    public ArrayList<HomeBlogView> getRecommendBlogViews(int tagId) {
+    public ArrayList<HomeBlogView> getRecommendBlogViews(int userId) {
+        TagMark tagMark = homeMapper.getTagMark(userId);
+        int tagId = tagMark.getRecommendTag();
         ArrayList<HomeBlogView> blogList = homeMapper.getRecommendBlogViews(tagId);
         for (int i = 0; i < blogList.size(); i++) {
             int blogId = blogList.get(i).getBlogId();
