@@ -38,12 +38,12 @@ public class PersonalSpaceGuestServiceImpl implements PersonalSpaceGuestService 
         session.setAttribute("blogs",blogs);
         session.setAttribute("count",0);
         session.setAttribute("size",blogs.size());
-
-
+        
         //====set the page====
 //        User userobj = getss.getuserprofile(userID);
         User user = getss.getuserprofile(userID);
         model.addAttribute("user",user);
+
         String extendedProfile;
         String extendedselfIntro;
         if (user.profile == null) extendedProfile = "嘞个人嘿懒，啷个都莫得写";
