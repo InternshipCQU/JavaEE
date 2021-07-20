@@ -101,6 +101,7 @@ public class HomeServiceImpl implements HomeService {
             model.addAttribute("username","login please");
             model.addAttribute("hiddenLogout","true");
             model.addAttribute("hiddenLogin","false");
+
         }
         //System.out.println(model.getAttribute("bloggerAvatar"));
 
@@ -109,7 +110,6 @@ public class HomeServiceImpl implements HomeService {
     @Override
     // 主页推荐people you may want to see
     public ArrayList<User> showWantBlogger(int userId) {
-
         return homeMapper.showWantBlogger(userId);
     }
 
@@ -149,8 +149,8 @@ public class HomeServiceImpl implements HomeService {
             if(session.getAttribute("Token") != null){
                 session.setAttribute("blogs", getRecommendBlogViews((Integer) session.getAttribute("userID")));
             }else{
-                System.out.println("加载所有的博客");
                 session.setAttribute("blogs", getBlogViews());
+                //System.out.println(getBlogViews());
             }
         }else{
             System.out.println("筛选的标签为：" + cla);

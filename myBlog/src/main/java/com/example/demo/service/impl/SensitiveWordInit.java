@@ -65,7 +65,7 @@ public class SensitiveWordInit {
         Set<String> wordSet = null;
         //敏感词库
         File file = new File(
-                ".\\src\\main\\resources\\lib\\sensitive_word.txt");
+                "./src/main/resources/lib/sensitive_word.txt");
         try {
             // 读取文件输入流
             InputStreamReader read = new InputStreamReader(new FileInputStream(file), ENCODING);

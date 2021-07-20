@@ -1,13 +1,10 @@
 package com.example.demo.mapper;
 
-import com.example.demo.entity.BlogTag;
-import com.example.demo.entity.TagMark;
-import com.example.demo.entity.User;
+import com.example.demo.entity.*;
 
 import com.example.demo.entity.view.CommentView;
 import com.example.demo.entity.view.HomeBlogView;
 
-import com.example.demo.entity.BlogInfo;
 import org.apache.ibatis.annotations.Mapper;
 
 
@@ -51,7 +48,17 @@ public interface HomeMapper {
     // 主页展示点击量最高的博客对应的标签(#trending)，需要进行去重
     ArrayList<BlogTag> getTrending();
 
+
+
+    //get notification
+    ArrayList<news> getNews(int fansId);
+
+    void changeNews(int newsId);
+
+    void addNews(int userId,int fansId,String newsContent);
+
     void submitfollowing_1(int userId,int fansId);
     void submitfollowing_2(int userId);
+
 
 }

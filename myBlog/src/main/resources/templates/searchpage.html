@@ -46,120 +46,85 @@
  
 
         <!-- Wrapper -->
-    <div id="wrapper">
+        <div id="wrapper">
 
-        <!-- sidebar Menu -->
-        <div class="sidebar">
-            <div class="sidebar_innr" data-simplebar>
+            <!-- sidebar -->
+            <div class="main_sidebar">
+                <div class="side-overlay" uk-toggle="target: #wrapper ; cls: collapse-sidebar mobile-visible"></div>
 
-                <div class="sections">
-                    <ul>
-                        <li >
-                            <a href="/index/ALL">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-                                    <path fill="#047cac" d="M10,20V14H14V20H19V12H22L12,3L2,12H5V20H10Z"></path>
-                                </svg>
-                                Home </a>
-                        </li >
-
-
-                        <li >
-                            <a href="/userinfo">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-                                    <path fill="#8d73cc"
-                                          d="M20 22H4a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1h16a1 1 0 0 1 1 1v18a1 1 0 0 1-1 1zm-1-2V4H5v16h14zM7 6h4v4H7V6zm0 6h10v2H7v-2zm0 4h10v2H7v-2zm6-9h4v2h-4V7z">
-                                    </path>
-                                </svg> profile </a>
-                        </li>
-                        <li  class="sl_side_post_fltr">
-                            <a href="/searchpage">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-                                    <path fill="#b2c17c"
-                                          d="M15.5,12C18,12 20,14 20,16.5C20,17.38 19.75,18.21 19.31,18.9L22.39,22L21,23.39L17.88,20.32C17.19,20.75 16.37,21 15.5,21C13,21 11,19 11,16.5C11,14 13,12 15.5,12M15.5,14A2.5,2.5 0 0,0 13,16.5A2.5,2.5 0 0,0 15.5,19A2.5,2.5 0 0,0 18,16.5A2.5,2.5 0 0,0 15.5,14M10,4A4,4 0 0,1 14,8C14,8.91 13.69,9.75 13.18,10.43C12.32,10.75 11.55,11.26 10.91,11.9L10,12A4,4 0 0,1 6,8A4,4 0 0,1 10,4M2,20V18C2,15.88 5.31,14.14 9.5,14C9.18,14.78 9,15.62 9,16.5C9,17.79 9.38,19 10,20H2Z">
-                                    </path>
-                                </svg> Search </a>
-                        </li>
-                    </ul>
-                    <a href="#" class="button secondary px-5 btn-more"
-                       uk-toggle="target: #more-veiw; animation: uk-animation-fade">
-                        <span id="more-veiw">See More <i class="icon-feather-chevron-down ml-2"></i></span>
-                        <span id="more-veiw" hidden>See Less<i class="icon-feather-chevron-up ml-2"></i> </span>
-                    </a>
+                <!-- sidebar header -->
+                <div class="sidebar-header">
+                    <!-- Logo-->
+                    <div id="logo">
+                        <a href="feeds.html"> <img src="http://localhost:8080/assets/images/logo-light.png" alt=""></a>
+                    </div>
+                    <span class="btn-close" uk-toggle="target: #wrapper ; cls: collapse-sidebar mobile-visible"></span>
                 </div>
 
+                <!-- sidebar Menu -->
+                <div class="sidebar">
+                    <div class="sidebar_innr" data-simplebar>
 
-                <div class="sections">
-                    <h3> Explore </h3>
-                    <ul>
-                        <li>
-                            <a href="/index/CPP">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-                                    <path fill="#03A9F4"
-                                          d="M5 3A2 2 0 0 0 3 5H5M7 3V5H9V3M11 3V5H13V3M15 3V5H17V3M19 3V5H21A2 2 0 0 0 19 3M3 7V9H5V7M7 7V11H11V7M13 7V11H17V7M19 7V9H21V7M3 11V13H5V11M19 11V13H21V11M7 13V17H11V13M13 13V17H17V13M3 15V17H5V15M19 15V17H21V15M3 19A2 2 0 0 0 5 21V19M7 19V21H9V19M11 19V21H13V19M15 19V21H17V19M19 19V21A2 2 0 0 0 21 19Z">
-                                    </path>
-                                </svg> C++ </a>
-                        </li>
-                        <li>
-                            <a href="/index/JAVA">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-                                    <path fill="#03A9F4"
-                                          d="M5 3A2 2 0 0 0 3 5H5M7 3V5H9V3M11 3V5H13V3M15 3V5H17V3M19 3V5H21A2 2 0 0 0 19 3M3 7V9H5V7M7 7V11H11V7M13 7V11H17V7M19 7V9H21V7M3 11V13H5V11M19 11V13H21V11M7 13V17H11V13M13 13V17H17V13M3 15V17H5V15M19 15V17H21V15M3 19A2 2 0 0 0 5 21V19M7 19V21H9V19M11 19V21H13V19M15 19V21H17V19M19 19V21A2 2 0 0 0 21 19Z">
-                                    </path>
-                                </svg> JAVA </a>
-                        </li>
-                        <li>
-                            <a href="/index/CSS">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-                                    <path fill="#03A9F4"
-                                          d="M5 3A2 2 0 0 0 3 5H5M7 3V5H9V3M11 3V5H13V3M15 3V5H17V3M19 3V5H21A2 2 0 0 0 19 3M3 7V9H5V7M7 7V11H11V7M13 7V11H17V7M19 7V9H21V7M3 11V13H5V11M19 11V13H21V11M7 13V17H11V13M13 13V17H17V13M3 15V17H5V15M19 15V17H21V15M3 19A2 2 0 0 0 5 21V19M7 19V21H9V19M11 19V21H13V19M15 19V21H17V19M19 19V21A2 2 0 0 0 21 19Z">
-                                    </path>
-                                </svg> CSS </a>
-                        </li>
-                        <li>
-                            <a href="/index/PYTHON">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-                                    <path fill="#03A9F4"
-                                          d="M5 3A2 2 0 0 0 3 5H5M7 3V5H9V3M11 3V5H13V3M15 3V5H17V3M19 3V5H21A2 2 0 0 0 19 3M3 7V9H5V7M7 7V11H11V7M13 7V11H17V7M19 7V9H21V7M3 11V13H5V11M19 11V13H21V11M7 13V17H11V13M13 13V17H17V13M3 15V17H5V15M19 15V17H21V15M3 19A2 2 0 0 0 5 21V19M7 19V21H9V19M11 19V21H13V19M15 19V21H17V19M19 19V21A2 2 0 0 0 21 19Z">
-                                    </path>
-                                </svg> PYTHON </a>
-                        </li>
-
-                        <li>
-                            <a href="/index/C">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-                                    <path fill="#03A9F4"
-                                          d="M5 3A2 2 0 0 0 3 5H5M7 3V5H9V3M11 3V5H13V3M15 3V5H17V3M19 3V5H21A2 2 0 0 0 19 3M3 7V9H5V7M7 7V11H11V7M13 7V11H17V7M19 7V9H21V7M3 11V13H5V11M19 11V13H21V11M7 13V17H11V13M13 13V17H17V13M3 15V17H5V15M19 15V17H21V15M3 19A2 2 0 0 0 5 21V19M7 19V21H9V19M11 19V21H13V19M15 19V21H17V19M19 19V21A2 2 0 0 0 21 19Z">
-                                    </path>
-                                </svg> C </a>
-                        </li>
-
-                    </ul>
-
-                </div>
-
-                <!--  Optional Footer -->
-                <div id="foot">
-
-                    <ul>
-                        <li> <a href="/about"> About Us </a></li>
-                    </ul>
+                        <div class="sections">
+                            <ul>
+                                <li  >
+                                    <a href="/index/ALL">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                                            <path fill="#047cac" d="M10,20V14H14V20H19V12H22L12,3L2,12H5V20H10Z"></path>
+                                        </svg>
+                                        Home </a>
+                                </li>
 
 
-                    <div class="foot-content">
-                        <p>© 2020 <strong> CQU TEAM </strong>. All Rights Reserved. </p>
+                                <li>
+                                    <a href="/userinfo">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                                            <path fill="#8d73cc"
+                                                  d="M20 22H4a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1h16a1 1 0 0 1 1 1v18a1 1 0 0 1-1 1zm-1-2V4H5v16h14zM7 6h4v4H7V6zm0 6h10v2H7v-2zm0 4h10v2H7v-2zm6-9h4v2h-4V7z">
+                                            </path>
+                                        </svg> profile </a>
+                                </li>
+                                <li class="sl_side_post_fltr">
+                                    <a href="/searchpage">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                                            <path fill="#b2c17c"
+                                                  d="M15.5,12C18,12 20,14 20,16.5C20,17.38 19.75,18.21 19.31,18.9L22.39,22L21,23.39L17.88,20.32C17.19,20.75 16.37,21 15.5,21C13,21 11,19 11,16.5C11,14 13,12 15.5,12M15.5,14A2.5,2.5 0 0,0 13,16.5A2.5,2.5 0 0,0 15.5,19A2.5,2.5 0 0,0 18,16.5A2.5,2.5 0 0,0 15.5,14M10,4A4,4 0 0,1 14,8C14,8.91 13.69,9.75 13.18,10.43C12.32,10.75 11.55,11.26 10.91,11.9L10,12A4,4 0 0,1 6,8A4,4 0 0,1 10,4M2,20V18C2,15.88 5.31,14.14 9.5,14C9.18,14.78 9,15.62 9,16.5C9,17.79 9.38,19 10,20H2Z">
+                                            </path>
+                                        </svg> Search </a>
+                                </li>
+                            </ul>
+                            <a href="#" class="button secondary px-5 btn-more"
+                               uk-toggle="target: #more-veiw; animation: uk-animation-fade">
+                                <span id="more-veiw">See More <i class="icon-feather-chevron-down ml-2"></i></span>
+                                <span id="more-veiw" hidden>See Less<i class="icon-feather-chevron-up ml-2"></i> </span>
+                            </a>
+                        </div>
+
+
+
+
+                        <!--  Optional Footer -->
+                        <div id="foot">
+
+                            <ul>
+                                <li> <a href="/about"> About Us </a></li>
+                            </ul>
+
+
+                            <div class="foot-content">
+                                <p>© 2020 <strong> CQU TEAM </strong>. All Rights Reserved. </p>
+                            </div>
+
+                        </div>
+
+
+
                     </div>
 
+
                 </div>
 
-
-
             </div>
-
-
-        </div>
-
-    </div>
-
        <!-- contents -->
        <div class="main_content">
 
