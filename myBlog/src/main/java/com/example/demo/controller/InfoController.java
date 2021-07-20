@@ -85,8 +85,10 @@ public class InfoController {
 
     @RequestMapping(value="/getusersess",method= RequestMethod.GET)
     public void setusersession( HttpServletRequest request, HttpServletResponse response,HttpSession session) throws IOException, JSONException {
-        OSSClient ossClient = new OSSClient("oss-cn-beijing.aliyuncs.com","LTAI5t8boD5MgHBWXNNMJGmm","8f7SV8lmL4B9hdQbbMqzXCWUxf9BXR");
 
+        OSSClient ossClient = new OSSClient("oss-cn-beijing.aliyuncs.com","LTAI5t8boD5MgHBWXNNMJGmm","8f7SV8lmL4B9hdQbbMqzXCWUxf9BXR");
+        request.setCharacterEncoding("utf-8");
+        response.setContentType("text/html;charset=utf-8");
         Integer userId= (Integer) request.getSession().getAttribute("userID");
         System.out.println(userId);
         User userobj=getss.getuserprofile(userId);
@@ -95,7 +97,11 @@ public class InfoController {
         String userprofile=userobj.getProfile();
         String email=userobj.getEmail();
         String gender;
-        if(userobj.getGender().equals("M"))
+        if(userobj.getGender()==null)
+        {
+            gender="未设置";
+        }
+        else if(userobj.getGender().equals("M"))
         {
             gender="1";
         }
