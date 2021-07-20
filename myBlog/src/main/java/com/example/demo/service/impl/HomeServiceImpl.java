@@ -248,6 +248,8 @@ public class HomeServiceImpl implements HomeService {
     public ArrayList<HomeBlogView> getRecommendBlogViews(int userId) {
         TagMark tagMark = homeMapper.getTagMark(userId);
         int tagId = tagMark.getRecommendTag();
+        System.out.println("_________________________");
+        System.out.println(tagId);
         ArrayList<HomeBlogView> blogList = homeMapper.getRecommendBlogViews(tagId);
         for (int i = 0; i < blogList.size(); i++) {
             int blogId = blogList.get(i).getBlogId();
