@@ -589,7 +589,7 @@
                     <div class="nav-single-group" uk-sticky="media : @s">
                         <nav class="responsive-tab">
                             <ul>
-                                <li class="uk-active" ><a class="active" href="#" th:text = "'个性签名：'+${user.profile}">life is like an ocean, only the people who has a strong will can get to the shore.</a></li>
+                                <li class="uk-active" ><a class="active" href="#" th:text = "'个性签名：'+${extendedProfile}">life is like an ocean, only the people who has a strong will can get to the shore.</a></li>
 <!--                                <li><a href="#">members</a></li>-->
 <!--                                <li><a href="#">Photos</a></li>-->
 <!--                                <li><a href="#">Discussions</a></li>-->
@@ -912,7 +912,7 @@
                                     </div>
                                 </div>
                                 <div class="sl_user-widget_text">
-                                    <p th:text="${user.selfIntroduction}">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh
+                                    <p th:text="${extendedselfIntro}">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh
                                         euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. U</p>
                                 </div>
                             </div>
