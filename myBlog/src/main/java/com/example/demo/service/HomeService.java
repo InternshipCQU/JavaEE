@@ -22,7 +22,7 @@ public interface HomeService {
     List<BlogInfo> getBlogs();                              // 主页展示全站点击数top10博客
     List<User> showHotBlogger();                            // 用户未登录时，推送热门博主【全站点赞数top6】
     ArrayList<User> showRecommendBlogger(int userId);            // 用户登录后，推送其关注的博主【关注博主中点赞数top6】
-
+    void submitfollowing(HttpServletRequest request,int userId);
 
     String getTheClass(String s);
 
