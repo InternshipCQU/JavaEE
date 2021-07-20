@@ -481,11 +481,11 @@ function searchTheBlog()
 //=====getUserBlog======
 function getUserBlog()
 {
-    //alert("load the blog")
+    // alert("load the blog")
     urls = window.location.pathname;
     str = urls.split("/")
     //alert("hello"),
-    //alert(str[2])
+    // alert(str[2])
     $.ajax({
 
         url: 'http://localhost:8080/getPersonalBlog', //这里是返回路径 在controller里写好对应函数就行 TODO:记得修改路径后面的 这是测试
@@ -505,7 +505,8 @@ function getUserBlog()
             if (blog.noMore === "true") {
 
             } else {
-                //alert(blog.blogTitle)
+
+                // alert(blog.blogTitle)
 
                 if (data != null) {
 

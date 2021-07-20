@@ -25,6 +25,15 @@ public class User {
     public String profile;   // 用户个人简介
     public String area;        // 用户所在地区
     public String background; //背景图片
+    public String selfIntroduction; //个人简介
+
+    public String getSelfIntroduction() {
+        return selfIntroduction;
+    }
+
+    public void setSelfIntroduction(String selfIntroduction) {
+        this.selfIntroduction = selfIntroduction;
+    }
 
     public String getBackground(){return background;}
     public Integer getUserId() {
