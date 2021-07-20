@@ -148,7 +148,11 @@ public class HomeServiceImpl implements HomeService {
         if(cla.equals("ALL")){
             if(session.getAttribute("userID") != null){
                 System.out.println("个性推荐启动");
-                session.setAttribute("blogs", getRecommendBlogViews((Integer) session.getAttribute("userID")));
+                if(getRecommendBlogViews((Integer) session.getAttribute("userID")) == null){
+                    session.setAttribute("blogs", getBlogViews());
+                }else{
+                    session.setAttribute("blogs", getRecommendBlogViews((Integer) session.getAttribute("userID")));
+                }
                 System.out.println( "here is the blogs: "  + session.getAttribute("blogs"));
             }else{
                 session.setAttribute("blogs", getBlogViews());

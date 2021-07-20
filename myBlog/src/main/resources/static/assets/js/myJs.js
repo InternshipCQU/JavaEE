@@ -1015,7 +1015,7 @@ function mayknowpeople()
                         "                            </div>\n" +
                         "                        </div>");
 
-                    $("#name").attr("href", "/personalspaceguest/{userId}" + blogger.userId);
+                    $("#name").attr("href", "/personalspaceguest/" + blogger.userId);
                     $("#name").html(blogger.username);
                     $("#name").attr("id","pass");
                     $("#avatar").attr("src", blogger.avatar);//设置博客标题
@@ -1087,8 +1087,6 @@ function notification()
                     $("#newsContent").attr("id","pass");
 
                 });
-
-
 
             }
 

@@ -262,7 +262,7 @@
     </select>
 
     <select id="getNews" resultType="com.example.demo.entity.news">
-        SELECT newsContent,userId,blogId
+        SELECT news.newsContent,news.userId,blogInfo.blogId
         FROM news, blogInfo
         WHERE news.fansId = #{fansId}
         AND news.isRead = 0

@@ -1,5 +1,7 @@
 <!doctype html>
 <html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
 <meta charset="UTF-8">
 <head>
 
@@ -496,54 +498,50 @@
 
 
                        <!-- profile -image -->
-                       <a class="opts_account" href="#"> <img src="assets/images/avatars/avatar-2.jpg" alt=""></a>
+                       <a class="opts_account" th:href="${bloggerPath}"> <img th:src= "${bloggerAvatar}" alt=""></a>
 
                        <!-- profile dropdown-->
                        <div uk-dropdown="mode:click ; animation: uk-animation-slide-bottom-small"
-                           class="dropdown-notifications rounded display-hidden">
+                            class="dropdown-notifications rounded display-hidden">
 
                            <!-- User Name / Avatar -->
                            <!-- User Name / Avatar -->
-                           <a href="userinfo.html">
+                           <a href="">
 
                                <div class="dropdown-user-details">
 
                                    <div class="dropdown-user-cover">
-                                       <img src="assets/images/avatars/profile-cover.jpg" alt="">
+                                       <img th:src="${bloggerAvatar}" alt="">
                                    </div>
                                    <div class="dropdown-user-avatar">
-                                       <img src="assets/images/avatars/avatar-1.jpg" alt="">
+                                       <img th:src="${bloggerAvatar}" alt="">
                                    </div>
-                                   <div class="dropdown-user-name"> James Lewis </div>
+                                   <div class="dropdown-user-name" th:text = "${username}">  </div>
                                </div>
 
                            </a>
 
-                           <ul class="dropdown-user-menu">
-                               <li><a href="#"> <i class="fas fa-rocket"></i> Boost Posts </a> </li>
-                               <li><a href="#"> <i class="fas fa-rocket"></i> Boost Pages </a> </li>
-                               <li><a href="#"> <i class="fas fa-bullhorn"></i> Advertising </a></li>
-                               <li><a href="#"> <i class="fas fa-user-edit"></i> General Settings</a></li>
-                               <li><a href="#"> <i class="fas fa-user-cog"></i> Admi Area</a></li>
-                               <li>
-                                   <a href="#" id="night-mode" class="btn-night-mode">
-                                       <i class="fas fa-moon"></i> Night mode
-                                       <span class="btn-night-mode-switch">
-                                           <span class="uk-switch-button"></span>
-                                       </span>
-                                   </a>
+                           <ul class="dropdown-user-menu" th:hidden = "${hiddenLogout}">
+                               <li><a href="/writing"> <i class="fas fa-rocket"></i> 创作博客 </a> </li>
+                               <!-- <li><a href="#"> <i class="fas fa-rocket"></i> Boost Pages </a> </li> -->
+                               <li><a th:href="${spacePath}"> <i class="fas fa-bullhorn"></i> 个人空间 </a></li>
+                               <!-- <li><a href="#"> <i class="fas fa-user-edit"></i> General Settings</a></li> -->
+                               <li><a href="/userinfo"> <i class="fas fa-user-cog"></i> 个人资料</a></li>
                                </li>
-                               </li>
-                               <li><a href="form-login.html"> <i class="fas fa-sign-out-alt"></i>Log Out</a>
+                               <!-- <li><a href="form-login.html"> <i class="fas fa-sign-out-alt"></i>Log Out</a> -->
                                </li>
                            </ul>
 
                            <hr class="m-0">
                            <ul class="dropdown-user-menu">
-                               <li><a href="page-setting.html" class="bg-secondery"> <i class="uil-bolt"></i>
-                                       <div> Upgrade To Premium <span> Pro features give you complete control </span>
-                                       </div>
-                                   </a>
+                               <li th:hidden = "${hiddenLogout}"><a href="/tologout" class="bg-secondery"> <i class="uil-bolt"></i>
+                                   <div th:hidden = "${hiddenLogout}"> 退出登录
+                                       <!-- <span> Pro features give you complete control </span> -->
+                                   </div>
+                                   <div th:hidden = "${hiddenLogin}"> 登录
+                                       <!-- <span> Pro features give you complete control </span> -->
+                                   </div>
+                               </a>
                                </li>
                            </ul>
 
