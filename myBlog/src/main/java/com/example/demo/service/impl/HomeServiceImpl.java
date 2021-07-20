@@ -115,6 +115,14 @@ public class HomeServiceImpl implements HomeService {
     }
 
     @Override
+    public void submitfollowing(HttpServletRequest request,int userId){
+        HttpSession session=request.getSession();
+        Integer fansId=(Integer) session.getAttribute("userID");
+        homeMapper.submitfollowing_1(userId,fansId);
+        homeMapper.submitfollowing_2(userId);
+    }
+
+    @Override
     // 主页展示点击量最高的博客对应的标签(#trending)，需要进行去重
     public ArrayList<BlogTag> getTrending(Model model) {
         ArrayList<BlogTag> tags = homeMapper.getTrending();
@@ -142,7 +150,9 @@ public class HomeServiceImpl implements HomeService {
             if(session.getAttribute("Token") != null){
                 session.setAttribute("blogs", getRecommendBlogViews((Integer) session.getAttribute("userID")));
             }else{
+                System.out.println("add all");
                 session.setAttribute("blogs", getBlogViews());
+                //System.out.println(getBlogViews());
             }
         }else{
             System.out.println("筛选的标签为：" + cla);

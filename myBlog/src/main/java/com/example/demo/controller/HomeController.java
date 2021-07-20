@@ -22,6 +22,7 @@ import com.example.demo.entity.news;
 import com.example.demo.entity.view.HomeBlogView;
 import com.example.demo.mapper.HomeMapper;
 import com.example.demo.service.HomeService;
+import org.springframework.data.relational.core.sql.In;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -87,6 +88,7 @@ public class HomeController {
         return null;
     }
 
+
     @RequestMapping("/notification")
     @ResponseBody
     // 主页推荐people you may want to see
@@ -104,4 +106,11 @@ public class HomeController {
 //    public ArrayList<BlogTag> getTrending() {
 //        return homeService.getTrending();
 //    }
+
+    @RequestMapping("/submitfollow")
+    @ResponseBody
+    public void submitfollow(@RequestParam("userId") Integer userId, HttpServletRequest request){
+        homeService.submitfollowing(request,userId);
+    }
+
 }

@@ -1006,7 +1006,7 @@ function mayknowpeople()
                         "                                <a href=\"#\" class=\"sl_user_link_name\" id = 'name'> Jonathan Madano </a>\n" +
                         "                            </div>\n" +
                         "                            <div class=\"user-follow-button sl_sidebar_sugs_btns\">\n" +
-                        "                                <button type=\"button\" class=\"button small\">\n" +
+                        "                                <button type=\"button\" class=\"button small\" onclick='submitfollow("+blogger.userId+")'>\n" +
                         "                                    <span> Follow</span>\n" +
                         "                                </button>\n" +
                         "                            </div>\n" +
@@ -1028,6 +1028,24 @@ function mayknowpeople()
             //这里是如果成功的将数据传递之后做的操作 可以写alert和跳转语句 根据情况进行书写就写
         }
     });
+}
+
+
+
+function submitfollow(userId) {
+    var jsonstr = {"userId": userId};
+    $.ajax({
+        url: 'http://localhost:8080/submitfollow',
+        type: 'get',
+        data: jsonstr,
+        async: false,
+        success: function (data) {
+            location.reload();
+        },
+        error: function (xhr) {
+            alert("something wrong");
+        }
+    })
 }
 
 function searchTheBlogs(){
@@ -1077,3 +1095,4 @@ function notification()
         }
     });
 }
+

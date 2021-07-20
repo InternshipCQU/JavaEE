@@ -42,8 +42,12 @@ public interface HomeMapper {
     // 主页推荐people you may want to see
     ArrayList<User> showWantBlogger(int userId);
 
+    // 判断userId是否在关注列表
+    String checkIsLikeUser(int userId);
+
     // 主页展示点击量最高的博客对应的标签(#trending)，需要进行去重
     ArrayList<BlogTag> getTrending();
+
 
 
     //get notification
@@ -52,5 +56,9 @@ public interface HomeMapper {
     void changeNews(int newsId);
 
     void addNews(int userId,int fansId,String newsContent);
+
+    void submitfollowing_1(int userId,int fansId);
+    void submitfollowing_2(int userId);
+
 
 }
