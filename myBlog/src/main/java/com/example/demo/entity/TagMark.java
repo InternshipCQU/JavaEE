@@ -146,8 +146,16 @@ public class TagMark {
         a.add(Java);
         a.add(C);
         a.add(html);
-        a.sort((o1, o2) -> o2 - o1);
-        return a.get(0);
+        int tag = 0;
+        int maxScore = 0;
+        for(int i = 0; i < a.size(); i++){
+            int score = a.get(i);
+            if(score > maxScore){
+                tag = i;
+                maxScore = score;
+            }
+        }
+        return tag + 1;
     }
 
 }

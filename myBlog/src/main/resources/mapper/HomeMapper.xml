@@ -68,7 +68,7 @@
     </select>
 
     <select id="getRecommendBlogViews" resultType="com.example.demo.entity.view.HomeBlogView">
-        SELECT blogId,`User`.userId,username, blogTitle, blogContent, createTime, clickNum, blogInfo.likesNum, commentNum, forwardNum, collectNum
+        SELECT blogInfo.blogId,`User`.userId,username, blogTitle, blogContent, createTime, clickNum, blogInfo.likesNum, commentNum, forwardNum, collectNum
         FROM blogInfo, `User`, tagBlogInfo
         WHERE blogInfo.userId = User.userId AND tagBlogInfo.tagId = #{tagId} AND blogInfo.blogId = tagBlogInfo.blogId
         ORDER BY likesNum DESC limit 5;
@@ -90,157 +90,157 @@
           AND blogTag.tagName = (case
                                      when TagMark.`TensorFlow`>=TagMark.`NumPy`
                                          and TagMark.`TensorFlow`>=TagMark.`PyTorch`
-                                         and TagMark.`TensorFlow`>=TagMark.`IntelliJ IDEA`
+                                         and TagMark.`TensorFlow`>=TagMark.`IDEA`
                                          and TagMark.`TensorFlow`>=TagMark.`Tomcat`
-                                         and TagMark.`TensorFlow`>=TagMark.`Java EE`
+                                         and TagMark.`TensorFlow`>=TagMark.`JavaEE`
                                          and TagMark.`TensorFlow`>=TagMark.`Django`
                                          and TagMark.`TensorFlow`>=TagMark.`Git`
                                          and TagMark.`TensorFlow`>=TagMark.`Python`
                                          and TagMark.`TensorFlow`>=TagMark.`Java`
-                                         and TagMark.`TensorFlow`>=TagMark.`C++`
+                                         and TagMark.`TensorFlow`>=TagMark.`C`
                                          and TagMark.`TensorFlow`>=TagMark.`html`
                                          then 'TensorFlow'
 
                                      when TagMark.`NumPy`>=TagMark.`TensorFlow`
                                          and TagMark.`NumPy`>=TagMark.`PyTorch`
-                                         and TagMark.`NumPy`>=TagMark.`IntelliJ IDEA`
+                                         and TagMark.`NumPy`>=TagMark.`IDEA`
                                          and TagMark.`NumPy`>=TagMark.`Tomcat`
-                                         and TagMark.`NumPy`>=TagMark.`Java EE`
+                                         and TagMark.`NumPy`>=TagMark.`JavaEE`
                                          and TagMark.`NumPy`>=TagMark.`Django`
                                          and TagMark.`NumPy`>=TagMark.`Git`
                                          and TagMark.`NumPy`>=TagMark.`Python`
                                          and TagMark.`NumPy`>=TagMark.`Java`
-                                         and TagMark.`NumPy`>=TagMark.`C++`
+                                         and TagMark.`NumPy`>=TagMark.`C`
                                          and TagMark.`NumPy`>=TagMark.`html`
                                          then 'NumPy'
 
                                      when TagMark.`PyTorch`>=TagMark.`NumPy`
                                          and TagMark.`PyTorch`>=TagMark.`TensorFlow`
-                                         and TagMark.`PyTorch`>=TagMark.`IntelliJ IDEA`
+                                         and TagMark.`PyTorch`>=TagMark.`IDEA`
                                          and TagMark.`PyTorch`>=TagMark.`Tomcat`
-                                         and TagMark.`PyTorch`>=TagMark.`Java EE`
+                                         and TagMark.`PyTorch`>=TagMark.`JavaEE`
                                          and TagMark.`PyTorch`>=TagMark.`Django`
                                          and TagMark.`PyTorch`>=TagMark.`Git`
                                          and TagMark.`PyTorch`>=TagMark.`Python`
                                          and TagMark.`PyTorch`>=TagMark.`Java`
-                                         and TagMark.`PyTorch`>=TagMark.`C++`
+                                         and TagMark.`PyTorch`>=TagMark.`C`
                                          and TagMark.`PyTorch`>=TagMark.`html`
                                          then 'PyTorch'
 
-                                     when TagMark.`IntelliJ IDEA`>=TagMark.`NumPy`
-                                         and TagMark.`IntelliJ IDEA`>=TagMark.`PyTorch`
-                                         and TagMark.`IntelliJ IDEA`>=TagMark.`TensorFlow`
-                                         and TagMark.`IntelliJ IDEA`>=TagMark.`Tomcat`
-                                         and TagMark.`IntelliJ IDEA`>=TagMark.`Java EE`
-                                         and TagMark.`IntelliJ IDEA`>=TagMark.`Django`
-                                         and TagMark.`IntelliJ IDEA`>=TagMark.`Git`
-                                         and TagMark.`IntelliJ IDEA`>=TagMark.`Python`
-                                         and TagMark.`IntelliJ IDEA`>=TagMark.`Java`
-                                         and TagMark.`IntelliJ IDEA`>=TagMark.`C++`
-                                         and TagMark.`IntelliJ IDEA`>=TagMark.`html`
-                                         then 'IntelliJ IDEA'
+                                     when TagMark.`IDEA`>=TagMark.`NumPy`
+                                         and TagMark.`IDEA`>=TagMark.`PyTorch`
+                                         and TagMark.`IDEA`>=TagMark.`TensorFlow`
+                                         and TagMark.`IDEA`>=TagMark.`Tomcat`
+                                         and TagMark.`IDEA`>=TagMark.`JavaEE`
+                                         and TagMark.`IDEA`>=TagMark.`Django`
+                                         and TagMark.`IDEA`>=TagMark.`Git`
+                                         and TagMark.`IDEA`>=TagMark.`Python`
+                                         and TagMark.`IDEA`>=TagMark.`Java`
+                                         and TagMark.`IDEA`>=TagMark.`C`
+                                         and TagMark.`IDEA`>=TagMark.`html`
+                                         then 'IDEA'
 
                                      when TagMark.`Tomcat`>=TagMark.`NumPy`
                                          and TagMark.`Tomcat`>=TagMark.`PyTorch`
-                                         and TagMark.`Tomcat`>=TagMark.`IntelliJ IDEA`
+                                         and TagMark.`Tomcat`>=TagMark.`IDEA`
                                          and TagMark.`Tomcat`>=TagMark.`TensorFlow`
-                                         and TagMark.`Tomcat`>=TagMark.`Java EE`
+                                         and TagMark.`Tomcat`>=TagMark.`JavaEE`
                                          and TagMark.`Tomcat`>=TagMark.`Django`
                                          and TagMark.`Tomcat`>=TagMark.`Git`
                                          and TagMark.`Tomcat`>=TagMark.`Python`
                                          and TagMark.`Tomcat`>=TagMark.`Java`
-                                         and TagMark.`Tomcat`>=TagMark.`C++`
+                                         and TagMark.`Tomcat`>=TagMark.`C`
                                          and TagMark.`Tomcat`>=TagMark.`html`
                                          then 'Tomcat'
 
-                                     when TagMark.`Java EE`>=TagMark.`NumPy`
-                                         and TagMark.`Java EE`>=TagMark.`PyTorch`
-                                         and TagMark.`Java EE`>=TagMark.`IntelliJ IDEA`
-                                         and TagMark.`Java EE`>=TagMark.`Tomcat`
-                                         and TagMark.`Java EE`>=TagMark.`TensorFlow`
-                                         and TagMark.`Java EE`>=TagMark.`Django`
-                                         and TagMark.`Java EE`>=TagMark.`Git`
-                                         and TagMark.`Java EE`>=TagMark.`Python`
-                                         and TagMark.`Java EE`>=TagMark.`Java`
-                                         and TagMark.`Java EE`>=TagMark.`C++`
-                                         and TagMark.`Java EE`>=TagMark.`html`
-                                         then 'Java EE'
+                                     when TagMark.`JavaEE`>=TagMark.`NumPy`
+                                         and TagMark.`JavaEE`>=TagMark.`PyTorch`
+                                         and TagMark.`JavaEE`>=TagMark.`IDEA`
+                                         and TagMark.`JavaEE`>=TagMark.`Tomcat`
+                                         and TagMark.`JavaEE`>=TagMark.`TensorFlow`
+                                         and TagMark.`JavaEE`>=TagMark.`Django`
+                                         and TagMark.`JavaEE`>=TagMark.`Git`
+                                         and TagMark.`JavaEE`>=TagMark.`Python`
+                                         and TagMark.`JavaEE`>=TagMark.`Java`
+                                         and TagMark.`JavaEE`>=TagMark.`C`
+                                         and TagMark.`JavaEE`>=TagMark.`html`
+                                         then 'JavaEE'
 
                                      when TagMark.`Django`>=TagMark.`NumPy`
                                          and TagMark.`Django`>=TagMark.`PyTorch`
-                                         and TagMark.`Django`>=TagMark.`IntelliJ IDEA`
+                                         and TagMark.`Django`>=TagMark.`IDEA`
                                          and TagMark.`Django`>=TagMark.`Tomcat`
-                                         and TagMark.`Django`>=TagMark.`Java EE`
+                                         and TagMark.`Django`>=TagMark.`JavaEE`
                                          and TagMark.`Django`>=TagMark.`TensorFlow`
                                          and TagMark.`Django`>=TagMark.`Git`
                                          and TagMark.`Django`>=TagMark.`Python`
                                          and TagMark.`Django`>=TagMark.`Java`
-                                         and TagMark.`Django`>=TagMark.`C++`
+                                         and TagMark.`Django`>=TagMark.`C`
                                          and TagMark.`Django`>=TagMark.`html`
                                          then 'Django'
 
                                      when TagMark.`Git`>=TagMark.`NumPy`
                                          and TagMark.`Git`>=TagMark.`PyTorch`
-                                         and TagMark.`Git`>=TagMark.`IntelliJ IDEA`
+                                         and TagMark.`Git`>=TagMark.`IDEA`
                                          and TagMark.`Git`>=TagMark.`Tomcat`
-                                         and TagMark.`Git`>=TagMark.`Java EE`
+                                         and TagMark.`Git`>=TagMark.`JavaEE`
                                          and TagMark.`Git`>=TagMark.`Django`
                                          and TagMark.`Git`>=TagMark.`TensorFlow`
                                          and TagMark.`Git`>=TagMark.`Python`
                                          and TagMark.`Git`>=TagMark.`Java`
-                                         and TagMark.`Git`>=TagMark.`C++`
+                                         and TagMark.`Git`>=TagMark.`C`
                                          and TagMark.`Git`>=TagMark.`html`
                                          then 'Git'
 
                                      when TagMark.`Python`>=TagMark.`NumPy`
                                          and TagMark.`Python`>=TagMark.`PyTorch`
-                                         and TagMark.`Python`>=TagMark.`IntelliJ IDEA`
+                                         and TagMark.`Python`>=TagMark.`IDEA`
                                          and TagMark.`Python`>=TagMark.`Tomcat`
-                                         and TagMark.`Python`>=TagMark.`Java EE`
+                                         and TagMark.`Python`>=TagMark.`JavaEE`
                                          and TagMark.`Python`>=TagMark.`Django`
                                          and TagMark.`Python`>=TagMark.`Git`
                                          and TagMark.`Python`>=TagMark.`TensorFlow`
                                          and TagMark.`Python`>=TagMark.`Java`
-                                         and TagMark.`Python`>=TagMark.`C++`
+                                         and TagMark.`Python`>=TagMark.`C`
                                          and TagMark.`Python`>=TagMark.`html`
                                          then 'Python'
 
                                      when TagMark.`Java`>=TagMark.`NumPy`
                                          and TagMark.`Java`>=TagMark.`PyTorch`
-                                         and TagMark.`Java`>=TagMark.`IntelliJ IDEA`
+                                         and TagMark.`Java`>=TagMark.`IDEA`
                                          and TagMark.`Java`>=TagMark.`Tomcat`
-                                         and TagMark.`Java`>=TagMark.`Java EE`
+                                         and TagMark.`Java`>=TagMark.`JavaEE`
                                          and TagMark.`Java`>=TagMark.`Django`
                                          and TagMark.`Java`>=TagMark.`Git`
                                          and TagMark.`Java`>=TagMark.`Python`
                                          and TagMark.`Java`>=TagMark.`TensorFlow`
-                                         and TagMark.`Java`>=TagMark.`C++`
+                                         and TagMark.`Java`>=TagMark.`C`
                                          and TagMark.`Java`>=TagMark.`html`
                                          then 'Java'
 
-                                     when TagMark.`C++`>=TagMark.`NumPy`
-                                         and TagMark.`C++`>=TagMark.`PyTorch`
-                                         and TagMark.`C++`>=TagMark.`IntelliJ IDEA`
-                                         and TagMark.`C++`>=TagMark.`Tomcat`
-                                         and TagMark.`C++`>=TagMark.`Java EE`
-                                         and TagMark.`C++`>=TagMark.`Django`
-                                         and TagMark.`C++`>=TagMark.`Git`
-                                         and TagMark.`C++`>=TagMark.`Python`
-                                         and TagMark.`C++`>=TagMark.`Java`
-                                         and TagMark.`C++`>=TagMark.`TensorFlow`
-                                         and TagMark.`C++`>=TagMark.`html`
-                                         then 'C++'
+                                     when TagMark.`C`>=TagMark.`NumPy`
+                                         and TagMark.`C`>=TagMark.`PyTorch`
+                                         and TagMark.`C`>=TagMark.`IDEA`
+                                         and TagMark.`C`>=TagMark.`Tomcat`
+                                         and TagMark.`C`>=TagMark.`JavaEE`
+                                         and TagMark.`C`>=TagMark.`Django`
+                                         and TagMark.`C`>=TagMark.`Git`
+                                         and TagMark.`C`>=TagMark.`Python`
+                                         and TagMark.`C`>=TagMark.`Java`
+                                         and TagMark.`C`>=TagMark.`TensorFlow`
+                                         and TagMark.`C`>=TagMark.`html`
+                                         then 'C'
 
                                      when TagMark.`html`>=TagMark.`NumPy`
                                          and TagMark.`html`>=TagMark.`PyTorch`
-                                         and TagMark.`html`>=TagMark.`IntelliJ IDEA`
+                                         and TagMark.`html`>=TagMark.`IDEA`
                                          and TagMark.`html`>=TagMark.`Tomcat`
-                                         and TagMark.`html`>=TagMark.`Java EE`
+                                         and TagMark.`html`>=TagMark.`JavaEE`
                                          and TagMark.`html`>=TagMark.`Django`
                                          and TagMark.`html`>=TagMark.`Git`
                                          and TagMark.`html`>=TagMark.`Python`
                                          and TagMark.`html`>=TagMark.`Java`
-                                         and TagMark.`html`>=TagMark.`C++`
+                                         and TagMark.`html`>=TagMark.`C`
                                          and TagMark.`html`>=TagMark.`TensorFlow`
                                          then 'html'
 

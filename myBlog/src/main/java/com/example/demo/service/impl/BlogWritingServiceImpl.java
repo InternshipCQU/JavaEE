@@ -5,11 +5,14 @@ import com.example.demo.entity.BlogDraft;
 import com.example.demo.entity.BlogInfo;
 import com.example.demo.mapper.BlogMapper;
 import com.example.demo.mapper.BlogwritingMapper;
+import com.example.demo.mapper.HomeMapper;
+import com.example.demo.mapper.UserFansMapper;
 import com.example.demo.service.BlogWritingService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import java.util.ArrayList;
 
 @Service("BlogWritingService")
 public class BlogWritingServiceImpl implements BlogWritingService {
@@ -20,25 +23,47 @@ public class BlogWritingServiceImpl implements BlogWritingService {
     @Resource
     private BlogMapper blogmapper;
 
+    @Resource
+    private UserFansMapper fansMapper;
+
+    @Resource
+    private HomeMapper homeMapper;
+
+    @Override
+    public ArrayList<Integer> getfansid(int userID) {
+        ArrayList<Integer> fanslist = fansMapper.getfansid(userID);
+        return fanslist;
+    }
 
     @Override
 
     public void addBlog(String blogTitle, String blogContent,String createTime, String tagName,int isForward, String summaryContent, HttpServletRequest request) {
 
 
-        System.out.println(tagName.getClass().getName().toString());
         MapofTagNameAndTagID map = new MapofTagNameAndTagID();
 
-        System.out.println(tagName);
         int tagID = map.getTagID(tagName);
 
         //再通过session获取一下用户ID，等后面用户id写入session
         int userID = (int)request.getSession().getAttribute("userID");
+        String userName = (String) request.getSession().getAttribute("username");
 
-        //int userID = 1;
+
+        //首先生成这条新闻
+        String news = userName + " has just released a blog:《" + blogTitle + "》";
+        //然后查询返回一个这个用户的粉丝列表
+        ArrayList<Integer> fanslist = getfansid(userID);
+        //然后循环该粉丝列表
+        int len = fanslist.size();
+        System.out.println("fansnum:"+len);
+        for(int i=0; i<len; i++){
+            int fansID = fanslist.get(i);
+            System.out.println(fansID);
+//            向数据库中的news表插入数据
+            homeMapper.addNews(userID, fansID, news);
+        }
 
         blogWritingMapper.addblog(blogTitle, blogContent, createTime, tagID, userID,isForward,summaryContent);
-
 
     }
 

@@ -146,8 +146,10 @@ public class HomeServiceImpl implements HomeService {
     public void Init(String cla, HttpServletRequest request) {
         HttpSession session = request.getSession();
         if(cla.equals("ALL")){
-            if(session.getAttribute("userId") != null){
+            if(session.getAttribute("userID") != null){
+                System.out.println("个性推荐启动");
                 session.setAttribute("blogs", getRecommendBlogViews((Integer) session.getAttribute("userID")));
+                System.out.println( "here is the blogs: "  + session.getAttribute("blogs"));
             }else{
                 session.setAttribute("blogs", getBlogViews());
                 //System.out.println(getBlogViews());
@@ -246,6 +248,8 @@ public class HomeServiceImpl implements HomeService {
     public ArrayList<HomeBlogView> getRecommendBlogViews(int userId) {
         TagMark tagMark = homeMapper.getTagMark(userId);
         int tagId = tagMark.getRecommendTag();
+        System.out.println("_________________________");
+        System.out.println(tagId);
         ArrayList<HomeBlogView> blogList = homeMapper.getRecommendBlogViews(tagId);
         for (int i = 0; i < blogList.size(); i++) {
             int blogId = blogList.get(i).getBlogId();
