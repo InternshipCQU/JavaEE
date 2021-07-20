@@ -118,7 +118,15 @@ public class InfoController {
         Integer likesnum=userobj.getLikesNum();
         Integer blogsnum=userobj.getBlogsNum();
         Integer fansnum=userobj.getFansNum();
-        String birthdate=userobj.getBirthdate();
+        String birthdate;
+        if(userobj.getBirthdate()==null)
+        {
+            birthdate="undefined";
+        }
+        else{
+            birthdate=userobj.getBirthdate();
+        }
+//        String birthdate=userobj.getBirthdate();
         String avatar=userobj.getAvatar();
         JSONObject object=new JSONObject();
         object.put("userId",userId);
