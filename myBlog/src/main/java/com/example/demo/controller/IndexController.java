@@ -67,7 +67,7 @@ public class IndexController {
         //如果没有推文了 需要传回一个没有的json数据 {none:true}
 
         String s = homeService.giveTheBlogToIndex(str,request);
-        System.out.println("博客内容：" + s );
+        //System.out.println("博客内容：" + s );
         //System.out.println(s);
         return s;
     }
