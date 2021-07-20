@@ -33,13 +33,19 @@ public class InfoController {
     private setService setss;
     private getService getss;
 
+    @Resource
+    HomeService homeService;
+
     public InfoController(getService getss,setService setss) {
         this.getss = getss;
         this.setss= setss;
     }
 
     @RequestMapping("/userinfo")
-    public String to(){return "userinfo";}
+    public String to(HttpServletRequest request,Model model){
+        homeService.setBlogger(request, model);
+        return "userinfo";
+    }
 
 
     @RequestMapping(value="/upload")

@@ -75,7 +75,7 @@
     </select>
 
     <select id="getTagMark" resultType="com.example.demo.entity.TagMark">
-        SELECT tagId1, tagId2, tagId3, tagId4, tagId5
+        SELECT TensorFlow, NumPy, PyTorch, IDEA, Tomcat, JavaEE, Django, Git, Python, Java, `C`, html
         FROM TagMark
         WHERE userId = #{userId}
     </select>
@@ -260,6 +260,22 @@
         WHERE blogTag.tagId = blogInfo.tagId
         ORDER BY blogInfo.clickNum DESC;
     </select>
+
+    <select id="getNews" resultType="com.example.demo.entity.news">
+        SELECT newsContent,userId,blogId
+        FROM news, blogInfo
+        WHERE news.fansId = #{fansId}
+        AND news.isRead = 0
+    </select>
+
+    <update id="changeNews">
+        update news set isRead = 1 where newsId = #{newsId}
+    </update>
+
+    <insert id="addNews">
+        insert into `news`(`userId`,`fansId`,`newsContent`) values(#{userId},#{fansId},#{newsContent});
+    </insert>
+
     <insert id="submitfollowing_1">
         insert into `userLike` (userId,fansId) values (#{userId},#{fansId});
     </insert>
@@ -267,4 +283,5 @@
         update `User` set fansNum=fansNum+1
         where `userId`=#{userId};
     </update>
+
 </mapper>

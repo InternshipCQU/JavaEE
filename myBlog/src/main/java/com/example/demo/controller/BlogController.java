@@ -4,6 +4,7 @@ import com.example.demo.entity.BlogInfo;
 import com.example.demo.service.BlogService;
 import com.example.demo.service.BlogWritingService;
 import com.example.demo.service.HomeService;
+import com.example.demo.service.impl.SensitiveFilterService;
 import net.sf.json.JSON;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -31,6 +32,9 @@ public class BlogController {
 
     @Resource
     private BlogWritingService blogWritingService;
+
+    @Resource
+    SensitiveFilterService sensitiveFilterService;
 
     @RequestMapping("blogpage")
     public String blog(){
@@ -105,7 +109,7 @@ public class BlogController {
             return "{\"login\":\"false\"}";
         }
         int userId = (Integer)session.getAttribute("userID");
-
+        comment = SensitiveFilterService.getInstance().replaceSensitiveWord(comment, 1, "*");
 
         blogService.comment(blogId, userId, comment);
         blogService.updateMarkWhenComment(tagId, userId);
