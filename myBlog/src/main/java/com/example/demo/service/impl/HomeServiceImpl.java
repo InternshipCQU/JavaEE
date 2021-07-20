@@ -110,7 +110,6 @@ public class HomeServiceImpl implements HomeService {
     @Override
     // 主页推荐people you may want to see
     public ArrayList<User> showWantBlogger(int userId) {
-
         return homeMapper.showWantBlogger(userId);
     }
 
