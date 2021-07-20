@@ -35,7 +35,7 @@ import java.util.List;
 public class HomeController {
 
     @Resource
-    private HomeService homeService;
+    public HomeService homeService;
 
     @RequestMapping("/home")
     public String home(){
