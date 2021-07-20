@@ -52,6 +52,8 @@ public class RegisterServiceImpl implements RegisterService {
 
     @Override
     public void addUser(String username, String password, String userRegisterTime) {
-        registerMapper.addUser(username, password, userRegisterTime);
+        String defaultAvatar = "https://bucket-myblog.oss-cn-beijing.aliyuncs.com/avatar/defaultAvatar.jpg";
+        String defaultBackground = "https://bucket-myblog.oss-cn-beijing.aliyuncs.com/background/defaultBackground.jpg";
+        registerMapper.addUser(username, password, userRegisterTime, defaultAvatar, defaultBackground);
     }
 }

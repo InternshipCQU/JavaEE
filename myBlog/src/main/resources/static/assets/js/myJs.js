@@ -512,7 +512,9 @@ function getUserBlog()
 
                     $("#null").after("<div class=\"post\" id = \"final\">\n" +
                         "                                <div class=\"post-description\" id = \"path\">\n" +
+                        "                                  <a id = 'link'>\n"+
                         "                                   <h3 id = \"title\">    </h3>\n" +
+                        "                                  </a>\n"+
                         "                                   <p id = \"content\"> </p>              \n" +
                         "                                    <div class=\"post-state-details\">\n" +
                         "                                        <div>\n" +
@@ -545,8 +547,8 @@ function getUserBlog()
                 }
                 $("#null").attr("id", "null2");
 
-                $("#path").attr("href",blog.link);//设置点赞数量
-                $("#path").attr("id", "pass");
+                $("#link").attr("href",blog.link);//设置点赞数量
+                $("#link").attr("id", "pass");
                 $("#clickNumber").html(blog.clickNumber + " views");
                 $("#clickNumber").attr("id", "pass");
 
