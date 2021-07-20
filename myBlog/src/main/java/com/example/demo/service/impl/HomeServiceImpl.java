@@ -109,13 +109,24 @@ public class HomeServiceImpl implements HomeService {
     @Override
     // 主页推荐people you may want to see
     public ArrayList<User> showWantBlogger(int userId) {
+
         return homeMapper.showWantBlogger(userId);
     }
 
     @Override
+    public void submitfollowing(HttpServletRequest request,int userId){
+        HttpSession session=request.getSession();
+        Integer fansId=(Integer) session.getAttribute("userID");
+        homeMapper.submitfollowing_1(userId,fansId);
+        homeMapper.submitfollowing_2(userId);
+    }
+
+    @Override
     // 主页展示点击量最高的博客对应的标签(#trending)，需要进行去重
-    public ArrayList<BlogTag> getTrending() {
-        return homeMapper.getTrending();
+    public ArrayList<BlogTag> getTrending(Model model) {
+        ArrayList<BlogTag> tags = homeMapper.getTrending();
+        model.addAttribute("trendings",tags);
+        return tags;
     }
 
     //test
@@ -142,6 +153,8 @@ public class HomeServiceImpl implements HomeService {
                 session.setAttribute("blogs", getBlogViews());
             }
         }else{
+            System.out.println("筛选的标签为：" + cla);
+            System.out.println(tagToBlogs(cla));
             session.setAttribute("blogs", tagToBlogs(cla));
         }
 
@@ -171,6 +184,7 @@ public class HomeServiceImpl implements HomeService {
         int userId = blogs.get(count).getUserId();
         User user = profileMapper.getUser(userId);
         String userAvater = user.getAvatar();
+        String userLink = "/personalspaceguest/" + userId;
         String username = blogs.get(count).getUsername();
         String blogTitle = blogs.get(count).getBlogTitle();
         BlogInfo blog =blogMapper.getBlog(blogId);
@@ -218,10 +232,13 @@ public class HomeServiceImpl implements HomeService {
         //System.out.println(blogContent);
 
         String link = "/blogs/" + username + "/" + blogId;
+        if(blogContent.length() >=66){
+            blogContent = blogContent.substring(0,65);
+        }
 
         System.out.println("Hello");
         session.setAttribute("count", count + 1);
-        return "{\"clickNumber\":\""+clickNumber+"\",\"userAvater\":\""+userAvater +"\",\"createTime\":\""+createTime+"\",\"blogContent\":\"" + blogContent + "\",\"blogTitle\":\"" + blogTitle + "\",\"username\":\"" + username + "\",\"likeNumber\":\"" + likeNumber + "\",\"commentNumber\":\"" + commentNumber + "\",\"forwardNumber\":\"" + forwardNumber + "\",\"saveNumber\":\"" + saveNumber + "\",\"comments\":" + comments + ",\"link\":\"" + link + "\"}";
+        return "{\"userLink\":\""+userLink +"\",\"clickNumber\":\""+clickNumber+"\",\"userAvater\":\""+userAvater +"\",\"createTime\":\""+createTime+"\",\"blogContent\":\"" + blogContent + "\",\"blogTitle\":\"" + blogTitle + "\",\"username\":\"" + username + "\",\"likeNumber\":\"" + likeNumber + "\",\"commentNumber\":\"" + commentNumber + "\",\"forwardNumber\":\"" + forwardNumber + "\",\"saveNumber\":\"" + saveNumber + "\",\"comments\":" + comments + ",\"link\":\"" + link + "\"}";
 
     }
 

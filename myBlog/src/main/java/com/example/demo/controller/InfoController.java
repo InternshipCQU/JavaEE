@@ -175,6 +175,8 @@ public class InfoController {
     @RequestMapping(value="/getfollow",method=RequestMethod.POST)
     public void getfollowusrlist(@RequestBody String userId, HttpServletRequest request,HttpServletResponse response,HttpSession session) throws IOException, JSONException{
         JSONObject object=new JSONObject();
+        request.setCharacterEncoding("utf-8");
+        response.setContentType("text/html;charset=utf-8");
         List<UserLike> listuserlike=getss.getfollowing(Integer.valueOf(userId));
         object.put("NUM",2);
 //        object.put("FOLLOW1","ABC");
@@ -204,6 +206,8 @@ public class InfoController {
     @RequestMapping(value="/getfavorites",method=RequestMethod.POST)
     public void getfavoriteslist(@RequestBody String userId, HttpServletRequest request,HttpServletResponse response,HttpSession session) throws IOException, JSONException{
         JSONObject object=new JSONObject();
+        request.setCharacterEncoding("utf-8");
+        response.setContentType("text/html;charset=utf-8");
         List<String> listfavorites=getss.getcollect(Integer.valueOf(userId));
         object.put("NUM",2);
         int size=listfavorites.size();
@@ -215,6 +219,7 @@ public class InfoController {
 //        System.out.println(list);
         for(int i=1;i<=list.size();i++)
         {
+
             object.put("LIKES"+i,list.get(i-1));
             object.put("LINK"+i,"#");
         }

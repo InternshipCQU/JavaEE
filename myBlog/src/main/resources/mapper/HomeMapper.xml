@@ -18,7 +18,8 @@
         WHERE blogInfo.blogTitle LIKE "%"#{keyword}"%"
             OR (blogTag.tagName LIKE  "%"#{keyword}"%"
                 AND blogTag.tagId = tagBlogInfo.tagId
-                AND tagBlogInfo.blogId = blogInfo.blogId);
+                AND tagBlogInfo.blogId = blogInfo.blogId)
+        GROUP BY blogId;;
     </select>
 
 <!--    <select id="searchBlogs" resultType="com.example.demo.entity.view.HomeBlogView">-->
@@ -53,7 +54,6 @@
     </select>
 
 
-
     <select id="getCommentViews" resultType="com.example.demo.entity.view.CommentView">
         SELECT username, commentContent FROM blogComment, User
         WHERE blogId = #{blogId} And blogComment.userId = User.userId
@@ -81,7 +81,7 @@
     </select>
     
     <select id="showWantBlogger" resultType="com.example.demo.entity.User">
-        SELECT `User`.username,`User`.avatar
+        SELECT `User`.username,`User`.avatar,`User`.userId
         FROM `User`,TagMark,blogInfo,blogTag
         WHERE TagMark.userId = #{userId}
           AND blogTag.tagId = blogInfo.tagId
@@ -247,10 +247,23 @@
         end);
     </select>
 
+    <select id="checkIsLikeUser" resultType="String">
+        SELECT `userLike`.userId
+        FROM `userLike`
+        WHERE `userLike`.userId = #{userId};
+    </select>
+
     <select id="getTrending" resultType="com.example.demo.entity.BlogTag">
         SELECT tagName
         FROM blogTag, blogInfo
         WHERE blogTag.tagId = blogInfo.tagId
         ORDER BY blogInfo.clickNum DESC;
     </select>
+    <insert id="submitfollowing_1">
+        insert into `userLike` (userId,fansId) values (#{userId},#{fansId});
+    </insert>
+    <update id="submitfollowing_2">
+        update `User` set fansNum=fansNum+1
+        where `userId`=#{userId};
+    </update>
 </mapper>

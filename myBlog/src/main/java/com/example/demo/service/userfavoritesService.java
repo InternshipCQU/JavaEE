@@ -7,4 +7,6 @@ public interface userfavoritesService {
 
     String getallfavorites(HttpServletRequest request);
 
+    void cancelFavorites(int blogId, int userId);
+
 }

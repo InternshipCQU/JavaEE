@@ -2,6 +2,7 @@ package com.example.demo.service.impl;
 
 import com.example.demo.entity.BlogInfo;
 import com.example.demo.entity.User;
+import com.example.demo.mapper.BlogMapper;
 import com.example.demo.mapper.userinfoallMapper;
 import com.example.demo.service.getService;
 import com.example.demo.service.userfavoritesService;
@@ -23,6 +24,16 @@ public class userfavoritesServiceImpl implements userfavoritesService {
     @Resource
     getService getService;
 
+    @Resource
+    BlogMapper blogMapper;
+
+    @Override
+    public void cancelFavorites(int blogId, int userId)
+    {
+        blogMapper.deductCollectNum(blogId);
+        blogMapper.cancelCollect(blogId, userId);
+    }
+
     @Override
     public void Init(HttpServletRequest request)
     {
@@ -32,7 +43,7 @@ public class userfavoritesServiceImpl implements userfavoritesService {
             System.out.println("没有登录，请登录");
         }
         else{
-            userId=(Integer) session.getAttribute("userID");
+            userId= (int) session.getAttribute("userID");
         }
 
 
@@ -52,6 +63,8 @@ public class userfavoritesServiceImpl implements userfavoritesService {
         int favoritessize=(Integer) session.getAttribute("favoritessize");
         ArrayList<BlogInfo> favoriteslist=(ArrayList<BlogInfo>) session.getAttribute("favoriteslist");
 
+        System.out.println("service getallfavor");
+
         if(favoritessize==0||favoritescount==favoritessize)
         {
             return "{\"noMore\":\"true\"}";
@@ -61,11 +74,12 @@ public class userfavoritesServiceImpl implements userfavoritesService {
         int blogid=favoriteslist.get(favoritescount).getBlogId();
         int bloggeruserid=favoriteslist.get(favoritescount).getUserId();
         String bloggername=getService.getusername(bloggeruserid);
+        int userId = (int) session.getAttribute("userID");
 
         session.setAttribute("favoritescount",favoritescount+1);
         System.out.println("OUTPUT FAVORITES:"+"{\"blogname\":\""+blogname+"\",\"blogid\":\""+blogid+"\",\"username\":\""+bloggername+"\"}");
 
-        return "{\"blogname\":\""+blogname+"\",\"blogid\":\""+blogid+"\",\"bloggername\":\""+bloggername+"\"}";
+        return "{\"blogname\":\""+blogname+"\",\"blogid\":\""+blogid+"\",\"bloggername\":\""+bloggername+"\",\"userid\":\""+userId+"\"}";
 
     }
 }

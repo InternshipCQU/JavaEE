@@ -20,11 +20,14 @@ import com.example.demo.entity.BlogTag;
 import com.example.demo.entity.User;
 import com.example.demo.entity.view.HomeBlogView;
 import com.example.demo.service.HomeService;
+import org.springframework.data.relational.core.sql.In;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -34,28 +37,10 @@ public class HomeController {
     @Resource
     private HomeService homeService;
 
-//    @RequestMapping("/home/{tagId}")     //点击标签后查询对应标签的博客
-//    public String tagToBlogs(@PathVariable("tagId") int tagId, Model model) {
-//        model.addAttribute("blogListFilteredByTag", homeService.tagToBlogs(tagId));
-//        return "123";
-//    }
-//<<<<<<< HEAD
-//    @RequestMapping("/home")    //加载主页显示的博客
-//    public String getBlogs(@RequestBody String username, Model model){
-//        model.addAttribute("blogList", homeService.getBlogs(username));
-//        return "index";
-//    }
-//=======
-
-//    @RequestMapping("/home")
-//    public String getBlogs(Model model)
-//    {
-//        model.addAttribute("blogList", homeService.getBlogs());
-//        return "test-home1";
-//    }
-//
-//>>>>>>> 72381607e5eb73cdd5ddfb2836690cb0caa011d3
-
+    @RequestMapping("/home")
+    public String home(){
+        return "home";
+    }
 
 
     @RequestMapping("/home/{tagName}")     //点击标签后查询对应标签的博客
@@ -72,10 +57,10 @@ public class HomeController {
 //    }
 
     //根据前端格式返回JSON数据
-    @RequestMapping("/home")
-    public List<HomeBlogView> getBlogs(){
-        return homeService.getBlogViews();
-    }
+//    @RequestMapping("/home")
+//    public List<HomeBlogView> getBlogs(){
+//        return homeService.getBlogViews();
+//    }
 
     @RequestMapping("/recommend")
     public List<HomeBlogView> getRecommendBlogs(@RequestParam("userId") int userId){
@@ -84,14 +69,23 @@ public class HomeController {
     }
 
     @RequestMapping("/mayknowpeople")
+    @ResponseBody
     // 主页推荐people you may want to see
-    public List<User> showWantBlogger(@RequestParam("userId") int userId) {
-        return homeService.showWantBlogger(userId);
+    public List<User> showWantBlogger(HttpServletRequest request) {
+        HttpSession session = request.getSession();
+        System.out.println("session.getAttribute(): " +session.getAttribute("userID"));
+        if(session.getAttribute("userID") != null){
+            int userId = (Integer) session.getAttribute("userID");
+            System.out.println("here is the data: " + homeService.showWantBlogger(userId));
+            return homeService.showWantBlogger(userId);
+        }
+
+        return null;
     }
 
-    @RequestMapping("/trending")
-    // 主页展示点击量最高的博客对应的标签(#trending)，需要进行去重
-    public ArrayList<BlogTag> getTrending() {
-        return homeService.getTrending();
+    @RequestMapping("/submitfollow")
+    @ResponseBody
+    public void submitfollow(@RequestParam("userId") Integer userId, HttpServletRequest request){
+        homeService.submitfollowing(request,userId);
     }
 }

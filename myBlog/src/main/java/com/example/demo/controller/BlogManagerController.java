@@ -39,6 +39,5 @@ public class BlogManagerController {
     public void deletemyblog(@RequestParam("userId") Integer userId,@RequestParam("blogId") Integer blogId, HttpServletRequest request, HttpServletResponse response, HttpSession session) throws IOException, JSONException
     {
         blogManagerService.deleteblog(blogId,userId);
-
     }
 }
