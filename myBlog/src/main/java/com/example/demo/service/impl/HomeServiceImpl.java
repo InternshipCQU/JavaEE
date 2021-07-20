@@ -243,7 +243,9 @@ public class HomeServiceImpl implements HomeService {
     }
 
     @Override
-    public ArrayList<HomeBlogView> getRecommendBlogViews(int tagId) {
+    public ArrayList<HomeBlogView> getRecommendBlogViews(int userId) {
+        TagMark tagMark = homeMapper.getTagMark(userId);
+        int tagId = tagMark.getRecommendTag();
         ArrayList<HomeBlogView> blogList = homeMapper.getRecommendBlogViews(tagId);
         for (int i = 0; i < blogList.size(); i++) {
             int blogId = blogList.get(i).getBlogId();
