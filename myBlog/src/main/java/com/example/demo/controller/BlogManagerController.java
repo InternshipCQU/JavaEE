@@ -1,9 +1,12 @@
 package com.example.demo.controller;
 
+import com.example.demo.entity.view.HomeBlogView;
 import com.example.demo.mapper.BlogListMapper;
 import com.example.demo.service.BlogManagerService;
+import com.example.demo.service.HomeService;
 import org.json.JSONException;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -18,11 +21,14 @@ public class BlogManagerController {
     private BlogListMapper blogListMapper;
 
     @Resource
+    HomeService HomeService;
+
+    @Resource
     BlogManagerService blogManagerService;
 
     @RequestMapping("/blogManager")
-    public String bloglist(HttpServletRequest request){
-
+    public String bloglist(HttpServletRequest request, Model model){
+        HomeService.setBlogger(request,model);
         blogManagerService.Init(request);
         return "blogManager";
     }
@@ -30,6 +36,7 @@ public class BlogManagerController {
     @RequestMapping("/manageBlog")
     @ResponseBody
     public String manageBlog(HttpServletRequest request){
+
         String s = blogManagerService.manageTheBlogs(request);
         System.out.println(s);
         return s;
