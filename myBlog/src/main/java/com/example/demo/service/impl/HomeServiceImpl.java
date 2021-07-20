@@ -146,8 +146,10 @@ public class HomeServiceImpl implements HomeService {
     public void Init(String cla, HttpServletRequest request) {
         HttpSession session = request.getSession();
         if(cla.equals("ALL")){
-            if(session.getAttribute("userId") != null){
+            if(session.getAttribute("userID") != null){
+                System.out.println("个性推荐启动");
                 session.setAttribute("blogs", getRecommendBlogViews((Integer) session.getAttribute("userID")));
+                System.out.println( "here is the blogs: "  + session.getAttribute("blogs"));
             }else{
                 session.setAttribute("blogs", getBlogViews());
                 //System.out.println(getBlogViews());

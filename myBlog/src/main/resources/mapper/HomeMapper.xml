@@ -68,7 +68,7 @@
     </select>
 
     <select id="getRecommendBlogViews" resultType="com.example.demo.entity.view.HomeBlogView">
-        SELECT blogId,`User`.userId,username, blogTitle, blogContent, createTime, clickNum, blogInfo.likesNum, commentNum, forwardNum, collectNum
+        SELECT blogInfo.blogId,`User`.userId,username, blogTitle, blogContent, createTime, clickNum, blogInfo.likesNum, commentNum, forwardNum, collectNum
         FROM blogInfo, `User`, tagBlogInfo
         WHERE blogInfo.userId = User.userId AND tagBlogInfo.tagId = #{tagId} AND blogInfo.blogId = tagBlogInfo.blogId
         ORDER BY likesNum DESC limit 5;
