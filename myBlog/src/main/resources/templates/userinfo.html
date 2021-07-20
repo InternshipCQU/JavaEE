@@ -1,5 +1,7 @@
 <!doctype html>
 <html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
 
 <head>
 
@@ -47,7 +49,7 @@
            <div class="sidebar-header">
                <!-- Logo-->
                <div id="logo">
-                   <a href="feeds.html"> <img src="./assets/images/logo-light.png" alt=""></a>
+                   <a href="/index/ALL"> <img src="./assets/images/logo-light.png" alt=""></a>
                </div>
                <span class="btn-close" uk-toggle="target: #wrapper ; cls: collapse-sidebar mobile-visible"></span>
            </div>
@@ -94,6 +96,15 @@
                    <div class="sections">
                        <h3> Explore </h3>
                        <ul>
+
+                           <li>
+                               <a href="/blogManager">
+                                   <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                                       <path fill="#03A9F4"
+                                             d="M5 3A2 2 0 0 0 3 5H5M7 3V5H9V3M11 3V5H13V3M15 3V5H17V3M19 3V5H21A2 2 0 0 0 19 3M3 7V9H5V7M7 7V11H11V7M13 7V11H17V7M19 7V9H21V7M3 11V13H5V11M19 11V13H21V11M7 13V17H11V13M13 13V17H17V13M3 15V17H5V15M19 15V17H21V15M3 19A2 2 0 0 0 5 21V19M7 19V21H9V19M11 19V21H13V19M15 19V21H17V19M19 19V21A2 2 0 0 0 21 19Z">
+                                       </path>
+                                   </svg> My blogs </a>
+                           </li>
                            <li class="active">
                                <a href="/userinfo">
                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
@@ -163,8 +174,8 @@
 
                     <!-- Logo-->
                     <div id="logo">
-                       <a href="feeds.html"> <img src="./assets/images/logo.png" alt=""></a>
-                       <a href="feeds.html"> <img src="./assets/images/logo-light.png" class="logo-inverse"
+                       <a href="/index/ALL"> <img src="./assets/images/logo.png" alt=""></a>
+                       <a href="/index/ALL"> <img src="./assets/images/logo-light.png" class="logo-inverse"
                                                   alt=""></a>
                    </div>
 
@@ -468,6 +479,10 @@
 
                        </div>
 
+<<<<<<< HEAD
+=======
+                       <!-- profile -image -->
+>>>>>>> 53aadd129e363c5f9176146e81f4b0ade067e95a
                        <a class="opts_account" th:href="${bloggerPath}"> <img th:src= "${bloggerAvatar}" alt=""></a>
 
                        <!-- profile dropdown-->
@@ -516,6 +531,7 @@
                            </ul>
 
                        </div>
+<<<<<<< HEAD
 
                        <!-- profile -image -->
 <!--                       <a class="opts_account" href="#"> <img src="assets/images/avatars/avatar-2.jpg" alt=""></a>-->
@@ -573,6 +589,8 @@
 <!--                       </div>-->
 
 
+=======
+>>>>>>> 53aadd129e363c5f9176146e81f4b0ade067e95a
                    </div>
 
                </div> <!-- / heaader-innr -->

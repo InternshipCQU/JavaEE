@@ -195,11 +195,11 @@
                    <!-- form search-->
                    <div class="head_search">
                        <form>
-                           <div class="head_search_cont">
-                               <input value="" type="text" class="form-control"
-                                   placeholder="Search for Friends , Videos and more.." autocomplete="off">
-                               <i class="s_icon uil-search-alt"></i>
-                           </div>
+<!--                           <div class="head_search_cont">-->
+<!--                               <input value="" type="text" class="form-control"-->
+<!--                                   placeholder="Search for Friends , Videos and more.." autocomplete="off">-->
+<!--                               <i class="s_icon uil-search-alt"></i>-->
+<!--                           </div>-->
 
                            <!-- Search box dropdown -->
                            <div uk-dropdown="pos: top;mode:click;animation: uk-animation-slide-bottom-small"
@@ -393,19 +393,10 @@
                                </div>
 
                                <!-- notiviation list -->
-                               <ul>
+                               <ul id = "note">
                                    <li>
                                        <a href="#">
-                                           <span class="notification-avatar">
-                                               <img src="http://localhost:8080/assets/images/avatars/avatar-2.jpg" alt="">
-                                           </span>
-                                           <span class="notification-icon bg-gradient-primary">
-                                               <i class="icon-feather-thumbs-up"></i></span>
-                                           <span class="notification-text">
-                                               <strong>Adrian Moh.</strong> Like Your Comment On Video
-                                               <span class="text-primary">Learn Prototype Faster</span>
-                                               <br> <span class="time-ago"> 9 hours ago </span>
-                                           </span>
+                                           <strong>这里是传送过来的消息 我实在是不想写了</strong>
                                        </a>
                                    </li>
                                    <li>
@@ -560,9 +551,10 @@
                                     class="uk-slider-items uk-child-width-1-5@m uk-child-width-1-3@s uk-child-width-1-3 story-slider uk-grid">
                                     <li>
                                         <a href="/index/PyTorch" >
-                                            <div class="story-card" data-src="http://localhost:8080/assets/images/avatars/avatar-lg-1.jpg"
+                                            <div class="story-card" data-src="http://localhost:8080/assets/images/logos/PyTorch.png"
                                                 uk-img>
-                                                <i class="uil-plus"></i>
+<!--                                                <i class="uil-plus"></i>-->
+                                                <img src="http://localhost:8080/assets/images/logos/PyTorch1.png" alt="">
                                                 <div class="story-card-content">
                                                     <h4> PyTorch </h4>
                                                 </div>
@@ -572,9 +564,9 @@
                                     </li>
                                     <li>
                                         <a href="/index/NumPy">
-                                            <div class="story-card" data-src="http://localhost:8080/assets/images/events/listing-5.jpg"
+                                            <div class="story-card" data-src="http://localhost:8080/assets/images/logos/NumPy.png"
                                                 uk-img>
-                                                <img src="http://localhost:8080/assets/images/avatars/avatar-5.jpg" alt="">
+                                                <img src="http://localhost:8080/assets/images/logos/NumPy1.png" alt="">
                                                 <div class="story-card-content">
                                                     <h4> NumPy </h4>
                                                 </div>
@@ -584,9 +576,9 @@
                                     </li>
                                     <li>
                                         <a href="/index/JAVA">
-                                            <div class="story-card" data-src="http://localhost:8080/assets/images/avatars/avatar-lg-3.jpg"
+                                            <div class="story-card" data-src="http://localhost:8080/assets/images/logos/Java.png"
                                                 uk-img>
-                                                <img src="http://localhost:8080/assets/images/avatars/avatar-6.jpg" alt="">
+                                                <img src="http://localhost:8080/assets/images/logos/Java1.png" alt="">
                                                 <div class="story-card-content">
                                                     <h4> JAVA </h4>
                                                 </div>
@@ -596,23 +588,10 @@
                                     </li>
                                     <li>
 
-                                        <a href="/index/TensorFlow">
-                                            <div class="story-card" data-src="http://localhost:8080/assets/images/avatars/avatar-lg-4.jpg"
-                                                uk-img>
-                                                <img src="http://localhost:8080/assets/images/avatars/avatar-4.jpg" alt="">
-                                                <div class="story-card-content">
-                                                    <h4> TensorFlow </h4>
-                                                </div>
-                                            </div>
-                                        </a>
-
-                                    </li>
-                                    <li>
-
                                         <a href="/index/Git">
-                                            <div class="story-card" data-src="http://localhost:8080/assets/images/avatars/avatar-lg-2.jpg"
-                                                uk-img>
-                                                <img src="http://localhost:8080/assets/images/avatars/avatar-2.jpg" alt="">
+                                            <div class="story-card" data-src="http://localhost:8080/assets/images/logos/Git.png"
+                                                 uk-img>
+                                                <img src="http://localhost:8080/assets/images/logos/Git1.png" alt="">
                                                 <div class="story-card-content">
                                                     <h4> Git </h4>
                                                 </div>
@@ -623,9 +602,9 @@
                                     <li>
 
                                         <a href="/index/Python">
-                                            <div class="story-card" data-src="http://localhost:8080/assets/images/avatars/avatar-lg-5.jpg"
-                                                uk-img>
-                                                <img src="http://localhost:8080/assets/images/avatars/avatar-5.jpg" alt="">
+                                            <div class="story-card" data-src="http://localhost:8080/assets/images/logos/Python.png"
+                                                 uk-img>
+                                                <img src="http://localhost:8080/assets/images/logos/Python1.png" alt="">
                                                 <div class="story-card-content">
                                                     <h4> Python </h4>
                                                 </div>
@@ -633,6 +612,98 @@
                                         </a>
 
                                     </li>
+                                    <li>
+
+                                        <a href="/index/C++">
+                                            <div class="story-card" data-src="http://localhost:8080/assets/images/logos/C++.png"
+                                                uk-img>
+                                                <img src="http://localhost:8080/assets/images/logos/C++1.png" alt="">
+                                                <div class="story-card-content">
+                                                    <h4> C++ </h4>
+                                                </div>
+                                            </div>
+                                        </a>
+
+                                    </li>
+                                    <li>
+
+                                        <a href="/index/TensorFlow">
+                                            <div class="story-card" data-src="http://localhost:8080/assets/images/logos/TensorFlow.png"
+                                                 uk-img>
+                                                <img src="http://localhost:8080/assets/images/logos/TensorFlow1.png" alt="">
+                                                <div class="story-card-content">
+                                                    <h4> TensorFlow </h4>
+                                                </div>
+                                            </div>
+                                        </a>
+
+                                    </li>
+                                    <li>
+
+                                        <a href="/index/Django">
+                                            <div class="story-card" data-src="http://localhost:8080/assets/images/logos/Django.png"
+                                                 uk-img>
+                                                <img src="http://localhost:8080/assets/images/logos/Django1.png" alt="">
+                                                <div class="story-card-content">
+                                                    <h4> Django </h4>
+                                                </div>
+                                            </div>
+                                        </a>
+
+                                    </li>
+                                    <li>
+
+                                        <a href="/index/Java EE">
+                                            <div class="story-card" data-src="http://localhost:8080/assets/images/logos/Java EE.png"
+                                                 uk-img>
+                                                <img src="http://localhost:8080/assets/images/logos/JavaEE1.png" alt="">
+                                                <div class="story-card-content">
+                                                    <h4> Java EE </h4>
+                                                </div>
+                                            </div>
+                                        </a>
+
+                                    </li>
+                                    <li>
+
+                                        <a href="/index/IntelliJ IDEA">
+                                            <div class="story-card" data-src="http://localhost:8080/assets/images/logos/IntelliJ IDEA.png"
+                                                 uk-img>
+                                                <img src="http://localhost:8080/assets/images/logos/IntelliJ IDEA1.png" alt="">
+                                                <div class="story-card-content">
+                                                    <h4> IntelliJ IDEA </h4>
+                                                </div>
+                                            </div>
+                                        </a>
+
+                                    </li>
+                                    <li>
+
+                                        <a href="/index/Tomcat">
+                                            <div class="story-card" data-src="http://localhost:8080/assets/images/logos/Tomcat.png"
+                                                 uk-img>
+                                                <img src="http://localhost:8080/assets/images/logos/Tomcat1.png" alt="">
+                                                <div class="story-card-content">
+                                                    <h4> Tomcat </h4>
+                                                </div>
+                                            </div>
+                                        </a>
+
+                                    </li>
+                                    <li>
+
+                                        <a href="/index/html">
+                                            <div class="story-card" data-src="http://localhost:8080/assets/images/logos/html.png"
+                                                 uk-img>
+                                                <img src="http://localhost:8080/assets/images/logos/html1.png" alt="">
+                                                <div class="story-card-content">
+                                                    <h4> html </h4>
+                                                </div>
+                                            </div>
+                                        </a>
+
+                                    </li>
+
 
                                 </ul>
 

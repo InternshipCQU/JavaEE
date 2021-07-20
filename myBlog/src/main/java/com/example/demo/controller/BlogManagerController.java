@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import javax.jws.WebParam;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -21,14 +22,14 @@ public class BlogManagerController {
     private BlogListMapper blogListMapper;
 
     @Resource
-    HomeService HomeService;
+    HomeService homeService;
 
     @Resource
     BlogManagerService blogManagerService;
 
     @RequestMapping("/blogManager")
     public String bloglist(HttpServletRequest request, Model model){
-        HomeService.setBlogger(request,model);
+        homeService.setBlogger(request,model);
         blogManagerService.Init(request);
         return "blogManager";
     }

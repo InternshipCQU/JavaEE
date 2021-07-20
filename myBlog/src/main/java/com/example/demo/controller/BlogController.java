@@ -4,6 +4,7 @@ import com.example.demo.entity.BlogInfo;
 import com.example.demo.service.BlogService;
 import com.example.demo.service.BlogWritingService;
 import com.example.demo.service.HomeService;
+import com.example.demo.service.impl.SensitiveFilterService;
 import net.sf.json.JSON;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -32,6 +33,9 @@ public class BlogController {
     @Resource
     private BlogWritingService blogWritingService;
 
+    @Resource
+    SensitiveFilterService sensitiveFilterService;
+
     @RequestMapping("blogpage")
     public String blog(){
         return "blogpage";
@@ -55,34 +59,44 @@ public class BlogController {
         return "blogpage";
     }
     @RequestMapping("/blogs/querylike")
-    public void querylike(@RequestParam("blogId") int blogId, @RequestParam("userId") int userId,  HttpServletResponse response) throws JSONException, IOException{
+    public void querylike(@RequestParam("blogId") int blogId, @RequestParam("userId") int userId,  HttpServletResponse response,HttpServletRequest request) throws JSONException, IOException{
         boolean f=blogService.isliked(blogId,userId);
 //        System.out.println("is like?:"+f);
         JSONObject object=new JSONObject();
-        object.put("IsLiked",f);
+        HttpSession session=request.getSession();
+        if(session.getAttribute("userId")!=null) {
+            object.put("IsLiked",f);
+        }
+        else{
+            object.put("IsLiked",false);
+        }
         response.getWriter().write(object.toString());
     }
 
     @RequestMapping("/blogs/like")
-    public void like(@RequestParam("blogId") int blogId, @RequestParam("userId") int userId, @RequestParam("tagId") int tagId, @RequestParam("likenumber")int num, HttpServletResponse response) throws JSONException, IOException {
-        blogService.like(blogId);
-        blogService.writelikerecord(blogId,userId);
-        blogService.updateMarkWhenLike(tagId,userId);
+    public void like(@RequestParam("blogId") int blogId, @RequestParam("userId") int userId, @RequestParam("tagId") int tagId, @RequestParam("likenumber")int num, HttpServletResponse response,HttpServletRequest request) throws JSONException, IOException {
+        HttpSession session=request.getSession();
+        if(session.getAttribute("userId")!=null) {
+            blogService.like(blogId);
+            blogService.writelikerecord(blogId, userId);
+            blogService.updateMarkWhenLike(tagId,userId);
 //        System.out.println("im in like");
-        JSONObject object=new JSONObject();
-        response.getWriter().write(object.toString());
-
+            JSONObject object = new JSONObject();
+            response.getWriter().write(object.toString());
+        }
     }
 
     @RequestMapping("/blogs/cancelLike")
-    public void cancelLike(@RequestParam("blogId") int blogId, @RequestParam("userId") int userId, @RequestParam("tagId") int tagId,@RequestParam("likenumber")int num,HttpServletResponse response) throws JSONException,IOException {
-        JSONObject object=new JSONObject();
-        blogService.cancelLike(blogId);
-        blogService.deletelikerecord(blogId,userId);
-        blogService.updateMarkWhenCancelLike(tagId, userId);
+    public void cancelLike(@RequestParam("blogId") int blogId, @RequestParam("userId") int userId, @RequestParam("tagId") int tagId,@RequestParam("likenumber")int num,HttpServletResponse response,HttpServletRequest request) throws JSONException,IOException {
+        HttpSession session=request.getSession();
+        if(session.getAttribute("userId")!=null) {
+            JSONObject object = new JSONObject();
+            blogService.cancelLike(blogId);
+            blogService.deletelikerecord(blogId, userId);
+            blogService.updateMarkWhenCancelLike(tagId, userId);
 //        System.out.println("im in dislike");
-        response.getWriter().write(object.toString());
-
+            response.getWriter().write(object.toString());
+        }
     }
 
     @RequestMapping("/blogs/comment")
@@ -97,7 +111,7 @@ public class BlogController {
             return "{\"login\":\"false\"}";
         }
         int userId = (Integer)session.getAttribute("userID");
-
+        comment = SensitiveFilterService.getInstance().replaceSensitiveWord(comment, 1, "*");
 
         blogService.comment(blogId, userId, comment);
         blogService.updateMarkWhenComment(tagId, userId);

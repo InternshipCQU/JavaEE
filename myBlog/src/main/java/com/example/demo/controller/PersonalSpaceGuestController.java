@@ -34,10 +34,20 @@ public class PersonalSpaceGuestController {
     @Resource
     PersonalSpaceGuestService personalSpaceGuestService;
 
-    @RequestMapping("/personalspaceguest/{userId}")
-    public String personalspaceguest(@PathVariable("userId") String userID, Model model, HttpServletRequest request) {
-        personalSpaceGuestService.PersonalSpaceGuestInit(userID,model,request);
+    @Resource
+    HomeService homeService;
 
+    @Resource
+    getService getservice;
+
+    @RequestMapping("/personalspaceguest/{userId}")
+    public String personalspaceguest(@PathVariable("userId") int userID, Model model, HttpServletRequest request) {
+        personalSpaceGuestService.PersonalSpaceGuestInit(userID,model,request);
+        homeService.setBlogger(request,model);
+
+//        User user = getservice.getuserprofile(userID);
+//
+//        model.addAttribute("user",user);
         return "personalspaceguest";
     }
 

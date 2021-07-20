@@ -1,13 +1,10 @@
 package com.example.demo.mapper;
 
-import com.example.demo.entity.BlogTag;
-import com.example.demo.entity.TagMark;
-import com.example.demo.entity.User;
+import com.example.demo.entity.*;
 
 import com.example.demo.entity.view.CommentView;
 import com.example.demo.entity.view.HomeBlogView;
 
-import com.example.demo.entity.BlogInfo;
 import org.apache.ibatis.annotations.Mapper;
 
 
@@ -32,7 +29,8 @@ public interface HomeMapper {
     // 【登录】展示推荐博主(top6)
     ArrayList<User> showRecommendBlogger(int userId);
 
-    //展示热门博客，根据前端页面的格式查询
+    //【未登录】展示热门博客，根据前端页面的格式查询
+    // 【登录】根据userId展示热门博客
     List<CommentView> getCommentViews(int blogId);
 
     ArrayList<HomeBlogView> getBlogViews();
@@ -44,7 +42,23 @@ public interface HomeMapper {
     // 主页推荐people you may want to see
     ArrayList<User> showWantBlogger(int userId);
 
+    // 判断userId是否在关注列表
+    String checkIsLikeUser(int userId);
+
     // 主页展示点击量最高的博客对应的标签(#trending)，需要进行去重
     ArrayList<BlogTag> getTrending();
+
+
+
+    //get notification
+    ArrayList<news> getNews(int fansId);
+
+    void changeNews(int newsId);
+
+    void addNews(int userId,int fansId,String newsContent);
+
+    void submitfollowing_1(int userId,int fansId);
+    void submitfollowing_2(int userId);
+
 
 }

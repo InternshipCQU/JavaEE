@@ -45,7 +45,8 @@ public class InfoController {
     public String to(HttpServletRequest request, Model model)
     {
         homeService.setBlogger(request, model);
-        return "userinfo";}
+        return "userinfo";
+    }
 
 
     @RequestMapping(value="/upload")

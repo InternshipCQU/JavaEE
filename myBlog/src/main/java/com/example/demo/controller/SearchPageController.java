@@ -21,14 +21,16 @@ public class SearchPageController {
     SearchService searchService;
 
     @RequestMapping("/searchpage")
-    public String blogpage(Model model){
+    public String blogpage(Model model,HttpServletRequest request){
+        homeService.setBlogger(request,model);
         return "searchpage";
     }
 
     @RequestMapping("/search")
     // 根据关键词（标题，标签名）模糊搜索博客，
-    public String searchBlogs(@RequestParam("keyword")  String keyword, HttpServletRequest request) {
+    public String searchBlogs(@RequestParam("keyword")  String keyword, HttpServletRequest request,Model model) {
         searchService.setSearch(request,keyword);
+        homeService.setBlogger(request,model);
         System.out.println("blogs.size(): " + homeService.searchBlogs(keyword));
         return "searchpage";
     }

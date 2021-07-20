@@ -87,7 +87,7 @@ public class HomeServiceImpl implements HomeService {
 
             User user = profileMapper.getUser((Integer) session.getAttribute("userID"));
             System.out.println("user: " + user);
-            model.addAttribute("bloggerPath","/blogger/" + user.getUsername() + "/" + user.getUserId());
+            model.addAttribute("bloggerPath","/userinfo");
             model.addAttribute("spacePath","/blogManager");
             model.addAttribute("username",user.getUsername());
             model.addAttribute("bloggerAvatar",user.getAvatar());
@@ -101,6 +101,7 @@ public class HomeServiceImpl implements HomeService {
             model.addAttribute("username","login please");
             model.addAttribute("hiddenLogout","true");
             model.addAttribute("hiddenLogin","false");
+
         }
         //System.out.println(model.getAttribute("bloggerAvatar"));
 
@@ -109,8 +110,15 @@ public class HomeServiceImpl implements HomeService {
     @Override
     // 主页推荐people you may want to see
     public ArrayList<User> showWantBlogger(int userId) {
-
         return homeMapper.showWantBlogger(userId);
+    }
+
+    @Override
+    public void submitfollowing(HttpServletRequest request,int userId){
+        HttpSession session=request.getSession();
+        Integer fansId=(Integer) session.getAttribute("userID");
+        homeMapper.submitfollowing_1(userId,fansId);
+        homeMapper.submitfollowing_2(userId);
     }
 
     @Override
@@ -138,12 +146,11 @@ public class HomeServiceImpl implements HomeService {
     public void Init(String cla, HttpServletRequest request) {
         HttpSession session = request.getSession();
         if(cla.equals("ALL")){
-            if(session.getAttribute("Token") != null){
+            if(session.getAttribute("userId") != null){
                 session.setAttribute("blogs", getRecommendBlogViews((Integer) session.getAttribute("userID")));
             }else{
-//                System.out.println("加载所有的博客");
-
                 session.setAttribute("blogs", getBlogViews());
+                //System.out.println(getBlogViews());
             }
         }else{
             System.out.println("筛选的标签为：" + cla);
@@ -153,7 +160,7 @@ public class HomeServiceImpl implements HomeService {
 
 
         ArrayList<HomeBlogView> s1 = (ArrayList<HomeBlogView>) session.getAttribute("blogs");
-        //System.out.println(s1.size());
+        System.out.println(s1.size());
         session.setAttribute("count", 0);
         session.setAttribute("size", s1.size());
     }
@@ -163,10 +170,11 @@ public class HomeServiceImpl implements HomeService {
         HttpSession session = request.getSession();
         int count = (Integer) session.getAttribute("count");
         int size = (Integer) session.getAttribute("size");
-        ArrayList<HomeBlogView> blogs = (ArrayList<HomeBlogView>) session.getAttribute("blogs");
-
         System.out.println(size);
         System.out.println(count);
+        ArrayList<HomeBlogView> blogs = (ArrayList<HomeBlogView>) session.getAttribute("blogs");
+
+
 
         if(size == 0 || count == size){
             return "{\"noMore\":\"true\"}";
@@ -224,6 +232,9 @@ public class HomeServiceImpl implements HomeService {
         //System.out.println(blogContent);
 
         String link = "/blogs/" + username + "/" + blogId;
+        if(blogContent.length() >=66){
+            blogContent = blogContent.substring(0,65);
+        }
 
         System.out.println("Hello");
         session.setAttribute("count", count + 1);
@@ -232,7 +243,9 @@ public class HomeServiceImpl implements HomeService {
     }
 
     @Override
-    public ArrayList<HomeBlogView> getRecommendBlogViews(int tagId) {
+    public ArrayList<HomeBlogView> getRecommendBlogViews(int userId) {
+        TagMark tagMark = homeMapper.getTagMark(userId);
+        int tagId = tagMark.getRecommendTag();
         ArrayList<HomeBlogView> blogList = homeMapper.getRecommendBlogViews(tagId);
         for (int i = 0; i < blogList.size(); i++) {
             int blogId = blogList.get(i).getBlogId();

@@ -428,8 +428,7 @@ function searchTheBlog()
             } else {
 
                 if (data != null) {
-
-                    $("#null").after("<div id = \"final\">\n" +
+                    $("#null").before("<div id = \"final\">\n" +
                         "\n" +
                         "                            <div class=\"fundings\" >\n" +
                         "                                <div class=\"fundings_desc\">\n" +
@@ -482,11 +481,11 @@ function searchTheBlog()
 //=====getUserBlog======
 function getUserBlog()
 {
-    //alert("load the blog")
+    // alert("load the blog")
     urls = window.location.pathname;
     str = urls.split("/")
     //alert("hello"),
-    //alert(str[2])
+    // alert(str[2])
     $.ajax({
 
         url: 'http://localhost:8080/getPersonalBlog', //这里是返回路径 在controller里写好对应函数就行 TODO:记得修改路径后面的 这是测试
@@ -506,7 +505,8 @@ function getUserBlog()
             if (blog.noMore === "true") {
 
             } else {
-                //alert(blog.blogTitle)
+
+                // alert(blog.blogTitle)
 
                 if (data != null) {
 
@@ -1007,7 +1007,7 @@ function mayknowpeople()
                         "                                <a href=\"#\" class=\"sl_user_link_name\" id = 'name'> Jonathan Madano </a>\n" +
                         "                            </div>\n" +
                         "                            <div class=\"user-follow-button sl_sidebar_sugs_btns\">\n" +
-                        "                                <button type=\"button\" class=\"button small\">\n" +
+                        "                                <button type=\"button\" class=\"button small\" onclick='submitfollow("+blogger.userId+")'>\n" +
                         "                                    <span> Follow</span>\n" +
                         "                                </button>\n" +
                         "                            </div>\n" +
@@ -1030,3 +1030,70 @@ function mayknowpeople()
         }
     });
 }
+
+
+
+function submitfollow(userId) {
+    var jsonstr = {"userId": userId};
+    $.ajax({
+        url: 'http://localhost:8080/submitfollow',
+        type: 'get',
+        data: jsonstr,
+        async: false,
+        success: function (data) {
+            location.reload();
+        },
+        error: function (xhr) {
+            alert("something wrong");
+        }
+    })
+}
+
+function searchTheBlogs(){
+    searchTheBlog()
+    searchTheBlog()
+    searchTheBlog()
+    searchTheBlog()
+    searchTheBlog()
+    searchTheBlog()
+}
+
+//=====notification=====
+function notification()
+{
+    $.ajax({
+
+        url: 'http://localhost:8080/notification', //这里是返回路径 在controller里写好对应函数就行 TODO:记得修改路径后面的 这是测试
+        type: 'get',
+        data: {}, //这里是向后端传输的json 应该是可以直接传对象 比如User这种entity
+        //例如点赞的话 我们传递blogID userID到后端 后端再进行操作
+        async: true,
+        success: function(data){
+            if(data != null){
+                //alert(data)
+                news1 = JSON.stringify(data);
+                news = JSON.parse(news1)
+                //alert(bloggers)
+                $.each(news, function (index, newsget) {
+                    $("#note").after("<li>\n" +
+                        "                                       <a href=\"#\">\n" +
+                        "                                           <strong id='newsContent'>这里是传送过来的消息 我实在是不想写了</strong>\n" +
+                        "                                       </a>\n" +
+                        "                                   </li>");
+
+                    $("#newsContent").html(newsget.newsContent);
+                    $("#newsContent").attr("id","pass");
+
+                });
+
+
+
+            }
+
+
+            //window.location.href = 'http://localhost:8080/mainpage';
+            //这里是如果成功的将数据传递之后做的操作 可以写alert和跳转语句 根据情况进行书写就写
+        }
+    });
+}
+
