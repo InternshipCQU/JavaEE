@@ -59,32 +59,42 @@ public class BlogController {
         return "blogpage";
     }
     @RequestMapping("/blogs/querylike")
-    public void querylike(@RequestParam("blogId") int blogId, @RequestParam("userId") int userId,  HttpServletResponse response) throws JSONException, IOException{
+    public void querylike(@RequestParam("blogId") int blogId, @RequestParam("userId") int userId,  HttpServletResponse response,HttpServletRequest request) throws JSONException, IOException{
         boolean f=blogService.isliked(blogId,userId);
 //        System.out.println("is like?:"+f);
         JSONObject object=new JSONObject();
-        object.put("IsLiked",f);
+        HttpSession session=request.getSession();
+        if(session.getAttribute("userId")!=null) {
+            object.put("IsLiked",f);
+        }
+        else{
+            object.put("IsLiked",false);
+        }
         response.getWriter().write(object.toString());
     }
 
     @RequestMapping("/blogs/like")
-    public void like(@RequestParam("blogId") int blogId, @RequestParam("userId") int userId, @RequestParam("tagId") int tagId, @RequestParam("likenumber")int num, HttpServletResponse response) throws JSONException, IOException {
-        blogService.like(blogId);
-        blogService.writelikerecord(blogId,userId);
+    public void like(@RequestParam("blogId") int blogId, @RequestParam("userId") int userId, @RequestParam("tagId") int tagId, @RequestParam("likenumber")int num, HttpServletResponse response,HttpServletRequest request) throws JSONException, IOException {
+        HttpSession session=request.getSession();
+        if(session.getAttribute("userId")!=null) {
+            blogService.like(blogId);
+            blogService.writelikerecord(blogId, userId);
 //        System.out.println("im in like");
-        JSONObject object=new JSONObject();
-        response.getWriter().write(object.toString());
-
+            JSONObject object = new JSONObject();
+            response.getWriter().write(object.toString());
+        }
     }
 
     @RequestMapping("/blogs/cancelLike")
-    public void cancelLike(@RequestParam("blogId") int blogId, @RequestParam("userId") int userId, @RequestParam("tagId") int tagId,@RequestParam("likenumber")int num,HttpServletResponse response) throws JSONException,IOException {
-        JSONObject object=new JSONObject();
-        blogService.cancelLike(blogId);
-        blogService.deletelikerecord(blogId,userId);
+    public void cancelLike(@RequestParam("blogId") int blogId, @RequestParam("userId") int userId, @RequestParam("tagId") int tagId,@RequestParam("likenumber")int num,HttpServletResponse response,HttpServletRequest request) throws JSONException,IOException {
+        HttpSession session=request.getSession();
+        if(session.getAttribute("userId")!=null) {
+            JSONObject object = new JSONObject();
+            blogService.cancelLike(blogId);
+            blogService.deletelikerecord(blogId, userId);
 //        System.out.println("im in dislike");
-        response.getWriter().write(object.toString());
-
+            response.getWriter().write(object.toString());
+        }
     }
 
     @RequestMapping("/blogs/comment")
