@@ -1,5 +1,6 @@
 package com.example.demo.controller;
 
+import com.example.demo.entity.view.HomeBlogView;
 import com.example.demo.mapper.BlogListMapper;
 import com.example.demo.service.BlogManagerService;
 import com.example.demo.service.HomeService;
@@ -36,6 +37,7 @@ public class BlogManagerController {
     @RequestMapping("/manageBlog")
     @ResponseBody
     public String manageBlog(HttpServletRequest request){
+
         String s = blogManagerService.manageTheBlogs(request);
         System.out.println(s);
         return s;

@@ -83,7 +83,7 @@
     <select id="showWantBlogger" resultType="com.example.demo.entity.User">
         SELECT `User`.username,`User`.avatar,`User`.userId
         FROM `User`,TagMark,blogInfo,blogTag
-        WHERE TagMark.userId = 1
+        WHERE TagMark.userId = #{userId}
           AND blogTag.tagId = blogInfo.tagId
           AND blogInfo.userId = `User`.userId
           AND (select count(*) from userLike where userLike.userId= User.userId and userLike.fansId=#{userId})=0
