@@ -29,40 +29,41 @@ public class PersonalSpaceGuestServiceImpl implements PersonalSpaceGuestService 
     profileMapper profileMapper;
 
     @Override
-    public void PersonalSpaceGuestInit(String userID, Model model, HttpServletRequest request){
+    public void PersonalSpaceGuestInit(int userID, Model model, HttpServletRequest request){
 
 
         //====getTheBlogs=====
         HttpSession session = request.getSession();
-        List<BlogInfo> blogs = personalSpaceMapper.showUsersBlog(Integer.parseInt(userID));
+        List<BlogInfo> blogs = personalSpaceMapper.showUsersBlog(userID);
         session.setAttribute("blogs",blogs);
         session.setAttribute("count",0);
         session.setAttribute("size",blogs.size());
 
 
         //====set the page====
-        User userobj = getss.getuserprofile(Integer.parseInt(userID));
-
-        String username=userobj.getUsername();
-        String userprofile=userobj.getProfile();
-        String email=userobj.getEmail();
-        Integer likesnum=userobj.getLikesNum();
-        Integer blogsnum=userobj.getBlogsNum();
-        Integer fansnum=userobj.getFansNum();
-        String avatar=userobj.getAvatar();
-        String area=userobj.getArea();
-        String background=userobj.getBackground();
-
-        model.addAttribute("userID",userID);
-        model.addAttribute("username",username);
-        model.addAttribute("userprofile",userprofile);
-        model.addAttribute("email",email);
-        model.addAttribute("area",area);
-        model.addAttribute("likesNum",Integer.toString(likesnum));
-        model.addAttribute("blogsNum",Integer.toString(blogsnum));
-        model.addAttribute("fansNum",Integer.toString(fansnum));
-        model.addAttribute("avatar",avatar);
-        model.addAttribute("background",background);
+//        User userobj = getss.getuserprofile(userID);
+        User user = getss.getuserprofile(userID);
+        model.addAttribute("user",user);
+//        String username=userobj.getUsername();
+//        String userprofile=userobj.getProfile();
+//        String email=userobj.getEmail();
+//        Integer likesnum=userobj.getLikesNum();
+//        Integer blogsnum=userobj.getBlogsNum();
+//        Integer fansnum=userobj.getFansNum();
+//        String avatar=userobj.getAvatar();
+//        String area=userobj.getArea();
+//        String background=userobj.getBackground();
+//
+//        model.addAttribute("userID",userID);
+//        model.addAttribute("username",username);
+//        model.addAttribute("userprofile",userprofile);
+//        model.addAttribute("email",email);
+//        model.addAttribute("area",area);
+//        model.addAttribute("likesNum",Integer.toString(likesnum));
+//        model.addAttribute("blogsNum",Integer.toString(blogsnum));
+//        model.addAttribute("fansNum",Integer.toString(fansnum));
+//        model.addAttribute("avatar",avatar);
+//        model.addAttribute("background",background);
         //=====
 
     }
