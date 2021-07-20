@@ -1,16 +1,15 @@
 package com.example.demo.controller;
 
 import com.example.demo.entity.User;
-import com.example.demo.service.BlogService;
-import com.example.demo.service.getService;
-import com.example.demo.service.userfavoritesService;
-import com.example.demo.service.userinfoallService;
+import com.example.demo.service.*;
 import org.json.JSONObject;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.annotation.Resource;
+import javax.jws.WebParam;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.List;
@@ -26,17 +25,22 @@ public class SeeAllController {
     @Resource
     BlogService blogService;
 
+    @Resource
+    HomeService homeService;
+
 
     @RequestMapping("/seeAllfollow")
-    public String to(HttpServletRequest request){
+    public String to(HttpServletRequest request, Model model){
         HttpSession session = request.getSession();
+        homeService.setBlogger(request, model);
         userinfoallService.Init(request);
         return "seeallfollow";
     }
 
     @RequestMapping("/seeAllfavorites")
-    public String to_2(HttpServletRequest request){
+    public String to_2(HttpServletRequest request,Model model){
         HttpSession session=request.getSession();
+        homeService.setBlogger(request, model);
         userfavoritesService.Init(request);
         return "seeallfavorites";
     }

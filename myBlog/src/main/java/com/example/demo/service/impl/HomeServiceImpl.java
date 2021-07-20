@@ -87,7 +87,7 @@ public class HomeServiceImpl implements HomeService {
 
             User user = profileMapper.getUser((Integer) session.getAttribute("userID"));
             System.out.println("user: " + user);
-            model.addAttribute("bloggerPath","/blogger/" + user.getUsername() + "/" + user.getUserId());
+            model.addAttribute("bloggerPath","/userinfo");
             model.addAttribute("spacePath","/blogManager");
             model.addAttribute("username",user.getUsername());
             model.addAttribute("bloggerAvatar",user.getAvatar());
