@@ -7,7 +7,7 @@
         WHERE `User`.userId=#{userId};
     </select>
     <update id="setuser">
-        UPDATE `User` set username=#{username},gender=#{gender},email=#{email},telephone=#{telephone},firstname=#{firstname},lastname=#{lastname},lastLogin=#{lastLogin},birthdate=#{birthdate},profile=#{profile},area=#{area}
+        UPDATE `User` set username=#{username},gender=#{gender},email=#{email},telephone=#{telephone},firstname=#{firstname},lastname=#{lastname},lastLogin=#{lastLogin},birthdate=#{birthdate},profile=#{profile},area=#{area},selfIntroduction=#{selfIntroduction}
         where userId=#{userId};
     </update>
     <select id="getfollowing" resultType="com.example.demo.entity.UserLike">
@@ -36,4 +36,8 @@
         UPDATE `User` set background=#{dir}
         where userId=#{userId};
     </update>
+    <select id="getintroduction" resultType="String">
+        select selfIntroduction from User
+        where `User`.`userId`=#{userId};
+    </select>
 </mapper>
