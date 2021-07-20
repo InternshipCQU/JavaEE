@@ -42,7 +42,8 @@ public class InfoController {
     }
 
     @RequestMapping("/userinfo")
-    public String to(HttpServletRequest request,Model model){
+    public String to(HttpServletRequest request, Model model)
+    {
         homeService.setBlogger(request, model);
         return "userinfo";
     }

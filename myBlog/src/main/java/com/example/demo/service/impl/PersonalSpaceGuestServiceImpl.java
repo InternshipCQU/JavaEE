@@ -44,6 +44,7 @@ public class PersonalSpaceGuestServiceImpl implements PersonalSpaceGuestService 
 //        User userobj = getss.getuserprofile(userID);
         User user = getss.getuserprofile(userID);
         model.addAttribute("user",user);
+
 //        String username=userobj.getUsername();
 //        String userprofile=userobj.getProfile();
 //        String email=userobj.getEmail();

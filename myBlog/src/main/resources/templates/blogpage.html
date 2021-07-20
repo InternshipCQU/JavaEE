@@ -605,6 +605,7 @@
                                 // });
                                 var jsonStr_1={"blogId":parseInt(document.getElementById("blogId").innerHTML),"userId":document.getElementById("userId").innerHTML,"tagId":1,"collectnumber":0};
                                 var collectIcon = document.getElementById("btn_collect_icon");
+
                                 // console.log(jsonStr_1)
                                 $.ajax({
                                     url: "http://" + window.location.host + "/blogs/isCollect",
@@ -646,7 +647,13 @@
 
                                                 $("#btn_collect").click(function (){
                                                     var A = $(this).attr("id");
+                                                    if (data.isLogin === "no")
+                                                    {
+                                                        window.location.href = "http://" + window.location.host + "/login"
+                                                        return
+                                                    }
                                                     var B = A.split("collect");
+                                                    console.log(typeof data.isLogin)
                                                     var messageID = B[1];
                                                     var C = parseInt($("#collectCount" + messageID).html());
                                                     $(this).css("background-position", "")
@@ -771,6 +778,7 @@
 
                                     $('body').on("click",'.heart',function()
                                     {
+
                                         var A=$(this).attr("id");
                                         var B=A.split("like");
                                         var messageID=B[1];
@@ -1111,4 +1119,8 @@
     
 
 </body>
+
+
+</html>
+</html>
 

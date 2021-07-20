@@ -79,6 +79,7 @@ public class BlogController {
         if(session.getAttribute("userId")!=null) {
             blogService.like(blogId);
             blogService.writelikerecord(blogId, userId);
+            blogService.updateMarkWhenLike(tagId,userId);
 //        System.out.println("im in like");
             JSONObject object = new JSONObject();
             response.getWriter().write(object.toString());
@@ -92,6 +93,7 @@ public class BlogController {
             JSONObject object = new JSONObject();
             blogService.cancelLike(blogId);
             blogService.deletelikerecord(blogId, userId);
+            blogService.updateMarkWhenCancelLike(tagId, userId);
 //        System.out.println("im in dislike");
             response.getWriter().write(object.toString());
         }
@@ -137,13 +139,25 @@ public class BlogController {
     public void isCollect(@RequestParam("blogId") int blogId,
                           @RequestParam("tagId") int tagId, Model model, HttpServletResponse response, HttpServletRequest request) throws JSONException, IOException {
         HttpSession session = request.getSession();
-        int userId = (int) session.getAttribute("userID");
-        boolean isCollect = blogService.isCollect(blogId, userId);
+
+        if (session.getAttribute("userID") == null)
+        {
+            JSONObject object=new JSONObject();
+            object.put("isLogin","no");
+            response.getWriter().write(object.toString());
+        }
+        else
+        {
+            int userId = (int) session.getAttribute("userID");
+            boolean isCollect = blogService.isCollect(blogId, userId);
 //        model.addAttribute("isCollect",isCollect);
 //        System.out.println("isCollect: "+model.getAttribute("isCollect"));
-        JSONObject object=new JSONObject();
-        object.put("isCollect",isCollect);
-        response.getWriter().write(object.toString());
+            JSONObject object=new JSONObject();
+            object.put("isCollect",isCollect);
+            object.put("isLogin","yes");
+            response.getWriter().write(object.toString());
+        }
+
     }
 
 
@@ -156,7 +170,7 @@ public class BlogController {
         blogService.collect(blogId, userId);
         blogService.addCollectNum(blogId);
 //        System.out.println("收藏");
-//        blogService.updateMarkWhenCollect(tagId, userId);
+        blogService.updateMarkWhenCollect(tagId, userId);
 
 
     }
@@ -171,7 +185,7 @@ public class BlogController {
 //        System.out.println("取消收藏");
         blogService.deductCollectNum(blogId);
 //        System.out.println("数量减1");
-//        blogService.updateMarkWhenCancelCollect(tagId, userId);
+        blogService.updateMarkWhenCancelCollect(tagId, userId);
     }
 
     @RequestMapping("/blogs/follow")

@@ -5,6 +5,7 @@ import com.example.demo.entity.BlogInfo;
 import com.example.demo.service.BlogService;
 import com.example.demo.service.BlogWritingService;
 
+import com.example.demo.service.HomeService;
 import com.huawei.shade.com.alibaba.fastjson.JSONObject;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,9 +22,12 @@ public class WritingController {
     @Resource
     private BlogWritingService blogWritingService;
 
+    @Resource
+    HomeService homeService;
+
     @RequestMapping("/writing")//TODO:记得加入filter中 现在不加 为了测试
     public String writing(HttpServletRequest request, Model model){
-
+        homeService.setBlogger(request, model);
         int userID = (Integer) request.getSession().getAttribute("userID");
         BlogDraft draft = blogWritingService.getDraft(userID);
 
