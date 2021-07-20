@@ -38,7 +38,7 @@ public class PersonalSpaceGuestServiceImpl implements PersonalSpaceGuestService 
         session.setAttribute("blogs",blogs);
         session.setAttribute("count",0);
         session.setAttribute("size",blogs.size());
-        
+
         //====set the page====
 //        User userobj = getss.getuserprofile(userID);
         User user = getss.getuserprofile(userID);
