@@ -964,7 +964,7 @@ function forward()
 
         url: 'http://localhost:8080/blogs/forward', //这里是返回路径 在controller里写好对应函数就行 TODO:记得修改路径后面的 这是测试
         type: 'get',
-        data: {}, //这里是向后端传输的json 应该是可以直接传对象 比如User这种entity
+        data: {"blogId":blogId,"tagId":tagId}, //这里是向后端传输的json 应该是可以直接传对象 比如User这种entity
         //例如点赞的话 我们传递blogID userID到后端 后端再进行操作
         async: true,
         success: function(data){

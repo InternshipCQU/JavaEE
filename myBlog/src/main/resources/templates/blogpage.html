@@ -570,7 +570,7 @@
                             <li class="uk-active" ><a href="#" th:text="${AuthorName}"> 博文作者 </a></li>
                             <li><a href="#" th:text = "${blog.tagName}">  </a></li>
 <!--                            <li><a href="#" > 点赞</a></li>-->
-                            <li><a href="#" id="repost" > 转发</a></li>
+                            <li><a href="#" id="repost" onclick="forward()"> 转发</a></li>
                             <li><a href="#" id="postDate" th:text =  "${blog.createTime}"> </a></li>
 <!--                            <div id="collect" class="feed" style="width:60px;top: 6px;left: 520px;">-->
                                 <div id="btn_collect"  class="feed" style="width: 60px; top: 6px; left: 450px; background-position: left center;">
