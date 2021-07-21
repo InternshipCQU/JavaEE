@@ -240,7 +240,6 @@ function loadTheBlog()
                         "    <!-- post comments -->\n" +
                         "    <div class=\"post-comments\" >\n" +
                         "        <a id = \"commentsNull\">   </a>\n"+
-                        "        <a href=\"#\" class=\"view-more-comment\"   id = \"commentLink\"> Veiw 8 more Comments</a>\n" +
                         "    </div>\n" +
                         "</div>");
                 }
