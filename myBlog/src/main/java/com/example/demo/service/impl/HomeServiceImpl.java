@@ -12,6 +12,7 @@ import com.example.demo.mapper.profileMapper;
 import com.example.demo.service.HomeService;
 import com.example.demo.utils.SplitString;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.relational.core.sql.In;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 
@@ -81,11 +82,11 @@ public class HomeServiceImpl implements HomeService {
     public void setBlogger(HttpServletRequest request, Model model) { //在前端页面上设置右上角头像和链接
         HttpSession session = request.getSession();
         if(session.getAttribute("userID")!=null){
+            int userId = (Integer) session.getAttribute("userID");
+            //System.out.println("userId: " + session.getAttribute("userID"));
 
-            System.out.println("userId: " + session.getAttribute("userID"));
 
-
-            User user = profileMapper.getUser((Integer) session.getAttribute("userID"));
+            User user = profileMapper.getUser(userId);
             System.out.println("user: " + user);
             model.addAttribute("bloggerPath","/userinfo");
             model.addAttribute("spacePath","/blogManager");
@@ -93,6 +94,7 @@ public class HomeServiceImpl implements HomeService {
             model.addAttribute("bloggerAvatar",user.getAvatar());
             model.addAttribute("hiddenLogout","false");
             model.addAttribute("hiddenLogin","true");
+            model.addAttribute("number",homeMapper.countRead(userId));
 
         }else{
             model.addAttribute("bloggerAvatar","https://bucket-myblog.oss-cn-beijing.aliyuncs.com/avatar/defaultAvatar.jpg");
@@ -101,6 +103,7 @@ public class HomeServiceImpl implements HomeService {
             model.addAttribute("username","login please");
             model.addAttribute("hiddenLogout","true");
             model.addAttribute("hiddenLogin","false");
+            model.addAttribute("number",0);
 
         }
         //System.out.println(model.getAttribute("bloggerAvatar"));

@@ -125,6 +125,7 @@ public class BlogController {
     @ResponseBody
     public String forward(@RequestParam("blogId") int blogId,
                         @RequestParam("tagId") int tagId,HttpServletRequest request){
+        System.out.println("转发");
         HttpSession session = request.getSession();
         if(session.getAttribute("userID") == null){
             return "{\"login\":\"false\"}";
