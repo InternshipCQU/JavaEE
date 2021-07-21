@@ -83,7 +83,7 @@ public class HomeServiceImpl implements HomeService {
         if(session.getAttribute("userID")!=null){
 
             System.out.println("userId: " + session.getAttribute("userID"));
-
+            homeMapper
 
             User user = profileMapper.getUser((Integer) session.getAttribute("userID"));
             System.out.println("user: " + user);
@@ -93,6 +93,7 @@ public class HomeServiceImpl implements HomeService {
             model.addAttribute("bloggerAvatar",user.getAvatar());
             model.addAttribute("hiddenLogout","false");
             model.addAttribute("hiddenLogin","true");
+            model.addAttribute("number",)
 
         }else{
             model.addAttribute("bloggerAvatar","https://bucket-myblog.oss-cn-beijing.aliyuncs.com/avatar/defaultAvatar.jpg");
@@ -101,6 +102,7 @@ public class HomeServiceImpl implements HomeService {
             model.addAttribute("username","login please");
             model.addAttribute("hiddenLogout","true");
             model.addAttribute("hiddenLogin","false");
+            model.addAttribute("number",0);
 
         }
         //System.out.println(model.getAttribute("bloggerAvatar"));
