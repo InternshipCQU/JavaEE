@@ -5,6 +5,7 @@ import com.example.demo.entity.BlogInfo;
 import org.springframework.stereotype.Service;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.ArrayList;
 
 public interface BlogWritingService {
     public void addBlog(String blogTitle, String blogContent, String createTime, String tagName, int isForward,String summary,HttpServletRequest request);
@@ -25,4 +26,5 @@ public interface BlogWritingService {
 
     public void deleteDraft(int userID);
 
+    public ArrayList<Integer> getfansid(int userID);
 }
