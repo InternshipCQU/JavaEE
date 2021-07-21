@@ -60,5 +60,5 @@ public interface HomeMapper {
     void submitfollowing_1(int userId,int fansId);
     void submitfollowing_2(int userId);
 
-
+    int countRead(int userId);
 }
