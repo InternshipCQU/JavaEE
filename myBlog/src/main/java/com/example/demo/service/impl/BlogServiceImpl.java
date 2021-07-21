@@ -130,7 +130,7 @@ public class BlogServiceImpl implements BlogService {
     @Override
     public void updateMarkWhenCancelCollect(int tagId, int userId)
     {
-        TagMap map = new TagMap();
+        MapofTagNameAndTagID map = new MapofTagNameAndTagID();
         blogMapper.updateMarkWhenCancelCollect(map.getTagName(tagId), userId);
     }
 

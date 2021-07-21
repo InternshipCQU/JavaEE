@@ -1,11 +1,9 @@
 package com.example.demo.service.impl;
 
-import com.example.demo.entity.BlogInfo;
-import com.example.demo.entity.BlogTag;
-import com.example.demo.entity.TagMark;
-import com.example.demo.entity.User;
+import com.example.demo.entity.*;
 import com.example.demo.entity.view.CommentView;
 import com.example.demo.entity.view.HomeBlogView;
+import com.example.demo.mapper.BlogDetailsMapper;
 import com.example.demo.mapper.BlogMapper;
 import com.example.demo.mapper.HomeMapper;
 import com.example.demo.mapper.profileMapper;
@@ -36,6 +34,9 @@ public class HomeServiceImpl implements HomeService {
 
     @Resource
     private BlogMapper blogMapper;
+
+    @Resource
+    BlogDetailsMapper blogDetailsMapper;
 
     @Override
     public List<HomeBlogView> tagToBlogs(String tagName) {
@@ -205,7 +206,7 @@ public class HomeServiceImpl implements HomeService {
         int commentNumber = blogs.get(count).getCommentNum();
         int forwardNumber = blogs.get(count).getForwardNum();
         int saveNumber = blogs.get(count).getCollectNum();
-        List<CommentView> commentList = blogs.get(count).getCommentList();//TODO:这里要做一个json 在前面通过循环方式进行添加
+        //List<CommentView> commentList = blogs.get(count).getCommentList();//TODO:这里要做一个json 在前面通过循环方式进行添加
 
 
         System.out.println("userAvater: "+ userAvater);
@@ -218,14 +219,17 @@ public class HomeServiceImpl implements HomeService {
         String comment = "";
         int commentCount = 0;
 
+        List<BlogCommentVo> commentList = blogDetailsMapper.showBlogComment(blogId);
+
         if(commentList != null){
-            for (CommentView cv : commentList) {
+            for (BlogCommentVo cv : commentList) {
 
                 if (commentCount == 3) {
                     break;
                 }
-                comment = "\"username\":" + "\"" + cv.getUsername() + "\"" + "," + "\"commentContent\":" + "\"" + cv.getCommentContent() + "\""+ "," + "\"commentTime\":" + "\"" + cv.getCommentTime() + "\""+ "," + "\"userAvater\":" + "\"" + cv.getUseravater() + "\"";
+                comment = "\"username\":" + "\"" + cv.getUsername() + "\"" + "," + "\"commentContent\":" + "\"" + cv.getCommentContent() + "\""+ "," + "\"commentTime\":" + "\"" + cv.getCreateTime() + "\""+ "," + "\"commentAvater\":" + "\"" + cv.getAvatar() + "\"";
                 comment = "{" + comment + "}";
+                System.out.println(comment);
                 if (commentCount == 0) {
                     comments = comments + comment;
                 } else {
