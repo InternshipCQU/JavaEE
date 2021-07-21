@@ -32,7 +32,7 @@ public class SearchServiceImpl implements SearchService {
         HttpSession session = request.getSession();
         ArrayList<BlogInfo> s1 = new ArrayList<>();
         s1 = homeService.searchBlogs(keyword);
-        session.setAttribute("blogs",s1);
+        session.setAttribute("blogsSearch",s1);
         session.setAttribute("count",0);
         session.setAttribute("size",s1.size());
         System.out.println("s1.size(): " + s1.size());
@@ -42,9 +42,12 @@ public class SearchServiceImpl implements SearchService {
     @Override
     public String giveTheBlogToSearch(String cla, HttpServletRequest request) {
         HttpSession session = request.getSession();
+        if(session.getAttribute("blogsSearch") == null){
+            return "{\"noMore\":\"true\"}";
+        }
         int count = (Integer) session.getAttribute("count");
         int size = (Integer) session.getAttribute("size");
-        ArrayList<BlogInfo> blogs = (ArrayList<BlogInfo>) session.getAttribute("blogs");
+        ArrayList<BlogInfo> blogs = (ArrayList<BlogInfo>) session.getAttribute("blogsSearch");
 
         System.out.println(size);
         System.out.println(count);
