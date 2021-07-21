@@ -83,6 +83,7 @@ public class RegisterController {
 //        System.out.println(userRegisterTime);
 
         registerService.addUser(signUsername, signPassword, userRegisterTime);
+        registerService.addToTagMark(signUsername);
         modelAndView.setViewName("redirect:/login");
         return modelAndView;
 

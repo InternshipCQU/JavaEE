@@ -250,6 +250,7 @@ public class HomeServiceImpl implements HomeService {
 
     @Override
     public ArrayList<HomeBlogView> getRecommendBlogViews(int userId) {
+        System.out.println(userId);
         TagMark tagMark = homeMapper.getTagMark(userId);
         int tagId = tagMark.getRecommendTag();
         System.out.println("_________________________");
