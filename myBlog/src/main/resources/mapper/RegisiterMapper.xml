@@ -11,4 +11,15 @@
         FROM `User`
         WHERE `User`.username = #{username};
     </select>
+
+    <insert id="addToTagMark">
+        INSERT INTO `TagMark`
+        VALUES (#{userId}, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+    </insert>
+
+    <select id="getUserId" resultType="integer">
+        SELECT `User`.userId
+        FROM `User`
+        WHERE `User`.username = #{username};
+    </select>
 </mapper>

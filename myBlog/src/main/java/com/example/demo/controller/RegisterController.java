@@ -25,7 +25,7 @@ public class RegisterController {
 
     @RequestMapping("/toRegister")
     public ModelAndView checkRegister(ModelAndView modelAndView, @RequestParam("sign-username") String signUsername, @RequestParam("sign-password") String signPassword,
-                                      @RequestParam("sign-email") String signEmail, @RequestParam("confirm-password") String confirmPassword)
+                                      @RequestParam("confirm-password") String confirmPassword)
     {
         boolean userExits = registerService.checkUser(signUsername);
         boolean checkPassword = registerService.checkPassword(signPassword, confirmPassword);
@@ -46,12 +46,12 @@ public class RegisterController {
         }
 
 //        System.out.println("signEmail:"+signEmail);
-        if (signEmail.equals(""))
-        {
-            modelAndView.addObject("emailError","请输入邮箱");
-            modelAndView.setViewName("form-singup");
-            return modelAndView;
-        }
+//        if (signEmail.equals(""))
+//        {
+//            modelAndView.addObject("emailError","请输入邮箱");
+//            modelAndView.setViewName("form-singup");
+//            return modelAndView;
+//        }
 
 //        System.out.println("signPassword:"+signPassword);
 //        System.out.println("confirmPassword:"+confirmPassword);
@@ -83,6 +83,7 @@ public class RegisterController {
 //        System.out.println(userRegisterTime);
 
         registerService.addUser(signUsername, signPassword, userRegisterTime);
+        registerService.addToTagMark(signUsername);
         modelAndView.setViewName("redirect:/login");
         return modelAndView;
 
