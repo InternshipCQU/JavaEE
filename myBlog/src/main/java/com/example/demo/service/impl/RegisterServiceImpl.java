@@ -49,11 +49,19 @@ public class RegisterServiceImpl implements RegisterService {
     }
 
 
+    @Override
+    public void addToTagMark(String username)
+    {
+        int userId = registerMapper.getUserId(username);
+        registerMapper.addToTagMark(userId);
+    }
+
 
     @Override
     public void addUser(String username, String password, String userRegisterTime) {
         String defaultAvatar = "https://bucket-myblog.oss-cn-beijing.aliyuncs.com/avatar/defaultAvatar.jpg";
         String defaultBackground = "https://bucket-myblog.oss-cn-beijing.aliyuncs.com/background/defaultBackground.jpg";
         registerMapper.addUser(username, password, userRegisterTime, defaultAvatar, defaultBackground);
+
     }
 }

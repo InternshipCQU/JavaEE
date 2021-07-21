@@ -11,4 +11,6 @@ public interface RegisterService {
 
     boolean checkPassword(String signPassword, String comfirmPassword);
     void addUser(String username, String password, String userRegisterTime);
+
+    void addToTagMark(String username);
 }

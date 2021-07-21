@@ -12,4 +12,6 @@ public interface RegisterMapper {
                  String defaultAvatar, String defaultBackground);
 
     String userExist(String username);   // 检查用户名是否存在
+    void addToTagMark(int userId);
+    Integer getUserId(String username);
 }
