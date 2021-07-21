@@ -195,7 +195,6 @@ function loadTheBlog()
                         "        </div>\n" +
                         "\n" +
                         "        <div class=\"post-btn-action\">\n" +
-                        "            <span class=\"icon-more uil-ellipsis-h\"></span>\n" +
                         "            <div class=\"mt-0 p-2\" uk-dropdown=\"pos: top-right;mode:hover \">\n" +
                         "                <ul class=\"uk-nav uk-dropdown-nav\">\n" +
                         "                    <li><a href=\"#\"> <i class=\"uil-share-alt mr-1\"></i> Share</a> </li>\n" +
@@ -300,7 +299,6 @@ function loadTheBlog()
                             "                                            <span id = \"commentTime\"> 1d</span>\n" +
                             "                                        </div>\n" +
                             "                                    </div>\n" +
-                            "                                    <a href=\"#\" class=\"post-comment-opt\"></a>\n" +
                             "                                </div>"
                         )
 
@@ -728,7 +726,6 @@ function getblogPageComments()
                         "                                            <span id = \"commentTime\"> 1d</span>\n" +
                         "                                        </div>\n" +
                         "                                    </div>\n" +
-                        "                                    <a href=\"#\" class=\"post-comment-opt\"></a>\n" +
                         "                                </div>"
                     )
 
