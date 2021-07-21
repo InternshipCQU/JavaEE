@@ -11,6 +11,7 @@
             loadTheBlog()
             loadTheBlog()
             mayknowpeople()
+            notification()
         }
 
     </script>
@@ -93,11 +94,11 @@
                                    </svg> Search </a>
                            </li>
                        </ul>
-                       <a href="#" class="button secondary px-5 btn-more"
-                           uk-toggle="target: #more-veiw; animation: uk-animation-fade">
-                           <span id="more-veiw">See More <i class="icon-feather-chevron-down ml-2"></i></span>
-                           <span id="more-veiw" hidden>See Less<i class="icon-feather-chevron-up ml-2"></i> </span>
-                       </a>
+<!--                       <a href="#" class="button secondary px-5 btn-more"-->
+<!--                           uk-toggle="target: #more-veiw; animation: uk-animation-fade">-->
+<!--                           <span id="more-veiw">See More <i class="icon-feather-chevron-down ml-2"></i></span>-->
+<!--                           <span id="more-veiw" hidden>See Less<i class="icon-feather-chevron-up ml-2"></i> </span>-->
+<!--                       </a>-->
                    </div>
 
 
@@ -105,12 +106,12 @@
                        <h3> Explore </h3>
                        <ul>
                            <li>
-                               <a href="/index/CPP">
+                               <a href="/index/Django">
                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
                                        <path fill="#03A9F4"
                                            d="M5 3A2 2 0 0 0 3 5H5M7 3V5H9V3M11 3V5H13V3M15 3V5H17V3M19 3V5H21A2 2 0 0 0 19 3M3 7V9H5V7M7 7V11H11V7M13 7V11H17V7M19 7V9H21V7M3 11V13H5V11M19 11V13H21V11M7 13V17H11V13M13 13V17H17V13M3 15V17H5V15M19 15V17H21V15M3 19A2 2 0 0 0 5 21V19M7 19V21H9V19M11 19V21H13V19M15 19V21H17V19M19 19V21A2 2 0 0 0 21 19Z">
                                        </path>
-                                   </svg> C++ </a>
+                                   </svg> Django </a>
                            </li>
                            <li>
                                <a href="/index/JAVA">
@@ -159,7 +160,7 @@
        
        
                        <div class="foot-content">
-                           <p>© 2020 <strong> CQU TEAM </strong>. All Rights Reserved. </p>
+                           <p>© 2021     <strong> CQU TEAM </strong>. All Rights Reserved. </p>
                        </div>
        
                    </div>
@@ -245,9 +246,9 @@
 
 
                        <!-- Message  notificiation dropdown -->
-                       <a href="#" class="opts_icon" uk-tooltip="title: Messages ; pos: bottom ;offset:7">
-                           <img src="http://localhost:8080/assets/images/icons/chat.svg" alt=""> <span>4</span>
-                       </a>
+<!--                       <a href="#" class="opts_icon" uk-tooltip="title: Messages ; pos: bottom ;offset:7">-->
+<!--                           <img src="http://localhost:8080/assets/images/icons/chat.svg" alt=""> <span>4</span>-->
+<!--                       </a>-->
 
                        <!-- Message  notificiation dropdown -->
                        <div uk-dropdown="mode:click ; animation: uk-animation-slide-bottom-small"
@@ -372,7 +373,7 @@
 
                        <!-- notificiation icon  -->
                        <a href="#" class="opts_icon" uk-tooltip="title: Notifications ; pos: bottom ;offset:7">
-                           <img src="http://localhost:8080/assets/images/icons/bell.svg" alt=""> <span>3</span>
+                           <img src="http://localhost:8080/assets/images/icons/bell.svg" alt=""> <span th:text = "${number}">3</span>
                        </a>
 
 
@@ -386,10 +387,10 @@
                                <!-- notivication header -->
                                <div class="dropdown-notifications-headline">
                                    <h4>Notifications </h4>
-                                   <a href="#">
-                                       <i class="icon-feather-settings"
-                                           uk-tooltip="title: Notifications settings ; pos: left"></i>
-                                   </a>
+<!--                                   <a href="#">-->
+<!--                                       <i class="icon-feather-settings"-->
+<!--                                           uk-tooltip="title: Notifications settings ; pos: left"></i>-->
+<!--                                   </a>-->
                                </div>
 
                                <!-- notiviation list -->
@@ -399,76 +400,21 @@
                                            <strong>这里是传送过来的消息 我实在是不想写了</strong>
                                        </a>
                                    </li>
-                                   <li>
-                                       <a href="#">
-                                           <span class="notification-avatar">
-                                               <img src="http://localhost:8080/assets/images/avatars/avatar-3.jpg" alt="">
-                                           </span>
-                                           <span class="notification-icon bg-gradient-danger">
-                                               <i class="icon-feather-star"></i></span>
-                                           <span class="notification-text">
-                                               <strong>Alex Dolgove</strong> Added New Review In Video
-                                               <span class="text-primary">Full Stack PHP Developer</span>
-                                               <br> <span class="time-ago"> 19 hours ago </span>
-                                           </span>
-                                       </a>
-                                   </li>
-                                   <li>
-                                       <a href="#">
-                                           <span class="notification-avatar">
-                                               <img src="http://localhost:8080/assets/images/avatars/avatar-4.jpg" alt="">
-                                           </span>
-                                           <span class="notification-icon bg-gradient-success">
-                                               <i class="icon-feather-message-circle"></i></span>
-                                           <span class="notification-text">
-                                               <strong>Stella John</strong> Replay Your Comment in
-                                               <span class="text-primary">Adobe XD Tutorial</span>
-                                               <br> <span class="time-ago"> 12 hours ago </span>
-                                           </span>
-                                       </a>
-                                   </li>
-                                   <li>
-                                       <a href="#">
-                                           <span class="notification-avatar">
-                                               <img src="http://localhost:8080/assets/images/avatars/avatar-2.jpg" alt="">
-                                           </span>
-                                           <span class="notification-icon bg-gradient-primary">
-                                               <i class="icon-feather-thumbs-up"></i></span>
-                                           <span class="notification-text">
-                                               <strong>Adrian Moh.</strong> Like Your Comment On Video
-                                               <span class="text-primary">Learn Prototype Faster</span>
-                                               <br> <span class="time-ago"> 9 hours ago </span>
-                                           </span>
-                                       </a>
-                                   </li>
-                                   <li>
-                                       <a href="#">
-                                           <span class="notification-avatar">
-                                               <img src="http://localhost:8080/assets/images/avatars/avatar-3.jpg" alt="">
-                                           </span>
-                                           <span class="notification-icon bg-gradient-warning">
-                                               <i class="icon-feather-star"></i></span>
-                                           <span class="notification-text">
-                                               <strong>Alex Dolgove</strong> Added New Review In Video
-                                               <span class="text-primary">Full Stack PHP Developer</span>
-                                               <br> <span class="time-ago"> 19 hours ago </span>
-                                           </span>
-                                       </a>
-                                   </li>
-                                   <li>
-                                       <a href="#">
-                                           <span class="notification-avatar">
-                                               <img src="http://localhost:8080/assets/images/avatars/avatar-4.jpg" alt="">
-                                           </span>
-                                           <span class="notification-icon bg-gradient-success">
-                                               <i class="icon-feather-message-circle"></i></span>
-                                           <span class="notification-text">
-                                               <strong>Stella John</strong> Replay Your Comment in
-                                               <span class="text-primary">Adobe XD Tutorial</span>
-                                               <br> <span class="time-ago"> 12 hours ago </span>
-                                           </span>
-                                       </a>
-                                   </li>
+<!--                                   <li>-->
+<!--                                       <a href="#">-->
+<!--                                           <span class="notification-avatar">-->
+<!--                                               <img src="http://localhost:8080/assets/images/avatars/avatar-3.jpg" alt="">-->
+<!--                                           </span>-->
+<!--                                           <span class="notification-icon bg-gradient-danger">-->
+<!--                                               <i class="icon-feather-star"></i></span>-->
+<!--                                           <span class="notification-text">-->
+<!--                                               <strong>Alex Dolgove</strong> Added New Review In Video-->
+<!--                                               <span class="text-primary">Full Stack PHP Developer</span>-->
+<!--                                               <br> <span class="time-ago"> 19 hours ago </span>-->
+<!--                                           </span>-->
+<!--                                       </a>-->
+<!--                                   </li>-->
+
                                </ul>
 
                            </div>
@@ -614,12 +560,12 @@
                                     </li>
                                     <li>
 
-                                        <a href="/index/C++">
-                                            <div class="story-card" data-src="http://localhost:8080/assets/images/logos/C++.png"
+                                        <a href="/index/C">
+                                            <div class="story-card" data-src="http://localhost:8080/assets/images/logos/C.png"
                                                 uk-img>
-                                                <img src="http://localhost:8080/assets/images/logos/C++1.png" alt="">
+                                                <img src="http://localhost:8080/assets/images/logos/C1.png" alt="">
                                                 <div class="story-card-content">
-                                                    <h4> C++ </h4>
+                                                    <h4> C </h4>
                                                 </div>
                                             </div>
                                         </a>
@@ -806,7 +752,7 @@
                     <div class="uk-width-expand" id = "bottom">
 
                         <div class="sl_sidebar_sugs_title border-0"> Trending !
-                            <i class="icon-feather-rotate-cw"></i>
+<!--                            <i class="icon-feather-rotate-cw"></i>-->
                         </div>
                         <div class="list-group-item sl_htag">
                             <a href="#">
@@ -840,7 +786,7 @@
                         </div>
 
                         <div class="sl_sidebar_sugs_title mt-4">Pro Members
-                            <i class="icon-feather-rotate-cw"></i>
+<!--                            <i class="icon-feather-rotate-cw"></i>-->
                         </div>
                         <div class="uk-position-relative" uk-slider="finite: true; autoplay:true">
 
@@ -888,7 +834,7 @@
                         </div>
 
                         <div class="sl_sidebar_sugs_title" id = "bloggeryoumayknow">People you may know
-                            <i class="icon-feather-rotate-cw"></i>
+<!--                            <i class="icon-feather-rotate-cw"></i>-->
                         </div>
 
 

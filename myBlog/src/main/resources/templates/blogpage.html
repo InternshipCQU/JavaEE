@@ -153,7 +153,7 @@
        
        
                        <div class="foot-content">
-                           <p>© 2020 <strong>Simplest</strong>. All Rights Reserved. </p>
+                           <p>© 2021 <strong>Simplest Blog</strong>. All Rights Reserved. </p>
                        </div>
        
                    </div>
@@ -570,7 +570,7 @@
                             <li class="uk-active" ><a href="#" th:text="${AuthorName}"> 博文作者 </a></li>
                             <li><a href="#" th:text = "${blog.tagName}">  </a></li>
 <!--                            <li><a href="#" > 点赞</a></li>-->
-                            <li><a href="#" id="repost" > 转发</a></li>
+                            <li><a href="#" id="repost" onclick="forward()"> 转发</a></li>
                             <li><a href="#" id="postDate" th:text =  "${blog.createTime}"> </a></li>
 <!--                            <div id="collect" class="feed" style="width:60px;top: 6px;left: 520px;">-->
                                 <div id="btn_collect"  class="feed" style="width: 60px; top: 6px; left: 450px; background-position: left center;">
@@ -778,49 +778,49 @@
 
                                     $('body').on("click",'.heart',function()
                                     {
+                                        if(o.ISLOGIN==true) {
+                                            var A = $(this).attr("id");
+                                            var B = A.split("like");
+                                            var messageID = B[1];
+                                            var C = parseInt($("#likeCount" + messageID).html());
+                                            $(this).css("background-position", "")
+                                            var D = $(this).attr("rel");
+                                            if (D === 'like') {
+                                                $("#likeCount" + messageID).html(C + 1);
+                                                $(this).addClass("heartAnimation").attr("rel", "unlike");
+                                                jsonStr_1.likenumber = parseInt(C + 1);
+                                                $.ajax({
+                                                    url: "http://" + window.location.host + "/blogs/like",
+                                                    type: 'get',
+                                                    contentType: 'application/json',
+                                                    dataType: 'json',
+                                                    data: jsonStr_1,
+                                                    success: function () {
 
-                                        var A=$(this).attr("id");
-                                        var B=A.split("like");
-                                        var messageID=B[1];
-                                        var C=parseInt($("#likeCount"+messageID).html());
-                                        $(this).css("background-position","")
-                                        var D=$(this).attr("rel");
-                                        if(D === 'like')
-                                        {
-                                            $("#likeCount"+messageID).html(C+1);
-                                            $(this).addClass("heartAnimation").attr("rel","unlike");
-                                            jsonStr_1.likenumber=parseInt(C+1);
-                                            $.ajax({
-                                                url: "http://" + window.location.host + "/blogs/like",
-                                                type: 'get',
-                                                contentType: 'application/json',
-                                                dataType: 'json',
-                                                data: jsonStr_1,
-                                                success: function () {
+                                                    }
+                                                })
 
-                                                }
-                                            })
+                                            } else {
+                                                $("#likeCount" + messageID).html(C - 1);
+                                                $(this).removeClass("heartAnimation").attr("rel", "like");
+                                                $(this).css("background-position", "left");
+                                                jsonStr_1.likenumber = parseInt(C - 1);
+                                                $.ajax({
+                                                    url: "http://" + window.location.host + "/blogs/cancelLike",
+                                                    type: 'get',
+                                                    contentType: 'application/json',
+                                                    dataType: 'json',
+                                                    data: jsonStr_1,
+                                                    success: function () {
 
+                                                    }
+                                                })
+
+                                            }
                                         }
-                                        else
-                                        {
-                                            $("#likeCount"+messageID).html(C-1);
-                                            $(this).removeClass("heartAnimation").attr("rel","like");
-                                            $(this).css("background-position","left");
-                                            jsonStr_1.likenumber=parseInt(C-1);
-                                            $.ajax({
-                                                url: "http://" + window.location.host + "/blogs/cancelLike",
-                                                type: 'get',
-                                                contentType: 'application/json',
-                                                dataType: 'json',
-                                                data: jsonStr_1,
-                                                success: function () {
-
-                                                }
-                                            })
-
-                                        }
-                                    });
+                                    else{
+                                            window.location.href = '/login';
+                                        }});
                                 });
                             }
                         }
@@ -948,8 +948,8 @@
                                     <div class="post-add-comment-text-area">
                                         <input id = "commentContent" type="text" placeholder="Write your comment...">
                                         <div class="icons">
-
-                                            <a class="uil-image" onclick="comment()"></a>
+                                            <a onclick="comment()"><img src="http://localhost:8080/assets/images/icons/sendComment.svg" width="20" height="20"></a>
+<!--                                            <a class="uil-image" onclick="comment()"></a>-->
                                         </div>
                                     </div>
 

@@ -66,9 +66,11 @@ public class BlogController {
         HttpSession session=request.getSession();
         if(session.getAttribute("userId")!=null) {
             object.put("IsLiked",f);
+            object.put("ISLOGIN",true);
         }
         else{
             object.put("IsLiked",false);
+            object.put("ISLOGIN",false);
         }
         response.getWriter().write(object.toString());
     }
@@ -123,6 +125,7 @@ public class BlogController {
     @ResponseBody
     public String forward(@RequestParam("blogId") int blogId,
                         @RequestParam("tagId") int tagId,HttpServletRequest request){
+        System.out.println("转发");
         HttpSession session = request.getSession();
         if(session.getAttribute("userID") == null){
             return "{\"login\":\"false\"}";
