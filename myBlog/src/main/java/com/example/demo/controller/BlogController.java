@@ -66,9 +66,11 @@ public class BlogController {
         HttpSession session=request.getSession();
         if(session.getAttribute("userId")!=null) {
             object.put("IsLiked",f);
+            object.put("ISLOGIN",true);
         }
         else{
             object.put("IsLiked",false);
+            object.put("ISLOGIN",false);
         }
         response.getWriter().write(object.toString());
     }
