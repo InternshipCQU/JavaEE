@@ -313,8 +313,8 @@ function loadTheBlog()
                         // $("#commentTime").html(comment.commentTime);
                         // $("#commentTime").attr("id", "pass");//设置时间
                         //
-                        // $("#commentAvater").attr("src", comment.userAvater);
-                        // $("#commentAvater").attr("id", "pass");//设置用户头像
+                        $("#commentAvater").attr("src", comment.commentAvater);
+                        $("#commentAvater").attr("id", "pass");//设置用户头像
                     });
 
                 }
@@ -726,9 +726,6 @@ function getblogPageComments()
                         "                                            <p id = \"commentText\"> Ut wisi enim ad minim laoreet dolore magna aliquam erat </p>\n" +
                         "                                        </div>\n" +
                         "                                        <div class=\"uk-text-small\">\n" +
-                        "                                            <a href=\"#\" class=\"text-danger mr-1\"> <i class=\"uil-heart\"></i> Love\n" +
-                        "                                            </a>\n" +
-                        "                                            <a href=\"#\" class=\" mr-1\"> Replay </a>\n" +
                         "                                            <span id = \"commentTime\"> 1d</span>\n" +
                         "                                        </div>\n" +
                         "                                    </div>\n" +
