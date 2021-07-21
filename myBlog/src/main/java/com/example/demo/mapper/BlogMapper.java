@@ -29,11 +29,11 @@ public interface BlogMapper {
 
     List<BlogLike> searchLikeBlog(int userId);   // 根据用户Id寻找点赞的所有博客id
 
-    void updateMarkWhenLike(String tagName, int userId);
-    void updateMarkWhenCancelLike(String tagName, int userId);
-    void updateMarkWhenComment(String tagName, int userId);
-    void updateMarkWhenForward(String tagName, int userId);
-    void updateMarkWhenCollect(String tagName, int userId);
+    void updateMarkWhenLike(@Param("tagName") String tagName, @Param("userId") int userId);
+    void updateMarkWhenCancelLike(@Param("tagName")String tagName, @Param("userId") int userId);
+    void updateMarkWhenComment(@Param("tagName")String tagName, @Param("userId") int userId);
+    void updateMarkWhenForward(@Param("tagName")String tagName, @Param("userId") int userId);
+    void updateMarkWhenCollect(@Param("tagName")String tagName, @Param("userId") int userId);
 
     Integer isliked(int blogId, int userId);
 }
