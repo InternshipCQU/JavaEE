@@ -20,6 +20,8 @@ public interface BlogMapper {
 
     void collect(int blogId, int userId, @Param("createTime") String createTime);                    //收藏,插入一条记录
     void addCollectNum(int blogId);                     //收藏数加1
+    void addCommentNum(int blogId);                     //评论数加1
+
     Integer isCollect(int blogId, int userId);          //是否收藏
 
     void deductCollectNum(int blogId);                  //收藏数减1
