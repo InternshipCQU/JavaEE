@@ -39,6 +39,10 @@
         update blogInfo set collectNum = collectNum + 1 where blogId = #{blogId}
     </update>
 
+    <update id="addCommentNum">
+        update blogInfo set commentNum = commentNum + 1 where blogId = #{blogId}
+    </update>
+
     <update id="deductCollectNum">
         update blogInfo set collectNum = collectNum - 1 where blogId = #{blogId}
     </update>

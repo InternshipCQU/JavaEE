@@ -101,7 +101,7 @@
                                    </svg> profile </a>
                            </li>
                            <li>
-                               <a href="/search">
+                               <a href="/searchpage">
                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
                                        <path fill="#b2c17c"
                                            d="M15.5,12C18,12 20,14 20,16.5C20,17.38 19.75,18.21 19.31,18.9L22.39,22L21,23.39L17.88,20.32C17.19,20.75 16.37,21 15.5,21C13,21 11,19 11,16.5C11,14 13,12 15.5,12M15.5,14A2.5,2.5 0 0,0 13,16.5A2.5,2.5 0 0,0 15.5,19A2.5,2.5 0 0,0 18,16.5A2.5,2.5 0 0,0 15.5,14M10,4A4,4 0 0,1 14,8C14,8.91 13.69,9.75 13.18,10.43C12.32,10.75 11.55,11.26 10.91,11.9L10,12A4,4 0 0,1 6,8A4,4 0 0,1 10,4M2,20V18C2,15.88 5.31,14.14 9.5,14C9.18,14.78 9,15.62 9,16.5C9,17.79 9.38,19 10,20H2Z">
@@ -109,11 +109,6 @@
                                    </svg> Search </a>
                            </li>
                        </ul>
-                       <a href="#" class="button secondary px-5 btn-more"
-                           uk-toggle="target: #more-veiw; animation: uk-animation-fade">
-                           <span id="more-veiw">See More <i class="icon-feather-chevron-down ml-2"></i></span>
-                           <span id="more-veiw" hidden>See Less<i class="icon-feather-chevron-up ml-2"></i> </span>
-                       </a>
                    </div>
        
                    <div class="sections">
@@ -145,15 +140,15 @@
                    <div id="foot">
        
                        <ul>
-                           <li> <a href="page-term.html"> About Us </a></li>
-                           <li> <a href="page-setting.html"> Setting </a></li>
-                           <li> <a href="page-privacy.html"> Privacy Policy </a></li>
-                           <li> <a href="page-term.html"> Terms - Conditions </a></li>
+                           <li> <a href="http://www.cs.cqu.edu.cn/"> About Us </a></li>
                        </ul>
        
        
                        <div class="foot-content">
-                           <p>© 2021 <strong>Simplest Blog</strong>. All Rights Reserved. </p>
+                           <p>© 2021     <strong> CQU Simplest Blog </strong>.</p>
+                           <p> All Rights Reserved. </p>
+                           <p>联系我们：65102502</p>
+                           <p>重庆市沙坪坝区重庆大学虎溪校区</p>
                        </div>
        
                    </div>
@@ -570,7 +565,7 @@
                             <li class="uk-active" ><a href="#" th:text="${AuthorName}"> 博文作者 </a></li>
                             <li><a href="#" th:text = "${blog.tagName}">  </a></li>
 <!--                            <li><a href="#" > 点赞</a></li>-->
-                            <li><a href="#" id="repost" > 转发</a></li>
+                            <li><a href="#" id="repost" onclick="forward()"> 转发</a></li>
                             <li><a href="#" id="postDate" th:text =  "${blog.createTime}"> </a></li>
 <!--                            <div id="collect" class="feed" style="width:60px;top: 6px;left: 520px;">-->
                                 <div id="btn_collect"  class="feed" style="width: 60px; top: 6px; left: 450px; background-position: left center;">
@@ -779,47 +774,60 @@
                                     $('body').on("click",'.heart',function()
                                     {
 
-                                        var A=$(this).attr("id");
-                                        var B=A.split("like");
-                                        var messageID=B[1];
-                                        var C=parseInt($("#likeCount"+messageID).html());
-                                        $(this).css("background-position","")
-                                        var D=$(this).attr("rel");
-                                        if(D === 'like')
-                                        {
-                                            $("#likeCount"+messageID).html(C+1);
-                                            $(this).addClass("heartAnimation").attr("rel","unlike");
-                                            jsonStr_1.likenumber=parseInt(C+1);
-                                            $.ajax({
-                                                url: "http://" + window.location.host + "/blogs/like",
-                                                type: 'get',
-                                                contentType: 'application/json',
-                                                dataType: 'json',
-                                                data: jsonStr_1,
-                                                success: function () {
+                                            var A = $(this).attr("id");
+                                            var B = A.split("like");
+                                            if(o.ISLOGIN===false){
+
+                                                return;
+                                            }
+                                            else{
+                                                var messageID = B[1];
+                                                var C = parseInt($("#likeCount" + messageID).html());
+                                                $(this).css("background-position", "")
+                                                var D = $(this).attr("rel");
+                                                if (D === 'like') {
+                                                    $("#likeCount" + messageID).html(C + 1);
+                                                    $(this).addClass("heartAnimation").attr("rel", "unlike");
+                                                    jsonStr_1.likenumber = parseInt(C + 1);
+                                                    $.ajax({
+                                                        url: "http://" + window.location.host + "/blogs/like",
+                                                        type: 'get',
+                                                        contentType: 'application/json',
+                                                        dataType: 'text',
+                                                        data: jsonStr_1,
+                                                        success: function (data) {
+
+                                                        },
+                                                        error:function(xhr){
+                                                            alert("WRONG:"+xhr.status);
+                                                        }
+                                                    })
 
                                                 }
-                                            })
+                                                else {
+                                                    $("#likeCount" + messageID).html(C - 1);
+                                                    $(this).removeClass("heartAnimation").attr("rel", "like");
+                                                    $(this).css("background-position", "left");
+                                                    jsonStr_1.likenumber = parseInt(C - 1);
+                                                    $.ajax({
+                                                        url: "http://" + window.location.host + "/blogs/cancelLike",
+                                                        type: 'get',
+                                                        contentType: 'application/json',
+                                                        dataType: 'text',
+                                                        data: jsonStr_1,
+                                                        success: function (data) {
 
-                                        }
-                                        else
-                                        {
-                                            $("#likeCount"+messageID).html(C-1);
-                                            $(this).removeClass("heartAnimation").attr("rel","like");
-                                            $(this).css("background-position","left");
-                                            jsonStr_1.likenumber=parseInt(C-1);
-                                            $.ajax({
-                                                url: "http://" + window.location.host + "/blogs/cancelLike",
-                                                type: 'get',
-                                                contentType: 'application/json',
-                                                dataType: 'json',
-                                                data: jsonStr_1,
-                                                success: function () {
+                                                        }
+                                                    })
+
 
                                                 }
-                                            })
+                                            }
 
-                                        }
+
+                                    // else{
+                                    //         window.location.href = '/login';
+                                    //     }
                                     });
                                 });
                             }

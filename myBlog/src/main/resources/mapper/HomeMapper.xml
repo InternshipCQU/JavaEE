@@ -284,4 +284,16 @@
         where `userId`=#{userId};
     </update>
 
+    <select id="countRead" resultType="int">
+        SELECT count(1) AS counts
+        FROM news
+        WHERE isRead = 0
+        GROUP BY isRead;
+    </select>
+
+    <update id="addClickNum">
+        UPDATE `blogInfo`
+        SET clickNum = clickNum + 1
+        WHERE blogId = #{blogId};
+    </update>
 </mapper>

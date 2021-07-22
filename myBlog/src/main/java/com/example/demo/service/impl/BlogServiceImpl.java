@@ -72,6 +72,7 @@ public class BlogServiceImpl implements BlogService {
     public String comment(int blogId, int userId, String comment) {
         GetTime getTime = new GetTime();
         System.out.println(getTime.getCurrentTime());
+        blogMapper.addCommentNum(blogId);
         blogMapper.comment(blogId, userId, getTime.getCurrentTime(), comment);
         return "评论成功";
     }
@@ -130,7 +131,7 @@ public class BlogServiceImpl implements BlogService {
     @Override
     public void updateMarkWhenCancelCollect(int tagId, int userId)
     {
-        TagMap map = new TagMap();
+        MapofTagNameAndTagID map = new MapofTagNameAndTagID();
         blogMapper.updateMarkWhenCancelCollect(map.getTagName(tagId), userId);
     }
 

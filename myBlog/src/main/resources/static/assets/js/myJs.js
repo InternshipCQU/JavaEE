@@ -195,7 +195,6 @@ function loadTheBlog()
                         "        </div>\n" +
                         "\n" +
                         "        <div class=\"post-btn-action\">\n" +
-                        "            <span class=\"icon-more uil-ellipsis-h\"></span>\n" +
                         "            <div class=\"mt-0 p-2\" uk-dropdown=\"pos: top-right;mode:hover \">\n" +
                         "                <ul class=\"uk-nav uk-dropdown-nav\">\n" +
                         "                    <li><a href=\"#\"> <i class=\"uil-share-alt mr-1\"></i> Share</a> </li>\n" +
@@ -240,7 +239,6 @@ function loadTheBlog()
                         "    <!-- post comments -->\n" +
                         "    <div class=\"post-comments\" >\n" +
                         "        <a id = \"commentsNull\">   </a>\n"+
-                        "        <a href=\"#\" class=\"view-more-comment\"   id = \"commentLink\"> Veiw 8 more Comments</a>\n" +
                         "    </div>\n" +
                         "</div>");
                 }
@@ -301,7 +299,6 @@ function loadTheBlog()
                             "                                            <span id = \"commentTime\"> 1d</span>\n" +
                             "                                        </div>\n" +
                             "                                    </div>\n" +
-                            "                                    <a href=\"#\" class=\"post-comment-opt\"></a>\n" +
                             "                                </div>"
                         )
 
@@ -313,8 +310,8 @@ function loadTheBlog()
                         // $("#commentTime").html(comment.commentTime);
                         // $("#commentTime").attr("id", "pass");//设置时间
                         //
-                        // $("#commentAvater").attr("src", comment.userAvater);
-                        // $("#commentAvater").attr("id", "pass");//设置用户头像
+                        $("#commentAvater").attr("src", comment.commentAvater);
+                        $("#commentAvater").attr("id", "pass");//设置用户头像
                     });
 
                 }
@@ -726,13 +723,9 @@ function getblogPageComments()
                         "                                            <p id = \"commentText\"> Ut wisi enim ad minim laoreet dolore magna aliquam erat </p>\n" +
                         "                                        </div>\n" +
                         "                                        <div class=\"uk-text-small\">\n" +
-                        "                                            <a href=\"#\" class=\"text-danger mr-1\"> <i class=\"uil-heart\"></i> Love\n" +
-                        "                                            </a>\n" +
-                        "                                            <a href=\"#\" class=\" mr-1\"> Replay </a>\n" +
                         "                                            <span id = \"commentTime\"> 1d</span>\n" +
                         "                                        </div>\n" +
                         "                                    </div>\n" +
-                        "                                    <a href=\"#\" class=\"post-comment-opt\"></a>\n" +
                         "                                </div>"
                     )
 
@@ -964,7 +957,7 @@ function forward()
 
         url: 'http://localhost:8080/blogs/forward', //这里是返回路径 在controller里写好对应函数就行 TODO:记得修改路径后面的 这是测试
         type: 'get',
-        data: {}, //这里是向后端传输的json 应该是可以直接传对象 比如User这种entity
+        data: {"blogId":blogId,"tagId":tagId}, //这里是向后端传输的json 应该是可以直接传对象 比如User这种entity
         //例如点赞的话 我们传递blogID userID到后端 后端再进行操作
         async: true,
         success: function(data){
