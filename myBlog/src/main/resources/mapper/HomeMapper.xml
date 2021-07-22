@@ -285,10 +285,10 @@
         where `userId`=#{userId};
     </update>
 
-    <select id="countRead" resultType="int">
+    <select id="countRead" resultType="String">
         SELECT count(1) AS counts
         FROM news
-        WHERE isRead = 0
+        WHERE isRead = 0 AND fansId = #{userId}
         GROUP BY isRead;
     </select>
 

@@ -172,7 +172,7 @@ function previewImage(file) {
             o1.innerHTML="<input type='text' id='userprofileopt2' name='useralias' size='30' maxlength='130' >";
             var o2=document.getElementById("useralias");
             var c2=o2.innerHTML;
-            o2.innerHTML="<input type='text' id='useralias2' name='useralias' size='12' maxlength='80' >";
+            // o2.innerHTML="<input type='text' id='useralias2' name='useralias' size='12' maxlength='80' >";
             var o3=document.getElementById("email");
             var c3=o3.innerHTML;
             o3.innerHTML="<input type='text' id='email2' name='email' size='16' maxlength='60' value="+c3+">";
@@ -242,8 +242,7 @@ function previewImage(file) {
             var o2=document.getElementById("email2").value;
             var c2=document.getElementById("email");
             if(o2==="") {
-                alert("Email cannot be null!")
-                location.reload()
+                c2.innerHTML="undefined"
             }
             else {
                 c2.innerHTML=o2
@@ -251,8 +250,9 @@ function previewImage(file) {
             var o3=document.getElementById("userlastname2").value;
             var c3=document.getElementById("userlastname");
             if(o3===""){
-                alert("Last name cannot be null!")
-                location.reload()
+                // alert("Last name cannot be null!")
+                // location.reload()
+                c3.innerHTML="undefined"
             }
             else{
                 c3.innerHTML=o3
@@ -260,8 +260,9 @@ function previewImage(file) {
             var o4=document.getElementById("userfirstname2").value;
             var c4=document.getElementById("userfirstname");
             if(o4===""){
-                alert("First name cannot be null!")
-                location.reload()
+                // alert("First name cannot be null!")
+                // location.reload()
+                c4.innerHTML="undefined"
             }
             else{
                 c4.innerHTML=o4
@@ -269,8 +270,9 @@ function previewImage(file) {
             var o5=document.getElementById("telephone2").value;
             var c5=document.getElementById("telephone");
             if(o5===""){
-                alert("Telephone cannot be null!")
-                location.reload()
+                c5.innerHTML="undefined"
+                // alert("Telephone cannot be null!")
+                // location.reload()
             }
             else if (o5.length!==11){
                 alert("The length of telephone number must be 11!")
@@ -306,8 +308,7 @@ function previewImage(file) {
             var o11=document.getElementById("birthdate2").value;
             var c11=document.getElementById("birthdate");
             if(o11===""){
-                alert("Birthdate cannot be null!")
-                location.reload()
+                c11.innerHTML="undefined"
             }
             else {
                 c11.innerHTML = o11
