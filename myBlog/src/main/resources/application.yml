@@ -1,6 +1,6 @@
 server:
   port: 8080
-
+  max-http-header-size: 102400
 spring:
   #数据库连接配置
   datasource:
@@ -13,6 +13,9 @@ spring:
   session:
     store-type: none #mybatis的相关配置
     timeout: PT30M #30分钟
+
+
+
 mybatis:
   #mapper配置文件
   mapper-locations: classpath:mapper/*.xml
