@@ -610,8 +610,7 @@ function manageBlog()
                         "                            <div class=\"sl_poke_users\" id=\"1\">\n" +
                         "                                <div class=\"sl_poke_info\">\n" +
                         "                                    <a id = \"path\" >\n" +
-                        "                                        <div class=\"avatar\"> <img src=\"http://localhost:8080/assets/images/avatars/avatar-1.jpg\" alt=\"\">\n" +
-                        "                                            </div>\n" +
+
                         "                                    </a>\n" +
                         "                                    <div class=\"sl_poke_info_innr\">\n" +
                         "                                        <div class=\"sl_poke_info_innr_user\">\n" +
