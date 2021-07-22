@@ -109,11 +109,6 @@
                                    </svg> Search </a>
                            </li>
                        </ul>
-                       <a href="#" class="button secondary px-5 btn-more"
-                           uk-toggle="target: #more-veiw; animation: uk-animation-fade">
-                           <span id="more-veiw">See More <i class="icon-feather-chevron-down ml-2"></i></span>
-                           <span id="more-veiw" hidden>See Less<i class="icon-feather-chevron-up ml-2"></i> </span>
-                       </a>
                    </div>
        
                    <div class="sections">
@@ -145,15 +140,15 @@
                    <div id="foot">
        
                        <ul>
-                           <li> <a href="page-term.html"> About Us </a></li>
-                           <li> <a href="page-setting.html"> Setting </a></li>
-                           <li> <a href="page-privacy.html"> Privacy Policy </a></li>
-                           <li> <a href="page-term.html"> Terms - Conditions </a></li>
+                           <li> <a href="http://www.cs.cqu.edu.cn/"> About Us </a></li>
                        </ul>
        
        
                        <div class="foot-content">
-                           <p>© 2021 <strong>Simplest Blog</strong>. All Rights Reserved. </p>
+                           <p>© 2021     <strong> CQU Simplest Blog </strong>.</p>
+                           <p> All Rights Reserved. </p>
+                           <p>联系我们：65102502</p>
+                           <p>重庆市沙坪坝区重庆大学虎溪校区</p>
                        </div>
        
                    </div>
@@ -778,49 +773,62 @@
 
                                     $('body').on("click",'.heart',function()
                                     {
-                                        if(o.ISLOGIN==true) {
+
                                             var A = $(this).attr("id");
                                             var B = A.split("like");
-                                            var messageID = B[1];
-                                            var C = parseInt($("#likeCount" + messageID).html());
-                                            $(this).css("background-position", "")
-                                            var D = $(this).attr("rel");
-                                            if (D === 'like') {
-                                                $("#likeCount" + messageID).html(C + 1);
-                                                $(this).addClass("heartAnimation").attr("rel", "unlike");
-                                                jsonStr_1.likenumber = parseInt(C + 1);
-                                                $.ajax({
-                                                    url: "http://" + window.location.host + "/blogs/like",
-                                                    type: 'get',
-                                                    contentType: 'application/json',
-                                                    dataType: 'json',
-                                                    data: jsonStr_1,
-                                                    success: function () {
+                                            if(o.ISLOGIN===false){
 
-                                                    }
-                                                })
-
-                                            } else {
-                                                $("#likeCount" + messageID).html(C - 1);
-                                                $(this).removeClass("heartAnimation").attr("rel", "like");
-                                                $(this).css("background-position", "left");
-                                                jsonStr_1.likenumber = parseInt(C - 1);
-                                                $.ajax({
-                                                    url: "http://" + window.location.host + "/blogs/cancelLike",
-                                                    type: 'get',
-                                                    contentType: 'application/json',
-                                                    dataType: 'json',
-                                                    data: jsonStr_1,
-                                                    success: function () {
-
-                                                    }
-                                                })
-
+                                                return;
                                             }
-                                        }
-                                    else{
-                                            window.location.href = '/login';
-                                        }});
+                                            else{
+                                                var messageID = B[1];
+                                                var C = parseInt($("#likeCount" + messageID).html());
+                                                $(this).css("background-position", "")
+                                                var D = $(this).attr("rel");
+                                                if (D === 'like') {
+                                                    $("#likeCount" + messageID).html(C + 1);
+                                                    $(this).addClass("heartAnimation").attr("rel", "unlike");
+                                                    jsonStr_1.likenumber = parseInt(C + 1);
+                                                    $.ajax({
+                                                        url: "http://" + window.location.host + "/blogs/like",
+                                                        type: 'get',
+                                                        contentType: 'application/json',
+                                                        dataType: 'text',
+                                                        data: jsonStr_1,
+                                                        success: function (data) {
+
+                                                        },
+                                                        error:function(xhr){
+                                                            alert("WRONG:"+xhr.status);
+                                                        }
+                                                    })
+
+                                                }
+                                                else {
+                                                    $("#likeCount" + messageID).html(C - 1);
+                                                    $(this).removeClass("heartAnimation").attr("rel", "like");
+                                                    $(this).css("background-position", "left");
+                                                    jsonStr_1.likenumber = parseInt(C - 1);
+                                                    $.ajax({
+                                                        url: "http://" + window.location.host + "/blogs/cancelLike",
+                                                        type: 'get',
+                                                        contentType: 'application/json',
+                                                        dataType: 'text',
+                                                        data: jsonStr_1,
+                                                        success: function (data) {
+
+                                                        }
+                                                    })
+
+
+                                                }
+                                            }
+
+
+                                    // else{
+                                    //         window.location.href = '/login';
+                                    //     }
+                                    });
                                 });
                             }
                         }

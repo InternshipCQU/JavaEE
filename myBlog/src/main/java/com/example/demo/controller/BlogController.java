@@ -64,7 +64,7 @@ public class BlogController {
 //        System.out.println("is like?:"+f);
         JSONObject object=new JSONObject();
         HttpSession session=request.getSession();
-        if(session.getAttribute("userId")!=null) {
+        if(session.getAttribute("token")=="yes") {
             object.put("IsLiked",f);
             object.put("ISLOGIN",true);
         }
@@ -78,25 +78,25 @@ public class BlogController {
     @RequestMapping("/blogs/like")
     public void like(@RequestParam("blogId") int blogId, @RequestParam("userId") int userId, @RequestParam("tagId") int tagId, @RequestParam("likenumber")int num, HttpServletResponse response,HttpServletRequest request) throws JSONException, IOException {
         HttpSession session=request.getSession();
-        if(session.getAttribute("userId")!=null) {
+        if(session.getAttribute("token")=="yes") {
             blogService.like(blogId);
             blogService.writelikerecord(blogId, userId);
             blogService.updateMarkWhenLike(tagId,userId);
-//        System.out.println("im in like");
-            JSONObject object = new JSONObject();
-            response.getWriter().write(object.toString());
+
+//            JSONObject object = new JSONObject();
+//            response.getWriter().write(object.toString());
         }
     }
 
     @RequestMapping("/blogs/cancelLike")
     public void cancelLike(@RequestParam("blogId") int blogId, @RequestParam("userId") int userId, @RequestParam("tagId") int tagId,@RequestParam("likenumber")int num,HttpServletResponse response,HttpServletRequest request) throws JSONException,IOException {
         HttpSession session=request.getSession();
-        if(session.getAttribute("userId")!=null) {
+        if(session.getAttribute("token")=="yes") {
             JSONObject object = new JSONObject();
             blogService.cancelLike(blogId);
             blogService.deletelikerecord(blogId, userId);
             blogService.updateMarkWhenCancelLike(tagId, userId);
-//        System.out.println("im in dislike");
+
             response.getWriter().write(object.toString());
         }
     }
