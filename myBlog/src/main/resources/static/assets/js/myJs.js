@@ -868,7 +868,7 @@ function cancelFavorites(blogId,userId) {
                             "                                                <a id=\"directing\" href=\""+followings.userId+"\"> <span class=\"user-name\" id = \"title\"> Dennis Han </span>  </a>\n" +
                             "                                            </span>\n" +
                             "                                        </div>\n" +
-                            "                                        <button class=\"button light small\" style=\"margin: 5px\" onclick='clickbutton("+parseInt(followings.userId)+")'> 取消收藏</button>\n" +
+                            "                                        <button class=\"button light small\" style=\"margin: 5px\" onclick='clickbutton("+parseInt(followings.userId)+")'> 取消关注</button>\n" +
                             "                                    </div>\n" +
                             "                                </div>\n" +
                             "                            </div>\n" +
