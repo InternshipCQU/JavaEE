@@ -94,6 +94,7 @@ public class WritingController {
     @RequestMapping("editblog/{blogId}")
     public String editDraft(@PathVariable("blogId") int blogID, HttpServletRequest request,Model model){
         BlogInfo blog = blogWritingService.getBlog(blogID);
+        homeService.setBlogger(request,model);
         int userID = (Integer) request.getSession().getAttribute("userID");
         model.addAttribute("blog",blog);
         if(userID == blog.userId) return "editblog";
