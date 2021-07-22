@@ -1052,6 +1052,21 @@ function searchTheBlogs(){
     searchTheBlog()
 }
 
+
+function changeNews(iden){
+    alert(iden)
+    $.ajax({
+
+        url: 'http://localhost:8080/deleteNotification', //这里是返回路径 在controller里写好对应函数就行 TODO:记得修改路径后面的 这是测试
+        type: 'get',
+        data: {"iden":iden}, //这里是向后端传输的json 应该是可以直接传对象 比如User这种entity
+        //例如点赞的话 我们传递blogID userID到后端 后端再进行操作
+        async: true,
+
+    });
+}
+
+
 //=====notification=====
 function notification()
 {
@@ -1069,7 +1084,8 @@ function notification()
                 news = JSON.parse(news1)
                 //alert(bloggers)
                 $.each(news, function (index, newsget) {
-                    $("#note").after("<li>\n" +
+
+                    $("#note").after("<li id = 'iden' onclick='changeNews()'>\n" +
                         "                                       <a href=\"#\">\n" +
                         "                                           <strong id='newsContent'>这里是传送过来的消息 我实在是不想写了</strong>\n" +
                         "                                       </a>\n" +
@@ -1077,7 +1093,8 @@ function notification()
 
                     $("#newsContent").html(newsget.newsContent);
                     $("#newsContent").attr("id","pass");
-
+                    $("#iden").attr("onclick","changeNews(" + newsget.newsId + ")");
+                    $("#iden").attr("id","pass");
                 });
 
             }

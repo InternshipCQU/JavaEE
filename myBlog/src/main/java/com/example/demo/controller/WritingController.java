@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 
@@ -92,9 +94,13 @@ public class WritingController {
     }
 
     @RequestMapping("editblog/{blogId}")
-    public String editDraft(@PathVariable("blogId") int blogID, HttpServletRequest request,Model model){
+    public String editDraft(@PathVariable("blogId") int blogID, HttpServletResponse response, HttpServletRequest request, Model model) throws IOException {
         BlogInfo blog = blogWritingService.getBlog(blogID);
         homeService.setBlogger(request,model);
+        if(request.getSession().getAttribute("userID") == null){
+            response.sendRedirect("/login");
+            return null;
+        }
         int userID = (Integer) request.getSession().getAttribute("userID");
         model.addAttribute("blog",blog);
         if(userID == blog.userId) return "editblog";
