@@ -114,14 +114,14 @@
                    <div class="sections">
                        <h3> Explore </h3>
                        <ul>
-                           <li>
-                               <a>
-                                   <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-                                       <path fill="#03A9F4"
-                                           d="M5 3A2 2 0 0 0 3 5H5M7 3V5H9V3M11 3V5H13V3M15 3V5H17V3M19 3V5H21A2 2 0 0 0 19 3M3 7V9H5V7M7 7V11H11V7M13 7V11H17V7M19 7V9H21V7M3 11V13H5V11M19 11V13H21V11M7 13V17H11V13M13 13V17H17V13M3 15V17H5V15M19 15V17H21V15M3 19A2 2 0 0 0 5 21V19M7 19V21H9V19M11 19V21H13V19M15 19V21H17V19M19 19V21A2 2 0 0 0 21 19Z">
-                                       </path>
-                                   </svg> Space </a>
-                           </li>
+<!--                           <li>-->
+<!--                               <a>-->
+<!--                                   <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">-->
+<!--                                       <path fill="#03A9F4"-->
+<!--                                           d="M5 3A2 2 0 0 0 3 5H5M7 3V5H9V3M11 3V5H13V3M15 3V5H17V3M19 3V5H21A2 2 0 0 0 19 3M3 7V9H5V7M7 7V11H11V7M13 7V11H17V7M19 7V9H21V7M3 11V13H5V11M19 11V13H21V11M7 13V17H11V13M13 13V17H17V13M3 15V17H5V15M19 15V17H21V15M3 19A2 2 0 0 0 5 21V19M7 19V21H9V19M11 19V21H13V19M15 19V21H17V19M19 19V21A2 2 0 0 0 21 19Z">-->
+<!--                                       </path>-->
+<!--                                   </svg> Space </a>-->
+<!--                           </li>-->
                            <li  class="active">
                                <a>
                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
@@ -182,8 +182,9 @@
                    </div>
 
                    <!-- form search-->
-                   <div class="head_search">
-                       <form>
+
+<!--                   <div class="head_search">-->
+<!--                       <form>-->
 <!--                           <div class="head_search_cont">-->
 <!--                               <input value="" type="text" class="form-control"-->
 <!--                                   placeholder="Search for Friends , Videos and more.." autocomplete="off">-->
@@ -191,42 +192,80 @@
 <!--                           </div>-->
 
                            <!-- Search box dropdown -->
-                           <div uk-dropdown="pos: top;mode:click;animation: uk-animation-slide-bottom-small"
-                               class="dropdown-search display-hidden">
-                               <!-- User menu -->
+<!--                           <div uk-dropdown="pos: top;mode:click;animation: uk-animation-slide-bottom-small"-->
+<!--                               class="dropdown-search display-hidden">-->
+<!--                               &lt;!&ndash; User menu &ndash;&gt;-->
 
-                               <ul class="dropdown-search-list">
-                                   <li class="list-title"> Recent Searches </li>
-                                   <li> <a href="#">
-                                           <img src="http://localhost:8080/assets/images/avatars/avatar-2.jpg" alt="">
-                                           <p> Erica Jones <span> 2 hours ago </span> </p>
-                                       </a>
-                                   </li>
-                                   <li> <a href="#">
-                                           <img src="http://localhost:8080/assets/images/avatars/avatar-3.jpg" alt="">
-                                           <p> Adrian Mohani <span> 13 days ago </span> </p>
-                                       </a>
-                                   </li>
-                                   <li> <a href="#">
-                                           <img src="http://localhost:8080/assets/images/avatars/avatar-4.jpg" alt="">
-                                           <p> Mountain Riders <span> 3 days ago <span>Group</span> </span> </p>
-                                       </a>
-                                   </li>
-                                   <li> <a href="#">
-                                           <img src="http://localhost:8080/assets/images/avatars/avatar-5.jpg" alt="">
-                                           <p> Coffee Addicts <span> 12 days ago <span> Page</span></span> </p>
-                                       </a>
-                                   </li>
-                                   <li class="menu-divider"></li>
-                                   <li class="list-footer"> <a href="your-history.html"> Searches History </a>
-                                   </li>
-                               </ul>
+<!--                               <ul class="dropdown-search-list">-->
+<!--                                   <li class="list-title"> Recent Searches </li>-->
+<!--                                   <li> <a href="#">-->
+<!--                                           <img src="http://localhost:8080/assets/images/avatars/avatar-2.jpg" alt="">-->
+<!--                                           <p> Erica Jones <span> 2 hours ago </span> </p>-->
+<!--                                       </a>-->
+<!--                                   </li>-->
+<!--                                   <li> <a href="#">-->
+<!--                                           <img src="http://localhost:8080/assets/images/avatars/avatar-3.jpg" alt="">-->
+<!--                                           <p> Adrian Mohani <span> 13 days ago </span> </p>-->
+<!--                                       </a>-->
+<!--                                   </li>-->
+<!--                                   <li> <a href="#">-->
+<!--                                           <img src="http://localhost:8080/assets/images/avatars/avatar-4.jpg" alt="">-->
+<!--                                           <p> Mountain Riders <span> 3 days ago <span>Group</span> </span> </p>-->
+<!--                                       </a>-->
+<!--                                   </li>-->
+<!--                                   <li> <a href="#">-->
+<!--                                           <img src="http://localhost:8080/assets/images/avatars/avatar-5.jpg" alt="">-->
+<!--                                           <p> Coffee Addicts <span> 12 days ago <span> Page</span></span> </p>-->
+<!--                                       </a>-->
+<!--                                   </li>-->
+<!--                                   <li class="menu-divider"></li>-->
+<!--                                   <li class="list-footer"> <a href="your-history.html"> Searches History </a>-->
+<!--                                   </li>-->
+<!--                               </ul>-->
 
-                           </div>
+<!--                           </div>-->
 
 
-                       </form>
-                   </div>
+<!--                       </form>-->
+<!--                   </div>-->
+
+<!--                           &lt;!&ndash; Search box dropdown &ndash;&gt;-->
+<!--                           <div uk-dropdown="pos: top;mode:click;animation: uk-animation-slide-bottom-small"-->
+<!--                               class="dropdown-search display-hidden">-->
+<!--                               &lt;!&ndash; User menu &ndash;&gt;-->
+
+<!--                               <ul class="dropdown-search-list">-->
+<!--                                   <li class="list-title"> Recent Searches </li>-->
+<!--                                   <li> <a href="#">-->
+<!--                                           <img src="http://localhost:8080/assets/images/avatars/avatar-2.jpg" alt="">-->
+<!--                                           <p> Erica Jones <span> 2 hours ago </span> </p>-->
+<!--                                       </a>-->
+<!--                                   </li>-->
+<!--                                   <li> <a href="#">-->
+<!--                                           <img src="http://localhost:8080/assets/images/avatars/avatar-3.jpg" alt="">-->
+<!--                                           <p> Adrian Mohani <span> 13 days ago </span> </p>-->
+<!--                                       </a>-->
+<!--                                   </li>-->
+<!--                                   <li> <a href="#">-->
+<!--                                           <img src="http://localhost:8080/assets/images/avatars/avatar-4.jpg" alt="">-->
+<!--                                           <p> Mountain Riders <span> 3 days ago <span>Group</span> </span> </p>-->
+<!--                                       </a>-->
+<!--                                   </li>-->
+<!--                                   <li> <a href="#">-->
+<!--                                           <img src="http://localhost:8080/assets/images/avatars/avatar-5.jpg" alt="">-->
+<!--                                           <p> Coffee Addicts <span> 12 days ago <span> Page</span></span> </p>-->
+<!--                                       </a>-->
+<!--                                   </li>-->
+<!--                                   <li class="menu-divider"></li>-->
+<!--                                   <li class="list-footer"> <a href="your-history.html"> Searches History </a>-->
+<!--                                   </li>-->
+<!--                               </ul>-->
+
+<!--                           </div>-->
+
+
+<!--                       </form>-->
+<!--                   </div>-->
 
                    <!-- user icons -->
                    <div class="head_user">
@@ -238,240 +277,240 @@
 <!--                       </a>-->
 
                        <!-- Message  notificiation dropdown -->
-                       <div uk-dropdown="mode:click ; animation: uk-animation-slide-bottom-small"
-                           class="dropdown-notifications display-hidden">
+<!--                       <div uk-dropdown="mode:click ; animation: uk-animation-slide-bottom-small"-->
+<!--                           class="dropdown-notifications display-hidden">-->
 
-                           <!-- notification contents -->
-                           <div class="dropdown-notifications-content" data-simplebar>
+<!--                           &lt;!&ndash; notification contents &ndash;&gt;-->
+<!--                           <div class="dropdown-notifications-content" data-simplebar>-->
 
-                               <!-- notivication header -->
-                               <div class="dropdown-notifications-headline">
-                                   <h4>Messages</h4>
-                                   <a href="#">
-                                       <i class="icon-feather-settings"
-                                           uk-tooltip="title: Message settings ; pos: left"></i>
-                                   </a>
-                               </div>
+<!--                               &lt;!&ndash; notivication header &ndash;&gt;-->
+<!--                               <div class="dropdown-notifications-headline">-->
+<!--                                   <h4>Messages</h4>-->
+<!--                                   <a href="#">-->
+<!--                                       <i class="icon-feather-settings"-->
+<!--                                           uk-tooltip="title: Message settings ; pos: left"></i>-->
+<!--                                   </a>-->
+<!--                               </div>-->
 
-                               <!-- notiviation list -->
-                               <ul>
-                                   <li>
-                                       <a href="#">
-                                           <span class="notification-avatar status-online">
-                                               <img src="http://localhost:8080/assets/images/avatars/avatar-2.jpg" alt="">
-                                           </span>
-                                           <div class="notification-text notification-msg-text">
-                                               <strong>Jonathan Madano</strong>
-                                               <p>Thanks for The Answer ... <span class="time-ago"> 2 h </span> </p>
+<!--                               &lt;!&ndash; notiviation list &ndash;&gt;-->
+<!--                               <ul>-->
+<!--                                   <li>-->
+<!--                                       <a href="#">-->
+<!--                                           <span class="notification-avatar status-online">-->
+<!--                                               <img src="http://localhost:8080/assets/images/avatars/avatar-2.jpg" alt="">-->
+<!--                                           </span>-->
+<!--                                           <div class="notification-text notification-msg-text">-->
+<!--                                               <strong>Jonathan Madano</strong>-->
+<!--                                               <p>Thanks for The Answer ... <span class="time-ago"> 2 h </span> </p>-->
 
-                                           </div>
-                                       </a>
-                                   </li>
-                                   <li>
-                                       <a href="#">
-                                           <span class="notification-avatar">
-                                               <img src="http://localhost:8080/assets/images/avatars/avatar-3.jpg" alt="">
-                                           </span>
-                                           <div class="notification-text notification-msg-text">
-                                               <strong>Stella Johnson</strong>
-                                               <p> Alex will explain you how ... <span class="time-ago"> 3 h </span>
-                                               </p>
-                                           </div>
-                                       </a>
-                                   </li>
-                                   <li>
-                                       <a href="#">
-                                           <span class="notification-avatar status-online">
-                                               <img src="http://localhost:8080/assets/images/avatars/avatar-1.jpg" alt="">
-                                           </span>
-                                           <div class="notification-text notification-msg-text">
-                                               <strong>Alex Dolgove</strong>
-                                               <p> Alia just joined Messenger! <span class="time-ago"> 3 h </span> </p>
-                                           </div>
-                                       </a>
-                                   </li>
-                                   <li>
-                                       <a href="#">
-                                           <span class="notification-avatar status-online">
-                                               <img src="http://localhost:8080/assets/images/avatars/avatar-4.jpg" alt="">
-                                           </span>
-                                           <div class="notification-text notification-msg-text">
-                                               <strong>Adrian Mohani</strong>
-                                               <p>Thanks for The Answer ... <span class="time-ago"> 2 h </span> </p>
-                                           </div>
-                                       </a>
-                                   </li>
-                                   <li>
-                                       <a href="#">
-                                           <span class="notification-avatar">
-                                               <img src="http://localhost:8080/assets/images/avatars/avatar-2.jpg" alt="">
-                                           </span>
-                                           <div class="notification-text notification-msg-text">
-                                               <strong>Jonathan Madano</strong>
-                                               <p>Thanks for The Answer ... <span class="time-ago"> 2 h </span> </p>
+<!--                                           </div>-->
+<!--                                       </a>-->
+<!--                                   </li>-->
+<!--                                   <li>-->
+<!--                                       <a href="#">-->
+<!--                                           <span class="notification-avatar">-->
+<!--                                               <img src="http://localhost:8080/assets/images/avatars/avatar-3.jpg" alt="">-->
+<!--                                           </span>-->
+<!--                                           <div class="notification-text notification-msg-text">-->
+<!--                                               <strong>Stella Johnson</strong>-->
+<!--                                               <p> Alex will explain you how ... <span class="time-ago"> 3 h </span>-->
+<!--                                               </p>-->
+<!--                                           </div>-->
+<!--                                       </a>-->
+<!--                                   </li>-->
+<!--                                   <li>-->
+<!--                                       <a href="#">-->
+<!--                                           <span class="notification-avatar status-online">-->
+<!--                                               <img src="http://localhost:8080/assets/images/avatars/avatar-1.jpg" alt="">-->
+<!--                                           </span>-->
+<!--                                           <div class="notification-text notification-msg-text">-->
+<!--                                               <strong>Alex Dolgove</strong>-->
+<!--                                               <p> Alia just joined Messenger! <span class="time-ago"> 3 h </span> </p>-->
+<!--                                           </div>-->
+<!--                                       </a>-->
+<!--                                   </li>-->
+<!--                                   <li>-->
+<!--                                       <a href="#">-->
+<!--                                           <span class="notification-avatar status-online">-->
+<!--                                               <img src="http://localhost:8080/assets/images/avatars/avatar-4.jpg" alt="">-->
+<!--                                           </span>-->
+<!--                                           <div class="notification-text notification-msg-text">-->
+<!--                                               <strong>Adrian Mohani</strong>-->
+<!--                                               <p>Thanks for The Answer ... <span class="time-ago"> 2 h </span> </p>-->
+<!--                                           </div>-->
+<!--                                       </a>-->
+<!--                                   </li>-->
+<!--                                   <li>-->
+<!--                                       <a href="#">-->
+<!--                                           <span class="notification-avatar">-->
+<!--                                               <img src="http://localhost:8080/assets/images/avatars/avatar-2.jpg" alt="">-->
+<!--                                           </span>-->
+<!--                                           <div class="notification-text notification-msg-text">-->
+<!--                                               <strong>Jonathan Madano</strong>-->
+<!--                                               <p>Thanks for The Answer ... <span class="time-ago"> 2 h </span> </p>-->
 
-                                           </div>
-                                       </a>
-                                   </li>
-                                   <li>
-                                       <a href="#">
-                                           <span class="notification-avatar">
-                                               <img src="http://localhost:8080/assets/images/avatars/avatar-3.jpg" alt="">
-                                           </span>
-                                           <div class="notification-text notification-msg-text">
-                                               <strong>Stella Johnson</strong>
-                                               <p> Alex will explain you how ... <span class="time-ago"> 3 h </span>
-                                               </p>
-                                           </div>
-                                       </a>
-                                   </li>
-                                   <li>
-                                       <a href="#">
-                                           <span class="notification-avatar">
-                                               <img src="http://localhost:8080/assets/images/avatars/avatar-1.jpg" alt="">
-                                           </span>
-                                           <div class="notification-text notification-msg-text">
-                                               <strong>Alex Dolgove</strong>
-                                               <p> Alia just joined Messenger! <span class="time-ago"> 3 h </span> </p>
-                                           </div>
-                                       </a>
-                                   </li>
-                                   <li>
-                                       <a href="#">
-                                           <span class="notification-avatar">
-                                               <img src="http://localhost:8080/assets/images/avatars/avatar-4.jpg" alt="">
-                                           </span>
-                                           <div class="notification-text notification-msg-text">
-                                               <strong>Adrian Mohani</strong>
-                                               <p>Thanks for The Answer ... <span class="time-ago"> 2 h </span> </p>
-                                           </div>
-                                       </a>
-                                   </li>
-                               </ul>
+<!--                                           </div>-->
+<!--                                       </a>-->
+<!--                                   </li>-->
+<!--                                   <li>-->
+<!--                                       <a href="#">-->
+<!--                                           <span class="notification-avatar">-->
+<!--                                               <img src="http://localhost:8080/assets/images/avatars/avatar-3.jpg" alt="">-->
+<!--                                           </span>-->
+<!--                                           <div class="notification-text notification-msg-text">-->
+<!--                                               <strong>Stella Johnson</strong>-->
+<!--                                               <p> Alex will explain you how ... <span class="time-ago"> 3 h </span>-->
+<!--                                               </p>-->
+<!--                                           </div>-->
+<!--                                       </a>-->
+<!--                                   </li>-->
+<!--                                   <li>-->
+<!--                                       <a href="#">-->
+<!--                                           <span class="notification-avatar">-->
+<!--                                               <img src="http://localhost:8080/assets/images/avatars/avatar-1.jpg" alt="">-->
+<!--                                           </span>-->
+<!--                                           <div class="notification-text notification-msg-text">-->
+<!--                                               <strong>Alex Dolgove</strong>-->
+<!--                                               <p> Alia just joined Messenger! <span class="time-ago"> 3 h </span> </p>-->
+<!--                                           </div>-->
+<!--                                       </a>-->
+<!--                                   </li>-->
+<!--                                   <li>-->
+<!--                                       <a href="#">-->
+<!--                                           <span class="notification-avatar">-->
+<!--                                               <img src="http://localhost:8080/assets/images/avatars/avatar-4.jpg" alt="">-->
+<!--                                           </span>-->
+<!--                                           <div class="notification-text notification-msg-text">-->
+<!--                                               <strong>Adrian Mohani</strong>-->
+<!--                                               <p>Thanks for The Answer ... <span class="time-ago"> 2 h </span> </p>-->
+<!--                                           </div>-->
+<!--                                       </a>-->
+<!--                                   </li>-->
+<!--                               </ul>-->
 
-                           </div>
-                           <div class="dropdown-notifications-footer">
-                               <a href="#"> See all in Messages</a>
-                           </div>
-
-
-                       </div>
+<!--                           </div>-->
+<!--                           <div class="dropdown-notifications-footer">-->
+<!--                               <a href="#"> See all in Messages</a>-->
+<!--                           </div>-->
 
 
-                       <!-- notificiation icon  -->
-                       <a href="#" class="opts_icon" uk-tooltip="title: Notifications ; pos: bottom ;offset:7">
-                           <img src="http://localhost:8080/assets/images/icons/bell.svg" alt=""> <span>3</span>
-                       </a>
+<!--                       </div>-->
 
 
-                       <!-- notificiation dropdown -->
-                       <div uk-dropdown="mode:click ; animation: uk-animation-slide-bottom-small"
-                           class="dropdown-notifications display-hidden">
-
-                           <!-- notification contents -->
-                           <div class="dropdown-notifications-content" data-simplebar>
-
-                               <!-- notivication header -->
-                               <div class="dropdown-notifications-headline">
-                                   <h4>Notifications </h4>
-                                   <a href="#">
-                                       <i class="icon-feather-settings"
-                                           uk-tooltip="title: Notifications settings ; pos: left"></i>
-                                   </a>
-                               </div>
-
-                               <!-- notiviation list -->
-                               <ul>
-                                   <li>
-                                       <a href="#">
-                                           <span class="notification-avatar">
-                                               <img src="http://localhost:8080/assets/images/avatars/avatar-2.jpg" alt="">
-                                           </span>
-                                           <span class="notification-icon bg-gradient-primary">
-                                               <i class="icon-feather-thumbs-up"></i></span>
-                                           <span class="notification-text">
-                                               <strong>Adrian Moh.</strong> Like Your Comment On Video
-                                               <span class="text-primary">Learn Prototype Faster</span>
-                                               <br> <span class="time-ago"> 9 hours ago </span>
-                                           </span>
-                                       </a>
-                                   </li>
-                                   <li>
-                                       <a href="#">
-                                           <span class="notification-avatar">
-                                               <img src="http://localhost:8080/assets/images/avatars/avatar-3.jpg" alt="">
-                                           </span>
-                                           <span class="notification-icon bg-gradient-danger">
-                                               <i class="icon-feather-star"></i></span>
-                                           <span class="notification-text">
-                                               <strong>Alex Dolgove</strong> Added New Review In Video
-                                               <span class="text-primary">Full Stack PHP Developer</span>
-                                               <br> <span class="time-ago"> 19 hours ago </span>
-                                           </span>
-                                       </a>
-                                   </li>
-                                   <li>
-                                       <a href="#">
-                                           <span class="notification-avatar">
-                                               <img src="http://localhost:8080/assets/images/avatars/avatar-4.jpg" alt="">
-                                           </span>
-                                           <span class="notification-icon bg-gradient-success">
-                                               <i class="icon-feather-message-circle"></i></span>
-                                           <span class="notification-text">
-                                               <strong>Stella John</strong> Replay Your Comment in
-                                               <span class="text-primary">Adobe XD Tutorial</span>
-                                               <br> <span class="time-ago"> 12 hours ago </span>
-                                           </span>
-                                       </a>
-                                   </li>
-                                   <li>
-                                       <a href="#">
-                                           <span class="notification-avatar">
-                                               <img src="http://localhost:8080/assets/images/avatars/avatar-2.jpg" alt="">
-                                           </span>
-                                           <span class="notification-icon bg-gradient-primary">
-                                               <i class="icon-feather-thumbs-up"></i></span>
-                                           <span class="notification-text">
-                                               <strong>Adrian Moh.</strong> Like Your Comment On Video
-                                               <span class="text-primary">Learn Prototype Faster</span>
-                                               <br> <span class="time-ago"> 9 hours ago </span>
-                                           </span>
-                                       </a>
-                                   </li>
-                                   <li>
-                                       <a href="#">
-                                           <span class="notification-avatar">
-                                               <img src="http://localhost:8080/assets/images/avatars/avatar-3.jpg" alt="">
-                                           </span>
-                                           <span class="notification-icon bg-gradient-warning">
-                                               <i class="icon-feather-star"></i></span>
-                                           <span class="notification-text">
-                                               <strong>Alex Dolgove</strong> Added New Review In Video
-                                               <span class="text-primary">Full Stack PHP Developer</span>
-                                               <br> <span class="time-ago"> 19 hours ago </span>
-                                           </span>
-                                       </a>
-                                   </li>
-                                   <li>
-                                       <a href="#">
-                                           <span class="notification-avatar">
-                                               <img src="http://localhost:8080/assets/images/avatars/avatar-4.jpg" alt="">
-                                           </span>
-                                           <span class="notification-icon bg-gradient-success">
-                                               <i class="icon-feather-message-circle"></i></span>
-                                           <span class="notification-text">
-                                               <strong>Stella John</strong> Replay Your Comment in
-                                               <span class="text-primary">Adobe XD Tutorial</span>
-                                               <br> <span class="time-ago"> 12 hours ago </span>
-                                           </span>
-                                       </a>
-                                   </li>
-                               </ul>
-
-                           </div>
+<!--                       &lt;!&ndash; notificiation icon  &ndash;&gt;-->
+<!--                       <a href="#" class="opts_icon" uk-tooltip="title: Notifications ; pos: bottom ;offset:7">-->
+<!--                           <img src="http://localhost:8080/assets/images/icons/bell.svg" alt=""> <span>3</span>-->
+<!--                       </a>-->
 
 
-                       </div>
+<!--                       &lt;!&ndash; notificiation dropdown &ndash;&gt;-->
+<!--                       <div uk-dropdown="mode:click ; animation: uk-animation-slide-bottom-small"-->
+<!--                           class="dropdown-notifications display-hidden">-->
+
+<!--                           &lt;!&ndash; notification contents &ndash;&gt;-->
+<!--                           <div class="dropdown-notifications-content" data-simplebar>-->
+
+<!--                               &lt;!&ndash; notivication header &ndash;&gt;-->
+<!--                               <div class="dropdown-notifications-headline">-->
+<!--                                   <h4>Notifications </h4>-->
+<!--                                   <a href="#">-->
+<!--                                       <i class="icon-feather-settings"-->
+<!--                                           uk-tooltip="title: Notifications settings ; pos: left"></i>-->
+<!--                                   </a>-->
+<!--                               </div>-->
+
+<!--                               &lt;!&ndash; notiviation list &ndash;&gt;-->
+<!--                               <ul>-->
+<!--                                   <li>-->
+<!--                                       <a href="#">-->
+<!--                                           <span class="notification-avatar">-->
+<!--                                               <img src="http://localhost:8080/assets/images/avatars/avatar-2.jpg" alt="">-->
+<!--                                           </span>-->
+<!--                                           <span class="notification-icon bg-gradient-primary">-->
+<!--                                               <i class="icon-feather-thumbs-up"></i></span>-->
+<!--                                           <span class="notification-text">-->
+<!--                                               <strong>Adrian Moh.</strong> Like Your Comment On Video-->
+<!--                                               <span class="text-primary">Learn Prototype Faster</span>-->
+<!--                                               <br> <span class="time-ago"> 9 hours ago </span>-->
+<!--                                           </span>-->
+<!--                                       </a>-->
+<!--                                   </li>-->
+<!--                                   <li>-->
+<!--                                       <a href="#">-->
+<!--                                           <span class="notification-avatar">-->
+<!--                                               <img src="http://localhost:8080/assets/images/avatars/avatar-3.jpg" alt="">-->
+<!--                                           </span>-->
+<!--                                           <span class="notification-icon bg-gradient-danger">-->
+<!--                                               <i class="icon-feather-star"></i></span>-->
+<!--                                           <span class="notification-text">-->
+<!--                                               <strong>Alex Dolgove</strong> Added New Review In Video-->
+<!--                                               <span class="text-primary">Full Stack PHP Developer</span>-->
+<!--                                               <br> <span class="time-ago"> 19 hours ago </span>-->
+<!--                                           </span>-->
+<!--                                       </a>-->
+<!--                                   </li>-->
+<!--                                   <li>-->
+<!--                                       <a href="#">-->
+<!--                                           <span class="notification-avatar">-->
+<!--                                               <img src="http://localhost:8080/assets/images/avatars/avatar-4.jpg" alt="">-->
+<!--                                           </span>-->
+<!--                                           <span class="notification-icon bg-gradient-success">-->
+<!--                                               <i class="icon-feather-message-circle"></i></span>-->
+<!--                                           <span class="notification-text">-->
+<!--                                               <strong>Stella John</strong> Replay Your Comment in-->
+<!--                                               <span class="text-primary">Adobe XD Tutorial</span>-->
+<!--                                               <br> <span class="time-ago"> 12 hours ago </span>-->
+<!--                                           </span>-->
+<!--                                       </a>-->
+<!--                                   </li>-->
+<!--                                   <li>-->
+<!--                                       <a href="#">-->
+<!--                                           <span class="notification-avatar">-->
+<!--                                               <img src="http://localhost:8080/assets/images/avatars/avatar-2.jpg" alt="">-->
+<!--                                           </span>-->
+<!--                                           <span class="notification-icon bg-gradient-primary">-->
+<!--                                               <i class="icon-feather-thumbs-up"></i></span>-->
+<!--                                           <span class="notification-text">-->
+<!--                                               <strong>Adrian Moh.</strong> Like Your Comment On Video-->
+<!--                                               <span class="text-primary">Learn Prototype Faster</span>-->
+<!--                                               <br> <span class="time-ago"> 9 hours ago </span>-->
+<!--                                           </span>-->
+<!--                                       </a>-->
+<!--                                   </li>-->
+<!--                                   <li>-->
+<!--                                       <a href="#">-->
+<!--                                           <span class="notification-avatar">-->
+<!--                                               <img src="http://localhost:8080/assets/images/avatars/avatar-3.jpg" alt="">-->
+<!--                                           </span>-->
+<!--                                           <span class="notification-icon bg-gradient-warning">-->
+<!--                                               <i class="icon-feather-star"></i></span>-->
+<!--                                           <span class="notification-text">-->
+<!--                                               <strong>Alex Dolgove</strong> Added New Review In Video-->
+<!--                                               <span class="text-primary">Full Stack PHP Developer</span>-->
+<!--                                               <br> <span class="time-ago"> 19 hours ago </span>-->
+<!--                                           </span>-->
+<!--                                       </a>-->
+<!--                                   </li>-->
+<!--                                   <li>-->
+<!--                                       <a href="#">-->
+<!--                                           <span class="notification-avatar">-->
+<!--                                               <img src="http://localhost:8080/assets/images/avatars/avatar-4.jpg" alt="">-->
+<!--                                           </span>-->
+<!--                                           <span class="notification-icon bg-gradient-success">-->
+<!--                                               <i class="icon-feather-message-circle"></i></span>-->
+<!--                                           <span class="notification-text">-->
+<!--                                               <strong>Stella John</strong> Replay Your Comment in-->
+<!--                                               <span class="text-primary">Adobe XD Tutorial</span>-->
+<!--                                               <br> <span class="time-ago"> 12 hours ago </span>-->
+<!--                                           </span>-->
+<!--                                       </a>-->
+<!--                                   </li>-->
+<!--                               </ul>-->
+
+<!--                           </div>-->
+
+
+<!--                       </div>-->
 
 
                        <!-- profile -image -->
@@ -568,12 +607,12 @@
                             <li><a href="#" id="repost" onclick="forward()"> 转发</a></li>
                             <li><a href="#" id="postDate" th:text =  "${blog.createTime}"> </a></li>
 <!--                            <div id="collect" class="feed" style="width:60px;top: 6px;left: 520px;">-->
-                                <div id="btn_collect"  class="feed" style="width: 60px; top: 6px; left: 450px; background-position: left center;">
+                                <div id="btn_collect"  class="feed" style="width: 60px; top: 6px; left: 900px; background-position: left center;">
                                     <div class="el-icon-star-off" id="btn_collect_icon" rel="uncollect"></div>
                                     <div class="likeCount" id="collectCount" style="top: 2px;right: 35px;">10</div>
                                 </div>
 <!--                            </div>-->
-                            <div class="feed" id="feed2" style="width:60px;top: 2px;left: 380px;">
+                            <div class="feed" id="feed2" style="width:60px;top: 2px;left: 830px;">
                                 <div class="heart" id="like2" rel="like" style="top: 5px;"></div>
                                 <div class="likeCount" id="likeCount2" style="top: 5px;right: 15px;">10</div>
                             </div>
@@ -874,21 +913,21 @@
                                     <h4 th:text = "${AuthorName}"> Mariah Ali </h4>
                                     <p th:text = "${blog.createTime}"> 5 <span> hrs</span> <i class="uil-users-alt"></i> </p>
                                 </div>
-                                <div class="post-btn-action">
-                                    <span class="icon-more uil-ellipsis-h" aria-expanded="false"></span>
-                                    <div class="mt-0 p-2 uk-dropdown" uk-dropdown="pos: top-right;mode:hover ">
-                                        <ul class="uk-nav uk-dropdown-nav">
-                                            <li><a href="#"> <i class="uil-share-alt mr-1"></i> Share</a> </li>
-                                            <li><a href="#"> <i class="uil-edit-alt mr-1"></i> Edit Post </a></li>
-                                            <li><a href="#"> <i class="uil-comment-slash mr-1"></i> Disable comments
-                                            </a></li>
-                                            <li><a href="#"> <i class="uil-favorite mr-1"></i> Add favorites </a>
-                                            </li>
-                                            <li><a href="#" class="text-danger"> <i class="uil-trash-alt mr-1"></i>
-                                                Delete </a></li>
-                                        </ul>
-                                    </div>
-                                </div>
+<!--                                <div class="post-btn-action">-->
+<!--                                    <span class="icon-more uil-ellipsis-h" aria-expanded="false"></span>-->
+<!--                                    <div class="mt-0 p-2 uk-dropdown" uk-dropdown="pos: top-right;mode:hover ">-->
+<!--                                        <ul class="uk-nav uk-dropdown-nav">-->
+<!--                                            <li><a href="#"> <i class="uil-share-alt mr-1"></i> Share</a> </li>-->
+<!--                                            <li><a href="#"> <i class="uil-edit-alt mr-1"></i> Edit Post </a></li>-->
+<!--                                            <li><a href="#"> <i class="uil-comment-slash mr-1"></i> Disable comments-->
+<!--                                            </a></li>-->
+<!--                                            <li><a href="#"> <i class="uil-favorite mr-1"></i> Add favorites </a>-->
+<!--                                            </li>-->
+<!--                                            <li><a href="#" class="text-danger"> <i class="uil-trash-alt mr-1"></i>-->
+<!--                                                Delete </a></li>-->
+<!--                                        </ul>-->
+<!--                                    </div>-->
+<!--                                </div>-->
                             </div>
 
 
