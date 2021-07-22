@@ -95,7 +95,12 @@ public class HomeServiceImpl implements HomeService {
             model.addAttribute("bloggerAvatar",user.getAvatar());
             model.addAttribute("hiddenLogout","false");
             model.addAttribute("hiddenLogin","true");
-            model.addAttribute("number",homeMapper.countRead(userId));
+            if(homeMapper.countRead(userId) != null){
+                model.addAttribute("number",homeMapper.countRead(userId));
+            }else {
+                model.addAttribute("number",0);
+            }
+
 
         }else{
             model.addAttribute("bloggerAvatar","https://bucket-myblog.oss-cn-beijing.aliyuncs.com/avatar/defaultAvatar.jpg");

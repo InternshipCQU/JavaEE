@@ -83,7 +83,8 @@
     <select id="showWantBlogger" resultType="com.example.demo.entity.User">
         SELECT `User`.username,`User`.avatar,`User`.userId
         FROM `User`,TagMark,blogInfo,blogTag
-        WHERE TagMark.userId = #{userId}
+        WHERE `User`.userId != #{userId}
+          AND TagMark.userId = #{userId}
           AND blogTag.tagId = blogInfo.tagId
           AND blogInfo.userId = `User`.userId
           AND (select count(*) from userLike where userLike.userId= User.userId and userLike.fansId=#{userId})=0
@@ -262,8 +263,8 @@
     </select>
 
     <select id="getNews" resultType="com.example.demo.entity.news">
-        SELECT news.newsContent,news.userId,blogInfo.blogId
-        FROM news, blogInfo
+        SELECT news.newsContent,news.userId
+        FROM news
         WHERE news.fansId = #{fansId}
         AND news.isRead = 0
     </select>
@@ -284,10 +285,10 @@
         where `userId`=#{userId};
     </update>
 
-    <select id="countRead" resultType="int">
+    <select id="countRead" resultType="String">
         SELECT count(1) AS counts
         FROM news
-        WHERE isRead = 0
+        WHERE isRead = 0 AND fansId = #{userId}
         GROUP BY isRead;
     </select>
 
