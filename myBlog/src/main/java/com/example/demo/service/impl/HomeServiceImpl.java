@@ -212,7 +212,29 @@ public class HomeServiceImpl implements HomeService {
         int forwardNumber = blogs.get(count).getForwardNum();
         int saveNumber = blogs.get(count).getCollectNum();
         //List<CommentView> commentList = blogs.get(count).getCommentList();//TODO:这里要做一个json 在前面通过循环方式进行添加
+        int isliked;
+        int iscollect;
+        if(request.getSession().getAttribute("userID") != null){
+            System.out.println("user exist");
+            if(blogMapper.isliked(blogId,userId) == null){
+                isliked = 0;
+            }else {
+                isliked = blogMapper.isliked(blogId,userId);
+            }
+            //isliked = blogMapper.isliked(blogId,userId);
+            if(blogMapper.isCollect(blogId,userId) == null ){
+                iscollect = 0;
+            }else {
+                iscollect = blogMapper.isCollect(blogId,userId);
+            }
 
+
+        }else{
+            isliked = -1;
+            iscollect = -1;
+        }
+
+        System.out.println("isliked: "+ isliked);
 
         System.out.println("userAvater: "+ userAvater);
         System.out.println("userId: " + userId);
@@ -256,7 +278,7 @@ public class HomeServiceImpl implements HomeService {
 
         System.out.println("Hello");
         session.setAttribute("count", count + 1);
-        return "{\"userLink\":\""+userLink +"\",\"clickNumber\":\""+clickNumber+"\",\"userAvater\":\""+userAvater +"\",\"createTime\":\""+createTime+"\",\"blogContent\":\"" + blogContent + "\",\"blogTitle\":\"" + blogTitle + "\",\"username\":\"" + username + "\",\"likeNumber\":\"" + likeNumber + "\",\"commentNumber\":\"" + commentNumber + "\",\"forwardNumber\":\"" + forwardNumber + "\",\"saveNumber\":\"" + saveNumber + "\",\"comments\":" + comments + ",\"link\":\"" + link + "\"}";
+        return "{\"iscollect\":\""+iscollect+"\",\"isliked\":\""+isliked+"\",\"tagId\":\"" + blog.tagId+ "\",\"userId\":\"" + userId+"\",\"blogId\":\""+ blogId +"\",\"userLink\":\""+userLink +"\",\"clickNumber\":\""+clickNumber+"\",\"userAvater\":\""+userAvater +"\",\"createTime\":\""+createTime+"\",\"blogContent\":\"" + blogContent + "\",\"blogTitle\":\"" + blogTitle + "\",\"username\":\"" + username + "\",\"likeNumber\":\"" + likeNumber + "\",\"commentNumber\":\"" + commentNumber + "\",\"forwardNumber\":\"" + forwardNumber + "\",\"saveNumber\":\"" + saveNumber + "\",\"comments\":" + comments + ",\"link\":\"" + link + "\"}";
 
     }
 

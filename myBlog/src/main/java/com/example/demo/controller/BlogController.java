@@ -76,9 +76,14 @@ public class BlogController {
     }
 
     @RequestMapping("/blogs/like")
-    public void like(@RequestParam("blogId") int blogId, @RequestParam("userId") int userId, @RequestParam("tagId") int tagId, @RequestParam("likenumber")int num, HttpServletResponse response,HttpServletRequest request) throws JSONException, IOException {
+    @ResponseBody
+    public void like(@RequestParam("blogId") int blogId, @RequestParam("userId") int userId, @RequestParam("tagId") int tagId, HttpServletResponse response,HttpServletRequest request) throws JSONException, IOException {
+        System.out.println("like");
         HttpSession session=request.getSession();
         if(session.getAttribute("token")=="yes") {
+            if(blogService.isliked(blogId,userId)){
+                return;
+            }
             blogService.like(blogId);
             blogService.writelikerecord(blogId, userId);
             blogService.updateMarkWhenLike(tagId,userId);
@@ -89,7 +94,10 @@ public class BlogController {
     }
 
     @RequestMapping("/blogs/cancelLike")
-    public void cancelLike(@RequestParam("blogId") int blogId, @RequestParam("userId") int userId, @RequestParam("tagId") int tagId,@RequestParam("likenumber")int num,HttpServletResponse response,HttpServletRequest request) throws JSONException,IOException {
+    @ResponseBody
+    public void cancelLike(@RequestParam("blogId") int blogId, @RequestParam("userId") int userId, @RequestParam("tagId") int tagId,HttpServletResponse response,HttpServletRequest request) throws JSONException,IOException {
+        
+        System.out.println("cancelLike");
         HttpSession session=request.getSession();
         if(session.getAttribute("token")=="yes") {
             JSONObject object = new JSONObject();
@@ -165,6 +173,7 @@ public class BlogController {
 
 
     @RequestMapping("/blogs/collect")
+    @ResponseBody
     public void collect(@RequestParam("blogId") int blogId,
                         @RequestParam("tagId") int tagId, Model model, HttpServletRequest request){
 
@@ -179,6 +188,7 @@ public class BlogController {
     }
 
     @RequestMapping("/blogs/cancelCollect")
+    @ResponseBody
     public void cancelCollect (@RequestParam("blogId") int blogId,
                                @RequestParam("tagId") int tagId, Model model, HttpServletRequest request)
     {

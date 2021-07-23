@@ -8029,7 +8029,7 @@ header .opts_icon_link:hover {
   box-shadow: none;
   padding: 9px 0px;
   transition: all .1s ease-in-out;
-  /*cursor: pointer;*/
+  cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
