@@ -13,6 +13,8 @@ public interface BlogwritingMapper {
 
     void updateDraft(String draftTitle, String draftContent, String draftTagName, int userID);
 
+    void modifyBlog();
+
     Integer draftNum(int userID);
 
     BlogDraft getDraft(int userID);

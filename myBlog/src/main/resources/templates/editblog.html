@@ -901,6 +901,8 @@
 <!--                    </div>-->
 
                     <script type="text/javascript">
+                        var blogID = [[${blogId}]];
+
                         var editor;
                         var testString =   "## 测试getmarkdown测试getmarkdown\n" + "*牛*";
 
@@ -917,10 +919,6 @@
                             });
                             // categorySelect.init();
                         });
-
-                        // $(function( ) {
-                        //     document.getElementById("articleContent").innerHTML = "<strong>设置标签的html内容</strong>";
-                        // });
 
 
                         /* 发布文章*/
@@ -948,8 +946,8 @@
 
                                     $.ajax({
                                         type: 'GET',
-                                        url: 'http://localhost:8080/submitarticle',
-                                        data: {'blogTitle':blogTitle,'blogContent':htmlContent,'tagName':tagName,'createTime':createTime, 'summaryContent':summaryContent},
+                                        url: 'http://localhost:8080/submitmodificaation',
+                                        data: {'blogID':blogID,'blogTitle':blogTitle,'blogContent':htmlContent,'tagName':tagName,'createTime':createTime, 'summaryContent':summaryContent},
                                         dataType:'json',
                                         contentType: 'text/json,charset=utf-8',
                                         cache: false,
