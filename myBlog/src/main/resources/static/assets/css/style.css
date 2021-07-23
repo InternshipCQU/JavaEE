@@ -10171,6 +10171,8 @@ ul.story-side-list li a .story-user-innr p span.story-time-ago{
 
 .responsive-tab.style-1 {
   height: 34px;
+  width: 500px;
+  display: inline-block;
 }
 
 .responsive-tab.style-1 li a {
