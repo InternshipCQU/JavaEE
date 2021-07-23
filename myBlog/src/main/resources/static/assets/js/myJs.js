@@ -56,71 +56,7 @@ function loadCPP()
     });
 }
 
-function loadJAVA()
-{
-    alert("go to ajax")
-    $.ajax({
 
-        url: 'http://localhost:8080/ajax', //这里是返回路径 在controller里写好对应函数就行 TODO:记得修改路径后面的 这是测试
-        type: 'get',
-        data: {"class":"JAVA"}, //这里是向后端传输的json 应该是可以直接传对象 比如User这种entity
-        //例如点赞的话 我们传递blogID userID到后端 后端再进行操作
-        async: true,
-        success: function(data){
-            if(data != null){
-                var a = JSON.parse(data);
-                alert(a.test);
-                $("#test").attr("href",a.test);//成功改写标签里面的属性值 从而可以依靠返回的json数据动态修改前端的值
-            }
-            //window.location.href = 'http://localhost:8080/mainpage';
-            //这里是如果成功的将数据传递之后做的操作 可以写alert和跳转语句 根据情况进行书写就写
-        }
-    });
-}
-
-function loadPYTHON()
-{
-    alert("go to ajax")
-    $.ajax({
-
-        url: 'http://localhost:8080/ajax', //这里是返回路径 在controller里写好对应函数就行 TODO:记得修改路径后面的 这是测试
-        type: 'get',
-        data: {"class":"PYTHON"}, //这里是向后端传输的json 应该是可以直接传对象 比如User这种entity
-        //例如点赞的话 我们传递blogID userID到后端 后端再进行操作
-        async: true,
-        success: function(data){
-            if(data != null){
-                var a = JSON.parse(data);
-                alert(a.test);
-                $("#test").attr("href",a.test);//成功改写标签里面的属性值 从而可以依靠返回的json数据动态修改前端的值
-            }
-            //window.location.href = 'http://localhost:8080/mainpage';
-            //这里是如果成功的将数据传递之后做的操作 可以写alert和跳转语句 根据情况进行书写就写
-        }
-    });
-}
-
-function loadOTHER()
-{
-    alert("go to ajax")
-    $.ajax({
-
-        url: 'http://localhost:8080/ajax', //这里是返回路径 在controller里写好对应函数就行 TODO:记得修改路径后面的 这是测试
-        type: 'get',
-        data: {"class":"OTHER"}, //这里是向后端传输的json 应该是可以直接传对象 比如User这种entity
-        //例如点赞的话 我们传递blogID userID到后端 后端再进行操作
-        async: true,
-        success: function(data){
-            if(data != null){
-                var a = JSON.parse(data);
-                alert(a.test);
-                $("#test").attr("href",a.test);//成功改写标签里面的属性值 从而可以依靠返回的json数据动态修改前端的值
-            }
-            //window.location.href = 'http://localhost:8080/mainpage';
-            //这里是如果成功的将数据传递之后做的操作 可以写alert和跳转语句 根据情况进行书写就写
-        }
-    });
-}
 
 function loadC()
 {
@@ -145,6 +81,155 @@ function loadC()
 }
 
 //====
+
+
+function Indexlike(blogId,userId,tagId){
+    //alert(blogId+","+userId+","+tagId)
+    $.ajax({
+
+        url: 'http://localhost:8080/blogs/like', //这里是返回路径 在controller里写好对应函数就行 TODO:记得修改路径后面的 这是测试
+        type: 'get',
+        data: {"blogId":blogId,"userId":userId,"tagId":tagId}, //这里是向后端传输的json 应该是可以直接传对象 比如User这种entity
+        //例如点赞的话 我们传递blogID userID到后端 后端再进行操作
+        async: true,
+        success: function(data){
+            //alert("success like")
+            var s = "pass" + blogId
+            var likeNumber = "likeNumber" + blogId
+            //alert(likeNumber)
+
+
+            var number = parseInt($("#" + likeNumber).text())+ 1
+            //alert("number: " + number)
+            $("#" + likeNumber).html(number)
+            //alert("结束0")
+            var fun = "IndexCancelLike(" + blogId+ "," +  userId + ","+ tagId + ")"
+            // $("#" + s).attr("id","sss")
+            // alert("结束1")
+            //$("#" + s).attr("onclick","Indexlike(" + blog.blogId+ "," +  blog.userId + ","+ blog.tagId + ")" );
+            $("#" + s).attr("onclick",fun );
+           // alert("结束2")
+        }
+    });
+}
+
+
+function IndexCancelLike(blogId,userId,tagId){
+    //alert(blogId+","+userId+","+tagId)
+    $.ajax({
+
+        url: 'http://localhost:8080/blogs/cancelLike', //这里是返回路径 在controller里写好对应函数就行 TODO:记得修改路径后面的 这是测试
+        type: 'get',
+        data: {"blogId":blogId,"userId":userId,"tagId":tagId}, //这里是向后端传输的json 应该是可以直接传对象 比如User这种entity
+        //例如点赞的话 我们传递blogID userID到后端 后端再进行操作
+        async: true,
+        success: function(data){
+           // alert("success")
+            var s = "pass" + blogId
+            var likeNumber = "likeNumber" + blogId
+            //alert(likeNumber)
+            var number =  parseInt($("#" + likeNumber).text())-1
+            //alert("number: " + number)
+            $("#" + likeNumber).html(number)
+            //alert("结束0")
+            var fun = "Indexlike(" + blogId+ "," +  userId + ","+ tagId + ")"
+            //alert("Indexlike(" + blog.blogId+ "," +  blog.userId + ","+ blog.tagId + ")")
+            // $("#" + s).attr("id","sss")
+            // alert("结束1")
+            //$("#" + s).attr("onclick","Indexlike(" + blog.blogId+ "," +  blog.userId + ","+ blog.tagId + ")");
+            $("#" + s).attr("onclick",fun);
+            //alert("结束2")
+        }
+    });
+}
+
+function IndexSave(blogId,tagId){
+    //alert(blogId+","+userId+","+tagId)
+    $.ajax({
+
+        url: 'http://localhost:8080/blogs/collect', //这里是返回路径 在controller里写好对应函数就行 TODO:记得修改路径后面的 这是测试
+        type: 'get',
+        data: {"blogId":blogId,"tagId":tagId}, //这里是向后端传输的json 应该是可以直接传对象 比如User这种entity
+        //例如点赞的话 我们传递blogID userID到后端 后端再进行操作
+        async: true,
+        success: function(data){
+            //alert("success like")
+            var s = "savebutton" + blogId
+            var saveNumber = "saveNumber" + blogId
+            //alert(likeNumber)
+
+
+            var number = parseInt($("#" + saveNumber).text())+ 1
+            //alert("number: " + number)
+            $("#" + saveNumber).html(number)
+            //alert("结束0")
+            var fun = "IndexCancelSave(" + blogId + ","+ tagId + ")"
+            // $("#" + s).attr("id","sss")
+            // alert("结束1")
+            //$("#" + s).attr("onclick","Indexlike(" + blog.blogId+ "," +  blog.userId + ","+ blog.tagId + ")" );
+            $("#" + s).attr("onclick",fun );
+             //alert("结束2")
+        }
+    });
+}
+
+
+function IndexCancelSave(blogId,tagId){
+    //alert("save")
+    //alert(blogId+","+userId+","+tagId)
+    $.ajax({
+
+        url: 'http://localhost:8080/blogs/cancelCollect', //这里是返回路径 在controller里写好对应函数就行 TODO:记得修改路径后面的 这是测试
+        type: 'get',
+        data: {"blogId":blogId,"tagId":tagId}, //这里是向后端传输的json 应该是可以直接传对象 比如User这种entity
+        //例如点赞的话 我们传递blogID userID到后端 后端再进行操作
+        async: true,
+        success: function(data){
+            //alert("success")
+            var s = "savebutton" + blogId
+            var saveNumber = "saveNumber" + blogId
+            //alert(likeNumber)
+            var number =  parseInt($("#" + saveNumber).text())-1
+            //alert("number: " + number)
+            $("#" + saveNumber).html(number)
+            //alert("结束0")
+            var fun = "IndexSave(" + blogId+ ","+ tagId + ")"
+            //alert("Indexlike(" + blog.blogId+ "," +  blog.userId + ","+ blog.tagId + ")")
+            // $("#" + s).attr("id","sss")
+            // alert("结束1")
+            //$("#" + s).attr("onclick","Indexlike(" + blog.blogId+ "," +  blog.userId + ","+ blog.tagId + ")");
+            $("#" + s).attr("onclick",fun);
+            //alert("结束2")
+        }
+    });
+}
+
+function IndexForward(blogId,tagId){
+    //alert(blogId+","+userId+","+tagId)
+    //alert("IndexForward")
+    $.ajax({
+
+        url: 'http://localhost:8080/blogs/forward', //这里是返回路径 在controller里写好对应函数就行 TODO:记得修改路径后面的 这是测试
+        type: 'get',
+        data: {"blogId":blogId,"tagId":tagId}, //这里是向后端传输的json 应该是可以直接传对象 比如User这种entity
+        //例如点赞的话 我们传递blogID userID到后端 后端再进行操作
+        async: true,
+        success: function(data){
+            //alert("success like")
+            var forwardNumber = "forwardNumber" + blogId
+            //alert(likeNumber)
+            var number = parseInt($("#" + forwardNumber).text())+ 1
+            //alert("number: " + number)
+            $("#" + forwardNumber).html(number)
+            //alert("结束0")
+            // alert("结束2")
+        }
+    });
+}
+
+function Alert(){
+    alert("请登录")
+}
 
 
 //==== Dynamic show ====
@@ -225,14 +310,12 @@ function loadTheBlog()
                         "    </div>\n" +
                         " </a>\n" +
                         "    <div class=\"post-state\">\n" +
-                        "        <div class=\"post-state-btns\"> <i class=\"uil-thumbs-up\"></i><text id = \"likeNumber\">126</text><span> Liked </span>\n" +
+                        "        <div class=\"post-state-btns\" id = 'likebutton'> <i class=\"uil-thumbs-up\"></i><text id = \"likeNumber\">126</text><span> Liked </span>\n" +
                         "        </div>\n" +
-                        "        <div class=\"post-state-btns\"> <i class=\"uil-heart\"></i> <text  id = \"commentNumber\">126</text> <span> Coments</span>\n" +
-                        "        </div>\n" +
-                        "        <div class=\"post-state-btns\" > <i class=\"uil-share-alt\"></i> <text  id = \"forwardNumber\">126</text> <span> Shared\n" +
+                        "        <div class=\"post-state-btns\" id = 'forwardbutton'> <i class=\"uil-share-alt\"></i> <text  id = \"forwardNumber\">126</text> <span> Shared\n" +
                         "            </span>\n" +
                         "        </div>\n" +
-                        "        <div class=\"post-state-btns\" > <i class=\"uil-bookmark\"></i> <text  id = \"saveNumber\">126</text> <span> Saved </span>\n" +
+                        "        <div class=\"post-state-btns\" id = 'savebutton'> <i class=\"uil-bookmark\"></i> <text  id = \"saveNumber\">126</text> <span> Saved </span>\n" +
                         "        </div>\n" +
                         "    </div>\n" +
 
@@ -249,7 +332,7 @@ function loadTheBlog()
                 $("#username").html(blog.username);//设置博主名字
                 $("#username").attr("id", "pass");
                 $("#likeNumber").html(blog.likeNumber);//设置点赞数量
-                $("#likeNumber").attr("id", "pass");
+                $("#likeNumber").attr("id", "likeNumber" + blog.blogId);
                 $("#likeNum").html(blog.likeNumber);
                 $("#likeNum").attr("id", "pass");//设置点赞数量
                 $("#commentNumber").html(blog.commentNumber);
@@ -257,9 +340,10 @@ function loadTheBlog()
                 $("#clickNumber").html(blog.clickNumber + " views");
                 $("#clickNumber").attr("id", "pass");//设置浏览量
                 $("#forwardNumber").html(blog.forwardNumber);
-                $("#forwardNumber").attr("id", "pass");//设置转发数
+                $("#forwardNumber").attr("id", "forwardNumber"+blog.blogId);//设置转发数
+
                 $("#saveNumber").html(blog.saveNumber);
-                $("#saveNumber").attr("id", "pass");//设置收藏数
+                $("#saveNumber").attr("id", "saveNumber" + blog.blogId);//设置收藏数
                 $("#link").attr("href", blog.link);
                 $("#link").attr("id", "pass");//设置博客链接
 
@@ -277,6 +361,45 @@ function loadTheBlog()
                 $("#userLink").attr("id", "pass");//设置博主头像
 
                 $("#comments").attr("id", "commentsNull")
+
+               // alert("blog.isliked： " + blog.isliked)
+
+                if(blog.isliked === "-1"){
+                    $("#likebutton").attr("onclick","Alert()" );
+                    $("#likebutton").attr("id", "pass" + blog.blogId);
+                }else if(blog.isliked === "0"){
+                    //alert("没有点过赞")
+                    $("#likebutton").attr("onclick","Indexlike(" + blog.blogId+ "," +  blog.userId + ","+ blog.tagId + ")" );
+                    $("#likebutton").attr("id", "pass" + blog.blogId);//设置博客链接
+                }else{
+                    $("#likebutton").attr("onclick","IndexCancelLike(" + blog.blogId + "," +  blog.userId + ","+ blog.tagId + ")" );
+                    $("#likebutton").attr("id", "pass" + blog.blogId);//设置博客链接
+                }
+
+                if(blog.iscollect === "-1"){
+                    $("#savebutton").attr("onclick","Alert()" );
+                    $("#savebutton").attr("id", "savebutton" + blog.blogId);
+                }else if(blog.iscollect === "0"){
+                    //alert("没有点过赞")
+                    $("#savebutton").attr("onclick","IndexSave(" + blog.blogId+ ","+ blog.tagId + ")" );
+                    $("#savebutton").attr("id", "savebutton" + blog.blogId);//设置博客链接
+                }else{
+                    $("#savebutton").attr("onclick","IndexCancelSave(" + blog.blogId + ","+ blog.tagId + ")" );
+                    $("#savebutton").attr("id", "savebutton" + blog.blogId);//设置博客链接
+                }
+
+                if(blog.iscollect === "-1"){
+                    $("#forwardbutton").attr("onclick","Alert()" );
+                    $("#forwardbutton").attr("id", "forwardbutton" + blog.blogId);
+                }else{
+                    $("#forwardbutton").attr("onclick","IndexForward(" + blog.blogId + ","+ blog.tagId + ")" );
+                    $("#forwardbutton").attr("id", "forwardbutton" + blog.blogId);//设置博客链接
+                }
+
+
+
+
+
 
                 var comments = blog.comments
                 if(comments !== "{}") {

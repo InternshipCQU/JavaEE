@@ -607,146 +607,22 @@
                             <li><a href="#" id="repost" onclick="forward()"> 转发</a></li>
                             <li><a href="#" id="postDate" th:text =  "${blog.createTime}"> </a></li>
 <!--                            <div id="collect" class="feed" style="width:60px;top: 6px;left: 520px;">-->
-                                <div id="btn_collect"  class="feed" style="width: 60px; top: 6px; left: 780px; background-position: left center;">
-                                    <div class="el-icon-star-off" id="btn_collect_icon" rel="uncollect"></div>
-                                    <div class="likeCount" id="collectCount" style="top: 2px;right: 35px;">10</div>
-                                </div>
+<!--                                <div id="btn_collect"  class="feed" style="width: 60px; top: 6px; left: 780px; background-position: left center;">-->
+<!--                                    <div class="el-icon-star-off" id="btn_collect_icon" rel="uncollect"></div>-->
+<!--                                    <div class="likeCount" id="collectCount" style="top: 2px;right: 35px;">10</div>-->
+<!--                                </div>-->
+<!--&lt;!&ndash;                            </div>&ndash;&gt;-->
+<!--                            <div class="feed" id="feed2" style="width:60px;top: 2px;left: 710px;">-->
+<!--                                <div class="heart" id="like2" rel="like" style="top: 5px;"></div>-->
+<!--                                <div class="likeCount" id="likeCount2" style="top: 5px;right: 15px;">10</div>-->
 <!--                            </div>-->
-                            <div class="feed" id="feed2" style="width:60px;top: 2px;left: 710px;">
-                                <div class="heart" id="like2" rel="like" style="top: 5px;"></div>
-                                <div class="likeCount" id="likeCount2" style="top: 5px;right: 15px;">10</div>
-                            </div>
 
-                            <p id="userId" style="opacity: 0"  th:text="${blog.userId}" ></p>
-                            <p id="blogId" style="opacity: 0" th:text="${blog.blogId}" ></p>
-                            <p id="tagId" style="opacity: 0" th:text="${blog.tagId}" ></p>
-                            <p id="likenumusr" style="opacity:0" th:text="${blog.likesNum}"></p>
-                            <p id="collectnum" style="opacity: 0" th:text="${blog.collectNum}"></p>
+
 <!--                            <div class="feed" id="collect" style="width:60px;top: 2px;left: 550px;">-->
 <!--                                <i class="iconfont icon-star"></i><span class="count">50</span>-->
 <!--                            </div>-->
 
-                            <!--收藏-->
-                            <script type="text/javascript">
-                                // $("#btn_collect").click(function(){
-                                //     var classname = $("#btn_collect_icon").attr("class");
-                                //     $("#btn_collect_icon").removeClass("el-icon-star-off el-icon-star-on");
-                                //     if(classname === "el-icon-star-off" ){
-                                //         $("#btn_collect_icon").addClass("el-icon-star-on");
-                                //     }else{
-                                //         $("#btn_collect_icon").addClass("el-icon-star-off");
-                                //     }
-                                // });
-                                var jsonStr_1={"blogId":parseInt(document.getElementById("blogId").innerHTML),"userId":document.getElementById("userId").innerHTML,"tagId":1,"collectnumber":0};
-                                var collectIcon = document.getElementById("btn_collect_icon");
 
-                                // console.log(jsonStr_1)
-                                $.ajax({
-                                    url: "http://" + window.location.host + "/blogs/isCollect",
-                                    type: 'get',
-                                    contentType: 'application/json',
-                                    dataType: 'json',
-                                    data: jsonStr_1,
-                                    success: function (data)
-                                    {
-                                        var collectnum = document.getElementById("collectnum");
-                                        var temp = collectnum.innerHTML;
-                                        var collectCount = document.getElementById("collectCount")
-                                        collectCount.innerHTML = temp;
-                                        $(document).ready(function ()
-                                            {
-                                                // var collectIcon = document.getElementById("btn_collect_icon")
-                                                if (data.isCollect)
-                                                {
-                                                    //已经收藏
-                                                    // console.log("true")
-                                                    // console.log(data)
-                                                    collectIcon.classList.remove("el-icon-star-off");
-                                                    collectIcon.classList.remove("el-icon-star-on");
-                                                    collectIcon.classList.add("el-icon-star-on");
-                                                    collectIcon.setAttribute("rel","collect");
-                                                }
-                                                else
-                                                {
-                                                    // console.log("false")
-                                                    // console.log(data)
-                                                    //没有收藏
-                                                    collectIcon.classList.remove("el-icon-star-off");
-                                                    collectIcon.classList.remove("el-icon-star-on");
-                                                    // collectIcon.removeClass("el-icon-star-off el-icon-star-on");
-                                                    collectIcon.classList.add("el-icon-star-off");
-                                                    // collectIcon.addClass("el-icon-star-off");
-                                                    collectIcon.setAttribute("rel","uncollect");
-                                                }
-
-                                                $("#btn_collect").click(function (){
-                                                    var A = $(this).attr("id");
-                                                    if (data.isLogin === "no")
-                                                    {
-                                                        window.location.href = "http://" + window.location.host + "/login"
-                                                        return
-                                                    }
-                                                    var B = A.split("collect");
-                                                    console.log(typeof data.isLogin)
-                                                    var messageID = B[1];
-                                                    var C = parseInt($("#collectCount" + messageID).html());
-                                                    $(this).css("background-position", "")
-                                                    var D = document.getElementById("btn_collect_icon").getAttribute("rel");
-                                                    // console.log(D)
-                                                    // console.log("collectnum"+C)
-                                                    if (D === 'uncollect') {
-                                                        $("#collectCount" + messageID).html(C + 1);
-                                                        // console.log("原来未收藏，现在是点击收藏")
-
-                                                        collectIcon.classList.remove("el-icon-star-off");
-                                                        collectIcon.classList.remove("el-icon-star-on");
-                                                        collectIcon.classList.add("el-icon-star-on");
-                                                        collectIcon.setAttribute("rel", "collect");
-
-                                                        jsonStr_1.collectnumber = parseInt(C + 1);
-                                                        $.ajax({
-                                                            url: "http://" + window.location.host + "/blogs/collect",
-                                                            type: 'get',
-                                                            contentType: 'application/json',
-                                                            dataType: 'json',
-                                                            data: jsonStr_1,
-                                                            success: function () {
-
-                                                            }
-                                                        })
-
-                                                    } else {
-                                                        $("#collectCount" + messageID).html(C - 1);
-                                                        // console.log("原来已经收藏，现在点击取消收藏")
-                                                        collectIcon.classList.remove("el-icon-star-off");
-                                                        collectIcon.classList.remove("el-icon-star-on");
-                                                        collectIcon.classList.add("el-icon-star-off");
-                                                        collectIcon.setAttribute("rel", "uncollect");
-                                                        $(this).css("background-position", "left");
-                                                        jsonStr_1.likenumber = parseInt(C - 1);
-                                                        $.ajax({
-                                                            url: "http://" + window.location.host + "/blogs/cancelCollect",
-                                                            type: 'get',
-                                                            contentType: 'application/json',
-                                                            dataType: 'json',
-                                                            data: jsonStr_1,
-                                                            success: function () {
-
-                                                            }
-                                                        })
-                                                    }
-                                                })
-                                            }
-                                        )
-                                    },
-                                    error: function (e)
-                                    {
-                                        console.log(e)
-                                    }
-                                })
-
-
-                            </script>
 
 <!--                            <li>Like <span id="likenum" th:text =  "${blog.likesNum}"></span></li>-->
 
@@ -754,6 +630,12 @@
 
 
                     </div>
+                    <p id="userId" style="opacity: 0"  th:text="${blog.userId}" ></p>
+                    <p id="blogId" style="opacity: 0" th:text="${blog.blogId}" ></p>
+                    <p id="tagId" style="opacity: 0" th:text="${blog.tagId}" ></p>
+                    <p id="likenumusr" style="opacity:0" th:text="${blog.likesNum}"></p>
+                    <p id="collectnum" style="opacity: 0" th:text="${blog.collectNum}"></p>
+
 
 
 
@@ -906,30 +788,166 @@
                         <div class="post" style="width: 100%;">
 
                             <div class="post-heading">
-                                <div class="post-avature">
+                                <div class="post-avature" style="margin-bottom: 10px;">
                                     <img th:src="${bloggerAvatar}" alt="">
                                 </div>
                                 <div class="post-title">
                                     <h4 th:text = "${AuthorName}"> Mariah Ali </h4>
-                                    <p th:text = "${blog.createTime}"> 5 <span> hrs</span> <i class="uil-users-alt"></i> </p>
+<!--                                    <p th:text = "${blog.createTime}"> 5 <span> hrs</span> <i class="uil-users-alt"></i> </p>-->
+
+
                                 </div>
-<!--                                <div class="post-btn-action">-->
-<!--                                    <span class="icon-more uil-ellipsis-h" aria-expanded="false"></span>-->
-<!--                                    <div class="mt-0 p-2 uk-dropdown" uk-dropdown="pos: top-right;mode:hover ">-->
-<!--                                        <ul class="uk-nav uk-dropdown-nav">-->
-<!--                                            <li><a href="#"> <i class="uil-share-alt mr-1"></i> Share</a> </li>-->
-<!--                                            <li><a href="#"> <i class="uil-edit-alt mr-1"></i> Edit Post </a></li>-->
-<!--                                            <li><a href="#"> <i class="uil-comment-slash mr-1"></i> Disable comments-->
-<!--                                            </a></li>-->
-<!--                                            <li><a href="#"> <i class="uil-favorite mr-1"></i> Add favorites </a>-->
-<!--                                            </li>-->
-<!--                                            <li><a href="#" class="text-danger"> <i class="uil-trash-alt mr-1"></i>-->
-<!--                                                Delete </a></li>-->
-<!--                                        </ul>-->
-<!--                                    </div>-->
-<!--                                </div>-->
+                                <div class="responsive-tab style-1 mb-3">
+                                    <ul>
+                                        <li>
+                                            <div id="btn_collect"  class="feed" style="width: 60px;top: 7px;left: 400px;right: 0px;position: absolute;">
+                                                <div class="el-icon-star-off" id="btn_collect_icon" rel="uncollect"></div>
+                                                <div class="likeCount" id="collectCount" style="top: 2px;right: 35px;">10</div>
+                                            </div>
+                                        </li>
+                                        <li>
+<!--                                            <a>-->
+
+<!--                                            </a>-->
+                                            <div class="feed" id="feed2" style="width:60px;top: 2px;left: 320px;position: absolute;">
+                                                <div class="heart" id="like2" rel="like" style="top: 5px;"></div>
+                                                <div class="likeCount" id="likeCount2" style="top: 5px;right: 15px;">10</div>
+                                            </div>
+                                        </li>
+
+                                        <!--                            </div>-->
+
+                                    </ul>
+
+                                </div>
+
                             </div>
 
+
+                            <!--收藏-->
+                            <script type="text/javascript">
+                                // $("#btn_collect").click(function(){
+                                //     var classname = $("#btn_collect_icon").attr("class");
+                                //     $("#btn_collect_icon").removeClass("el-icon-star-off el-icon-star-on");
+                                //     if(classname === "el-icon-star-off" ){
+                                //         $("#btn_collect_icon").addClass("el-icon-star-on");
+                                //     }else{
+                                //         $("#btn_collect_icon").addClass("el-icon-star-off");
+                                //     }
+                                // });
+                                var jsonStr_1={"blogId":parseInt(document.getElementById("blogId").innerHTML),"userId":document.getElementById("userId").innerHTML,"tagId":1,"collectnumber":0};
+                                var collectIcon = document.getElementById("btn_collect_icon");
+
+                                // console.log(jsonStr_1)
+                                $.ajax({
+                                    url: "http://" + window.location.host + "/blogs/isCollect",
+                                    type: 'get',
+                                    contentType: 'application/json',
+                                    dataType: 'json',
+                                    data: jsonStr_1,
+                                    success: function (data)
+                                    {
+                                        var collectnum = document.getElementById("collectnum");
+                                        var temp = collectnum.innerHTML;
+                                        var collectCount = document.getElementById("collectCount")
+                                        collectCount.innerHTML = temp;
+                                        $(document).ready(function (qualifiedName, value)
+                                            {
+                                                // var collectIcon = document.getElementById("btn_collect_icon")
+                                                if (data.isCollect)
+                                                {
+                                                    //已经收藏
+                                                    // console.log("true")
+                                                    // console.log(data)
+                                                    // collectIcon.classList.remove("el-icon-star-off");
+                                                    // collectIcon.classList.remove("el-icon-star-on");
+                                                    // collectIcon.classList.add("el-icon-star-on");
+                                                    collectIcon.setAttribute("class", "el-icon-star-on")
+                                                    collectIcon.setAttribute("rel","collect");
+                                                }
+                                                else
+                                                {
+                                                    // console.log("false")
+                                                    // console.log(data)
+                                                    //没有收藏
+                                                    // collectIcon.classList.remove("el-icon-star-off");
+                                                    // collectIcon.classList.remove("el-icon-star-on");
+                                                    // // collectIcon.removeClass("el-icon-star-off el-icon-star-on");
+                                                    // collectIcon.classList.add("el-icon-star-off");
+                                                    collectIcon.setAttribute("class", "el-icon-star-off")
+                                                    // collectIcon.addClass("el-icon-star-off");
+                                                    collectIcon.setAttribute("rel","uncollect");
+                                                }
+
+                                                $("#btn_collect").click(function (){
+                                                    var A = $(this).attr("id");
+                                                    if (data.isLogin === "no")
+                                                    {
+                                                        window.location.href = "http://" + window.location.host + "/login"
+                                                        return
+                                                    }
+                                                    var B = A.split("collect");
+                                                    console.log(typeof data.isLogin)
+                                                    var messageID = B[1];
+                                                    var C = parseInt($("#collectCount" + messageID).html());
+                                                    $(this).css("background-position", "")
+                                                    var D = document.getElementById("btn_collect_icon").getAttribute("rel");
+                                                    // console.log(D)
+                                                    // console.log("collectnum"+C)
+                                                    if (D === 'uncollect') {
+                                                        $("#collectCount" + messageID).html(C + 1);
+                                                        // console.log("原来未收藏，现在是点击收藏")
+
+                                                        // collectIcon.classList.remove("el-icon-star-off");
+                                                        // collectIcon.classList.remove("el-icon-star-on");
+                                                        // collectIcon.classList.add("el-icon-star-on");
+                                                        collectIcon.setAttribute("rel", "collect");
+                                                        collectIcon.setAttribute("class","el-icon-star-on")
+
+                                                        jsonStr_1.collectnumber = parseInt(C + 1);
+                                                        $.ajax({
+                                                            url: "http://" + window.location.host + "/blogs/collect",
+                                                            type: 'get',
+                                                            contentType: 'application/json',
+                                                            dataType: 'json',
+                                                            data: jsonStr_1,
+                                                            success: function () {
+
+                                                            }
+                                                        })
+
+                                                    } else {
+                                                        $("#collectCount" + messageID).html(C - 1);
+                                                        // console.log("原来已经收藏，现在点击取消收藏")
+                                                        // collectIcon.classList.remove("el-icon-star-off");
+                                                        // collectIcon.classList.remove("el-icon-star-on");
+                                                        // collectIcon.classList.add("el-icon-star-off");
+                                                        collectIcon.setAttribute("rel", "uncollect");
+                                                        collectIcon.setAttribute("class", "el-icon-star-off")
+                                                        $(this).css("background-position", "left");
+                                                        jsonStr_1.likenumber = parseInt(C - 1);
+                                                        $.ajax({
+                                                            url: "http://" + window.location.host + "/blogs/cancelCollect",
+                                                            type: 'get',
+                                                            contentType: 'application/json',
+                                                            dataType: 'json',
+                                                            data: jsonStr_1,
+                                                            success: function () {
+
+                                                            }
+                                                        })
+                                                    }
+                                                })
+                                            }
+                                        )
+                                    },
+                                    error: function (e)
+                                    {
+                                        console.log(e)
+                                    }
+                                })
+
+                            </script>
 
                             <div class="post-state">
 <!--                                <div class="post-state-btns"> <i class="uil-thumbs-up"></i> <text th:text="${blog.likesNum}">126</text><span> Liked </span>-->

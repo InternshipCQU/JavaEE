@@ -36,7 +36,7 @@ function previewImage(file) {
             }
             else
             {
-                document.getElementById("userprofileopt").innerHTML="";
+                document.getElementById("userprofileopt").innerHTML="-";
             }
             // document.getElementById("userprofileopt").innerHTML=recdata.userprofile;
             document.getElementById("email").innerHTML=recdata.email;
@@ -57,29 +57,30 @@ function previewImage(file) {
             document.getElementById("blogsNum").innerHTML=recdata.blogsNum;
             document.getElementById("fansNum").innerHTML=recdata.fansNum;
             document.getElementById("likesNum").innerHTML=recdata.likesNum;
-            if(recdata.birthdate===undefined)
+
+            if(recdata.birthdate===undefined||recdata.birthdate==="")
             {
-                document.getElementById("birthdate").innerHTML="";
+                document.getElementById("birthdate").innerHTML="-";
             }
             else{
                 document.getElementById("birthdate").innerHTML=recdata.birthdate;
             }
 
-            if(recdata.lastname==="undefined"){
-                document.getElementById("userlastname").innerHTML="";
+            if(recdata.lastname===undefined||recdata.lastname===""){
+                document.getElementById("userlastname").innerHTML="-";
 
             }
             else{
                 document.getElementById("userlastname").innerHTML=recdata.lastname;
             }
-            if(recdata.firstname==="undefined"){
-                document.getElementById("userfirstname").innerHTML="";
+            if(recdata.firstname===undefined||recdata.firstname===""){
+                document.getElementById("userfirstname").innerHTML="-";
             }
             else{
                 document.getElementById("userfirstname").innerHTML=recdata.firstname;
             }
-            if(recdata.telephone==="undefined"){
-                document.getElementById("telephone").innerHTML="";
+            if(recdata.telephone===undefined||recdata.telephone===""){
+                document.getElementById("telephone").innerHTML="-";
             }
             else{
                 document.getElementById("telephone").innerHTML=recdata.telephone;
@@ -242,7 +243,7 @@ function previewImage(file) {
             var o2=document.getElementById("email2").value;
             var c2=document.getElementById("email");
             if(o2==="") {
-                c2.innerHTML="undefined"
+                c2.innerHTML="-"
             }
             else {
                 c2.innerHTML=o2
@@ -252,7 +253,7 @@ function previewImage(file) {
             if(o3===""){
                 // alert("Last name cannot be null!")
                 // location.reload()
-                c3.innerHTML="undefined"
+                c3.innerHTML="-"
             }
             else{
                 c3.innerHTML=o3
@@ -262,7 +263,7 @@ function previewImage(file) {
             if(o4===""){
                 // alert("First name cannot be null!")
                 // location.reload()
-                c4.innerHTML="undefined"
+                c4.innerHTML="-"
             }
             else{
                 c4.innerHTML=o4
@@ -270,14 +271,11 @@ function previewImage(file) {
             var o5=document.getElementById("telephone2").value;
             var c5=document.getElementById("telephone");
             if(o5===""){
-                c5.innerHTML="undefined"
+                c5.innerHTML="-"
                 // alert("Telephone cannot be null!")
                 // location.reload()
             }
-            else if (o5.length!==11){
-                alert("The length of telephone number must be 11!")
-                location.reload()
-            }
+
             else{
                 c5.innerHTML=o5
 
@@ -308,7 +306,7 @@ function previewImage(file) {
             var o11=document.getElementById("birthdate2").value;
             var c11=document.getElementById("birthdate");
             if(o11===""){
-                c11.innerHTML="undefined"
+                c11.innerHTML="-"
             }
             else {
                 c11.innerHTML = o11
@@ -337,10 +335,9 @@ function previewImage(file) {
                 area:o8.value,
                 selfIntroduction:o12
             };
-            if(formData.username!==""&&formData.birthdate!==""&&formData.firstname!==""&&formData.lastname!==""&&formData.telephone!==""&&formData.lastname!==""&&formData.firstname!=="")
-            {
+
                 submit(formData);
-            }
+
         }})
 
 }
