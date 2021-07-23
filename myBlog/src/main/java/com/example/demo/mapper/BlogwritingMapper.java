@@ -8,6 +8,7 @@ public interface BlogwritingMapper {
 
     void addblog(String blogTitle, String blogContent, String createTime, int tagID, int userID,int isForward, String summaryContent);
 
+    void addBlogNum(int userID);
 
     void addDraft(String draftTitle, String draftContent, String draftTagName, int userID);
 

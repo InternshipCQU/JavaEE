@@ -123,7 +123,7 @@ public class WritingController {
 
         try{
             blogWritingService.submitDraft(draftTitle, draftContent, draftTagName, request);
-            System.out.println("here");
+//            System.out.println("here");
             result.put("result","success");
             return result.toJSONString();
         } catch (Exception e){

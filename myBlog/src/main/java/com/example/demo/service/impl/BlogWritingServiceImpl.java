@@ -64,7 +64,7 @@ public class BlogWritingServiceImpl implements BlogWritingService {
         }
 
         blogWritingMapper.addblog(blogTitle, blogContent, createTime, tagID, userID,isForward,summaryContent);
-
+        blogWritingMapper.addBlogNum(userID);
     }
 
     @Override

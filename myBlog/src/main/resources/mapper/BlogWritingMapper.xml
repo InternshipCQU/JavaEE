@@ -8,6 +8,13 @@
 
     </insert>
 
+    <update id="addBlogNum">
+        update USER
+        set blogsNum=blogsNum+1
+        where USER.userId=#{userID}
+    </update>
+
+
     <insert id="addDraft">
         insert into blogDraft(userId, draftTitle, draftContent, draftTagName)
         values(#{userID}, #{draftTitle}, #{draftContent}, #{draftTagName} )
@@ -36,4 +43,5 @@
         from blogDraft
         where userId = #{userID};
     </delete>
+
 </mapper>
