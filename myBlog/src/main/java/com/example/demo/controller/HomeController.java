@@ -100,6 +100,15 @@ public class HomeController {
         }
         return null;
     }
+
+    @RequestMapping("/deleteNotification")
+    @ResponseBody
+    // 主页推荐people you may want to see
+    public void notification(@RequestParam("iden") int id,HttpServletRequest request) {
+        System.out.println("iden: " + id);
+        homeMapper.changeNews(id);
+    }
+
 //
 //    @RequestMapping("/trending")
 //    // 主页展示点击量最高的博客对应的标签(#trending)，需要进行去重

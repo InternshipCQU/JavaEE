@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 
-@WebFilter(filterName = "FilterPersonal", urlPatterns = {"/tologout","/personal","/writing","/blogManager","/userinfo","/seeAllfollow"})//TODO:如果在这里没有登录的话 就会跳转到登录页面
+@WebFilter(filterName = "FilterPersonal", urlPatterns = {"/tologout","/personal","/writing","/blogManager","/userinfo","/seeAllfollow","/editblog/{blogId}"})//TODO:如果在这里没有登录的话 就会跳转到登录页面
 @Order(1)
 public class FilterPersonal implements Filter {
     @Override
