@@ -24,6 +24,8 @@ public interface BlogWritingService {
 
     public void submitBlog(String blogTitle, String blogContent, String createTime, String tagName, int isForward,String summaryContent, HttpServletRequest request);
 
+    public void submitModification(String blogTitle, String blogContent, String createTime, String tagName, int isForward,String summaryContent, HttpServletRequest request);
+
     public void deleteDraft(int userID);
 
     public ArrayList<Integer> getfansid(int userID);

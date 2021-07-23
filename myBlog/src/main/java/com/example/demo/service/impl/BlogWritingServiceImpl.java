@@ -128,6 +128,20 @@ public class BlogWritingServiceImpl implements BlogWritingService {
     }
 
     @Override
+    public void submitModification(String blogTitle, String blogContent, String createTime, String tagName, int isForward,String summaryContent, HttpServletRequest request){
+
+        int userID = (Integer) request.getSession().getAttribute("userID");
+
+        addBlog(blogTitle, blogContent, createTime, tagName, isForward,summaryContent, request);
+
+        if(this.draftNum(userID) >= 1){
+            //有草稿的话，因为要发表了，所i有就在数据库中直接把这条草稿记录删了
+            this.deleteDraft(userID);
+        }
+    }
+
+
+    @Override
     public void deleteDraft(int userID){
         blogWritingMapper.deleteDraft(userID);
     }

@@ -2,6 +2,7 @@ package com.example.demo.controller;
 
 import com.example.demo.entity.BlogDraft;
 import com.example.demo.entity.BlogInfo;
+import com.example.demo.service.BlogManagerService;
 import com.example.demo.service.BlogService;
 import com.example.demo.service.BlogWritingService;
 
@@ -21,6 +22,9 @@ public class WritingController {
 
     @Resource
     private BlogWritingService blogWritingService;
+
+    @Resource
+    private BlogManagerService blogManagerService;
 
     @Resource
     HomeService homeService;
@@ -56,7 +60,7 @@ public class WritingController {
 
         try{
 
-            blogWritingService.addBlog(blogTitle, blogContent, createTime, tagName, 0, summaryContent,request);
+            blogWritingService.submitBlog(blogTitle, blogContent, createTime, tagName, 0, summaryContent,request);
 //            System.out.println("here");
             result.put("result","success");
             return result.toJSONString();
@@ -67,6 +71,43 @@ public class WritingController {
             return result.toJSONString();
         }
     }
+
+
+    @RequestMapping("/submitmodificaation")
+    @ResponseBody
+    public String submitModification(@RequestParam("blogID") int blogID, @RequestParam("blogTitle") String blogTitle, @RequestParam("blogContent") String blogContent,
+                                @RequestParam("tagName") String tagName, @RequestParam("createTime") String createTime,
+                                @RequestParam("summaryContent") String summaryContent, HttpServletRequest request) throws UnsupportedEncodingException {
+        JSONObject result = new JSONObject();
+
+        blogTitle = URLDecoder.decode(blogTitle,"utf-8");
+        blogContent = URLDecoder.decode(blogContent,"utf-8");
+        createTime = URLDecoder.decode(createTime,"utf-8");
+        summaryContent = URLDecoder.decode(summaryContent,"utf-8");
+
+        System.out.println(blogTitle);
+        System.out.println(blogContent);
+        System.out.println(createTime);
+        System.out.println(tagName);
+        int userID = (Integer) request.getSession().getAttribute("userID");
+
+        try{
+            //先提交一篇新的博客
+            blogWritingService.submitBlog(blogTitle, blogContent, createTime, tagName, 0, summaryContent,request);
+            System.out.println("发布新博客成功");
+            //然后将旧的博客删掉
+            blogManagerService.deleteblog(blogID, userID);
+            System.out.println("删除旧博客成功");
+
+            result.put("result","success");
+            return result.toJSONString();
+        } catch (Exception e){
+            System.out.println(e);
+            result.put("result","error");
+            return result.toJSONString();
+        }
+    }
+
 
     @RequestMapping("submitdraft")
     @ResponseBody
