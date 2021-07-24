@@ -36,18 +36,14 @@ public class BlogWritingServiceImpl implements BlogWritingService {
     }
 
     @Override
-
     public void addBlog(String blogTitle, String blogContent,String createTime, String tagName,int isForward, String summaryContent, HttpServletRequest request) {
 
-
         MapofTagNameAndTagID map = new MapofTagNameAndTagID();
-
         int tagID = map.getTagID(tagName);
 
         //再通过session获取一下用户ID，等后面用户id写入session
         int userID = (int)request.getSession().getAttribute("userID");
         String userName = (String) request.getSession().getAttribute("username");
-
 
         //首先生成这条新闻
         String news = userName + " has just released a blog:《" + blogTitle + "》";
@@ -62,7 +58,6 @@ public class BlogWritingServiceImpl implements BlogWritingService {
 //            向数据库中的news表插入数据
             homeMapper.addNews(userID, fansID, news);
         }
-
         blogWritingMapper.addblog(blogTitle, blogContent, createTime, tagID, userID,isForward,summaryContent);
         blogWritingMapper.addBlogNum(userID);
     }
