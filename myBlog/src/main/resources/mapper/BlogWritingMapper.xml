@@ -9,9 +9,9 @@
     </insert>
 
     <update id="addBlogNum">
-        update USER
+        update User
         set blogsNum=blogsNum+1
-        where USER.userId=#{userID}
+        where User.userId=#{userID}
     </update>
 
 
