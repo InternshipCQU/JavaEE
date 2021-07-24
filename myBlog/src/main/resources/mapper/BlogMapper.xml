@@ -30,6 +30,10 @@
         values(#{createTime}, #{blogId}, #{userId})
     </insert>
 
+    <update id="addForwardNum">
+        UPDATE blogInfo SET forwardNum = forwardNum+1 WHERE blogId = #{blogId};
+    </update>
+
     <insert id="collect">
         insert into blogCollect(createTime, blogId, userId)
         values(#{createTime}, #{blogId}, #{userId})

@@ -81,6 +81,7 @@ public class BlogServiceImpl implements BlogService {
     public String forward(int blogId, int userId) {
         GetTime getTime = new GetTime();
         blogMapper.forward(blogId, userId, getTime.getCurrentTime());
+        blogMapper.addForwardNum(blogId);
         return "转发成功";
     }
 

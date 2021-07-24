@@ -38,4 +38,5 @@ public interface BlogMapper {
     void updateMarkWhenCollect(@Param("tagName")String tagName, @Param("userId") int userId);
 
     Integer isliked(int blogId, int userId);
+    void addForwardNum(int blogId);
 }

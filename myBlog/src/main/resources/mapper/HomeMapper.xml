@@ -81,7 +81,7 @@
     </select>
     
     <select id="showWantBlogger" resultType="com.example.demo.entity.User">
-        SELECT `User`.username,`User`.avatar,`User`.userId
+        SELECT DISTINCT `User`.username,`User`.avatar,`User`.userId
         FROM `User`,TagMark,blogInfo,blogTag
         WHERE `User`.userId != #{userId}
           AND TagMark.userId = #{userId}
