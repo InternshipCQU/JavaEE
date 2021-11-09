@@ -15,7 +15,7 @@ public class AliyunOssConfigConstant {
     //地域节点
     public static final String END_POINT = "oss-cn-beijing.aliyuncs.com";
     //AccessKey ID
-    public static final String AccessKey_ID = "LTAI5t8boD5MgHBWXNNMJGmm";
+    public static final String AccessKey_ID = "";
     //Access Key Secret
     public static final String AccessKey_Secret = "8f7SV8lmL4B9hdQbbMqzXCWUxf9BXR";
     //仓库中的某个文件夹
